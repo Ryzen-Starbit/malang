@@ -1,21 +1,3 @@
 [ 
-  {
-    "name": "Recruitments",
-    "date": "4th - 5th Sept, 2025",
-    "location": "WW2 - 409",
-    "description": "We're looking for new members to join our team! If you are interested in joining us, please fill out the form below.",
-    "image": "/resrc/images/misc/poster.jpg",
-    "buttons": [
-      {
-        "text": "Add to Calendar",
-        "link": "https://www.google.com/calendar/render?action=TEMPLATE&text=Malang+Recruitments&dates=20250904/20250906&details=MALANG+Fine+Arts+and+Photography+Club+recruitments+for+freshers.&location=WW2+-+409,+BVUCOEP",
-        "focus": false
-      },
-      {
-        "text": "Join Us",
-        "link": "recruitments.html",
-        "focus": true
-      }
-    ]
-  }
+  
 ]
