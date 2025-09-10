@@ -24,10 +24,15 @@
                 <li><a href='/src/pages/timeline.html'>Past Events</a></li>
             </ul>
         </details>
-        <li><a href='/404.html'><img src="/resrc/images/icons/project.webp" alt="" class="icon-small">Projects</a>
-        <li><a href='/src/pages/gallery.html'><img src="/resrc/images/icons/art.webp" alt="" class="icon-small">Art
-                Gallery</a></li>
-        </li>
+        <li><a href='/404.html'><img src="/resrc/images/icons/project.webp" alt="" class="icon-small">Projects</a></li>
+        <details>
+            <summary><img src="/resrc/images/icons/art.webp" alt="" class="icon-small">Galleries
+            </summary>
+            <ul>
+                <li><button onclick="loadPage('/src/pages/gallery.html')">Art Gallery</button></li>
+                <li><button onclick="loadPage('/index.html?mode=photographs')">Photo Gallery</button></li>
+            </ul>
+        </details>
         <details>
             <summary><img src="/resrc/images/icons/members.webp" alt="" class="icon-small">Our Members
             </summary>

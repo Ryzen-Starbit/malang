@@ -1,8 +1,10 @@
+.info{
+    padding: 0px 10px 10px 10px;
+}
 .table-wrapper {
     overflow-x: auto;
     max-width: min-content;
     display: flex;
-    margin-top: -1px;
     padding: 5px;
     margin: 5px;
     background-color: #161616;
