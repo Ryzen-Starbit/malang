@@ -1,11 +1,3 @@
-/* gallery.js — rewritten & optimized
-   Features:
-   - URL-backed filters (mode, type, artist)
-   - Copy shareable URL button
-   - Stable ordering: already-displayed images never reorder
-   - Works for 'artworks' and 'photographs'
-*/
-
 (() => {
     // Config
     const batchSize = 6;
@@ -49,14 +41,21 @@
     // Utility: copy link to clipboard
     async function copyShareableURL() {
         try {
-            await navigator.clipboard.writeText(location.href);
+            const params = new URLSearchParams();
+            if (currentMode && currentMode !== 'artworks') params.set('mode', currentMode);
+            if (selectedType && selectedType !== 'all') params.set('type', selectedType);
+            if (selectedArtist && selectedArtist !== 'all') params.set('artist', selectedArtist);
+
+            const parentUrl = `${window.location.origin}/index.html${params.toString() ? '?' + params.toString() : ''}`;
+
+            await navigator.clipboard.writeText(parentUrl);
             copyIcon.src = '/resrc/images/icons/tick.webp';
             setTimeout(() => (copyIcon.src = '/resrc/images/icons/link.webp'), 1500);
         } catch (err) {
-            // Fallback: select & prompt
-            window.prompt('Copy this link:', location.href);
+            window.prompt('Copy this link:', parentUrl);
         }
     }
+
 
     // Load metadata JSON for current mode
     async function loadMetadata(mode) {
@@ -334,16 +333,20 @@
         modalArtist.textContent = `By: ${meta.artist || 'NA'}`;
 
         document.querySelector("section").classList.add("modal-active");
+        document.querySelector("footer").classList.add("modal-active");
+        
         modal.style.display = "flex";
         document.body.style.overflow = "hidden";
 
         document.querySelector(".modal-close")?.addEventListener("click", () => {
             document.querySelector("section").classList.remove("modal-active");
+        document.querySelector("footer").classList.remove("modal-active");
             document.getElementById("image-modal").style.display = "none";
         });
 
         window.addEventListener("click", (e) => {
             if (e.target.id === "image-modal") {
+        document.querySelector("footer").classList.remove("modal-active");
                 document.querySelector("section").classList.remove("modal-active");
                 document.getElementById("image-modal").style.display = "none";
             }

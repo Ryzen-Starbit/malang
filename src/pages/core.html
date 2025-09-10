@@ -1,168 +1,237 @@
 <head>
     <link rel="stylesheet" href="../styles/common.css">
-    <link rel="stylesheet" href="../styles/alumni.css">
+    <link rel="stylesheet" href="../styles/core.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 
 <body>
-    <section id="alumni">
+    <section id="core">
         <div id="loader">
             <span></span>
         </div>
-        <span id="members"></span>
+        <h1 style="text-align: center;">Core Members</h1>
+        <div id="members-carousel" class="carousel">
+            <div class="carousel-wrapper" id="carousel-wrapper"></div>
+        </div>
+
 
     </section>
-        <div id="image-modal" class="modal" style="display:none;">
-            <div class="modal-content">
+    <div id="image-modal" class="modal" style="display:none;">
+        <div class="modal-content">
             <span class="modal-close">&times;</span>
-                <img id="modal-image" class="same" />
-                <div id="modal-caption">
-                    <p id="modal-title">Name: NA</p>
-                    <p id="modal-position">Position: NA</p>
-                    <p id="modal-batch">Batch: NA</p>
-                    <p id="modal-branch">Branch: NA</p>
-                    <div class="social-icons" id="modal-socials"></div>
-                </div>
+            <img id="modal-image" class="same" />
+            <div id="modal-caption">
+                <p id="modal-title">Name: NA</p>
+                <p id="modal-position">Position: NA</p>
+                <p id="modal-batch">Batch: NA</p>
+                <p id="modal-branch">Branch: NA</p>
+                <div class="social-icons" id="modal-socials"></div>
             </div>
         </div>
+    </div>
     <div data-include="../components/footer.html"></div>
     <script src="../scripts/common.js"></script>
     <script>
-        const container = document.getElementById("members");
-const loader = document.getElementById("loader");
+        const container = document.getElementById("members-carousel");
+        const loader = document.getElementById("loader");
 
-if (container) {
-    if (loader) loader.style.display = "flex";
+        if (container) {
+            if (loader) loader.style.display = "flex";
 
-    fetch("../../resrc/data/core.json")
-        .then((res) => {
-            if (!res.ok) throw new Error("Network response was not ok");
-            return res.json();
-        })
-        .then((data) => {
-            const imagePromises = []; // collect all image load promises here
+            fetch("../../resrc/data/core.json")
+                .then((res) => {
+                    if (!res.ok) throw new Error("Network response was not ok");
+                    return res.json();
+                })
+                .then((data) => {
+                    const imagePromises = []; // collect all image load promises here
 
-            // helper for loading with fallback
-            function loadImageWithFallback(img, primarySrc, fallbackSrc) {
-                return new Promise((resolve) => {
-                    img.onload = () => resolve();
-                    img.onerror = () => {
-                        img.onerror = () => resolve(); // fallback loaded or failed
-                        img.onload = () => resolve();
-                        img.src = fallbackSrc;
-                    };
-                    img.src = primarySrc;
-                });
-            }
+                    // helper for loading with fallback
+                    function loadImageWithFallback(img, primarySrc, fallbackSrc) {
+                        return new Promise((resolve) => {
+                            img.onload = () => resolve();
+                            img.onerror = () => {
+                                img.onerror = () => resolve(); // fallback loaded or failed
+                                img.onload = () => resolve();
+                                img.src = fallbackSrc;
+                            };
+                            img.src = primarySrc;
+                        });
+                    }
 
-            data.forEach((genData) => {
-                const wrapper = document.createElement("div");
-                wrapper.className = "table-wrapper";
+                    data.forEach((genData) => {
+                        const wrapper = document.createElement("div");
+                        wrapper.className = "carousel-wrapper-container";
 
-                const year = document.createElement("p");
-                year.className = "vertical";
-                year.textContent = genData.year;
+                        // carousel container
+                        const carouselContainer = document.createElement("div");
+                        carouselContainer.className = "carousel";
+                        const carouselWrapper = document.createElement("div");
+                        carouselWrapper.className = "carousel-wrapper";
+                        carouselContainer.appendChild(carouselWrapper);
 
-                const gen = document.createElement("p");
-                gen.className = "vertical";
-                gen.textContent = genData.generation;
+                        // build members into carousel
+                        const members = genData.members;
+                        const itemCount = members.length;
+                        const theta = 360 / itemCount;
+                        const radius = 350;
 
-                const table = document.createElement("table");
-                const imgRow = document.createElement("tr");
-                const nameRow = document.createElement("tr");
-                const roleRow = document.createElement("tr");
+                        members.forEach((member, i) => {
+                            const item = document.createElement("div");
+                            item.className = "carousel-item";
 
-                genData.members.forEach((member) => {
-                    const imgTd = document.createElement("td");
-                    const img = document.createElement("img");
+                            const img = document.createElement("img");
+                            const imagePath = `../../resrc/images/members/${member.image}`;
+                            const fallbackPath = "../../resrc/images/members/person.png";
 
-                    const imagePath = `../../resrc/images/members/${member.image}`;
-                    const fallbackPath = "../../resrc/images/members/person.png";
+                            imagePromises.push(loadImageWithFallback(img, imagePath, fallbackPath));
 
-                    // track this image promise
-                    imagePromises.push(loadImageWithFallback(img, imagePath, fallbackPath));
+                            img.alt = "";
+                            img.className = "same";
 
-                    img.alt = "";
-                    img.className = "same";
-                    img.style.cursor = "pointer";
+                            const name = document.createElement("h4");
+                            name.style.margin = "5px 0 0";
+                            name.textContent = member.name;
 
-                    // modal click
-                    img.addEventListener("click", () => {
-                        document.querySelector("section").classList.add("modal-active");
-                        document.getElementById("image-modal").style.display = "flex";
-                        document.getElementById("modal-image").src = img.src;
-                        document.getElementById("modal-title").textContent = `Name: ${member.name}`;
-                        document.getElementById("modal-position").textContent = `Position: ${member.role}`;
-                        document.getElementById("modal-batch").textContent = `Batch: ${genData.year.slice(-4)}`;
-                        document.getElementById("modal-branch").textContent = `Branch: ${member.branch || "NA"}`;
+                            const role = document.createElement("p");
+                            role.style.fontSize = "12px";
+                            role.textContent = member.role;
 
-                        const socials = document.getElementById("modal-socials");
-                        socials.innerHTML = "";
-                        if (member.instagram)
-                            socials.innerHTML += `<a href="${member.instagram}" target="_blank"><i class="fab fa-instagram"></i></a>`;
-                        if (member.linkedin)
-                            socials.innerHTML += `<a href="${member.linkedin}" target="_blank"><i class="fab fa-linkedin"></i></a>`;
-                        if (member.email)
-                            socials.innerHTML += `<a href="mailto:${member.email}" target="_blank"><i class="far fa-envelope"></i></a>`;
-                        if (member.github)
-                            socials.innerHTML += `<a href="${member.github}" target="_blank"><i class="fab fa-github"></i></a>`;
-                        if (member.website)
-                            socials.innerHTML += `<a href="${member.website}" target="_blank"><i class="fas fa-globe"></i></a>`;
+                            item.appendChild(img);
+                            item.appendChild(name);
+                            item.appendChild(role);
+
+                            const rotation = theta * i;
+                            item.style.transform = `rotateY(${rotation}deg) translateZ(${radius}px)`;
+
+                            // modal click
+                            item.addEventListener("click", () => {
+                                document.querySelector("section").classList.add("modal-active");
+                                document.getElementById("image-modal").style.display = "flex";
+                                document.getElementById("modal-image").src = img.src;
+                                document.getElementById("modal-title").textContent = `Name: ${member.name}`;
+                                document.getElementById("modal-position").textContent = `Position: ${member.role}`;
+                                document.getElementById("modal-batch").textContent = `Batch: ${genData.year.slice(-4)}`;
+                                document.getElementById("modal-branch").textContent = `Branch: ${member.branch || "NA"}`;
+
+                                const socials = document.getElementById("modal-socials");
+                                socials.innerHTML = "";
+                                if (member.instagram)
+                                    socials.innerHTML += `<a href="${member.instagram}" target="_blank"><i class="fab fa-instagram"></i></a>`;
+                                if (member.linkedin)
+                                    socials.innerHTML += `<a href="${member.linkedin}" target="_blank"><i class="fab fa-linkedin"></i></a>`;
+                                if (member.email)
+                                    socials.innerHTML += `<a href="mailto:${member.email}" target="_blank"><i class="far fa-envelope"></i></a>`;
+                                if (member.github)
+                                    socials.innerHTML += `<a href="${member.github}" target="_blank"><i class="fab fa-github"></i></a>`;
+                                if (member.website)
+                                    socials.innerHTML += `<a href="${member.website}" target="_blank"><i class="fas fa-globe"></i></a>`;
+                            });
+
+                            carouselWrapper.appendChild(item);
+                        });
+
+                        wrapper.appendChild(carouselContainer);
+
+                        container.appendChild(wrapper);
+
+                        // 🎡 Add carousel motion with inertia
+                        let angle = 0;
+                        let velocity = 0;
+                        let lastX = 0;
+                        let isDragging = false;
+
+                        // Initial auto-rotation
+                        let autoRotate = true;
+                        let autoTarget = 360; // full rotation
+                        let autoAngle = 180;
+
+                        // Physics parameters
+                        const springFactor = 0.08; // strength of pull toward target
+                        const dampingFactor = 0.6; // friction for velocity
+
+                        function animate() {
+                            if (autoRotate) {
+                                // spring + damping formula
+                                const spring = (autoTarget - autoAngle) * springFactor;
+                                velocity += spring;
+                                velocity *= dampingFactor;
+
+                                autoAngle += velocity;
+                                angle = autoAngle;
+
+                                // stop condition: small enough velocity & near target
+                                if (Math.abs(autoTarget - autoAngle) < 0.5 && Math.abs(velocity) < 0.5) {
+                                    autoRotate = false;
+                                }
+                            } else {
+                                // normal inertia after user interaction
+                                angle += velocity;
+                                velocity *= 0.95; // gradual friction
+                            }
+
+                            carouselWrapper.style.transform = `translateZ(-300px) rotateY(${angle}deg)`;
+                            requestAnimationFrame(animate);
+                        }
+
+                        // Mouse dragging
+                        carouselWrapper.addEventListener("mousedown", (e) => {
+                            isDragging = true;
+                            lastX = e.clientX;
+                        });
+                        window.addEventListener("mouseup", () => { isDragging = false; });
+                        window.addEventListener("mousemove", (e) => {
+                            if (!isDragging) return;
+                            const dx = e.clientX - lastX;
+                            velocity = dx * 0.25; // adjust drag sensitivity
+                            lastX = e.clientX;
+                        });
+
+                        // Touch dragging
+                        carouselWrapper.addEventListener("touchstart", (e) => {
+                            isDragging = true;
+                            lastX = e.touches[0].clientX;
+                        });
+                        window.addEventListener("touchend", () => { isDragging = false; });
+                        window.addEventListener("touchmove", (e) => {
+                            if (!isDragging) return;
+                            const dx = e.touches[0].clientX - lastX;
+                            velocity = dx * 0.25; // adjust drag sensitivity
+                            lastX = e.touches[0].clientX;
+                        });
+
+                        animate();
+
                     });
 
-                    imgTd.appendChild(img);
-                    imgRow.appendChild(imgTd);
+                    // hide loader only after ALL images are loaded (including fallbacks)
+                    Promise.all(imagePromises)
+                        .then(() => {
+                            if (loader) loader.style.display = "none";
+                            applyTheme(false); // re-apply saved theme to newly added .same elements
+                        })
+                        .catch((err) => {
+                            if (loader) loader.textContent = "Failed to load alumni data.";
+                            console.error("Alumni data load error:", err);
+                        });
 
-                    const nameTd = document.createElement("td");
-                    nameTd.textContent = member.name;
-                    nameTd.style.lineHeight = "15px";
-                    nameRow.appendChild(nameTd);
+                    // Modal close
+                    document.querySelector(".modal-close")?.addEventListener("click", () => {
+                        document.querySelector("section").classList.remove("modal-active");
+                        document.getElementById("image-modal").style.display = "none";
+                    });
 
-                    const roleTd = document.createElement("td");
-                    roleTd.style.fontSize = "12px";
-                    roleTd.textContent = member.role;
-                    roleRow.appendChild(roleTd);
-                });
-
-                table.appendChild(imgRow);
-                table.appendChild(nameRow);
-                table.appendChild(roleRow);
-
-                wrapper.appendChild(year);
-                wrapper.appendChild(gen);
-                wrapper.appendChild(table);
-
-                container.appendChild(wrapper);
-            });
-
-            // hide loader only after ALL images are loaded (including fallbacks)
-            Promise.all(imagePromises)
-                .then(() => {
-                    if (loader) loader.style.display = "none";
-                    applyTheme(false); // re-apply saved theme to newly added .same elements
+                    window.addEventListener("click", (e) => {
+                        if (e.target.id === "image-modal") {
+                            document.querySelector("section").classList.remove("modal-active");
+                            document.getElementById("image-modal").style.display = "none";
+                        }
+                    });
                 })
                 .catch((err) => {
                     if (loader) loader.textContent = "Failed to load alumni data.";
                     console.error("Alumni data load error:", err);
                 });
-
-            // Modal close
-            document.querySelector(".modal-close")?.addEventListener("click", () => {
-                document.querySelector("section").classList.remove("modal-active");
-                document.getElementById("image-modal").style.display = "none";
-            });
-
-            window.addEventListener("click", (e) => {
-                if (e.target.id === "image-modal") {
-                    document.querySelector("section").classList.remove("modal-active");
-                    document.getElementById("image-modal").style.display = "none";
-                }
-            });
-        })
-        .catch((err) => {
-            if (loader) loader.textContent = "Failed to load alumni data.";
-            console.error("Alumni data load error:", err);
-        });
-}
+        }
     </script>
 </body>

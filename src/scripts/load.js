@@ -55,7 +55,6 @@ setTimeout(() => {
     });
 
     burgerButton.classList.remove('loading');
-    loadPage("/src/pages/home.html");
 }, 1000);
 
 async function loadPage(url) {
@@ -63,14 +62,11 @@ async function loadPage(url) {
         const response = await fetch(url);
 
         if (!response.ok) {
-            // If 404 or other error, load fallback page
             content.src = "/404.html";
         } else {
-            // If found, load the requested page
             content.src = url;
         }
     } catch (error) {
-        // In case of network error
         content.src = "/404.html";
     }
 
@@ -78,3 +74,20 @@ async function loadPage(url) {
         toggleMenu();
     }
 }
+
+// 👇 Forward query params into iframe, default = home.html
+(function forwardParamsToIframe() {
+    const params = new URLSearchParams(window.location.search);
+    let url = "src/pages/home.html"; // ✅ default page is now home.html
+
+    // If query contains gallery filters → load gallery.html instead
+    if (params.has("mode") || params.has("type") || params.has("artist")) {
+        url = "/src/pages/gallery.html";
+    }
+
+    if ([...params].length > 0) {
+        url += "?" + params.toString();
+    }
+
+    content.src = url;
+})();
