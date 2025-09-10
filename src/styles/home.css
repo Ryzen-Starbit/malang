@@ -252,26 +252,26 @@ canvas {
 
 .card:nth-child(1) {
     top: 100px;
-    left: 70px;
+    left: 10px;
 }
 
 .card:nth-child(2) {
     top: 140px;
-    left: 50px;
+    left: 30px;
 }
 
 .card:nth-child(3) {
     top: 180px;
-    left: 30px;
+    left: 50px;
 }
 
 .card:nth-child(4) {
     top: 220px;
-    left: 10px;
+    left: 70px;
 }
 
 .card:hover {
-    scale: 1.05;
+    scale: 1.02;
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
 }
 
