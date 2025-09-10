@@ -9,6 +9,36 @@ html {
     scroll-behavior: smooth;
 }
 
+#logo {
+    width: 270px;
+    max-width: 90vw;
+    height: 270px;
+    pointer-events: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.5)) brightness(1);
+    /* vertical orientation */
+    pointer-events: none;
+    /* Floating animation */
+    animation: float 3s ease-in-out infinite alternate;
+}
+
+
+@keyframes float {
+    0% {
+        transform: translate(-50%, -50%) translateY(0px);
+    }
+
+    50% {
+        transform: translate(-50%, -50%) translateY(-10px);
+    }
+
+    100% {
+        transform: translate(-50%, -50%) translateY(0px);
+    }
+}
+
 .firework {
     position: absolute;
     width: 5px;

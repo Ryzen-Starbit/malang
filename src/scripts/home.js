@@ -1,3 +1,4 @@
+
 var i = 0;
 var stars = document.getElementById("landingCanvas");
 //-----------------------------------------------------------number of stars

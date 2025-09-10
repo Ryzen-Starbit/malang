@@ -4,13 +4,16 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
     <link href="https://db.onlinewebfonts.com/c/f56de887103fafbc50b8d846974cd5d4?family=Samarkan+Normal+V1"
         rel="stylesheet">
+    <script type="module" src="https://cdn.jsdelivr.net/npm/@google/model-viewer/dist/model-viewer.min.js"></script>
 </head>
 <section id="home">
     <div id="loader">
         <span></span>
     </div>
-    <div id="landingCanvas" class="same">
-        <h1>WE'RE RECRUITING!!</h1>
+    <div id="landingCanvas">
+        <model-viewer id="logo" src="/logo.glb" alt="Logo" camera-controls camera-orbit="0deg 0deg auto" reveal="auto"
+            shadow-intensity="1" environment-image="neutral" interaction-prompt="none">
+        </model-viewer>
     </div>
     <div class="pageContents">
         <div id="landingWindow">
@@ -127,5 +130,6 @@
     </div>
 </div>
 </div>
+
 <script src="/src/scripts/common.js"></script>
 <script src="/src/scripts/home.js"></script>
