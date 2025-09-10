@@ -12,7 +12,6 @@
 │   └── structure/
 │       └── structure.txt
 ├── index.html
-├── logo.glb
 ├── r/
 │   ├── 404.html
 │   ├── help.html
@@ -31,109 +30,111 @@
 │   │   ├── photographs.json
 │   │   ├── timeline.json
 │   │   └── treasury.json
-│   └── images/
-│       ├── artworks/
-│       │   ├── 0.webp
-│       │   ├── 1.webp
-│       │   ├── 2.webp
-│       │   ├── 3.webp
-│       │   ├── 4.webp
-│       │   ├── 5.webp
-│       │   ├── 6.webp
-│       │   ├── 7.webp
-│       │   ├── 8.webp
-│       │   └── 9.webp
-│       ├── home/
-│       │   ├── FE25-1.jpg
-│       │   ├── FE25-2.jpg
-│       │   ├── FE25-3.jpg
-│       │   ├── FE25-4.jpg
-│       │   ├── FE25-5.jpg
-│       │   ├── FE25-6.jpg
-│       │   ├── editingUnlocked1.png
-│       │   ├── editingUnlocked2.jpg
-│       │   ├── editingUnlocked3.png
-│       │   ├── editingUnlocked4.png
-│       │   ├── gallery.jpg
-│       │   ├── gstudios1.jpg
-│       │   ├── gstudios2.jpg
-│       │   ├── gstudios3.jpg
-│       │   ├── gstudios4.jpg
-│       │   ├── mandala1.jpg
-│       │   ├── mandala2.jpg
-│       │   ├── orientation24-1.jpg
-│       │   ├── orientation24-2.jpg
-│       │   ├── orientation24-3.jpg
-│       │   ├── orientation24-4.jpg
-│       │   ├── orientation25-1.jpg
-│       │   ├── orientation25-2.jpg
-│       │   ├── orientation25-3.jpg
-│       │   ├── orientation25-4.jpg
-│       │   ├── orientation25-5.jpg
-│       │   ├── orientation25-6.jpg
-│       │   ├── rangotsav24-1.webp
-│       │   ├── rangotsav24-2.webp
-│       │   ├── rangotsav24-3.webp
-│       │   ├── rangotsav24-4.webp
-│       │   ├── rangotsav24-5.webp
-│       │   ├── rangotsav25-1.jpg
-│       │   ├── rangotsav25-2.jpg
-│       │   ├── rangotsav25-3.jpg
-│       │   └── rangotsav25-4.jpg
-│       ├── icons/
-│       │   ├── admin.webp
-│       │   ├── art.webp
-│       │   ├── aruco.webp
-│       │   ├── contact.webp
-│       │   ├── docs.webp
-│       │   ├── down.webp
-│       │   ├── download.webp
-│       │   ├── events.webp
-│       │   ├── google.png
-│       │   ├── home.webp
-│       │   ├── link.webp
-│       │   ├── loading.gif
-│       │   ├── members.webp
-│       │   ├── night-mode.webp
-│       │   ├── prize.webp
-│       │   ├── project.webp
-│       │   ├── star.png
-│       │   ├── store.webp
-│       │   ├── sun.webp
-│       │   ├── tick.webp
-│       │   └── user.png
-│       ├── members/
-│       │   ├── 24-1.webp
-│       │   ├── 24-2.webp
-│       │   ├── 24-4.webp
-│       │   ├── 24-5.webp
-│       │   ├── 24-6.webp
-│       │   ├── 24-7.webp
-│       │   ├── 24-8.webp
-│       │   ├── 25-1.webp
-│       │   ├── 25-2.webp
-│       │   ├── 25-3.webp
-│       │   ├── 25-4.webp
-│       │   ├── 25-5.webp
-│       │   ├── person.png
-│       │   └── person.webp
-│       ├── misc/
-│       │   ├── favicon.webp
-│       │   ├── gstudios.webp
-│       │   ├── hashtag.webp
-│       │   ├── lakme.webp
-│       │   ├── malang.webp
-│       │   ├── payment-qr.webp
-│       │   ├── poster.jpg
-│       │   ├── team.webp
-│       │   └── vlcc.webp
-│       └── photographs/
-│           ├── 0.webp
-│           ├── 1.webp
-│           ├── 2.webp
-│           ├── 3.webp
-│           ├── 4.webp
-│           └── 5.webp
+│   ├── images/
+│   │   ├── artworks/
+│   │   │   ├── 0.webp
+│   │   │   ├── 1.webp
+│   │   │   ├── 2.webp
+│   │   │   ├── 3.webp
+│   │   │   ├── 4.webp
+│   │   │   ├── 5.webp
+│   │   │   ├── 6.webp
+│   │   │   ├── 7.webp
+│   │   │   ├── 8.webp
+│   │   │   └── 9.webp
+│   │   ├── home/
+│   │   │   ├── FE25-1.jpg
+│   │   │   ├── FE25-2.jpg
+│   │   │   ├── FE25-3.jpg
+│   │   │   ├── FE25-4.jpg
+│   │   │   ├── FE25-5.jpg
+│   │   │   ├── FE25-6.jpg
+│   │   │   ├── editingUnlocked1.png
+│   │   │   ├── editingUnlocked2.jpg
+│   │   │   ├── editingUnlocked3.png
+│   │   │   ├── editingUnlocked4.png
+│   │   │   ├── gallery.jpg
+│   │   │   ├── gstudios1.jpg
+│   │   │   ├── gstudios2.jpg
+│   │   │   ├── gstudios3.jpg
+│   │   │   ├── gstudios4.jpg
+│   │   │   ├── mandala1.jpg
+│   │   │   ├── mandala2.jpg
+│   │   │   ├── orientation24-1.jpg
+│   │   │   ├── orientation24-2.jpg
+│   │   │   ├── orientation24-3.jpg
+│   │   │   ├── orientation24-4.jpg
+│   │   │   ├── orientation25-1.jpg
+│   │   │   ├── orientation25-2.jpg
+│   │   │   ├── orientation25-3.jpg
+│   │   │   ├── orientation25-4.jpg
+│   │   │   ├── orientation25-5.jpg
+│   │   │   ├── orientation25-6.jpg
+│   │   │   ├── rangotsav24-1.webp
+│   │   │   ├── rangotsav24-2.webp
+│   │   │   ├── rangotsav24-3.webp
+│   │   │   ├── rangotsav24-4.webp
+│   │   │   ├── rangotsav24-5.webp
+│   │   │   ├── rangotsav25-1.jpg
+│   │   │   ├── rangotsav25-2.jpg
+│   │   │   ├── rangotsav25-3.jpg
+│   │   │   └── rangotsav25-4.jpg
+│   │   ├── icons/
+│   │   │   ├── admin.webp
+│   │   │   ├── art.webp
+│   │   │   ├── aruco.webp
+│   │   │   ├── contact.webp
+│   │   │   ├── docs.webp
+│   │   │   ├── down.webp
+│   │   │   ├── download.webp
+│   │   │   ├── events.webp
+│   │   │   ├── google.png
+│   │   │   ├── home.webp
+│   │   │   ├── link.webp
+│   │   │   ├── loading.gif
+│   │   │   ├── members.webp
+│   │   │   ├── night-mode.webp
+│   │   │   ├── prize.webp
+│   │   │   ├── project.webp
+│   │   │   ├── star.png
+│   │   │   ├── store.webp
+│   │   │   ├── sun.webp
+│   │   │   ├── tick.webp
+│   │   │   └── user.png
+│   │   ├── members/
+│   │   │   ├── 24-1.webp
+│   │   │   ├── 24-2.webp
+│   │   │   ├── 24-4.webp
+│   │   │   ├── 24-5.webp
+│   │   │   ├── 24-6.webp
+│   │   │   ├── 24-7.webp
+│   │   │   ├── 24-8.webp
+│   │   │   ├── 25-1.webp
+│   │   │   ├── 25-2.webp
+│   │   │   ├── 25-3.webp
+│   │   │   ├── 25-4.webp
+│   │   │   ├── 25-5.webp
+│   │   │   ├── person.png
+│   │   │   └── person.webp
+│   │   ├── misc/
+│   │   │   ├── favicon.webp
+│   │   │   ├── gstudios.webp
+│   │   │   ├── hashtag.webp
+│   │   │   ├── lakme.webp
+│   │   │   ├── malang.webp
+│   │   │   ├── payment-qr.webp
+│   │   │   ├── poster.jpg
+│   │   │   ├── team.webp
+│   │   │   └── vlcc.webp
+│   │   └── photographs/
+│   │       ├── 0.webp
+│   │       ├── 1.webp
+│   │       ├── 2.webp
+│   │       ├── 3.webp
+│   │       ├── 4.webp
+│   │       └── 5.webp
+│   └── models/
+│       └── logo.glb
 ├── src/
 │   ├── components/
 │   │   ├── footer.html
