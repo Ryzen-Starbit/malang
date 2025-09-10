@@ -12,6 +12,7 @@
 │   └── structure/
 │       └── structure.txt
 ├── index.html
+├── logo.glb
 ├── r/
 │   ├── 404.html
 │   ├── help.html
