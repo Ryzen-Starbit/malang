@@ -342,6 +342,7 @@
             document.querySelector("section").classList.remove("modal-active");
         document.querySelector("footer").classList.remove("modal-active");
             document.getElementById("image-modal").style.display = "none";
+            document.body.style.overflow = "auto";
         });
 
         window.addEventListener("click", (e) => {
@@ -349,6 +350,7 @@
         document.querySelector("footer").classList.remove("modal-active");
                 document.querySelector("section").classList.remove("modal-active");
                 document.getElementById("image-modal").style.display = "none";
+                document.body.style.overflow = "auto";
             }
         });
     }
