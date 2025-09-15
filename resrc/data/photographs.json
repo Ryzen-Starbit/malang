@@ -1,32 +1,32 @@
 {
-    "0": {
-        "title": "Milky Way",
-        "artist": "Tejas Gupta",
-        "type": "Space"
-    },
     "1": {
-        "title": "Cute Polar Bear",
-        "artist": "Goutam Sahu",
-        "type": "Animals"
-    },
-    "2": {
-        "title": "Whale",
-        "artist": "Prasun Ratan",
-        "type": "Animals"
-    },
-    "3": {
-        "title": "NY Street",
-        "artist": "Goutam Sahu",
+        "title": "",
+        "artist": "Manamrit",
         "type": "Street"
     },
+    "0": {
+        "title": "",
+        "artist": "Ayush Sarda",
+        "type": "Nature"
+    },
+    "2": {
+        "title": "",
+        "artist": "Manamrit",
+        "type": "Street"
+    },
+    "3": {
+        "title": "",
+        "artist": "Manamrit",
+        "type": "Space"
+    },
     "4": {
-        "title": "Bee",
-        "artist": "Prasun Ratan",
-        "type": "Macro"
+        "title": "",
+        "artist": "Ayush Sarda",
+        "type": "Nature"
     },
     "5": {
-        "title": "Nebula",
-        "artist": "Tejas Gupta",
-        "type": "Space"
+        "title": "",
+        "artist": "Ayush Sarda",
+        "type": "Nature"
     }
 }
