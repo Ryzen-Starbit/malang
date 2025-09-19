@@ -1,11 +1,11 @@
 (() => {
     // Config
-    const batchSize = 10;
+    const batchSize = 15;
     const gallery = document.getElementById('gallery');
     const viewMoreBtn = document.getElementById('viewMoreBtn');
     const loader = document.getElementById('loader');
     const noneDiv = document.getElementById('none');
-    const filtersContainer = document.getElementById('filtersConatiner'); // parent container
+    const filtersContainer = document.getElementById('filtersContainer'); // parent container
     const copyBtn = document.getElementById('copyFiltersBtn');
     const copyIcon = document.getElementById('copyFiltersIcon');
 
@@ -333,21 +333,18 @@
         modalArtist.textContent = `By: ${meta.artist || 'NA'}`;
 
         document.querySelector("section").classList.add("modal-active");
-        document.querySelector("footer").classList.add("modal-active");
         
         modal.style.display = "flex";
         document.body.style.overflow = "hidden";
 
         document.querySelector(".modal-close")?.addEventListener("click", () => {
             document.querySelector("section").classList.remove("modal-active");
-        document.querySelector("footer").classList.remove("modal-active");
             document.getElementById("image-modal").style.display = "none";
             document.body.style.overflow = "auto";
         });
 
         window.addEventListener("click", (e) => {
             if (e.target.id === "image-modal") {
-        document.querySelector("footer").classList.remove("modal-active");
                 document.querySelector("section").classList.remove("modal-active");
                 document.getElementById("image-modal").style.display = "none";
                 document.body.style.overflow = "auto";
