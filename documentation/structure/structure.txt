@@ -4,6 +4,7 @@
 │   └── workflows/
 │       └── update-structure.yml
 ├── .gitignore
+├── 19.jpg
 ├── 404.html
 ├── CNAME
 ├── LICENSE
