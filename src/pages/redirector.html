@@ -13,16 +13,42 @@
             <input type="text" id="postfix" placeholder="Postfix" required />
             Custom URL will be:<br><a href="" class="url">https://malangbvp.in/r/#/<span id="url">Postfix</span></a>
             <button type="submit" class="long-btn" id="submit">Create</button>
+            <hr>
+            <button class="long-btn" onclick="parent.loadPage('/r/#/help')">View Redirects</button>
         </form>
     </section>
     <script src="../scripts/common.js"></script>
     <script src="../scripts/authentication.js"></script>
     <script>
-        document.getElementById("submit").onclick = () => {
+        const postfix = document.getElementById('postfix');
+        const longURL = document.getElementById('longURL');
+        const urlSpan = document.getElementById('url');
+        const urlLink = document.querySelector('a.url');
+        const form = document.getElementById('redirectorForm');
+
+        // Update preview
+        function updateURL() {
+            const base = longURL.value.trim() || 'https://malangbvp.in/r/#/';
+            const post = postfix.value.trim() || 'Postfix';
+            urlSpan.textContent = post;
+            urlLink.href = base + post;
+        }
+
+        // Listen to both inputs
+        [postfix, longURL].forEach(el => el.addEventListener('input', updateURL));
+        updateURL();
+
+        // Handle form submission
+        form.addEventListener('submit', e => {
+            e.preventDefault();
             showAlert(
                 "Requested!",
                 "GitHub Action will create a pull request to update the redirector.",
-                [{ text: "OK" }, { text: "View Redirects", onClick: () => window.open("/r/#/help") }]
+                [
+                    { text: "OK" },
+                    { text: "View Redirects", onClick: () => parent.loadPage('/r/#/help') }
+                ]
             );
-        }
+        });
+
     </script>
