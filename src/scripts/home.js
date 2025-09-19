@@ -108,3 +108,34 @@ document.fonts.load("1em " + getComputedStyle(kalakaar).fontFamily).then(() => {
   loader.style.opacity = "0";
   setTimeout(() => loader.style.display = "none", 500);
 });
+
+
+const logo = document.getElementById("logo");
+const baseDistance = 2; // camera distance
+const maxTilt = 50;     // max degrees for tilt
+
+// Detect if device is mobile
+const isMobile = /Mobi|Android/i.test(navigator.userAgent);
+
+if (isMobile && window.DeviceOrientationEvent) {
+    // Mobile: use gyroscope
+    window.addEventListener("deviceorientation", (event) => {
+        let gamma = event.gamma || 0; // left-right tilt
+        let beta = event.beta || 0;   // front-back tilt
+
+        // Invert for opposite tilt
+        const tiltX = -(beta / 90) * maxTilt;
+        const tiltY = -(gamma / 90) * maxTilt;
+
+        logo.cameraOrbit = `${tiltY}deg ${tiltX}deg ${baseDistance}m`;
+    });
+} else {
+    // Desktop: use mouse
+    document.addEventListener("mousemove", (e) => {
+        const { innerWidth, innerHeight } = window;
+        const x = (e.clientX / innerWidth - 0.5) * maxTilt;
+        const y = (0.5 - e.clientY / innerHeight) * maxTilt;
+
+        logo.cameraOrbit = `${x}deg ${y}deg ${baseDistance}m`;
+    });
+}
