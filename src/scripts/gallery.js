@@ -1,6 +1,6 @@
 (() => {
     // Config
-    const batchSize = 6;
+    const batchSize = 10;
     const gallery = document.getElementById('gallery');
     const viewMoreBtn = document.getElementById('viewMoreBtn');
     const loader = document.getElementById('loader');
@@ -76,7 +76,7 @@
     // Build the ordered allImages array for currentMode
     function buildAllImages(mode) {
         // Replace these totals or build dynamically if you have total count in metadata
-        const total = mode === 'artworks' ? 15 : 6;
+        const total = mode === 'artworks' ? 42 : 6;
 
         allImages = Array.from({ length: total }, (_, i) => {
             const imageId = String(i);

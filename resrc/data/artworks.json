@@ -1,52 +1,52 @@
 {
     "0": {
         "title": "Palace of Westminster, London",
-        "artist": "Tejas Gupta",
+        "artist": "Tejas",
         "type": "Fine Arts"
     },
     "1": {
         "title": "Buckingham Palace",
-        "artist": "Tejas Gupta",
+        "artist": "Tejas",
         "type": "Fine Arts"
     },
     "2": {
         "title": "Bharati Vidyapeeth University, College of Engineering, Pune",
-        "artist": "Tejas Gupta",
+        "artist": "Tejas",
         "type": "Fine Arts"
     },
     "3": {
         "title": "Rashtrapati Bhavan, New Delhi",
-        "artist": "Tejas Gupta",
+        "artist": "Tejas",
         "type": "Fine Arts"
     },
     "4": {
         "title": "Moradabad Junction",
-        "artist": "Tejas Gupta",
+        "artist": "Tejas",
         "type": "Fine Arts"
     },
     "5": {
         "title": "World Map",
-        "artist": "Tejas Gupta",
+        "artist": "Tejas",
         "type": "Fine Arts"
     },
     "6": {
         "title": "Where Stars Meet Lanterns",
-        "artist": "Tejas Gupta",
+        "artist": "Tejas",
         "type": "Fine Arts"
     },
     "7": {
         "title": "The Third Level",
-        "artist": "Tejas Gupta",
+        "artist": "Tejas",
         "type": "Fine Arts"
     },
     "8": {
         "title": "Aanchal, Moradabad",
-        "artist": "Tejas Gupta",
+        "artist": "Tejas",
         "type": "Fine Arts"
     },
     "9": {
         "title": "K.C.M. School, Moradabad",
-        "artist": "Tejas Gupta",
+        "artist": "Tejas",
         "type": "Fine Arts"
     },
     "10": {
@@ -73,5 +73,140 @@
         "title": "",
         "artist": "Gaurav Kumar",
         "type": "Fine Arts"
+    },
+    "15": {
+        "title": "",
+        "artist": "Adwait",
+        "type": "Street"
+    },
+    "16": {
+        "title": "",
+        "artist": "Adwait",
+        "type": "Street"
+    },
+    "17": {
+        "title": "",
+        "artist": "Adwait",
+        "type": "Street"
+    },
+    "18": {
+        "title": "",
+        "artist": "Adwait",
+        "type": "Street"
+    },
+    "19": {
+        "title": "",
+        "artist": "Adwait",
+        "type": "Street"
+    },
+    "20": {
+        "title": "",
+        "artist": "Adwait",
+        "type": "Street"
+    },
+    "21": {
+        "title": "",
+        "artist": "Adwait",
+        "type": "Street"
+    },
+    "22": {
+        "title": "",
+        "artist": "Adwait",
+        "type": "Street"
+    },
+    "23": {
+        "title": "",
+        "artist": "Adwait",
+        "type": "Street"
+    },
+    "24": {
+        "title": "",
+        "artist": "Adwait",
+        "type": "Street"
+    },
+    "25": {
+        "title": "",
+        "artist": "Adwait",
+        "type": "Street"
+    },
+    "26": {
+        "title": "",
+        "artist": "Adwait",
+        "type": "Street"
+    },
+    "27": {
+        "title": "",
+        "artist": "Misty",
+        "type": "Street"
+    },
+    "28": {
+        "title": "",
+        "artist": "Misty",
+        "type": "Street"
+    },
+    "29": {
+        "title": "",
+        "artist": "Misty",
+        "type": "Street"
+    },
+    "30": {
+        "title": "Touches Never Made",
+        "artist": "Mohini",
+        "type": "Digital Art"
+    },
+    "31": {
+        "title": "Demand",
+        "artist": "Mohini",
+        "type": "Digital Art"
+    },
+    "32": {
+        "title": "Avatar",
+        "artist": "Mohini",
+        "type": "Digital Art"
+    },
+    "33": {
+        "title": "Through The Tinted Glass",
+        "artist": "Mohini",
+        "type": "Digital Art"
+    },
+    "34": {
+        "title": "Once Upon A December",
+        "artist": "Mohini",
+        "type": "Digital Art"
+    },
+    "35": {
+        "title": "Miss Witch",
+        "artist": "Mohini",
+        "type": "Digital Art"
+    },
+    "36": {
+        "title": "Gold",
+        "artist": "Mohini",
+        "type": "Digital Art"
+    },
+    "37": {
+        "title": "Tum Ho?",
+        "artist": "Mohini",
+        "type": "Digital Art"
+    },
+    "38": {
+        "title": "Ocean",
+        "artist": "Mohini",
+        "type": "Digital Art"
+    },
+    "39": {
+        "title": "Jasmine",
+        "artist": "Mohini",
+        "type": "Digital Art"
+    },
+    "40": {
+        "title": "La plus belle des malédictions...",
+        "artist": "Mohini",
+        "type": "Digital Art"
+    },
+    "41": {
+        "title": "Emerald",
+        "artist": "Mohini",
+        "type": "Digital Art"
     }
 }
