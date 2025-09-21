@@ -1,11 +1,12 @@
-### Docs
 <img src="https://api.visitorbadge.io/api/visitors?path=multiverseweb2%2malang%20&countColor=%23263759&style=flat"
                 alt="Visitors Count">
                 <img alt="Website Status"
                 src="https://img.shields.io/website?url=https%3A%2F%2Fmalangbvp.in/%2F&up_message=ok&up_color=%2324ad29&down_message=not%20ok&down_color=red&style=flat">
-            
-Docs
-  <ul>
+
+<hr>
+
+  <ul id="docList">
+  <h2>Docs</h2>
     <li>
       <details>
         <summary>Site</summary>
@@ -18,8 +19,8 @@ Docs
                   <details>
                     <summary>Events</summary>
                     <ul>
-                      <li><a href="#">Adding Upcoming Event</a></li>
-                      <li><a href="#">Adding Past Event</a></li>
+                      <li><a href="#Events">Upcoming Event</a></li>
+                      <li><a href="#">Past Event</a></li>
                     </ul>
                   </details>
                 </li>
@@ -58,9 +59,9 @@ Docs
       <details>
         <summary>Tools</summary>
         <ul>
-          <li><a href="#">Certificate Tool</a></li>
-          <li><a href="#">Contact Tool</a></li>
-          <li><a href="#">Mail Tool</a></li>
+          <li><a href="#Certificate-Tool">Certificate Tool</a></li>
+          <li><a href="#Contact-Tool">Contact Tool</a></li>
+          <li><a href="#Mail-Tool">Mail Tool</a></li>
         </ul>
       </details>
     </li>
@@ -75,10 +76,10 @@ Docs
       </details>
     </li>
   </ul>
+<hr>
+<br>
 
-
-
-### Managing Events Page
+<h3 id="Events">Managing Events Page</h3>
 
 - Go to `/resrc/data/events.json` and add events like:
 
@@ -106,7 +107,7 @@ Docs
 ]
 ```
 
-## Malang Tools
+<h2 id="Tools">Malang Tools</h2>
 
 |Tool|CSV Requirements|How to use?|
 |-|-|-|
@@ -116,7 +117,7 @@ Docs
 
 ---
 
-### Certificate Tool
+<h3 id="Certificate-Tool">Certificate Tool</h3>
 
 For creating bulk certificated with custom names and font-style.
 
@@ -156,7 +157,7 @@ pdfmetrics.registerFont(TTFont('NoticiaText', 'Certificate-tool/NoticiaText-Bold
 
 ---
 
-### Contact Tool
+<h3 id="Contact-Tool">Contact Tool</h3>
 
 For saving bulk contacts to Google contacts, generally useful for adding multiple people to Whatsapp group.
 
@@ -195,7 +196,7 @@ prefix = "malang2025@"                        # Contact name prefix
 
 ---
 
-### Mail Tool
+<h3 id="Mail-Tool">Mail Tool</h3>
 
 Used for sending bulk emails with customised names, template and attachments.
 
