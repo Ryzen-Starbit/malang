@@ -1,5 +1,9 @@
-### Malang's Tech Docs
-
+### Docs
+<img src="https://api.visitorbadge.io/api/visitors?path=multiverseweb2%2malang%20&countColor=%23263759&style=flat"
+                alt="Visitors Count">
+                <img alt="Website Status"
+                src="https://img.shields.io/website?url=https%3A%2F%2Fmalangbvp.in/%2F&up_message=ok&up_color=%2324ad29&down_message=not%20ok&down_color=red&style=flat">
+            
 Docs
   <ul>
     <li>
