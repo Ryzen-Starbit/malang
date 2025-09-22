@@ -21,8 +21,13 @@ html {
 #readme-content a {
     color: gold;
 }
+#readme-content a:hover {
+    text-decoration: underline;
+}
 
 #site-structure summary{
+    max-width: 600px;
+    margin: auto;
     width: calc(100% - 42px);
     border: 2px solid rgba(255, 255, 255, 0.138);
 }
@@ -62,6 +67,7 @@ html {
 
 #docList a:hover{
     background-color: rgba(43, 43, 43, 0.527);
+    text-decoration: none;
 }
 
 #docList li details ul li a {
@@ -71,6 +77,8 @@ html {
 .info {
     padding: 10px;
     padding-bottom: 0px;
+    max-width: 600px;
+    margin: auto;
 }
 
 #last-updated {

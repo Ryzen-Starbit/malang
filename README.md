@@ -46,13 +46,19 @@
               </ul>
             </details>
           </li>
+          <li>
+          <details>
+              <summary>Management</summary>
+              <ul>
                 <li><a href="#">Accounts</a></li>
                 <li><a href="#">Claims</a></li>
                 <li><a href="#">M-ArUCo</a></li>
                 <li><a href="#">Media Kit</a></li>
                 <li><a href="#">Redirector</a></li>
-                <li><a href="#site-structure">Site Structure</a></li>
-        </ul>
+              </ul>
+            </details>
+          </li>
+          <li><a href="#site-structure">Site Structure</a></li>
       </details>
     </li>
     <li>
@@ -108,6 +114,8 @@
   }
 ]
 ```
+
+---
 
 <h1 id="Tools">Malang Tools</h1>
 
