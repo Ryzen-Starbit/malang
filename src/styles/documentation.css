@@ -14,24 +14,41 @@ html {
     margin: auto;
 }
 
+#readme-content ol{
+    padding-left: 20px;
+}
+
 #readme-content a {
     color: gold;
 }
 
-#site-structure {
-    max-width: 600px;
-    width: calc(100% - 20px);
-    margin: auto;
-    margin-bottom: 10px;
+#site-structure summary{
+    width: calc(100% - 42px);
+    border: 2px solid rgba(255, 255, 255, 0.138);
+}
+#structure{
+    margin: 0px 10px;
+    padding: 10px;
+    border: 2px solid rgba(255, 255, 255, 0.138);
+    border-top: none;
 }
 
 #docList {
-    border: 1px solid rgba(255, 255, 255, 0.138);
-    border-radius: 3px;
+    list-style: none;
+    border: 2px solid rgba(255, 255, 255, 0.138);
+    border-radius: 5px;
+    padding-bottom: 10px;
 }
 
-#docList h2 {
+#docList h1 {
     padding: 5px 10px;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.138);
+    margin-bottom: 10px;
+}
+#docList ul{
+    list-style: none;
+    margin: 0px;
+    padding: 0px;
 }
 
 #docList a {
@@ -39,7 +56,12 @@ html {
     padding: 10px;
     color: #c8c8c8;
     display: block;
-    width: calc(100% - 20px);
+    margin: 0 10px;
+    border-radius: 7px;
+}
+
+#docList a:hover{
+    background-color: rgba(43, 43, 43, 0.527);
 }
 
 #docList li details ul li a {
@@ -60,44 +82,8 @@ img {
     height: auto;
 }
 
-#documentation details {
-    background-color: rgba(255, 217, 0, 0.049);
-}
-
-#documentation details ul,
-#documentation details ul li {
-    background-color: rgba(255, 217, 0, 0.049);
-}
-
-#documentation details ul li {
-    border-left: none;
-}
-
-#documentation summary {
-    border-radius: 0px;
-    margin: 0px;
-    width: calc(100% - 20px);
-}
-
-
-#documentation details[open] {
-    border-left: none;
-}
-
 #documentation details ul {
     list-style: none;
-}
-
-#docList summary:hover,
-#docList a:hover {
-    background-color: rgba(187, 156, 0, 0.845);
-    color: black;
-}
-
-
-hr {
-    border: 0;
-    border-top: 1px solid rgb(50, 50, 50);
 }
 
 code {
@@ -128,23 +114,16 @@ td:hover {
 #readme-content a {
     text-decoration: none;
 }
-
-/* put this AFTER the highlight.js stylesheet so it overrides the theme */
-
-/* full-block background + horizontal scroll for very long tokens */
 pre {
     border-radius: 5px;
     overflow-x: auto;
-    /* horizontal scrollbar for unbreakable tokens */
     white-space: pre !important;
-    /* preserve explicit newlines exactly */
     word-break: normal !important;
     overflow-wrap: normal !important;
     tab-size: 4;
     margin: 20px 0;
 }
 
-/* font + block behaviour for code text */
 pre code {
     display: block;
     font-family: Consolas, "Courier New", monospace !important;
@@ -153,22 +132,17 @@ pre code {
     white-space: inherit !important;
 }
 
-/* highlight.js adds 'hljs' class and spans inside the code.
-   Make sure those spans KEEP whitespace (so newlines don't collapse). */
 pre code.hljs,
 pre code.hljs * {
     white-space: pre !important;
 }
 
-
 .element-wrapper {
     max-width: 100%;
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
-    /* smooth on mobile */
 }
 
-/* Table styling (keeps table usable inside wrapper) */
 #readme-content table {
     width: 100%;
 }
@@ -193,26 +167,21 @@ pre code.hljs * {
     -webkit-backdrop-filter: blur(8px) saturate(120%);
     background: linear-gradient(135deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.02));
     box-shadow: 0 6px 18px rgba(11, 14, 22, 0.35);
-    color: white;
-    /* arrow color */
+    color: rgb(221, 221, 221);
     cursor: pointer;
     z-index: 9999;
-
-    /* hidden by default */
     opacity: 0;
     transform: translateY(8px) scale(0.98);
     pointer-events: none;
     transition: opacity 220ms ease, transform 220ms cubic-bezier(.2, .9, .2, 1);
 }
 
-/* visible state */
 #scrollTopBtn.show {
     opacity: 1;
     transform: translateY(0) scale(1);
     pointer-events: auto;
 }
 
-/* hover / focus */
 #scrollTopBtn:hover,
 #scrollTopBtn:focus {
     outline: none;
@@ -220,12 +189,10 @@ pre code.hljs * {
     box-shadow: 0 10px 30px rgba(11, 14, 22, 0.45);
 }
 
-/* accessible focus ring */
 #scrollTopBtn:focus-visible {
     box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.18), 0 10px 30px rgba(11, 14, 22, 0.45);
 }
 
-/* SVG sizing and smoothing */
 #scrollTopBtn svg {
     display: block;
     width: 20px;
@@ -233,21 +200,6 @@ pre code.hljs * {
     will-change: transform;
 }
 
-/* dark/light color adjustments (optional) */
-@media (prefers-color-scheme: light) {
-    #scrollTopBtn {
-        color: #0b0e16;
-        background: linear-gradient(135deg, rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0.75));
-        box-shadow: 0 6px 18px rgba(10, 10, 10, 0.08);
-    }
-}
-
-/* respect reduced motion */
-@media (prefers-reduced-motion: reduce) {
-
-    #scrollTopBtn,
-    #scrollTopBtn.show {
-        transition: none;
-        transform: none;
-    }
+footer{
+    margin-top: 10px;
 }

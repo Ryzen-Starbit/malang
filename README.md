@@ -6,7 +6,7 @@
 <hr>
 
   <ul id="docList">
-  <h2>Docs</h2>
+  <h1>Docs</h1>
     <li>
       <details>
         <summary>Site</summary>
@@ -51,7 +51,7 @@
                 <li><a href="#">M-ArUCo</a></li>
                 <li><a href="#">Media Kit</a></li>
                 <li><a href="#">Redirector</a></li>
-                <li><a href="#">Site Structure</a></li>
+                <li><a href="#site-structure">Site Structure</a></li>
         </ul>
       </details>
     </li>
@@ -69,7 +69,7 @@
       <details>
         <summary>Broadcasts</summary>
         <ul>
-          <li><a href="#">Newsletter Emails</a></li>
+          <li><a href="#newsletter-emails">Newsletter Emails</a></li>
           <li><a href="#">Whatsapp Channel</a></li>
           <li><a href="#">Instagram Channel</a></li>
         </ul>
@@ -78,6 +78,8 @@
   </ul>
 <hr>
 <br>
+
+# Site > Updation
 
 <h3 id="Events">Managing Events Page</h3>
 
@@ -107,13 +109,13 @@
 ]
 ```
 
-<h2 id="Tools">Malang Tools</h2>
+<h1 id="Tools">Malang Tools</h1>
 
 |Tool|CSV Requirements|How to use?|
 |-|-|-|
-|Certificate Tool|name|[Read](#certificate-tool)|
-|Contact Tool|contact no.|[Read](#contact-tool)|
-|Mail Tool|name,email|[Read](#mail-tool)|
+|Certificate Tool|name|[Read](#Certificate-Tool)|
+|Contact Tool|contact no.|[Read](#Contact-Tool)|
+|Mail Tool|name, email|[Read](#Mail-Tool)|
 
 ---
 
@@ -188,7 +190,7 @@ prefix = "malang2025@"                        # Contact name prefix
 
 - `contacts.csv` → one phone number per line, like:
 
-```csv
+```sql
 8279843949,
 1234567890,
 ```
@@ -220,3 +222,11 @@ attachment_dir = "Certificate-tool/certificates"
 - **subject:** Subject of the emails to be sent.
 - **csv_path:** Path of file that contains names and emails.
 - **attachment_dir:** Path of directory where attachments are stored.
+
+---
+
+# Broadcasts
+
+<h3 id="newsletter-emails">Newsletter Emails</h3>
+
+Send E-mails to [newsletter subscribers](https://docs.google.com/spreadsheets/d/1uz3li0Uif-DtfTobPKj2fxwWTO8AIoWJghAhPCsyve0/) via [Mail Tool](#Mail-Tool).
