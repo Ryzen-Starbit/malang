@@ -1,327 +1,337 @@
 {
     "0": {
-        "title": "Palace of Westminster, London",
+        "title": "Where Stars Kiss The Ocean",
         "artist": "Tejas",
-        "type": "Fine Arts"
+        "type": "Fine Art"
     },
     "1": {
-        "title": "Buckingham Palace",
+        "title": "World Map",
         "artist": "Tejas",
-        "type": "Fine Arts"
+        "type": "Fine Art"
     },
     "2": {
-        "title": "Bharati Vidyapeeth University, College of Engineering, Pune",
+        "title": "Moradabad Junction",
         "artist": "Tejas",
-        "type": "Fine Arts"
+        "type": "Fine Art"
     },
     "3": {
         "title": "Rashtrapati Bhavan, New Delhi",
         "artist": "Tejas",
-        "type": "Fine Arts"
+        "type": "Fine Art"
     },
     "4": {
-        "title": "Moradabad Junction",
+        "title": "Bharati Vidyapeeth University, College of Engineering, Pune",
         "artist": "Tejas",
-        "type": "Fine Arts"
+        "type": "Fine Art"
     },
     "5": {
-        "title": "World Map",
+        "title": "Buckingham Palace, London",
         "artist": "Tejas",
-        "type": "Fine Arts"
+        "type": "Fine Art"
     },
     "6": {
-        "title": "Where Stars Meet Lanterns",
+        "title": "The Port",
         "artist": "Tejas",
-        "type": "Fine Arts"
+        "type": "Fine Art"
     },
     "7": {
-        "title": "The Third Level",
+        "title": "Westminster Church, London",
         "artist": "Tejas",
-        "type": "Fine Arts"
+        "type": "Fine Art"
     },
     "8": {
-        "title": "Aanchal, Moradabad",
-        "artist": "Tejas",
-        "type": "Fine Arts"
-    },
-    "9": {
         "title": "K.C.M. School, Moradabad",
         "artist": "Tejas",
-        "type": "Fine Arts"
+        "type": "Fine Art"
+    },
+    "9": {
+        "title": "Aanchal, Moradabad",
+        "artist": "Tejas",
+        "type": "Fine Art"
     },
     "10": {
         "title": "",
-        "artist": "Gaurav Kumar",
-        "type": "Fine Arts"
+        "artist": "Adwait",
+        "type": "Fine Art"
     },
     "11": {
         "title": "",
-        "artist": "Gaurav Kumar",
-        "type": "Fine Arts"
+        "artist": "Adwait",
+        "type": "Fine Art"
     },
     "12": {
         "title": "",
-        "artist": "Gaurav Kumar",
-        "type": "Fine Arts"
+        "artist": "Adwait",
+        "type": "Fine Art"
     },
     "13": {
-        "title": "",
-        "artist": "Gaurav Kumar",
-        "type": "Fine Arts"
+        "title": "Jasmine",
+        "artist": "Mohini",
+        "type": "Illustration"
     },
     "14": {
-        "title": "",
-        "artist": "Gaurav Kumar",
-        "type": "Fine Arts"
+        "title": "Avatar",
+        "artist": "Mohini",
+        "type": "Illustration"
     },
     "15": {
         "title": "",
         "artist": "Adwait",
-        "type": "Fine Arts"
+        "type": "Fine Art"
     },
     "16": {
         "title": "",
         "artist": "Adwait",
-        "type": "Fine Arts"
+        "type": "Fine Art"
     },
     "17": {
         "title": "",
         "artist": "Adwait",
-        "type": "Fine Arts"
+        "type": "Fine Art"
     },
     "18": {
         "title": "",
-        "artist": "Adwait",
-        "type": "Fine Arts"
+        "artist": "Gaurav Kumar",
+        "type": "Fine Art"
     },
     "19": {
         "title": "",
         "artist": "Adwait",
-        "type": "Fine Arts"
+        "type": "Fine Art"
     },
     "20": {
         "title": "",
         "artist": "Adwait",
-        "type": "Fine Arts"
+        "type": "Fine Art"
     },
     "21": {
         "title": "",
         "artist": "Adwait",
-        "type": "Fine Arts"
+        "type": "Fine Art"
     },
     "22": {
         "title": "",
         "artist": "Adwait",
-        "type": "Fine Arts"
+        "type": "Fine Art"
     },
     "23": {
         "title": "",
         "artist": "Adwait",
-        "type": "Fine Arts"
+        "type": "Fine Art"
     },
     "24": {
         "title": "",
-        "artist": "Adwait",
-        "type": "Fine Arts"
+        "artist": "Gaurav Kumar",
+        "type": "Fine Art"
     },
     "25": {
         "title": "",
         "artist": "Adwait",
-        "type": "Fine Arts"
+        "type": "Fine Art"
     },
     "26": {
         "title": "",
-        "artist": "Adwait",
-        "type": "Fine Arts"
+        "artist": "Gaurav Kumar",
+        "type": "Fine Art"
     },
     "27": {
         "title": "",
         "artist": "Misty",
-        "type": "Fine Arts"
+        "type": "Fine Art"
     },
     "28": {
         "title": "",
         "artist": "Misty",
-        "type": "Fine Arts"
+        "type": "Fine Art"
     },
     "29": {
         "title": "",
         "artist": "Misty",
-        "type": "Fine Arts"
+        "type": "Fine Art"
     },
     "30": {
         "title": "Touches Never Made",
         "artist": "Mohini",
-        "type": "Digital Art"
+        "type": "Illustration"
     },
     "31": {
         "title": "Demand",
         "artist": "Mohini",
-        "type": "Digital Art"
+        "type": "Illustration"
     },
     "32": {
-        "title": "Avatar",
-        "artist": "Mohini",
-        "type": "Digital Art"
+        "title": "",
+        "artist": "Gaurav Kumar",
+        "type": "Fine Art"
     },
     "33": {
         "title": "Through The Tinted Glass",
         "artist": "Mohini",
-        "type": "Digital Art"
+        "type": "Illustration"
     },
     "34": {
         "title": "Once Upon A December",
         "artist": "Mohini",
-        "type": "Digital Art"
+        "type": "Illustration"
     },
     "35": {
         "title": "Miss Witch",
         "artist": "Mohini",
-        "type": "Digital Art"
+        "type": "Illustration"
     },
     "36": {
         "title": "Gold",
         "artist": "Mohini",
-        "type": "Digital Art"
+        "type": "Illustration"
     },
     "37": {
         "title": "Tum Ho?",
         "artist": "Mohini",
-        "type": "Digital Art"
+        "type": "Illustration"
     },
     "38": {
         "title": "Ocean",
         "artist": "Mohini",
-        "type": "Digital Art"
+        "type": "Fine Art"
     },
     "39": {
-        "title": "Jasmine",
-        "artist": "Mohini",
-        "type": "Digital Art"
+        "title": "",
+        "artist": "Gaurav Kumar",
+        "type": "Fine Art"
     },
     "40": {
         "title": "La plus belle des malédictions...",
         "artist": "Mohini",
-        "type": "Digital Art"
+        "type": "Illustration"
     },
     "41": {
         "title": "Emerald",
         "artist": "Mohini",
-        "type": "Digital Art"
+        "type": "Illustration"
     },
     "42": {
         "title": "",
         "artist": "Ankit",
-        "type": "Fine Arts"
+        "type": "Fine Art"
     },
     "43": {
         "title": "",
         "artist": "Ankit",
-        "type": "Fine Arts"
+        "type": "Fine Art"
     },
     "44": {
         "title": "",
         "artist": "Ankit",
-        "type": "Fine Arts"
+        "type": "Fine Art"
     },
     "45": {
         "title": "",
         "artist": "Ankit",
-        "type": "Fine Arts"
+        "type": "Fine Art"
     },
     "46": {
         "title": "",
         "artist": "Ankit",
-        "type": "Fine Arts"
+        "type": "Fine Art"
     },
     "47": {
         "title": "",
         "artist": "Ankit",
-        "type": "Fine Arts"
+        "type": "Fine Art"
     },
     "48": {
         "title": "",
         "artist": "Hersheyy",
-        "type": "Fine Arts"
+        "type": "Fine Art"
     },
     "49": {
         "title": "",
         "artist": "Hersheyy",
-        "type": "Fine Arts"
+        "type": "Fine Art"
     },
     "50": {
         "title": "",
         "artist": "Satyam",
-        "type": "Fine Arts"
+        "type": "Fine Art"
     },
     "51": {
         "title": "",
         "artist": "Satyam",
-        "type": "Fine Arts"
+        "type": "Model"
     },
     "52": {
         "title": "",
         "artist": "Satyam",
-        "type": "Fine Arts"
+        "type": "Origami"
     },
     "53": {
         "title": "",
         "artist": "Satyam",
-        "type": "Fine Arts"
+        "type": "Origami"
     },
     "54": {
         "title": "",
         "artist": "Satyam",
-        "type": "Fine Arts"
+        "type": "Fine Art"
     },
     "55": {
         "title": "",
         "artist": "Satyam",
-        "type": "Fine Arts"
+        "type": "Fine Art"
     },
     "56": {
         "title": "",
         "artist": "Satyam",
-        "type": "Fine Arts"
+        "type": "Origami"
     },
     "57": {
         "title": "",
         "artist": "Satyam",
-        "type": "Fine Arts"
+        "type": "Fine Art"
     },
     "58": {
         "title": "",
         "artist": "Satyam",
-        "type": "Fine Arts"
+        "type": "Fine Art"
     },
     "59": {
         "title": "",
         "artist": "Anushka Shivhare",
-        "type": "Fine Arts"
+        "type": "Fine Art"
     },
     "60": {
         "title": "",
         "artist": "Anushka Shivhare",
-        "type": "Fine Arts"
+        "type": "Fine Art"
     },
     "61": {
         "title": "",
         "artist": "Anushka Shivhare",
-        "type": "Fine Arts"
+        "type": "Fine Art"
     },
     "62": {
         "title": "",
         "artist": "Anushka Shivhare",
-        "type": "Fine Arts"
+        "type": "Fine Art"
     },
     "63": {
         "title": "",
         "artist": "Anushka Shivhare",
-        "type": "Fine Arts"
+        "type": "Fine Art"
     },
-    "64": {
-        "title": "",
-        "artist": "Anushka Shivhare",
-        "type": "Fine Arts"
+    "65": {
+        "title": "The Third Level",
+        "artist": "Tejas",
+        "type": "Fine Art"
+    },
+    "66": {
+        "title": "Where Stars Meet Lanterns",
+        "artist": "Tejas",
+        "type": "Fine Art"
+    },
+    "67": {
+        "title": "Escape",
+        "artist": "Tejas",
+        "type": "Fine Art"
     }
 }
