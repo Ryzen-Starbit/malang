@@ -1,3 +1,5 @@
+├── .desktop/
+│   └── favicon.ico
 ├── .github/
 │   ├── scripts/
 │   │   └── update_structure.py
@@ -8,6 +10,7 @@
 ├── CNAME
 ├── LICENSE
 ├── README.md
+├── desktop.ini
 ├── documentation/
 │   └── structure/
 │       └── structure.txt
@@ -100,43 +103,6 @@
 │   │   │   ├── 7.webp
 │   │   │   ├── 8.webp
 │   │   │   └── 9.webp
-│   │   ├── home/
-│   │   │   ├── FE25-1.jpg
-│   │   │   ├── FE25-2.jpg
-│   │   │   ├── FE25-3.jpg
-│   │   │   ├── FE25-4.jpg
-│   │   │   ├── FE25-5.jpg
-│   │   │   ├── FE25-6.jpg
-│   │   │   ├── editingUnlocked1.png
-│   │   │   ├── editingUnlocked2.jpg
-│   │   │   ├── editingUnlocked3.png
-│   │   │   ├── editingUnlocked4.png
-│   │   │   ├── gallery.jpg
-│   │   │   ├── gstudios1.jpg
-│   │   │   ├── gstudios2.jpg
-│   │   │   ├── gstudios3.jpg
-│   │   │   ├── gstudios4.jpg
-│   │   │   ├── mandala1.jpg
-│   │   │   ├── mandala2.jpg
-│   │   │   ├── orientation24-1.jpg
-│   │   │   ├── orientation24-2.jpg
-│   │   │   ├── orientation24-3.jpg
-│   │   │   ├── orientation24-4.jpg
-│   │   │   ├── orientation25-1.jpg
-│   │   │   ├── orientation25-2.jpg
-│   │   │   ├── orientation25-3.jpg
-│   │   │   ├── orientation25-4.jpg
-│   │   │   ├── orientation25-5.jpg
-│   │   │   ├── orientation25-6.jpg
-│   │   │   ├── rangotsav24-1.webp
-│   │   │   ├── rangotsav24-2.webp
-│   │   │   ├── rangotsav24-3.webp
-│   │   │   ├── rangotsav24-4.webp
-│   │   │   ├── rangotsav24-5.webp
-│   │   │   ├── rangotsav25-1.jpg
-│   │   │   ├── rangotsav25-2.jpg
-│   │   │   ├── rangotsav25-3.jpg
-│   │   │   └── rangotsav25-4.jpg
 │   │   ├── icons/
 │   │   │   ├── admin.webp
 │   │   │   ├── art.webp
@@ -146,10 +112,12 @@
 │   │   │   ├── down.webp
 │   │   │   ├── download.webp
 │   │   │   ├── events.webp
+│   │   │   ├── favicon.webp
 │   │   │   ├── google.png
 │   │   │   ├── home.webp
 │   │   │   ├── link.webp
 │   │   │   ├── loading.gif
+│   │   │   ├── malang.webp
 │   │   │   ├── members.webp
 │   │   │   ├── night-mode.webp
 │   │   │   ├── prize.webp
@@ -178,13 +146,47 @@
 │   │   │   ├── 26-6.webp
 │   │   │   └── person.png
 │   │   ├── misc/
-│   │   │   ├── favicon.webp
+│   │   │   ├── FE25-1.jpg
+│   │   │   ├── FE25-2.jpg
+│   │   │   ├── FE25-3.jpg
+│   │   │   ├── FE25-4.jpg
+│   │   │   ├── FE25-5.jpg
+│   │   │   ├── FE25-6.jpg
+│   │   │   ├── editingUnlocked1.png
+│   │   │   ├── editingUnlocked2.jpg
+│   │   │   ├── editingUnlocked3.png
+│   │   │   ├── editingUnlocked4.png
+│   │   │   ├── gallery.jpg
 │   │   │   ├── gstudios.webp
+│   │   │   ├── gstudios1.jpg
+│   │   │   ├── gstudios2.jpg
+│   │   │   ├── gstudios3.jpg
+│   │   │   ├── gstudios4.jpg
 │   │   │   ├── hashtag.webp
 │   │   │   ├── lakme.webp
-│   │   │   ├── malang.webp
+│   │   │   ├── mandala1.jpg
+│   │   │   ├── mandala2.jpg
+│   │   │   ├── orientation24-1.jpg
+│   │   │   ├── orientation24-2.jpg
+│   │   │   ├── orientation24-3.jpg
+│   │   │   ├── orientation24-4.jpg
+│   │   │   ├── orientation25-1.jpg
+│   │   │   ├── orientation25-2.jpg
+│   │   │   ├── orientation25-3.jpg
+│   │   │   ├── orientation25-4.jpg
+│   │   │   ├── orientation25-5.jpg
+│   │   │   ├── orientation25-6.jpg
 │   │   │   ├── payment-qr.webp
 │   │   │   ├── poster.jpg
+│   │   │   ├── rangotsav24-1.webp
+│   │   │   ├── rangotsav24-2.webp
+│   │   │   ├── rangotsav24-3.webp
+│   │   │   ├── rangotsav24-4.webp
+│   │   │   ├── rangotsav24-5.webp
+│   │   │   ├── rangotsav25-1.jpg
+│   │   │   ├── rangotsav25-2.jpg
+│   │   │   ├── rangotsav25-3.jpg
+│   │   │   ├── rangotsav25-4.jpg
 │   │   │   ├── team.webp
 │   │   │   └── vlcc.webp
 │   │   └── photographs/
