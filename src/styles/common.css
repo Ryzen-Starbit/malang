@@ -519,6 +519,7 @@ hr {
     width: 100%;
     border-radius: 50px;
     padding: 12px;
+    padding-right: 110px;
 }
 
 #newsletterInput {

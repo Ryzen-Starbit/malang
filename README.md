@@ -101,7 +101,7 @@
     "image": "[/resrc/images/misc/IMAGE] || IMAGE URL",
     "buttons": [
       {
-        "text": "[ALTERNAMTE BUTTON TEXT]",
+        "text": "[ALTERNATE BUTTON TEXT]",
         "link": "[REDIRECTION LINK]",
         "focus": false
       },

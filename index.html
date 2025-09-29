@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="resrc/images/misc/favicon.webp" type="image/x-icon">
+    <link rel="shortcut icon" href="resrc/images/icons/favicon.webp" type="image/x-icon">
     <link rel="stylesheet" href="src/styles/common.css">
     <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -15,9 +15,54 @@
 
 <body>
     <div data-include="/src/components/nav.html"></div>
-        <iframe style="border: none; position: fixed; top:0px; left:0; width: 100vw; height: 100vh; overflow-x: hidden;" id="content" class="same"></iframe>
+    <iframe style="border: none; position: fixed; top:0px; left:0; width: 100vw; height: 100vh; overflow-x: hidden;"
+        id="content" class="same"></iframe>
     <script src="src/scripts/common.js"></script>
     <script src="src/scripts/load.js"></script>
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
+        import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyD20pmHMSjDirK1CFEz1EIrUJWwqbVLev4",
+            authDomain: "malang-auth.firebaseapp.com",
+            projectId: "malang-auth",
+            storageBucket: "malang-auth.firebasestorage.app",
+            messagingSenderId: "522245850115",
+            appId: "1:522245850115:web:f8a69e1e021222fa997a36",
+            measurementId: "G-GHFQ1YG8WZ"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+
+        // Load allowed emails once
+        let allowedEmails = [];
+        fetch("/resrc/data/member-emails.json")
+            .then(res => res.json())
+            .then(data => allowedEmails = data);
+
+        // Update navbar profile picture
+        function updateNavbar(user) {
+            const profilePic = document.getElementById("profilePic");
+            if (user && allowedEmails.includes(user.email)) {
+                profilePic.src = user.photoURL || "/resrc/images/icons/user.png";
+                profilePic.classList.add("profile-pic");
+                localStorage.setItem("loggedIn", "true");
+            } else {
+                profilePic.src = "/resrc/images/icons/user.png";
+                profilePic.classList.remove("profile-pic");
+                localStorage.setItem("loggedIn", "false");
+            }
+        }
+
+        // Keep navbar always synced
+        onAuthStateChanged(auth, updateNavbar);
+
+        // Expose auth to iframes
+        window.firebaseAuth = auth;
+    </script>
+
 </body>
 
 </html>

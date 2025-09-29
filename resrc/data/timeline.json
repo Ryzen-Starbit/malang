@@ -10,12 +10,12 @@
     "date": "August 2025",
     "description": "Introduced Malang to freshers through a vibrant display of artworks, photos, and fun interactive moments!",
     "images": [
-      "/resrc/images/home/orientation25-5.jpg",
-      "/resrc/images/home/orientation25-6.jpg",
-      "/resrc/images/home/orientation25-1.jpg",
-      "/resrc/images/home/orientation25-2.jpg",
-      "/resrc/images/home/orientation25-3.jpg",
-      "/resrc/images/home/orientation25-4.jpg"
+      "/resrc/images/misc/orientation25-5.jpg",
+      "/resrc/images/misc/orientation25-6.jpg",
+      "/resrc/images/misc/orientation25-1.jpg",
+      "/resrc/images/misc/orientation25-2.jpg",
+      "/resrc/images/misc/orientation25-3.jpg",
+      "/resrc/images/misc/orientation25-4.jpg"
     ]
   },
   {
@@ -23,10 +23,10 @@
     "date": "July 2025",
     "description": "A hands-on workshop on video editing techniques, covering software tools and creative processes.",
     "images": [
-      "/resrc/images/home/editingUnlocked1.png",
-      "/resrc/images/home/editingUnlocked2.jpg",
-      "/resrc/images/home/editingUnlocked3.png",
-      "/resrc/images/home/editingUnlocked4.png"
+      "/resrc/images/misc/editingUnlocked1.png",
+      "/resrc/images/misc/editingUnlocked2.jpg",
+      "/resrc/images/misc/editingUnlocked3.png",
+      "/resrc/images/misc/editingUnlocked4.png"
     ]
   },
   {
@@ -39,22 +39,22 @@
     "date": "February 2025",
     "description": "A fashion show event showcasing the latest trends and designs, featuring student designers and models, celebrating creativity and style.",
     "images": [
-      "/resrc/images/home/FE25-1.jpg",
-      "/resrc/images/home/FE25-2.jpg",
-      "/resrc/images/home/FE25-3.jpg",
-      "/resrc/images/home/FE25-4.jpg",
-      "/resrc/images/home/FE25-5.jpg",
-      "/resrc/images/home/FE25-6.jpg"
+      "/resrc/images/misc/FE25-1.jpg",
+      "/resrc/images/misc/FE25-2.jpg",
+      "/resrc/images/misc/FE25-3.jpg",
+      "/resrc/images/misc/FE25-4.jpg",
+      "/resrc/images/misc/FE25-5.jpg",
+      "/resrc/images/misc/FE25-6.jpg"
     ]
   },
   {
     "title": "Rangotsav: Bharatiyam",
     "date": "February 2025",
     "images": [
-      "/resrc/images/home/rangotsav25-1.jpg",
-      "/resrc/images/home/rangotsav25-2.jpg",
-      "/resrc/images/home/rangotsav25-3.jpg",
-      "/resrc/images/home/rangotsav25-4.jpg"
+      "/resrc/images/misc/rangotsav25-1.jpg",
+      "/resrc/images/misc/rangotsav25-2.jpg",
+      "/resrc/images/misc/rangotsav25-3.jpg",
+      "/resrc/images/misc/rangotsav25-4.jpg"
     ],
     "description": "A vibrant cultural festival celebrating the diversity of Indian traditions through music, dance, and art, bringing together students and the community."
   },
@@ -62,10 +62,10 @@
     "title": "Orientation Program",
     "date": "August 2024",
     "images": [
-      "/resrc/images/home/orientation24-1.jpg",
-      "/resrc/images/home/orientation24-2.jpg",
-      "/resrc/images/home/orientation24-3.jpg",
-      "/resrc/images/home/orientation24-4.jpg"
+      "/resrc/images/misc/orientation24-1.jpg",
+      "/resrc/images/misc/orientation24-2.jpg",
+      "/resrc/images/misc/orientation24-3.jpg",
+      "/resrc/images/misc/orientation24-4.jpg"
     ]
   },
   {
@@ -78,11 +78,11 @@
     "date": "February 2024",
     "description": "A vibrant cultural festival celebrating the diversity of Indian traditions through music, dance, and art, bringing together students and the community.",
     "images": [
-      "/resrc/images/home/rangotsav24-1.webp",
-      "/resrc/images/home/rangotsav24-2.webp",
-      "/resrc/images/home/rangotsav24-3.webp",
-      "/resrc/images/home/rangotsav24-4.webp",
-      "/resrc/images/home/rangotsav24-5.webp"
+      "/resrc/images/misc/rangotsav24-1.webp",
+      "/resrc/images/misc/rangotsav24-2.webp",
+      "/resrc/images/misc/rangotsav24-3.webp",
+      "/resrc/images/misc/rangotsav24-4.webp",
+      "/resrc/images/misc/rangotsav24-5.webp"
     ]
   },
   {
@@ -90,8 +90,8 @@
     "date": "January 2024",
     "description": "A vibrant cultural festival celebrating the diversity of Indian traditions through music, dance, and art, bringing together students and the community.",
     "images": [
-      "/resrc/images/home/mandala1.jpg",
-      "/resrc/images/home/mandala2.jpg"
+      "/resrc/images/misc/mandala1.jpg",
+      "/resrc/images/misc/mandala2.jpg"
     ]
   },
   {
@@ -99,10 +99,10 @@
     "date": "November 2023",
     "description": "A vibrant cultural festival celebrating the diversity of Indian traditions through music, dance, and art, bringing together students and the community.",
     "images": [
-      "/resrc/images/home/gstudios1.jpg",
-      "/resrc/images/home/gstudios2.jpg",
-      "/resrc/images/home/gstudios3.jpg",
-      "/resrc/images/home/gstudios4.jpg"
+      "/resrc/images/misc/gstudios1.jpg",
+      "/resrc/images/misc/gstudios2.jpg",
+      "/resrc/images/misc/gstudios3.jpg",
+      "/resrc/images/misc/gstudios4.jpg"
     ]
   },
   {

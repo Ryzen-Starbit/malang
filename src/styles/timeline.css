@@ -187,7 +187,7 @@ summary.title::before {
 
     #timelineDiv {
         width: 60%;
-        height: 80vh;
+        height: 100%;
         overflow: scroll;
     }
 

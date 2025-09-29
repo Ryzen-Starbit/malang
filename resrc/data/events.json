@@ -1,2 +1,16 @@
 [ 
+  {
+    "name": "Freshers Orientation",
+    "date": "6th October, 2025",
+    "location": "Malang Room",
+    "description": "Welcome the new batch of students with an engaging orientation program that introduces them to the club's activities, values, and opportunities for involvement.<br><br>",
+    "image": "/resrc/images/icons/malang.webp",
+    "buttons": [
+      {
+        "text": "Add to Calendar",
+        "link": "https://calendar.google.com/calendar/render?action=TEMPLATE&text=Malang+Fresher%27s+Orientation&dates=20251006/20251007",
+        "focus": true
+      }
+    ]
+  }
 ]
