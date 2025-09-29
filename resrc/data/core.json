@@ -7,44 +7,49 @@
                 "name": "Prasun Ratan",
                 "role": "Head",
                 "image": "26-1.webp",
-                "branch": "EnTC"
+                "branch": "EnTC",
+                "linkedin": "https://www.linkedin.com/in/prasun-ratan",
+                "email": "prasunratan@gmail.com",
+                "github": "https://github.com/voidratan",
+                "instagram": "https://instagram.com/prasunratan",
+                "website": "https://prasunratan.netlify.app"
             },
             {
                 "name": "Goutam Sahu",
-                "role": "Co-Head & Photography Head",
-                "image": "26-1.webp",
+                "role": "Co-Head",
+                "image": "26-2.webp",
                 "branch": "ECE",
                 "linkedin": "https://linkedin.com/in/g0utam",
                 "email": "mailto:gsahu.work@gmail.com",
                 "github": "https://github.com/g0utam"
             },
             {
-                "name": "Tejas Gupta",
-                "role": "Treasurer & Tech Head",
-                "image": "26-1.webp",
-                "branch": "CSBS",
-                "linkedin": "https://linkedin.com/in/tejascodes",
-                "email": "mailto:tejasgupta.work@gmail.com",
-                "github": "https://github.com/multiverseweb",
-                "website": "https://tejasgupta.vercel.app"
-            },
-            {
-                "name": "Priya Ranjan",
-                "role": "PR & Sponsorship Head",
-                "image": "26-1.webp",
-                "branch": "EnTC"
-            },
-            {
                 "name": "Mohini Walia",
                 "role": "Media Head",
-                "image": "26-1.webp",
+                "image": "26-4.webp",
                 "branch": "CE"
             },
             {
                 "name": "Satyam Singh",
                 "role": "Creativity Head",
-                "image": "26-1.webp",
+                "image": "26-6.webp",
                 "branch": "EnTC"
+            },
+            {
+                "name": "Priya Ranjan",
+                "role": "PR & Sponsorship Head",
+                "image": "26-5.webp",
+                "branch": "EnTC"
+            },
+            {
+                "name": "Tejas Gupta",
+                "role": "Treasurer & Tech Head",
+                "image": "26-3.webp",
+                "branch": "CSBS",
+                "linkedin": "https://linkedin.com/in/tejascodes",
+                "email": "tejasgupta.work@gmail.com",
+                "github": "https://github.com/multiverseweb",
+                "website": "https://tejasgupta.vercel.app"
             }
         ]
     }

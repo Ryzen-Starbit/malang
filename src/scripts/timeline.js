@@ -1,6 +1,6 @@
 let eventsData = [];
 let currentIndex = 0;
-const batchSize = 6;
+const batchSize = 5;
 
 document.addEventListener("DOMContentLoaded", () => {
   const loader = document.getElementById("loader");
