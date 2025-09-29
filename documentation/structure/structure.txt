@@ -172,8 +172,11 @@
 │   │   │   ├── 25-3.webp
 │   │   │   ├── 25-4.webp
 │   │   │   ├── 25-5.webp
-│   │   │   ├── person.png
-│   │   │   └── person.webp
+│   │   │   ├── 26-1.webp
+│   │   │   ├── 26-2.webp
+│   │   │   ├── 26-4.webp
+│   │   │   ├── 26-6.webp
+│   │   │   └── person.png
 │   │   ├── misc/
 │   │   │   ├── favicon.webp
 │   │   │   ├── gstudios.webp
