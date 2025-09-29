@@ -20,33 +20,37 @@ document.addEventListener("DOMContentLoaded", () => {
           const div = document.createElement("div");
           div.className = "event";
 
+          // ✅ add image only if event.image exists and is not empty
+          const imageHtml = (event.image && event.image.trim() !== "")
+            ? `<img src="${event.image}" alt="${event.name}" loading="lazy" class="event-image same" />`
+            : "";
+
           div.innerHTML = `
             <p class="event-name">${event.name}</p>
             <div class="event-info">
               <p class="event-date">${event.date}</p>
               <p class="event-location">${event.location}</p>
             </div>
-            <img src="${event.image}" alt="${event.name}" loading="lazy" class="event-image same" />
+            ${imageHtml}
             <p class="event-description">${event.description}</p>
             <div class="event-buttons">
-            ${event.buttons.map(btn => {
-            if (btn.alertMessage) {
-              return `
-      <button class="long-btn${btn.focus ? ' focus' : ''}" onclick="showAlert('${event.name}', '${btn.alertMessage}', [{ text: 'OK' }])">
-        ${btn.text}
-      </button>
-    `;
-            } else if (btn.link) {
-              return `
-      <button class="long-btn${btn.focus ? ' focus' : ''}" onclick="window.open('${btn.link}','_blank')">
-        ${btn.text}
-      </button>
-    `;
-            } else {
-              return '';
-            }
-          }).join('')}
-
+              ${event.buttons.map(btn => {
+                if (btn.alertMessage) {
+                  return `
+                    <button class="long-btn${btn.focus ? ' focus' : ''}" onclick="showAlert('${event.name}', '${btn.alertMessage}', [{ text: 'OK' }])">
+                      ${btn.text}
+                    </button>
+                  `;
+                } else if (btn.link) {
+                  return `
+                    <button class="long-btn${btn.focus ? ' focus' : ''}" onclick="window.open('${btn.link}','_blank')">
+                      ${btn.text}
+                    </button>
+                  `;
+                } else {
+                  return '';
+                }
+              }).join('')}
             </div>
           `;
 
@@ -55,15 +59,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
         container.appendChild(fragment);
       }
-      applyTheme(false); // re-apply saved theme to newly added .same elements
 
+      applyTheme(false); // re-apply saved theme to newly added .same elements
       document.getElementById("loader").style.display = "none";
     })
     .catch(error => {
       console.error("Failed to load events.json:", error);
     });
 });
-
 
 calendar.addEventListener('load', () => {
   document.getElementById('loaderWave').style.display = 'none';

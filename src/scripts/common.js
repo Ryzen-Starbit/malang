@@ -1,5 +1,4 @@
 // Function to include HTML files dynamically on priority
-
 document.addEventListener('DOMContentLoaded', async () => {
     // Load all other includes without blocking
     document.querySelectorAll('[data-include]').forEach(async el => {

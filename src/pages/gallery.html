@@ -8,7 +8,17 @@
 <body>
     <section id="gallery-section">
         <div id="loader">
-            <span></span>
+            <div class="loader-container">
+                <div class="cube">
+                    <div class="cube__inner"></div>
+                </div>
+                <div class="cube">
+                    <div class="cube__inner"></div>
+                </div>
+                <div class="cube">
+                    <div class="cube__inner"></div>
+                </div>
+            </div>
         </div>
         <div id="filtersContainer">
             <!-- add this inside <div id="filtersContainer"> ... </div> -->
@@ -23,8 +33,7 @@
             <div class="filters" id="filters-type"></div>
             <div class="filters" id="filters-artist"></div>
         </div>
-        <div id="none"><img src="/resrc/images/icons/favicon.webp" alt="" class="icon-small">Oops! We couldn't find
-            anything with those filters.</div>
+        <div id="none"><img src="/resrc/images/icons/favicon.webp" alt="" class="icon-small">Nothing to see here...</div>
         <div class="gallery" id="gallery">
         </div>
         <button class="long-btn" id="viewMoreBtn">View More</button>
@@ -34,8 +43,8 @@
             <span class="modal-close">&times;</span>
             <img id="modal-image" class="same" />
             <div id="modal-caption">
-                <p id="modal-title">Title: NA</p>
-                <p id="modal-artist">By: NA</p>
+                <p id="modal-title"></p>
+                <p id="modal-artist"></p>
             </div>
         </div>
     </div>

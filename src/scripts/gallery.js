@@ -329,11 +329,15 @@
         const meta = imageMeta[imageId] || {};
 
         modalImg.src = img.src;
-        modalTitle.textContent = `Title: ${meta.title || 'NA'}`;
-        modalArtist.textContent = `By: ${meta.artist || 'NA'}`;
-
+        // Check for title and clear if none is present, or set it if present.
+        if (meta.title) {
+            modalTitle.innerHTML = `<h4>${meta.title}</h4>`;
+        } else {
+            modalTitle.innerHTML = ''; // IMPORTANT: Clear the title if meta.title is falsy
+        }
+        modalArtist.textContent = `~ ${meta.artist || 'NA'}`;
         document.querySelector("section").classList.add("modal-active");
-        
+
         modal.style.display = "flex";
         document.body.style.overflow = "hidden";
 
