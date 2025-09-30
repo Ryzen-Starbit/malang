@@ -331,7 +331,7 @@
         modalImg.src = img.src;
         // Check for title and clear if none is present, or set it if present.
         if (meta.title) {
-            modalTitle.innerHTML = `<h4>${meta.title}</h4>`;
+            modalTitle.innerHTML = `<h4><i>${meta.title}</i></h4>`;
         } else {
             modalTitle.innerHTML = ''; // IMPORTANT: Clear the title if meta.title is falsy
         }
