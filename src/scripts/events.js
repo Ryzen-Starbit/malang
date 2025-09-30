@@ -20,7 +20,6 @@ document.addEventListener("DOMContentLoaded", () => {
           const div = document.createElement("div");
           div.className = "event";
 
-          // ✅ add image only if event.image exists and is not empty
           const imageHtml = (event.image && event.image.trim() !== "")
             ? `<img src="${event.image}" alt="${event.name}" loading="lazy" class="event-image same" />`
             : "";

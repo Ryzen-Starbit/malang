@@ -384,3 +384,47 @@
     // start
     init();
 })();
+
+const secureAction = (e, message) => {
+    e.preventDefault();
+    e.stopPropagation();
+    navigatorvibrate(100);
+    showAlert("⚠️", message, [{ text: "OK" }]); 
+    try { navigator.clipboard?.writeText?.(""); } catch { }
+};
+
+document.addEventListener("keydown", function (e) {
+    const k = (e.key || "").toLowerCase();
+    const isControlOrMeta = e.ctrlKey || e.metaKey;
+    
+    const blocked = (
+        // Copy, Save, View Source, Inspect
+        (isControlOrMeta && (k === "c" || k === "s" || k === "u" || k === "j" || k === "i")) ||
+        k === "f12" || // Dev Tools
+        // Common Screenshot Keys
+        k === "printscreen" || k === "print" || k === "snapshot" ||
+        (e.altKey && k === "printscreen") ||
+        (e.shiftKey && k === "printscreen") ||
+        (e.key === "Meta" && e.shiftKey && (k === "3" || k === "4")) // Mac Screenshot Cmd+Shift+3/4
+    );
+
+    if (blocked) {
+        secureAction(e, "Copying, saving, inspecting or taking screenshots is disabled on this page!");
+    }
+});
+
+// Block right-click/long-press context menu (Desktop & Mobile)
+document.addEventListener("contextmenu", function (e) {
+    secureAction(e, "Right-click is disabled to prevent image copy or download!");
+});
+
+// Block text selection
+document.addEventListener("selectstart", function (e) {
+    e.preventDefault();
+});
+
+// Block image dragging
+document.querySelectorAll("img").forEach(img => {
+    img.setAttribute("draggable", "false");
+    img.addEventListener("dragstart", secureAction);
+});
