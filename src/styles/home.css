@@ -210,7 +210,7 @@ canvas {
 
 .cards-container {
     position: relative;
-    width: calc(100% - 20px);
+    max-width: calc(100% - 20px);
     padding: 10px;
 }
 
@@ -224,7 +224,7 @@ canvas {
     box-shadow: 0 10px 10px rgb(0, 0, 0), 0 5px 15px rgb(0, 0, 0);
     transform: translateZ(0);
     transition-duration: 0.2s;
-    width: calc(100% - 80px);
+    width: calc(100% - 90px);
 }
 
 .card p {
