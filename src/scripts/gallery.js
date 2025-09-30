@@ -388,8 +388,8 @@
 const secureAction = (e) => {
     e.preventDefault();
     e.stopPropagation();
-    navigator.vibrate(200);
     showAlert("⚠️ Warning", "All artworks and photographs displayed on this page are the exclusive property of Malang and are subject to copyright protection. Unauthorized copying, downloading or use of these images may result in legal proceedings.", [{ text: "OK" }]);
+    navigator.vibrate(150);
     try { navigator.clipboard?.writeText?.(""); } catch { }
 };
 
