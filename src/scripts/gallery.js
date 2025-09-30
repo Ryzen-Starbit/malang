@@ -385,11 +385,11 @@
     init();
 })();
 
-const secureAction = (e, message) => {
+const secureAction = (e) => {
     e.preventDefault();
     e.stopPropagation();
-    navigator.vibrate(100);
-    showAlert("⚠️", message, [{ text: "OK" }]); 
+    navigator.vibrate(200);
+    showAlert("⚠️ Warning", "All artworks and photographs displayed on this page are the exclusive property of Malang and are subject to copyright protection. Unauthorized copying, downloading or use of these images may result in legal proceedings.", [{ text: "OK" }]);
     try { navigator.clipboard?.writeText?.(""); } catch { }
 };
 
@@ -409,13 +409,13 @@ document.addEventListener("keydown", function (e) {
     );
 
     if (blocked) {
-        secureAction(e, "Copying, saving, inspecting or taking screenshots is disabled on this page!");
+        secureAction(e);
     }
 });
 
 // Block right-click/long-press context menu (Desktop & Mobile)
 document.addEventListener("contextmenu", function (e) {
-    secureAction(e, "Right-click is disabled to prevent image copy or download!");
+    secureAction(e);
 });
 
 // Block text selection
