@@ -388,7 +388,7 @@
 const secureAction = (e, message) => {
     e.preventDefault();
     e.stopPropagation();
-    navigatorvibrate(100);
+    navigator.vibrate(100);
     showAlert("⚠️", message, [{ text: "OK" }]); 
     try { navigator.clipboard?.writeText?.(""); } catch { }
 };
