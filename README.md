@@ -1,11 +1,4 @@
-<img src="https://api.visitorbadge.io/api/visitors?path=multiverseweb2%2malang%20&countColor=%23263759&style=flat"
-                alt="Visitors Count">
-                <img alt="Website Status"
-                src="https://img.shields.io/website?url=https%3A%2F%2Fmalangbvp.in/%2F&up_message=ok&up_color=%2324ad29&down_message=not%20ok&down_color=red&style=flat">
-
-<hr>
-
-  <ul id="docList">
+<ul id="docList">
   <h1>Docs</h1>
     <li>
       <details>
@@ -20,7 +13,7 @@
                     <summary>Events</summary>
                     <ul>
                       <li><a href="#Events">Upcoming Event</a></li>
-                      <li><a href="#">Past Event</a></li>
+                      <li><a href="#Timeline">Past Event</a></li>
                     </ul>
                   </details>
                 </li>
@@ -28,8 +21,8 @@
                   <details>
                     <summary>Galleries</summary>
                     <ul>
-                      <li><a href="#">Art Gallery</a></li>
-                      <li><a href="#">Photo Gallery</a></li>
+                      <li><a href="#Art-Gallery">Art Gallery</a></li>
+                      <li><a href="#Photo-Gallery">Photo Gallery</a></li>
                     </ul>
                   </details>
                 </li>
@@ -87,27 +80,29 @@
 
 # Site > Updation
 
-<h3 id="Events">Managing Events Page</h3>
+## Events
+
+<h3 id="Events">Managing Upcoming Events</h3>
 
 - Go to `/resrc/data/events.json` and add events like:
 
 ```json
 [ 
   {
-    "name": "[EVENT NAME]",
-    "date": "[EVENT DATE]",
-    "location": "[EVENT VENUE]",
-    "description": "[EVENT DESCRIPTION]",
+    "name": "EVENT NAME",
+    "date": "EVENT DATE",
+    "location": "EVENT VENUE",
+    "description": "EVENT DESCRIPTION",
     "image": "[/resrc/images/misc/IMAGE] || IMAGE URL",
     "buttons": [
       {
-        "text": "[ALTERNATE BUTTON TEXT]",
-        "link": "[REDIRECTION LINK]",
+        "text": "ALTERNATE BUTTON TEXT",
+        "link": "REDIRECTION LINK",
         "focus": false
       },
       {
-        "text": "[PRIMARY BUTTON TEXT]",
-        "link": "[REDIRECTION LINK]",
+        "text": "PRIMARY BUTTON TEXT",
+        "link": "REDIRECTION LINK",
         "focus": true
       }
     ]
@@ -116,6 +111,78 @@
 ```
 
 ---
+
+<h3 id="Timeline">Managing Past Events</h3>
+
+- Go to `/resrc/data/timeline.json` and add events like:
+
+```json
+{
+    "title": "EVENT TITLE",
+    "date": "EVENT DATE",
+    "description": "EVENT DESCRIPTION",
+    "images": [
+      list of paths of images to be added
+    ]
+  }
+```
+
+## Galleries
+
+<h3 id="Art-Gallery">Managing Art Gallery</h3>
+
+- Go to `/resrc/data/artworks.json` and add artwork like:
+
+```json
+"0": {
+        "title": "ARTWORK TITLE",
+        "artist": "ARTIST'S NAME",
+        "type": "ARTWORK TYPE"
+    }
+```
+> [!CAUTION]
+> Artwork image must be in `.webp` format.
+>
+> The JSON key must be unique, continued series of existing keys and must match the image name.
+
+> [!NOTE]
+> Don't forget to add artwork image in `resrc\images\artworks` folder.
+>
+> Update the artwork count in `src/scripts/gallery.js`:
+
+```js
+        // artwork count and photograph count
+        const total = mode === 'artworks' ? 68 : 42;
+                                            ^
+```
+
+<h3 id="Photo-Gallery">Managing Photo Gallery</h3>
+
+- Go to `/resrc/data/photographs.json` and add artwork like:
+
+```json
+"0": {
+        "title": "PHOTOGRAPH TITLE",
+        "artist": "PHOTOGRAPHER'S NAME",
+        "type": "PHOTOGRAPH TYPE"
+    }
+```
+> [!CAUTION]
+> Phogograph must be in `.webp` format.
+>
+> The JSON key must be unique, continued series of existing keys and must match the image name.
+
+> [!NOTE]
+> Don't forget to add photograph in `resrc\images\photographs` folder.
+>
+> Update the photograph count in `src/scripts/gallery.js`:
+
+
+```js
+        // artwork count and photograph count
+        const total = mode === 'artworks' ? 68 : 42;
+                                                  ^
+```
 
 <h1 id="Tools">Malang Tools</h1>
 

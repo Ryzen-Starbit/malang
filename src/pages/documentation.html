@@ -25,14 +25,22 @@
             </div>
         </div>
         <div class="info">
+            <img src="https://api.visitorbadge.io/api/visitors?path=multiverseweb2%2malang%20&countColor=%23263759&style=flat"
+                alt="Visitors Count">
+                <img alt="Website Status"
+                src="https://img.shields.io/website?url=https%3A%2F%2Fmalangbvp.vercel.app/%2F&up_message=ok&up_color=%2324ad29&down_message=not%20ok&down_color=red&style=flat">
+
+<hr>
             <p id="last-updated">Last Updated: Loading...</p>
             <hr>
         </div>
-        <div id="readme-content">Loading...</div>
-        <details id="site-structure">
-            <summary>Site Structure</summary>
-            <pre id="structure"></pre>
-        </details>
+        <div class="restricted">
+            <div id="readme-content">Loading...</div>
+            <details id="site-structure">
+                <summary>Site Structure</summary>
+                <pre id="structure"></pre>
+            </details>
+        </div>
         <button id="scrollTopBtn" aria-label="Scroll to top" title="Scroll to top">
             <!-- only an arrow image (SVG) inside the button -->
             <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
@@ -43,4 +51,9 @@
     </section>
     <script src="../scripts/documentation.js"></script>
     <script src="../scripts/common.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            toggleRestricted();
+        });
+    </script>
 </body>

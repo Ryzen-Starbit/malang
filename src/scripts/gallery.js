@@ -75,7 +75,7 @@
 
     // Build the ordered allImages array for currentMode
     function buildAllImages(mode) {
-        // Replace these totals or build dynamically if you have total count in metadata
+        // artwork count and photograph count
         const total = mode === 'artworks' ? 68 : 42;
 
         allImages = Array.from({ length: total }, (_, i) => {
