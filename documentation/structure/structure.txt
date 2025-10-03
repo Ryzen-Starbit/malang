@@ -254,7 +254,8 @@
 │   │   ├── recruitments.html
 │   │   ├── redirector.html
 │   │   ├── timeline.html
-│   │   └── treasury.html
+│   │   ├── treasury.html
+│   │   └── unsubscribe.html
 │   ├── scripts/
 │   │   ├── alumni.js
 │   │   ├── aruco.js
