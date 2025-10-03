@@ -10,9 +10,8 @@
                 <h3>Subscribe to our newsletter</h3>
                 <p>Stay connected with us and never miss an event!</p>
                 <div id="newsletterInput">
-                    <input type="email" id="subscriber-email" placeholder="Enter your email">
-                    <button id="subscribe"
-                        onclick="handleButtonAction('subscribe', 'Subscribing' , 'Subscribed' , () => subscribe())">Subscribe</button>
+                    <input type="email" id="subscriber-email" placeholder="Enter your email" required>
+                    <button id="subscribe-btn" type="button" onclick="subscribe()">Subscribe</button>
                 </div>
                 <div id="failure" class="same">We don't spam.</div>
             </div>

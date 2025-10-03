@@ -1,0 +1,22 @@
+<head>
+    <link rel="stylesheet" href="../styles/common.css">
+    <title>Malang | Authenticator</title>
+    <link rel="stylesheet" href="../styles/authentication.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+<body>
+    <section id="authentication">
+        <canvas id="gradientCanvas"></canvas>
+        <!-- Unsubscribe Form -->
+        <form id="unsubscribe-section">
+            <h3>Unsubscribe from Newsletter</h3>
+            <input type="email" id="unsubscribe-email" placeholder="Enter your email" required>
+            <button id="unsubscribe-btn" type="button" class="long-btn" onclick="unsubscribe()">Unsubscribe</button>
+            <div id="failure">We'll miss you!</div>
+        <p>Read our <a href="/src/pages/privacy-policy.html" id="url">Privacy Policy</a> for more information.</p>
+        </form>
+    </section>
+    <script src="/src/scripts/common.js"></script>
+    <script src="/src/scripts/authentication.js"></script>
+</body>

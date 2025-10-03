@@ -94,58 +94,88 @@ function vibrate(duration = 50) {
 function goBack() {
     window.history.back();
 }
+function subscribe() {
+    handleButtonAction(
+        "subscribe-btn",              // button ID
+        "Subscribing",                // loader text
+        "Subscribed",                 // success text
+        async () => {
+            const field = document.getElementById("subscriber-email");
+            const email = field.value.trim();
+            const failureDiv = document.getElementById("failure");
+            const url = "https://script.google.com/macros/s/AKfycbypXNCrvYZL-flWLRoD7DcdcgUaf98FzzDQCUdkaNURzeBFQWNqjL8vEubY8FAKM-JT/exec"; // replace with your Apps Script URL
 
-async function subscribe() {
-    const field =
-        document.getElementById("subscriber-email");
-    const email = field.value.trim();
-    const failureDiv = document.getElementById("failure");
-    const subscribeBtn = document.getElementById("subscribe");
-    const url = "https://script.google.com/macros/s/AKfycbwCPPqtOOTZfcfJKNK_v422wkJaDiQo2D8FKRH25tvAXB_Rf7sMk_DDKgLFgDScOtOS/exec";
+            if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+                if (navigator.vibrate) navigator.vibrate(200);
+                field.value = "";
+                field.focus();
+                showMessage(failureDiv, "Please enter a valid email address.");
+                throw new Error("Invalid email"); // fail for handleButtonAction
+            }
 
+            const formData = new FormData();
+            formData.append("email", email);
+            formData.append("mode", "subscribe");
 
-    // ✅ Email format validation
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-        vibrate(200);
-        field.value = "";
-        field.focus();
-        failureDiv.style.opacity = 1;
-        failureDiv.textContent = "Please enter a valid email address.";
-        setTimeout(() => {
-            failureDiv.style.opacity = 0;
-        }, 3000);
-        throw new Error("Manual error");
-    }
+            const response = await fetch(url, { method: "POST", body: formData });
+            const text = await response.text();
 
-    try {
-        const formData = new FormData();
-        formData.append("email", email);
-        formData.append("mode", "default");
+            if (!text.toLowerCase().includes("success")) {
+                showMessage(failureDiv, text, false);
+                throw new Error("Failed subscribe");
+            }
 
-        const response = await fetch(url, { method: "POST", body: formData });
-        const text = await response.text();
-
-        if (text.includes("Success")) {
-            navigator.vibrate(50);
-        } else {
-            vibrate(200);
-            field.value = "";
-            field.focus();
-            failureDiv.textContent = text;
-            failureDiv.style.opacity = 1;
-            setTimeout(() => {
-                failureDiv.style.opacity = 0;
-            }, 3000);
-        }
-    } catch (error) {
-        console.error(error);
-        failureDiv.style.opacity = 1;
-        failureDiv.textContent = "Something went wrong.";
-        setTimeout(() => {
-            failureDiv.style.opacity = 0;
-        }, 3000);
-    }
+            showMessage(failureDiv, text, true);
+        },
+        "Failed"
+    );
 }
+
+function unsubscribe() {
+    handleButtonAction(
+        "unsubscribe-btn",            // button ID
+        "Unsubscribing",              // loader text
+        "Unsubscribed",               // success text
+        async () => {
+            const field = document.getElementById("unsubscribe-email");
+            const email = field.value.trim();
+            const failureDiv = document.getElementById("failure");
+            const url = "https://script.google.com/macros/s/AKfycbypXNCrvYZL-flWLRoD7DcdcgUaf98FzzDQCUdkaNURzeBFQWNqjL8vEubY8FAKM-JT/exec"; // replace with your Apps Script URL
+
+            if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+                if (navigator.vibrate) navigator.vibrate(200);
+                field.value = "";
+                field.focus();
+                showMessage(failureDiv, "Please enter a valid email address.");
+                throw new Error("Invalid email");
+            }
+
+            const formData = new FormData();
+            formData.append("email", email);
+            formData.append("mode", "unsubscribe");
+
+            const response = await fetch(url, { method: "POST", body: formData });
+            const text = await response.text();
+
+            if (!text.toLowerCase().includes("success")) {
+                showMessage(failureDiv, text, false);
+                throw new Error("Failed unsubscribe");
+            }
+
+            showMessage(failureDiv, text, true);
+        },
+        "Failed"
+    );
+}
+
+// Helper for UI messages
+function showMessage(div, message, success = false) {
+    div.style.opacity = 1;
+    div.style.color = success ? "green" : "red";
+    div.textContent = message;
+    setTimeout(() => { div.style.opacity = 0; }, 3000);
+}
+
 /**
  * Show a customizable alert
  * @param {string} heading - Alert heading

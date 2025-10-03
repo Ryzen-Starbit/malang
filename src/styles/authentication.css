@@ -11,7 +11,7 @@
     width: 100vw;
 }
 
-#coreForm, #redirectorForm, #billForm, #loginForm {
+form, #loginForm {
     transform: translate(-50%, -50%);
     position: absolute;
     top:50vh;
