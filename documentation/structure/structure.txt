@@ -113,6 +113,7 @@
 │   │   │   ├── download.webp
 │   │   │   ├── events.webp
 │   │   │   ├── favicon.webp
+│   │   │   ├── filters.png
 │   │   │   ├── google.png
 │   │   │   ├── home.webp
 │   │   │   ├── link.webp
