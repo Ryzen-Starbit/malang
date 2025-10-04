@@ -143,6 +143,8 @@
 │   │   │   ├── 26-1.webp
 │   │   │   ├── 26-2.webp
 │   │   │   ├── 26-4.webp
+│   │   │   ├── 26-5.jpg
+│   │   │   ├── 26-5.webp
 │   │   │   ├── 26-6.webp
 │   │   │   └── person.png
 │   │   ├── misc/
@@ -152,11 +154,12 @@
 │   │   │   ├── FE25-4.jpg
 │   │   │   ├── FE25-5.jpg
 │   │   │   ├── FE25-6.jpg
+│   │   │   ├── FE25-7.jpg
 │   │   │   ├── editingUnlocked1.png
 │   │   │   ├── editingUnlocked2.jpg
 │   │   │   ├── editingUnlocked3.png
 │   │   │   ├── editingUnlocked4.png
-│   │   │   ├── gallery.jpg
+│   │   │   ├── gallery.png
 │   │   │   ├── gstudios.webp
 │   │   │   ├── gstudios1.jpg
 │   │   │   ├── gstudios2.jpg
@@ -188,6 +191,7 @@
 │   │   │   ├── rangotsav25-3.jpg
 │   │   │   ├── rangotsav25-4.jpg
 │   │   │   ├── team.webp
+│   │   │   ├── team2.png
 │   │   │   └── vlcc.webp
 │   │   └── photographs/
 │   │       ├── 0.webp
