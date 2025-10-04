@@ -7,31 +7,39 @@
                 "name": "Sachin Jha",
                 "role": "Head",
                 "image": "25-1.webp",
-                "branch": "ECE"
+                "branch": "ECE",
+                "linkedin": "https://www.linkedin.com/in/sachin-jha-b17966200/",
+                "instagram": "https://www.instagram.com/sachinjha210/"
             },
             {
                 "name": "Aniket Jadhav",
                 "role": "Co-Head",
                 "image": "25-2.webp",
-                "branch": "EnTC"
+                "branch": "EnTC",
+                "linkedin": "https://www.linkedin.com/in/jadhavaniketshahaji/",
+                "instagram": "https://www.instagram.com/_aniketsj/"
             },
             {
                 "name": "Shambhavi Mishra",
                 "role": "Treasurer",
                 "image": "25-3.webp",
-                "branch": "R&A"
+                "branch": "R&A",
+                "linkedin": "https://www.linkedin.com/in/shambhavi-mishra-62a037230/"
             },
             {
                 "name": "Vaishnavi Tyagi",
                 "role": "Sponsorship Head",
                 "image": "25-4.webp",
-                "branch": "EnTC"
+                "branch": "EnTC",
+                "linkedin": "https://www.linkedin.com/in/vaishnavityagi23/"
             },
             {
                 "name": "Syed Ansharah Sultan",
                 "role": "Media Head",
                 "image": "25-5.webp",
-                "branch": "CE"
+                "branch": "CE",
+                "linkedin": "https://www.linkedin.com/in/syed-ansharah-sultan/",
+                "instagram": "https://www.instagram.com/5y3.d/"
             }
         ]
     },
@@ -48,19 +56,25 @@
             {
                 "name": "Utkarsh Gupta",
                 "role": "Co-Head",
-                "image": "24-2.webp"
+                "image": "24-2.webp",
+                "linkedin": "https://www.linkedin.com/in/utkarsh-gupta-2127721a6/"
             },
             {
                 "name": "Sachin Jha",
                 "role": "Treasurer",
                 "image": "25-1.webp",
-                "branch": "ECE"
+                "branch": "ECE",
+                "linkedin": "https://www.linkedin.com/in/sachin-jha-b17966200/",
+                "instagram": "https://www.instagram.com/sachinjha210/"
             },
             {
                 "name": "Aditya Kashyap",
                 "role": "Tech & Media Head",
                 "image": "24-4.webp",
-                "branch": "IT"
+                "branch": "IT",
+                "linkedin": "https://www.linkedin.com/in/thekasyap/",
+                "github": "https://github.com/thekasyap",
+                "website": "https://profile.adibiz.in/"
             },
             {
                 "name": "Tanisha Sinha",
@@ -70,27 +84,32 @@
             {
                 "name": "Simran Singh",
                 "role": "Media Head",
-                "image": "24-6.webp"
+                "image": "24-6.webp",
+                "linkedin": "https://www.linkedin.com/in/simran-singh-3786391b8/"
             },
             {
                 "name": "Aman Kumar",
                 "role": "PR & Photography Head",
-                "image": "24-7.webp"
+                "image": "24-7.webp",
+                "linkedin": "https://www.linkedin.com/in/aman-kumar-49b574272/"
             },
             {
                 "name": "Mahek Gurjar",
                 "role": "Photography Head",
-                "image": "24-8.webp"
+                "image": "24-8.webp",
+                "linkedin": "https://www.linkedin.com/in/prasun-ratan"
             },
             {
                 "name": "Swatantra Raj",
                 "role": "Core Member",
-                "image": "24-9.webp"
+                "image": "24-9.webp",
+                "linkedin": "https://www.linkedin.com/in/swatantra-raj-kumar-singh-39b3a020a/"
             },
             {
                 "name": "Mahesh Suthar",
                 "role": "Core Member",
-                "image": "24-10.webp"
+                "image": "24-10.webp",
+                "linkedin": "https://www.linkedin.com/in/mahesh-suthar/"
             }
         ]
     },

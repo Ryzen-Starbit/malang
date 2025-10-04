@@ -2,13 +2,13 @@
   {
     "title": "Recruitments",
     "date": "September 2025",
-    "description": "We're looking for new members to join our team! If you are interested in joining us, please fill out the form below.",
+    "description": "We successfully launched our annual recruitment drive, inviting students interested in fine arts, design, and photography to join Malang. The drive featured an application process for various sub-clubs and teams within the organization.",
     "images": ["/resrc/images/misc/poster.jpg"]
   },
   {
     "title": "Exhibition: Orientation Program",
     "date": "August 2025",
-    "description": "Introduced Malang to freshers through a vibrant display of artworks, photos, and fun interactive moments!",
+    "description": "Introduced Malang to freshers through a vibrant display of student artworks, photography portfolios, and interactive fine arts activities.",
     "images": [
       "/resrc/images/misc/orientation25-5.jpg",
       "/resrc/images/misc/orientation25-6.jpg",
@@ -21,7 +21,7 @@
   {
     "title": "Workshop: Video Editing with Team Clixzy",
     "date": "July 2025",
-    "description": "A hands-on workshop on video editing techniques, covering software tools and creative processes.",
+    "description": "A hands-on workshop for photographers and visual artists on video editing techniques, covering software tools and creative processes for motion content.",
     "images": [
       "/resrc/images/misc/editingUnlocked1.png",
       "/resrc/images/misc/editingUnlocked2.jpg",
@@ -32,12 +32,12 @@
   {
     "title": "Farewell",
     "date": "April 2025",
-    "description": "A farewell event to celebrate the achievements of the graduating batch of 2025, featuring speeches, performances, and a nostalgic look back at their journey with Malang."
+    "description": "A farewell event to celebrate the achievements of the graduating batch of 2025, featuring speeches, performances, and a nostalgic look back at their creative projects and journey with Malang."
   },
   {
     "title": "Fashion Euphoria: Bharatiyam",
     "date": "February 2025",
-    "description": "A fashion show event showcasing the latest trends and designs, featuring student designers and models, celebrating creativity and style.",
+    "description": "We successfully hosted a large-scale Fashion Show and Competition that drew participants from multiple universities. The event showcased student creativity across three dynamic categories: Solo, Duet, and Group. Malang's photography and design teams were instrumental in organizing and capturing this vibrant celebration of style and design.",
     "images": [
       "/resrc/images/misc/FE25-1.jpg",
       "/resrc/images/misc/FE25-2.jpg",
@@ -56,7 +56,7 @@
       "/resrc/images/misc/rangotsav25-3.jpg",
       "/resrc/images/misc/rangotsav25-4.jpg"
     ],
-    "description": "A vibrant cultural festival celebrating the diversity of Indian traditions through music, dance, and art, bringing together students and the community."
+    "description": "A vibrant cultural festival where students and faculty members express their creativity through photography and traditional and contemporary art forms like rangoli and painting."
   },
   {
     "title": "Orientation Program",
@@ -66,17 +66,18 @@
       "/resrc/images/misc/orientation24-2.jpg",
       "/resrc/images/misc/orientation24-3.jpg",
       "/resrc/images/misc/orientation24-4.jpg"
-    ]
+    ],
+    "description": "An introductory session for freshers to learn about Malang, its various art and photography sub-clubs, and how to get involved in our creative community."
   },
   {
     "title": "Fashion Euphoria: Bharatiyam",
     "date": "February 2024",
-    "description": "A vibrant cultural festival celebrating the diversity of Indian traditions through music, dance, and art, bringing together students and the community."
+    "description": "A major event where Malang's photography and design teams collaborate to showcase the latest trends and student-designed outfits, celebrating creativity and style."
   },
   {
     "title": "Rangotsav: Bharatiyam",
     "date": "February 2024",
-    "description": "A vibrant cultural festival celebrating the diversity of Indian traditions through music, dance, and art, bringing together students and the community.",
+    "description": "A vibrant cultural festival where students and faculty members express their creativity through photography and traditional and contemporary art forms like rangoli and painting.",
     "images": [
       "/resrc/images/misc/rangotsav24-1.webp",
       "/resrc/images/misc/rangotsav24-2.webp",
@@ -88,7 +89,7 @@
   {
     "title": "Workshop: Mandala Art",
     "date": "January 2024",
-    "description": "A vibrant cultural festival celebrating the diversity of Indian traditions through music, dance, and art, bringing together students and the community.",
+    "description": "A practical workshop focused on the techniques and meditative practice of creating intricate Mandala designs, a key fine art form.",
     "images": [
       "/resrc/images/misc/mandala1.jpg",
       "/resrc/images/misc/mandala2.jpg"
@@ -97,7 +98,7 @@
   {
     "title": "Workshop: Photography with GStudios India",
     "date": "November 2023",
-    "description": "A vibrant cultural festival celebrating the diversity of Indian traditions through music, dance, and art, bringing together students and the community.",
+    "description": "A specialized workshop led by GStudios India covering advanced photography techniques, lighting, and post-processing, essential skills for aspiring club members.",
     "images": [
       "/resrc/images/misc/gstudios1.jpg",
       "/resrc/images/misc/gstudios2.jpg",
@@ -107,6 +108,7 @@
   },
   {
     "title": "Orientation Program",
-    "date": "August 2023"
+    "date": "August 2023",
+    "description": "An introductory session for new members to learn about Malang, its various art and photography domains and how to get involved in our creative community."
   }
 ]

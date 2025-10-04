@@ -35,13 +35,17 @@
                 "name": "Satyam Singh",
                 "role": "Creativity Head",
                 "image": "26-6.webp",
-                "branch": "EnTC"
+                "branch": "EnTC",
+                "linkedin": "https://www.linkedin.com/in/satyamsingh11/",
+                "email": "sinxlog@gmail.com"
             },
             {
                 "name": "Priya Ranjan",
                 "role": "PR & Sponsorship Head",
                 "image": "26-5.webp",
-                "branch": "EnTC"
+                "branch": "EnTC",
+                "linkedin": "https://www.linkedin.com/in/priya-r-677666256",
+                "email": "ranjanpriya629@gmail.com"
             },
             {
                 "name": "Tejas Gupta",
@@ -51,7 +55,8 @@
                 "linkedin": "https://linkedin.com/in/tejascodes",
                 "email": "tejasgupta.work@gmail.com",
                 "github": "https://github.com/multiverseweb",
-                "website": "https://tejasgupta.vercel.app"
+                "website": "https://tejasgupta.vercel.app",
+                "instagram": "https://www.instagram.com/tejassssssssssssssssssssssssss/"
             }
         ]
     }
