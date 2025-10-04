@@ -8,6 +8,7 @@
     const filtersContainer = document.getElementById('filtersContainer'); // parent container
     const copyBtn = document.getElementById('copyFiltersBtn');
     const copyIcon = document.getElementById('copyFiltersIcon');
+    const heading = document.getElementById('heading');
 
     // State
     let currentMode = 'artworks'; // 'artworks' | 'photographs'
@@ -281,20 +282,25 @@
 
     // Attach main event listeners
     function bindUI() {
-        // mode buttons
         const photographsBtn = document.getElementById('photographs');
         const artworksBtn = document.getElementById('artworks');
+
         photographsBtn.addEventListener('click', () => {
+            currentMode = 'photographs'; // Set current mode immediately
             selectedType = 'all';
             selectedArtist = 'all';
-            updateURL({ mode: 'photographs', type: selectedType, artist: selectedArtist }, true);
-            resetGalleryAndLoad('photographs');
+            updateURL({ mode: currentMode, type: selectedType, artist: selectedArtist }, true);
+            resetGalleryAndLoad(currentMode);
+            updateHeading();
         });
+
         artworksBtn.addEventListener('click', () => {
+            currentMode = 'artworks'; // Set current mode immediately
             selectedType = 'all';
             selectedArtist = 'all';
-            updateURL({ mode: 'artworks', type: selectedType, artist: selectedArtist }, true);
-            resetGalleryAndLoad('artworks');
+            updateURL({ mode: currentMode, type: selectedType, artist: selectedArtist }, true);
+            resetGalleryAndLoad(currentMode);
+            updateHeading();
         });
 
         // view more
@@ -357,6 +363,54 @@
     }
 
     // On initial load: read URL params to set mode/type/artist
+    function updateHeading() {
+        const q = parseQuery();
+        const currentModeText = currentMode.charAt(0).toUpperCase() + currentMode.slice(1); // 'Artworks' or 'Photographs'
+
+        // Get the artist from URL or current state (URL is more reliable here)
+        const artist = q.artist;
+
+        // Get the mode name to append, or default to 'work'
+        const modeText = currentMode || 'work';
+
+        if (artist && artist !== 'all') {
+            const displayArtist = artist.replace(/-/g, ' ');
+
+            heading.textContent = `${displayArtist}'s ${modeText.charAt(0).toUpperCase() + modeText.slice(1)}`;
+        } else {
+            // Default heading: "Artworks" or "Photographs"
+            heading.textContent = currentModeText;
+        }
+    }
+
+
+    // Delegated handler for filter clicks (UPDATED)
+    function filtersClickHandler(e) {
+        const btn = e.target.closest('.filter-btn');
+        if (!btn) return;
+
+        if (btn.classList.contains('type')) {
+            selectedType = btn.dataset.filter || 'all';
+        } else if (btn.classList.contains('artist')) {
+            selectedArtist = btn.dataset.filter || 'all';
+        } else {
+            return;
+        }
+
+        highlightSelectedFilterButtons();
+
+        // 1. Update the URL
+        updateURL({ mode: currentMode, type: selectedType, artist: selectedArtist }, true);
+
+        // 2. Update the heading immediately based on the new filters
+        updateHeading();
+
+        // 3. Reset and load new gallery content
+        resetGalleryAndLoad(currentMode);
+    }
+
+
+    // On initial load: read URL params to set mode/type/artist (UPDATED)
     async function init() {
         bindUI();
 
@@ -371,6 +425,9 @@
 
         await resetGalleryAndLoad(initialMode);
 
+        // *** CALL THE NEW HEADING FUNCTION HERE ***
+        updateHeading();
+
         // handle browser navigation (back/forward)
         window.addEventListener('popstate', () => {
             const q2 = parseQuery();
@@ -378,6 +435,8 @@
             selectedArtist = q2.artist || 'all';
             const mode = q2.mode === 'photographs' ? 'photographs' : 'artworks';
             resetGalleryAndLoad(mode);
+            // Also update heading on popstate
+            updateHeading();
         });
     }
 
@@ -396,7 +455,7 @@ const secureAction = (e) => {
 document.addEventListener("keydown", function (e) {
     const k = (e.key || "").toLowerCase();
     const isControlOrMeta = e.ctrlKey || e.metaKey;
-    
+
     const blocked = (
         // Copy, Save, View Source, Inspect
         (isControlOrMeta && (k === "c" || k === "s" || k === "u" || k === "j" || k === "i")) ||
@@ -428,3 +487,21 @@ document.querySelectorAll("img").forEach(img => {
     img.setAttribute("draggable", "false");
     img.addEventListener("dragstart", secureAction);
 });
+
+function toggleFilters() {
+    const filtersContainer = document.getElementById('filtersContainer');
+    if (!filtersContainer) {
+        return;
+    }
+    const currentVisibility = filtersContainer.style.visibility;
+    if (currentVisibility === 'hidden') {
+        filtersContainer.style.visibility = 'visible';
+        filtersContainer.style.opacity = '1';
+        filtersContainer.style.filter = 'blur(0)';
+    } else {
+        filtersContainer.style.visibility = 'hidden';
+        filtersContainer.style.opacity = '0';
+        filtersContainer.style.filter = 'blur(5px)';
+    }
+    vibrate();
+}

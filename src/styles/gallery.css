@@ -4,6 +4,10 @@ body {
     -ms-user-select: none;      /* IE/Edge */
     user-select: none;          /* Standard */
 }
+#heading{
+    margin: 10px 10px;
+    height: 90px;
+}
 .gallery {
     column-count: 4;
     column-gap: 10px;
@@ -32,13 +36,15 @@ body {
     filter: brightness(0.7);
 }
 
-#filtersContainer {
-    width: calc(100vw - 30px);
-    margin: 0 auto;
-    padding: 2px;
-    border-radius: 7px;
-    background-color: rgb(17, 17, 17);
-    position: relative;
+#toggleFiltersBtn{
+    background-color: transparent;
+    padding:  7px 0px 10px 7px;
+    position: absolute;
+    border: none;
+    cursor: pointer;
+    right: 10px;
+    top: 75px;
+    z-index: 100;
 }
 
 #copyFiltersBtn{
@@ -47,8 +53,24 @@ body {
     position: absolute;
     border: none;
     cursor: pointer;
-    right: 0px;
+    right: 25px;
     top: 5px;
+}
+
+#filtersContainer {
+    position: absolute;
+    left: 7px;
+    top: 70px;
+    width: calc(100vw - 20px);
+    margin: 0 auto;
+    padding: 2px;
+    border-radius: 7px;
+    background-color: rgb(17, 17, 17);
+    visibility: hidden;
+    opacity: 0;
+    filter: blur(5px);
+    transition: opacity 0.3s ease, visibility 0.3s ease, filter 0.3s ease;
+    z-index: 90;
 }
 
 .filters {
@@ -65,7 +87,7 @@ body {
     z-index: 110;
 }
 #filters-category{
-    padding-right: 40px;
+    padding-right: 60px;
 }
 .filters button {
     margin: 0 2px;

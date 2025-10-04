@@ -198,19 +198,23 @@ canvas {
     display: flex;
     flex-direction: column;
     max-width: 1200px;
-    margin: 60px 0;
-    gap: 20px;
+    gap: 0px;
+    margin: 40px 0px;
+    padding: 10px 0px;
+    border-top: 1px solid rgb(50, 50, 50);
+    border-bottom: 1px solid rgb(50, 50, 50);
 }
 
 .featured_text {
     max-width: 600px;
-    margin: 0 20px;
+    margin: 0 auto;
     text-align: left;
+    padding: 0 20px;
 }
 
 .cards-container {
     position: relative;
-    max-width: calc(100% - 20px);
+    width: calc(100vw - 20px);
     padding: 10px;
 }
 
@@ -276,6 +280,7 @@ canvas {
 }
 
 .masonry {
+    width: calc(100vw - 20px);
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(calc(33vw - 10px), 1fr));
     padding: 10px;
@@ -390,27 +395,24 @@ canvas {
 
 @media (min-width: 768px) {
     .featured {
-        flex-direction: row;
+        margin: 0 auto;
+        flex-direction: row-reverse;
         justify-content: space-between;
         align-items: flex-start;
+        gap: 40px;
+        border: none;
     }
-
-    .featured_text {
-        position: sticky;
-        top: 100px;
-        height: calc(100vh - 140px);
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-    }
-
 
     .masonry {
+        position: sticky;
+        top: 150px;
+    }
+
+    .masonry {
+        width: 70vw;
         grid-template-columns: repeat(auto-fill, minmax(calc(20vw - 100px), 1fr));
         gap: 5px;
     }
-
 
     .sponsor-track {
         gap: 7rem;
