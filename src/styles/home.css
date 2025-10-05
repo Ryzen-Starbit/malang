@@ -184,6 +184,8 @@ canvas {
 }
 
 #landingButtons button {
+    width: 80%;
+    max-width: 250px;
     padding: 10px 30px;
     background-color: rgba(15, 15, 15, 0.647);
     border-radius: 50px;
@@ -199,7 +201,7 @@ canvas {
     flex-direction: column;
     max-width: 1200px;
     gap: 0px;
-    margin: 40px 0px;
+    margin: 20px 0px;
     padding: 10px 0px;
     border-top: 1px solid rgb(50, 50, 50);
     border-bottom: 1px solid rgb(50, 50, 50);
@@ -207,7 +209,7 @@ canvas {
 
 .featured_text {
     max-width: 600px;
-    margin: 0 auto;
+    margin: 30px auto;
     text-align: left;
     padding: 0 20px;
 }
@@ -404,8 +406,7 @@ canvas {
     }
 
     .masonry {
-        position: sticky;
-        top: 150px;
+        height: 250vh;
     }
 
     .masonry {
