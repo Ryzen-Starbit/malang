@@ -147,7 +147,8 @@
 │   │   │   ├── 26-5.jpg
 │   │   │   ├── 26-5.webp
 │   │   │   ├── 26-6.webp
-│   │   │   └── person.png
+│   │   │   ├── person.png
+│   │   │   └── tejas.jpg
 │   │   ├── misc/
 │   │   │   ├── FE25-1.jpg
 │   │   │   ├── FE25-2.jpg
