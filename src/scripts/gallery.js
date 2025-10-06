@@ -116,7 +116,7 @@
 
         // Build type HTML
         const typeContainer = document.getElementById('filters-type');
-        typeContainer.innerHTML = '<p>Type: </p>';
+        typeContainer.innerHTML = '<p>Type</p>';
         typeContainer.insertAdjacentHTML('beforeend', `<button class="filter-btn type" data-filter="all">All</button>`);
         Array.from(types).sort().forEach(t => {
             const token = t.replace(/\s+/g, '-');
@@ -125,7 +125,7 @@
 
         // Build artist HTML
         const artistContainer = document.getElementById('filters-artist');
-        artistContainer.innerHTML = currentMode === 'artworks' ? '<p>Artist: </p>' : '<p>Shot By: </p>';
+        artistContainer.innerHTML = currentMode === 'artworks' ? '<p>Artist</p>' : '<p>Shot By</p>';
         artistContainer.insertAdjacentHTML('beforeend', `<button class="filter-btn artist" data-filter="all">All</button>`);
         Array.from(artists).sort().forEach(a => {
             const token = a.replace(/\s+/g, '-');
@@ -490,18 +490,23 @@ document.querySelectorAll("img").forEach(img => {
 
 function toggleFilters() {
     const filtersContainer = document.getElementById('filtersContainer');
-    if (!filtersContainer) {
-        return;
-    }
-    const currentVisibility = filtersContainer.style.visibility;
-    if (currentVisibility === 'hidden') {
+    if (!filtersContainer) return;
+
+    const isHidden = filtersContainer.style.visibility === 'hidden' || filtersContainer.style.visibility === '';
+
+    if (isHidden) {
         filtersContainer.style.visibility = 'visible';
         filtersContainer.style.opacity = '1';
         filtersContainer.style.filter = 'blur(0)';
+        document.body.style.overflow = 'hidden';
+        document.getElementById('toggleFiltersIcon').src = '/resrc/images/icons/close.png'; 
     } else {
         filtersContainer.style.visibility = 'hidden';
         filtersContainer.style.opacity = '0';
         filtersContainer.style.filter = 'blur(5px)';
+        document.body.style.overflow = '';
+        document.getElementById('toggleFiltersIcon').src = '/resrc/images/icons/filters.png';
     }
+
     vibrate();
 }

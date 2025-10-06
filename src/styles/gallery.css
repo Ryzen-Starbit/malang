@@ -48,24 +48,24 @@ body {
 }
 
 #copyFiltersBtn{
-    background-color: rgb(17, 17, 17);
+    background-color: transparent;
     padding:  7px 5px;
-    position: absolute;
+    position: sticky;
     border: none;
     cursor: pointer;
-    right: 25px;
+    left: calc(100% - 70px);
     top: 5px;
 }
 
 #filtersContainer {
     position: absolute;
-    left: 7px;
-    top: 70px;
-    width: calc(100vw - 20px);
-    margin: 0 auto;
-    padding: 2px;
-    border-radius: 7px;
-    background-color: rgb(17, 17, 17);
+    top: 60px;
+    width: calc(100% - 20px);
+    height: calc(100vh - 60px);
+    overflow-y: scroll;
+    padding: 10px;
+    background-color: rgb(0, 0, 0);
+    backdrop-filter: blur(10px);
     visibility: hidden;
     opacity: 0;
     filter: blur(5px);
@@ -74,23 +74,19 @@ body {
 }
 
 .filters {
-    padding-right: 5px;
-    margin: 5px;
-    margin-left: 75px;
+    max-width: 600px;
+    margin: 5px auto;
     display: flex;
-    overflow-x: scroll;
-    scrollbar-width: none;
+    flex-wrap: wrap;
     border-radius: 7px;
-    /* Firefox */
-    -ms-overflow-style: none;
-    /* Internet Explorer and Edge */
     z-index: 110;
+    padding-bottom: 10px;
 }
 #filters-category{
-    padding-right: 60px;
+    margin-top: 10px;
 }
 .filters button {
-    margin: 0 2px;
+    margin: 2px;
     padding: 5px 10px 5px 10px;
     border:none;
     background-color: rgb(33, 33, 33);
@@ -105,9 +101,10 @@ body {
     color: black;
 }
 .filters p {
-    left: 10px;
-    padding-top: 5px;
-    position: absolute;
+    width: calc(100% - 20px);
+    border-bottom: 2px solid rgb(32, 32, 32);
+    padding: 5px;
+    margin-bottom: 5px;
     font-weight: 400;
     font-size: 14px;
 }
