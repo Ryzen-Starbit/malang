@@ -6,24 +6,26 @@
 <body>
     <h3 class="protected">You must be signed in to view this page.</h3>
     <section id="treasury" class="restricted">
-        <p>Malang's Treasury (₹) Over Time</p>
-        <canvas id="chart" style="height: calc(100vh - 200px)"></canvas>
-        <button class="long-btn" id="contribute">Contribute</button>
+        <h1>Malang's Treasury</h1>
+        <p>Total Amount: <span id="treasury-total" style="color: lime; background-color: rgb(21, 28, 15); border-radius: 5px; padding: 2px; ">Loading...</span></p>
+        <form id="treasury-form" onsubmit="logTransaction(event)">
+            <select id="header" required style="margin-bottom:10px;">
+                <option value="" disabled selected>Select Header</option>
+                <option value="Bharatiyam">Bharatiyam</option>
+                <option value="Claims">Claims</option>
+                <option value="Party / Trip">Party / Trip</option>
+                <option value="Development">Development</option>
+                <option value="Other">Other</option>
+            </select>
 
+            <input type="number" id="amount" placeholder="Amount (+/-)" required>
+
+            <button type="submit" id="log-btn" class="long-btn">
+                Log Transaction
+            </button>
+        </form>
     </section>
-    <div class="card same">
-        <img src="../../resrc/images/misc/payment-qr.webp" class="qr" alt="QR Code for payment">
-        <div class="info">
-            <p>Support Malang!<br>
-                Scan to pay via UPI.<br><br><br>
-                <code>Treasurer, Gen VII</code>
-            </p>
-            <hr>
-            <img src="../../resrc/images/misc/malang.webp" class="logo">
-        </div>
-    </div>
-    <button class="long-btn" id="done">Done</button>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
     <script src="../scripts/common.js"></script>
     <script src="../scripts/authentication.js"></script>
     <script src="../scripts/treasury.js"></script>

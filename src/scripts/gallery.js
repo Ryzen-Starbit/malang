@@ -492,7 +492,8 @@ function toggleFilters() {
     const filtersContainer = document.getElementById('filtersContainer');
     if (!filtersContainer) return;
 
-    const isHidden = filtersContainer.style.visibility === 'hidden' || filtersContainer.style.visibility === '';
+    const isHidden = getComputedStyle(filtersContainer).visibility === 'hidden';
+
 
     if (isHidden) {
         filtersContainer.style.visibility = 'visible';
