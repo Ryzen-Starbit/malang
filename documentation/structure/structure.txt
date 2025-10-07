@@ -4,6 +4,7 @@
 │   ├── scripts/
 │   │   └── update_structure.py
 │   └── workflows/
+│       ├── last-updated.yml
 │       └── update-structure.yml
 ├── .gitignore
 ├── 404.html
