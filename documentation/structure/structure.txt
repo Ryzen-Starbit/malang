@@ -31,8 +31,7 @@
 │   │   ├── events.json
 │   │   ├── member-emails.json
 │   │   ├── photographs.json
-│   │   ├── timeline.json
-│   │   └── treasury.json
+│   │   └── timeline.json
 │   ├── images/
 │   │   ├── artworks/
 │   │   │   ├── 0.webp
