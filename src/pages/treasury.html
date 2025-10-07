@@ -1,29 +1,88 @@
 <head>
     <link rel="stylesheet" href="../styles/common.css">
     <link rel="stylesheet" href="../styles/authentication.css">
+    <style>
+        /* Radio Buttons Group */
+        #treasury-form .sign-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        #treasury-form input[type="radio"] {
+            display: none;
+        }
+        #treasury-form label[for="plus"],
+        #treasury-form label[for="minus"] {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 32px;
+            height: 27px;
+            line-height: 27px;
+            border-radius: 5px;
+            border: 1px solid #535353;
+            color: #535353;
+            font-weight: bold;
+            font-size: 18px;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        /* Checked States */
+        #plus:checked+label[for="plus"] {
+            background-color: rgba(65, 209, 65, 0.167);
+            color: limegreen;
+            border-color: limegreen;
+        }
+
+        #minus:checked+label[for="minus"] {
+            background-color: rgba(255, 94, 94, 0.178);
+            color: rgb(255, 77, 77);
+            border-color: rgb(255, 77, 77);
+        }
+    </style>
 </head>
 
 <body>
     <h3 class="protected">You must be signed in to view this page.</h3>
     <section id="treasury" class="restricted">
-        <h1>Malang's Treasury</h1>
-        <p>Total Amount: <span id="treasury-total" style="color: lime; background-color: rgb(21, 28, 15); border-radius: 5px; padding: 2px; ">Loading...</span></p>
         <form id="treasury-form" onsubmit="logTransaction(event)">
-            <select id="header" required style="margin-bottom:10px;">
+            <h2>Malang's Treasury</h2>
+            <p>Total Amount:
+                <span id="treasury-total"
+                    style="color: lime; background-color: rgb(21, 28, 15); border-radius: 5px; padding: 2px;">
+                    Loading...
+                </span>
+            </p>
+
+            <select id="header" required style="margin-bottom:10px; margin-top: 10px;">
                 <option value="" disabled selected>Select Header</option>
                 <option value="Bharatiyam">Bharatiyam</option>
                 <option value="Claims">Claims</option>
-                <option value="Party / Trip">Party / Trip</option>
                 <option value="Development">Development</option>
+                <option value="Funds">Funds</option>
+                <option value="Party / Trip">Party / Trip</option>
                 <option value="Other">Other</option>
             </select>
 
-            <input type="number" id="amount" placeholder="Amount (+/-)" required>
+            <div class="sign-group">
+                <input type="radio" name="sign" id="plus" value="+">
+                <label for="plus">+</label>
+                <input type="radio" name="sign" id="minus" value="-" checked>
+                <label for="minus">−</label>
+                <input type="number" id="amount" placeholder="Amount" min="1" required>
+            </div>
 
-            <button type="submit" id="log-btn" class="long-btn">
-                Log Transaction
-            </button>
+            </div>
+
+            <p style="text-align: left; margin-top: 10px; color:rgb(255, 217, 0);">
+                ⚠️ Heads Up!<br>
+                <hr>Double-check values. Transactions instantly affect the treasury balance.
+            </p>
+
+            <button type="submit" id="log-btn" class="long-btn">Log Transaction</button>
         </form>
+
     </section>
 
     <script src="../scripts/common.js"></script>
