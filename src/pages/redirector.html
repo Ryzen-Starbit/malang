@@ -11,7 +11,7 @@
             <h3>Customise URL</h3>
             <input type="url" id="longURL" placeholder="URL" required />
             <input type="text" id="postfix" placeholder="Postfix" required />
-            Custom URL will be:<br><a href="" class="url">https://malangbvp.in/r/#/<span id="url">Postfix</span></a>
+            Custom URL will be:<br><a href="" class="url" target="_blank"><span id="baseURL"></span><span id="url">Postfix</span></a>
             <button type="submit" class="long-btn" id="submit">Create</button>
             <hr>
             <button class="long-btn" onclick="parent.loadPage('/r/#/help')">View Redirects</button>
@@ -20,17 +20,23 @@
     <script src="../scripts/common.js"></script>
     <script src="../scripts/authentication.js"></script>
     <script>
+        const baseURL = document.getElementById('baseURL');
         const postfix = document.getElementById('postfix');
         const longURL = document.getElementById('longURL');
         const urlSpan = document.getElementById('url');
         const urlLink = document.querySelector('a.url');
         const form = document.getElementById('redirectorForm');
 
+        const baseOrigin = window.location.origin; // dynamic base URL
+
+        // Set initial value
+        baseURL.textContent = `${baseOrigin}/r/#/`;
+
         // Update preview
         function updateURL() {
-            const base = longURL.value.trim() || 'https://malangbvp.in/r/#/';
-            const post = postfix.value.trim() || 'Postfix';
-            urlSpan.textContent = post;
+            const base = longURL.value.trim() || `${baseOrigin}/r/#/`;
+            const post = postfix.value.trim() || '';
+            urlSpan.textContent = post || 'Postfix';
             urlLink.href = base + post;
         }
 
@@ -50,5 +56,4 @@
                 ]
             );
         });
-
     </script>

@@ -7,6 +7,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             const res = await fetch(file);
             el.innerHTML = await res.text();
         }
+    document.getElementById('year').textContent = new Date().getFullYear();
     });
 });
 
@@ -283,3 +284,30 @@ function showAlert(heading, message, buttons = [{ text: 'OK' }], link) {
     overlay.appendChild(box);
     document.body.appendChild(overlay);
 }
+
+// Intercept all external links opening in a new tab
+document.addEventListener('click', (e) => {
+    const link = e.target.closest('a[target="_blank"]');
+    if (!link) return; // not a new-tab link
+
+    e.preventDefault(); // prevent default navigation
+
+    // Show custom environment alert
+    showAlert(
+        "You're leaving Malang's environment",
+        "You are about to open an external site. Do you want to proceed?",
+        [
+            {
+                text: "Cancel",
+                onClick: () => {} // just close alert
+            },
+            {
+                text: "Proceed",
+                onClick: () => {
+                    window.open(link.href, "_blank");
+                }
+            }
+        ],
+        link.href // show the link as clickable inside alert
+    );
+});

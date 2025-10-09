@@ -248,7 +248,7 @@ pip install google-auth google-auth-oauthlib google-auth-httplib2 google-api-pyt
 
 2. Enable Google People API
 
-- Create a project in [Google Cloud Console](https://console.cloud.google.com/)
+- Create a project in <a href="https://console.cloud.google.com/" target="_blank">Google Cloud Console</a>.
 
 - Enable _Google People API_.
 
@@ -281,7 +281,7 @@ Used for sending bulk emails with customised names, template and attachments.
 > `email_template.html` is the customizable design template of the email to be sent.
 
 > [!IMPORTANT]
-> Always use media like images, posters, etc. from [this repo](https://github.com/MalangBvp/media) using links like:
+> Always use media like images, posters, etc. from <a href="https://github.com/MalangBvp/media" target="_blank">this repo</a>  using links like:
 ```
 https://raw.githubusercontent.com/MalangBvp/media/refs/heads/main/images/malang.webp
 ```
@@ -304,4 +304,4 @@ attachment_dir = "Certificate-tool/certificates"
 
 <h3 id="newsletter-emails">Newsletter Emails</h3>
 
-Send E-mails to [newsletter subscribers](https://docs.google.com/spreadsheets/d/1uz3li0Uif-DtfTobPKj2fxwWTO8AIoWJghAhPCsyve0/) via [Mail Tool](#Mail-Tool).
+Send E-mails to <a href="https://docs.google.com/spreadsheets/d/1uz3li0Uif-DtfTobPKj2fxwWTO8AIoWJghAhPCsyve0/" target="_blank">newsletter subscribers</a> via [Mail Tool](#Mail-Tool).

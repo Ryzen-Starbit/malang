@@ -2,14 +2,14 @@ html {
     scroll-behavior: smooth;
 }
 
-#readme-content {
+#documentation {
     max-width: calc(100% - 20px);
     background-color: black;
     overflow-x: auto;
     text-overflow: clip;
     overflow-wrap: break-word;
     padding: 10px;
-    padding-top: 0px;
+    padding-top: 70px;
     max-width: 600px;
     margin: auto;
 }

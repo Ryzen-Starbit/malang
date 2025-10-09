@@ -13,13 +13,21 @@ function toggleMenu() {
 
     const isActive = nav.classList.toggle("active");
     burgerButton.classList.toggle("active");
-    //section.classList.toggle("active");
     burger.style.justifyContent = isActive ? "center" : "space-around";
     document.body.style.overflow = isActive ? "hidden" : "scroll";
 }
 
-setTimeout(() => {
-    document.getElementById('year').textContent = new Date().getFullYear();
+const observer = new MutationObserver(() => {
+    const nav = document.querySelector("#nav");
+    if (nav) {
+        observer.disconnect(); // stop watching
+        initNavScripts();      // run your logic
+    }
+});
+
+observer.observe(document.body, { childList: true, subtree: true });
+
+function initNavScripts() {
     const burgerButton = document.getElementById("burger");
 
     burgerButton.addEventListener("click", toggleMenu);
@@ -34,7 +42,7 @@ setTimeout(() => {
             "PWA Installation",
             "Install our app for faster access, offline support and a smoother experience.",
             [
-                { text: "Cancel"},
+                { text: "Cancel" },
                 { text: "Install", onClick: () => showAlert("PWA Installation", "This feature will be available soon.", [{ text: "OK" }]) }
             ]
         );
@@ -55,7 +63,7 @@ setTimeout(() => {
     });
 
     burgerButton.classList.remove('loading');
-}, 1000);
+}
 
 async function loadPage(url) {
     try {
@@ -78,7 +86,7 @@ async function loadPage(url) {
 // 👇 Forward query params into iframe, default = home.html
 (function forwardParamsToIframe() {
     const params = new URLSearchParams(window.location.search);
-    let url = "src/pages/home.html"; // ✅ default page is now home.html
+    let url = "src/pages/redirector.html"; // ✅ default page is now home.html
 
     // If query contains gallery filters → load gallery.html instead
     if (params.has("mode") || params.has("type") || params.has("artist")) {

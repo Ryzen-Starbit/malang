@@ -1,46 +1,48 @@
 (() => {
-    const form = document.getElementById('coreForm');
-    const passwordInput = document.getElementById('password');
+    const form = document.getElementById("coreForm");
+    const passwordInput = document.getElementById("password");
+    const error = document.getElementById("error");
 
-    let encoded = '';
-    let url = '';
+    if (!form || !passwordInput) return;
 
-    if (form) {
-        const formId = form.id;
+    const authMap = {
+        treasury: ["dHJlYXN1cnk=", "treasury.html"],
+        redirector: ["bWVtYmVy", "redirector.html"], // change to media.html when ready
+    };
 
-        switch (formId) {
-            case 'coreForm':
-                encoded = 'dHJlYXN1cnk=';
-                url = 'treasury.html';
-                break;
-            default:
-                console.error('Unknown form ID');
-                return;
-        }
+    // Read ?page= from URL
+    const params = new URLSearchParams(window.location.search);
+    const page = params.get("page");
 
-        form.addEventListener('submit', function (e) {
-            e.preventDefault();
-            
-            const input = passwordInput.value;
-            const b64 = btoa(input);
-
-            if (b64 === encoded || !encoded) {
-                vibrate(50);
-                window.location.href = url;
-            } else {
-                passwordInput.value = '';
-                passwordInput.focus();
-                passwordInput.style.border = '1px solid rgb(250, 53, 53)';
-                document.getElementById('error').style.opacity = 1;
-                setTimeout(() => {
-                    passwordInput.style.border = '';
-                    document.getElementById('error').style.opacity = 0;
-                }, 3000);
-                vibrate(200);
-            }
-        });
+    if (!authMap[page]) {
+        console.error("Invalid or missing page parameter.");
+        return;
     }
+
+    const [encoded, redirectUrl] = authMap[page];
+
+    form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        const input = passwordInput.value.trim();
+        const b64 = btoa(input);
+
+        if (b64 === encoded) {
+            vibrate(50);
+            window.location.href = redirectUrl;
+        } else {
+            passwordInput.value = "";
+            passwordInput.focus();
+            passwordInput.style.border = "1px solid rgb(250, 53, 53)";
+            error.style.opacity = 1;
+            setTimeout(() => {
+                passwordInput.style.border = "";
+                error.style.opacity = 0;
+            }, 3000);
+            vibrate(200);
+        }
+    });
 })();
+
 
 
 const canvas = document.getElementById('gradientCanvas');
