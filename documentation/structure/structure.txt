@@ -12,6 +12,8 @@
 ├── CNAME
 ├── LICENSE
 ├── README.md
+├── api/
+│   └── create-redirect.js
 ├── desktop.ini
 ├── documentation/
 │   └── structure/
