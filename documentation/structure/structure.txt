@@ -7,7 +7,6 @@
 │       ├── last-updated.yml
 │       └── update-structure.yml
 ├── .gitignore
-├── 404.html
 ├── CNAME
 ├── LICENSE
 ├── README.md
@@ -255,6 +254,7 @@
 │   │   ├── nav.html
 │   │   └── temp_nav.html
 │   ├── pages/
+│   │   ├── 404.html
 │   │   ├── account.html
 │   │   ├── alumni.html
 │   │   ├── aruco.html
