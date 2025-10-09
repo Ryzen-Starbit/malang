@@ -11,88 +11,71 @@
             <h3>Customise URL</h3>
             <input type="url" id="longURL" placeholder="URL" required />
             <input type="text" id="postfix" placeholder="Postfix" required />
-            Custom URL will be:<br><a href="" class="url" target="_blank"><span id="baseURL"></span><span id="url">Postfix</span></a>
+            Custom URL will be:<br><a href="" class="url" target="_blank"><span id="baseURL"></span><span
+                    id="url">Postfix</span></a>
             <button type="submit" class="long-btn" id="submit">Create</button>
             <hr>
-            <button class="long-btn" onclick="parent.loadPage('/r/#/help')">View Redirects</button>
+            <button class="long-btn" onclick="parent.loadPage('/r/help')">View Redirects</button>
         </form>
     </section>
     <script src="../scripts/common.js"></script>
     <script src="../scripts/authentication.js"></script>
     <script>
-const baseURL = document.getElementById('baseURL');
-const postfix = document.getElementById('postfix');
-const longURL = document.getElementById('longURL');
-const urlSpan = document.getElementById('url');
-const urlLink = document.querySelector('a.url');
-const form = document.getElementById('redirectorForm');
+        const baseURL = document.getElementById('baseURL');
+        const postfix = document.getElementById('postfix');
+        const longURL = document.getElementById('longURL');
+        const urlSpan = document.getElementById('url');
+        const urlLink = document.querySelector('a.url');
+        const form = document.getElementById('redirectorForm');
 
-const baseOrigin = window.location.origin; // dynamic base URL
+        const baseOrigin = window.location.origin; // dynamic base URL
 
-// Set initial value
-baseURL.textContent = `${baseOrigin}/r/#/`;
+        // Set initial value
+        baseURL.textContent = `${baseOrigin}/r/`;
 
-// Update preview
-function updateURL() {
-    const base = longURL.value.trim() || `${baseOrigin}/r/#/`;
-    const post = postfix.value.trim() || '';
-    urlSpan.textContent = post || 'Postfix';
-    urlLink.href = base + post;
-}
-
-// Listen to both inputs
-[postfix, longURL].forEach(el => el.addEventListener('input', updateURL));
-updateURL();
-
-// Handle form submission
-form.addEventListener('submit', async e => {
-    e.preventDefault();
-
-    const longURLValue = longURL.value.trim();
-    const postfixValue = postfix.value.trim();
-
-    const token = '';  // Use your personal token
-    const owner = 'multiverseweb';
-    const repo = 'redirector';
-    const workflow_id = 'create-pr.yml';
-    const branch = 'main';
-
-    try {
-        const res = await fetch(
-            `https://api.github.com/repos/${owner}/${repo}/actions/workflows/${workflow_id}/dispatches`,
-            {
-                method: 'POST',
-                headers: {
-                    'Authorization': `Bearer ${token}`,
-                    'Accept': 'application/vnd.github+json',
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                    ref: branch,
-                    inputs: {
-                        longURL: longURLValue,
-                        postfix: postfixValue
-                    }
-                })
-            }
-        );
-
-        if (res.ok) {
-            showAlert(
-                "Requested!",
-                "GitHub Action triggered! A pull request will be created to update the redirector.",
-                [
-                    { text: "OK" },
-                    { text: "View Redirects", onClick: () => parent.loadPage('/r/#/help') }
-                ]
-            );
-        } else {
-            const errorText = await res.text();
-            showAlert("Error", `Failed to trigger workflow: ${errorText}`);
+        // Update preview
+        function updateURL() {
+            const base = longURL.value.trim() || `${baseOrigin}/r/`;
+            const post = postfix.value.trim() || '';
+            urlSpan.textContent = post || 'Postfix';
+            urlLink.href = base + post;
         }
-    } catch (err) {
-        showAlert("Error", "Something went wrong: " + err.message);
-    }
-});
 
-</script>
+        // Listen to both inputs
+        [postfix, longURL].forEach(el => el.addEventListener('input', updateURL));
+        updateURL();
+        form.addEventListener('submit', async e => {
+            e.preventDefault();
+
+            const longURLValue = longURL.value.trim();
+            const postfixValue = postfix.value.trim();
+
+            try {
+                const res = await fetch('https://your-serverless-endpoint.com/create-redirect', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ longURL: longURLValue, postfix: postfixValue })
+                });
+
+                if (res.ok) {
+                    showAlert(
+                        "Requested!",
+                        "GitHub Action triggered! A pull request will be created to update the redirector.",
+                        [
+                            { text: "OK" },
+                            { text: "View Redirects", onClick: () => parent.loadPage('/r/help') }
+                        ]
+                    );
+                } else {
+                    const errorText = await res.text();
+                    showAlert("Error", `Failed: ${errorText}`);
+                }
+            } catch (err) {
+                showAlert("Error", "Something went wrong: " + err.message, [
+                    { text: "OK" }
+                ]);
+            }
+        });
+
+
+    </script>
