@@ -1,5 +1,3 @@
-import fetch from 'node-fetch';
-
 export default async function handler(req, res) {
   const { longURL, postfix } = req.body;
 
@@ -7,7 +5,7 @@ export default async function handler(req, res) {
   const repo = 'redirector';
   const workflow_id = 'create-pr.yml';
   const branch = 'main';
-  const token = process.env.PERSONAL_PAT; // from Vercel environment variables
+  const token = process.env.PERSONAL_PAT;
 
   const response = await fetch(
     `https://api.github.com/repos/${owner}/${repo}/actions/workflows/${workflow_id}/dispatches`,

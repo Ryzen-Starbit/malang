@@ -51,7 +51,7 @@
             const postfixValue = postfix.value.trim();
 
             try {
-                const res = await fetch('https://your-serverless-endpoint.com/create-redirect', {
+                const res = await fetch('https://malangbvp.vercel.app/api/create-redirect', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ longURL: longURLValue, postfix: postfixValue })
