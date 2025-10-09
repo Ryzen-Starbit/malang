@@ -23,7 +23,6 @@
 │   ├── 404.html
 │   ├── help.html
 │   ├── index.html
-│   ├── redirects.json
 │   ├── script.js
 │   └── style.css
 ├── resrc/
