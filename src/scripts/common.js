@@ -93,8 +93,13 @@ function vibrate(duration = 50) {
 }
 //=========================================================
 function goBack() {
-    window.history.back();
+    if (window.history.length > 1) {
+        window.history.back();
+    } else {
+        window.location.href = "src/pages/home.html";
+    }
 }
+
 function subscribe() {
     handleButtonAction(
         "subscribe-btn",              // button ID
@@ -292,22 +297,21 @@ document.addEventListener('click', (e) => {
 
     e.preventDefault(); // prevent default navigation
 
-    // Show custom environment alert
     showAlert(
-        "You're leaving Malang's environment",
-        "You are about to open an external site. Do you want to proceed?",
+        "Leaving Malang's Environment",
+        "This content opens outside Malang.",
         [
             {
                 text: "Cancel",
-                onClick: () => {} // just close alert
+                onClick: () => {}
             },
             {
-                text: "Proceed",
+                text: "Open",
                 onClick: () => {
                     window.open(link.href, "_blank");
                 }
             }
         ],
-        link.href // show the link as clickable inside alert
+        link.href
     );
 });
