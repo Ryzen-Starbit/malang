@@ -51,12 +51,11 @@ form.addEventListener('submit', async e => {
     const longURLValue = longURL.value.trim();
     const postfixValue = postfix.value.trim();
 
-    // Your GitHub settings
-    const token = ''; // ⚠️ Replace with your PAT (for testing only)
-    const owner = 'malangbvp';        // Replace with your GitHub username
-    const repo = 'malang';               // Replace with your repo name
-    const workflow_id = 'create-pr.yml';         // Your workflow file name
-    const branch = 'main';                       // Branch to run workflow on
+    const token = '';  // Use your personal token
+    const owner = 'multiverseweb';
+    const repo = 'redirector';
+    const workflow_id = 'create-pr.yml';
+    const branch = 'main';
 
     try {
         const res = await fetch(
@@ -95,4 +94,5 @@ form.addEventListener('submit', async e => {
         showAlert("Error", "Something went wrong: " + err.message);
     }
 });
+
 </script>

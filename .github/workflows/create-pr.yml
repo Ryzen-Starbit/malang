@@ -19,33 +19,36 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Configure Git
+      - name: Set safe branch name
         run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
+          POSTFIX="${{ github.event.inputs.postfix }}"
+          if [ -z "$POSTFIX" ]; then
+            POSTFIX="new-redirect"
+          fi
+          SAFE_POSTFIX=$(echo "$POSTFIX" | tr -c '[:alnum:]-_' '-')
+          echo "BRANCH=add-redirect-$SAFE_POSTFIX" >> $GITHUB_ENV
 
       - name: Update redirects.json
         run: |
           FILE="r/redirects.json"
           POSTFIX="${{ github.event.inputs.postfix }}"
           URL="${{ github.event.inputs.longURL }}"
-          # Add new mapping
           jq --arg k "$POSTFIX" --arg v "$URL" '. + {($k): $v}' $FILE > tmp.json && mv tmp.json $FILE
 
-      - name: Create branch
+      - name: Commit changes
         run: |
-          BRANCH="add-redirect-${{ github.event.inputs.postfix }}"
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
           git checkout -b $BRANCH
           git add r/redirects.json
-          git commit -m "Add redirect: ${{ github.event.inputs.postfix }} -> ${{ github.event.inputs.longURL }}"
+          git commit -m "Add redirect: $POSTFIX -> $URL"
           git push origin $BRANCH
 
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v5
         with:
           token: ${{ secrets.PERSONAL_PAT }}
-          commit-message: "Add redirect ${{ github.event.inputs.postfix }}"
-          branch: "add-redirect-${{ github.event.inputs.postfix }}"
+          branch: ${{ env.BRANCH }}
           title: "Add redirect ${{ github.event.inputs.postfix }}"
           body: "Automatically created PR to add redirect: ${{ github.event.inputs.postfix }} -> ${{ github.event.inputs.longURL }}"
           base: main
