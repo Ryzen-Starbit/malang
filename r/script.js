@@ -1,14 +1,17 @@
-// Set your prefix here (must start and end with a slash)
+// Set your prefix (must start and end with a slash)
 const PREFIX = '/r/';
 
-fetch('redirects.json')
-  .then(response => response.json())
+// Fetch the redirects JSON from GitHub
+fetch('https://raw.githubusercontent.com/multiverseweb/redirector/main/r/redirects.json')
+  .then(response => {
+    if (!response.ok) throw new Error('Failed to load redirects.json');
+    return response.json();
+  })
   .then(redirects => {
     const pathname = window.location.pathname;
 
-    // Inject minimal HTML and fade styling
+    // Minimal HTML with fade
     document.body.innerHTML = `
-
       <div class="container" id="fadeContainer">
         <img src="/resrc/images/icons/malang.webp" alt="Malang" id="malangLogo">
         <p id="manualLinkContainer">
@@ -20,7 +23,7 @@ fetch('redirects.json')
     const container = document.getElementById('fadeContainer');
 
     if (pathname.startsWith(PREFIX)) {
-      const slug = window.location.hash.slice(2); // remove #/
+      const slug = pathname.slice(PREFIX.length).replace(/\/+$/, '');
       const targetUrl = redirects[slug];
 
       if (targetUrl) {
@@ -28,25 +31,24 @@ fetch('redirects.json')
         const manualLinkContainer = document.getElementById('manualLinkContainer');
         manualLink.href = targetUrl;
 
-        // Show manual link as fallback after 2s
+        // Show fallback link after 2s
         setTimeout(() => {
           manualLinkContainer.style.opacity = 1;
-        }, 3000);
+        }, 2000);
 
-        // Start fade-out transition before redirect
+        // Fade and redirect
         setTimeout(() => {
-          container.style.opacity = 0; // fade out
+          container.style.opacity = 0;
           setTimeout(() => {
-            // Replace page after fade-out completes
             window.location.replace(targetUrl);
-          }, 1000); // duration matches CSS transition (1s)
-        }, 1500); // how long logo stays visible before fading
+          }, 1000);
+        }, 1500);
       } else {
         document.body.innerHTML = `
           <div class="container">
             <img src="/resrc/images/icons/malang.webp" alt="Malang">
-            <h1 style="color:white;font-family:sans-serif;">404 - Page Not Found</h1>
-            <p style="color:gray;">No redirect found for "<code>${slug}</code>".</p>
+            <h1>404 - Page Not Found</h1>
+            <p>No redirect found for "<code>${slug}</code>".</p>
           </div>
         `;
       }
@@ -54,8 +56,8 @@ fetch('redirects.json')
       document.body.innerHTML = `
         <div class="container">
           <img src="/resrc/images/icons/malang.webp" alt="Malang">
-          <h1 style="color:white;font-family:sans-serif;">Invalid URL</h1>
-          <p style="color:gray;">This redirect only works under "<code>${PREFIX}</code>".</p>
+          <h1>Invalid URL</h1>
+          <p>This redirect only works under "<code>${PREFIX}</code>".</p>
         </div>
       `;
     }
@@ -63,8 +65,9 @@ fetch('redirects.json')
   .catch(error => {
     console.error('Redirect failed:', error);
     document.body.innerHTML = `
-      <div class="container" style="color:white;font-family:sans-serif;">
+      <div class="container">
         <img src="/resrc/images/icons/malang.webp" alt="Malang">
         <h1>Something went wrong.</h1>
+        <p>${error.message}</p>
       </div>`;
   });

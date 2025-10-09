@@ -96,7 +96,7 @@
   </div>
 
   <script>
-    fetch('redirects.json')
+    fetch('https://raw.githubusercontent.com/multiverseweb/redirector/main/r/redirects.json')
       .then(res => res.json())
       .then(data => {
         const container = document.getElementById('table-container');
