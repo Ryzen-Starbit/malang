@@ -20,40 +20,79 @@
     <script src="../scripts/common.js"></script>
     <script src="../scripts/authentication.js"></script>
     <script>
-        const baseURL = document.getElementById('baseURL');
-        const postfix = document.getElementById('postfix');
-        const longURL = document.getElementById('longURL');
-        const urlSpan = document.getElementById('url');
-        const urlLink = document.querySelector('a.url');
-        const form = document.getElementById('redirectorForm');
+const baseURL = document.getElementById('baseURL');
+const postfix = document.getElementById('postfix');
+const longURL = document.getElementById('longURL');
+const urlSpan = document.getElementById('url');
+const urlLink = document.querySelector('a.url');
+const form = document.getElementById('redirectorForm');
 
-        const baseOrigin = window.location.origin; // dynamic base URL
+const baseOrigin = window.location.origin; // dynamic base URL
 
-        // Set initial value
-        baseURL.textContent = `${baseOrigin}/r/#/`;
+// Set initial value
+baseURL.textContent = `${baseOrigin}/r/#/`;
 
-        // Update preview
-        function updateURL() {
-            const base = longURL.value.trim() || `${baseOrigin}/r/#/`;
-            const post = postfix.value.trim() || '';
-            urlSpan.textContent = post || 'Postfix';
-            urlLink.href = base + post;
-        }
+// Update preview
+function updateURL() {
+    const base = longURL.value.trim() || `${baseOrigin}/r/#/`;
+    const post = postfix.value.trim() || '';
+    urlSpan.textContent = post || 'Postfix';
+    urlLink.href = base + post;
+}
 
-        // Listen to both inputs
-        [postfix, longURL].forEach(el => el.addEventListener('input', updateURL));
-        updateURL();
+// Listen to both inputs
+[postfix, longURL].forEach(el => el.addEventListener('input', updateURL));
+updateURL();
 
-        // Handle form submission
-        form.addEventListener('submit', e => {
-            e.preventDefault();
+// Handle form submission
+form.addEventListener('submit', async e => {
+    e.preventDefault();
+
+    const longURLValue = longURL.value.trim();
+    const postfixValue = postfix.value.trim();
+
+    // Your GitHub settings
+    const token = ''; // ⚠️ Replace with your PAT (for testing only)
+    const owner = 'malangbvp';        // Replace with your GitHub username
+    const repo = 'malang';               // Replace with your repo name
+    const workflow_id = 'create-pr.yml';         // Your workflow file name
+    const branch = 'main';                       // Branch to run workflow on
+
+    try {
+        const res = await fetch(
+            `https://api.github.com/repos/${owner}/${repo}/actions/workflows/${workflow_id}/dispatches`,
+            {
+                method: 'POST',
+                headers: {
+                    'Authorization': `Bearer ${token}`,
+                    'Accept': 'application/vnd.github+json',
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    ref: branch,
+                    inputs: {
+                        longURL: longURLValue,
+                        postfix: postfixValue
+                    }
+                })
+            }
+        );
+
+        if (res.ok) {
             showAlert(
                 "Requested!",
-                "GitHub Action will create a pull request to update the redirector.",
+                "GitHub Action triggered! A pull request will be created to update the redirector.",
                 [
                     { text: "OK" },
                     { text: "View Redirects", onClick: () => parent.loadPage('/r/#/help') }
                 ]
             );
-        });
-    </script>
+        } else {
+            const errorText = await res.text();
+            showAlert("Error", `Failed to trigger workflow: ${errorText}`);
+        }
+    } catch (err) {
+        showAlert("Error", "Something went wrong: " + err.message);
+    }
+});
+</script>

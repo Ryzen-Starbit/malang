@@ -1,0 +1,51 @@
+name: Create Redirect PR
+
+on:
+  workflow_dispatch:
+    inputs:
+      longURL:
+        description: 'The original URL'
+        required: true
+        type: string
+      postfix:
+        description: 'The custom postfix'
+        required: true
+        type: string
+
+jobs:
+  update-redirects:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Configure Git
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Update redirects.json
+        run: |
+          FILE="r/redirects.json"
+          POSTFIX="${{ github.event.inputs.postfix }}"
+          URL="${{ github.event.inputs.longURL }}"
+          # Add new mapping
+          jq --arg k "$POSTFIX" --arg v "$URL" '. + {($k): $v}' $FILE > tmp.json && mv tmp.json $FILE
+
+      - name: Create branch
+        run: |
+          BRANCH="add-redirect-${{ github.event.inputs.postfix }}"
+          git checkout -b $BRANCH
+          git add r/redirects.json
+          git commit -m "Add redirect: ${{ github.event.inputs.postfix }} -> ${{ github.event.inputs.longURL }}"
+          git push origin $BRANCH
+
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v5
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          commit-message: "Add redirect ${{ github.event.inputs.postfix }}"
+          branch: "add-redirect-${{ github.event.inputs.postfix }}"
+          title: "Add redirect ${{ github.event.inputs.postfix }}"
+          body: "Automatically created PR to add redirect: ${{ github.event.inputs.postfix }} -> ${{ github.event.inputs.longURL }}"
+          base: main
