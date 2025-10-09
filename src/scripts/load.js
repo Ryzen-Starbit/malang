@@ -50,7 +50,7 @@ function initNavScripts() {
 
     document.getElementById("copy").addEventListener("click", function () {
         vibrate();
-        navigator.clipboard.writeText("https://malangbvp.vercel.app").then(() => {
+        navigator.clipboard.writeText(`${window.location.origin}`).then(() => {
             const themeIcon = this.querySelector("img");
             setTimeout(() => {
                 themeIcon.src = "/resrc/images/icons/link.webp";
@@ -70,12 +70,12 @@ async function loadPage(url) {
         const response = await fetch(url);
 
         if (!response.ok) {
-            content.src = "/404.html";
+            content.src = "/src/pages/404.html";
         } else {
             content.src = url;
         }
     } catch (error) {
-        content.src = "/404.html";
+        content.src = "/src/pages/404.html";
     }
 
     if (nav.classList.contains("active")) {
@@ -84,11 +84,10 @@ async function loadPage(url) {
 }
 
 // 👇 Forward query params into iframe, default = home.html
-(function forwardParamsToIframe() {
+(async function forwardParamsToIframe() {
     const params = new URLSearchParams(window.location.search);
-    let url = "src/pages/home.html"; // ✅ default page is now home.html
+    let url = "/src/pages/home.html"; // default page
 
-    // If query contains gallery filters → load gallery.html instead
     if (params.has("mode") || params.has("type") || params.has("artist")) {
         url = "/src/pages/gallery.html";
     }
@@ -96,6 +95,5 @@ async function loadPage(url) {
     if ([...params].length > 0) {
         url += "?" + params.toString();
     }
-
-    content.src = url;
+    await loadPage(url);
 })();
