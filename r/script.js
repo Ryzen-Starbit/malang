@@ -8,6 +8,7 @@ fetch('redirects.json')
 
     // Inject minimal HTML and fade styling
     document.body.innerHTML = `
+
       <div class="container" id="fadeContainer">
         <img src="/resrc/images/icons/malang.webp" alt="Malang" id="malangLogo">
         <p id="manualLinkContainer">
@@ -19,9 +20,7 @@ fetch('redirects.json')
     const container = document.getElementById('fadeContainer');
 
     if (pathname.startsWith(PREFIX)) {
-      // Extract the slug after "/r/"
-      const slug = pathname.slice(PREFIX.length).replace(/\/+$/, ''); // remove trailing slashes
-      console.log('Redirect slug:', slug);
+      const slug = window.location.hash.slice(2); // remove #/
       const targetUrl = redirects[slug];
 
       if (targetUrl) {
@@ -29,7 +28,7 @@ fetch('redirects.json')
         const manualLinkContainer = document.getElementById('manualLinkContainer');
         manualLink.href = targetUrl;
 
-        // Show manual link as fallback after 3s
+        // Show manual link as fallback after 2s
         setTimeout(() => {
           manualLinkContainer.style.opacity = 1;
         }, 3000);
@@ -38,9 +37,10 @@ fetch('redirects.json')
         setTimeout(() => {
           container.style.opacity = 0; // fade out
           setTimeout(() => {
+            // Replace page after fade-out completes
             window.location.replace(targetUrl);
           }, 1000); // duration matches CSS transition (1s)
-        }, 1500);
+        }, 1500); // how long logo stays visible before fading
       } else {
         document.body.innerHTML = `
           <div class="container">
@@ -66,6 +66,5 @@ fetch('redirects.json')
       <div class="container" style="color:white;font-family:sans-serif;">
         <img src="/resrc/images/icons/malang.webp" alt="Malang">
         <h1>Something went wrong.</h1>
-      </div>
-    `;
+      </div>`;
   });
