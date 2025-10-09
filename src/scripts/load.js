@@ -68,20 +68,20 @@ function initNavScripts() {
 async function loadPage(url) {
     try {
         const response = await fetch(url);
-
-        if (!response.ok) {
-            content.src = "/src/pages/404.html";
-        } else {
+        if (response.ok) {
             content.src = url;
+        } else {
+            const errorHtml = await fetch("/src/pages/404.html").then(r => r.text());
+            content.srcdoc = errorHtml;
         }
-    } catch (error) {
-        content.src = "/src/pages/404.html";
+    } catch {
+        const errorHtml = await fetch("/src/pages/404.html").then(r => r.text());
+        content.srcdoc = errorHtml;
     }
 
-    if (nav.classList.contains("active")) {
-        toggleMenu();
-    }
+    if (nav && nav.classList.contains("active")) toggleMenu();
 }
+
 
 // 👇 Forward query params into iframe, default = home.html
 (async function forwardParamsToIframe() {
