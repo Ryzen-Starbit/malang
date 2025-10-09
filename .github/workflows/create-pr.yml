@@ -43,7 +43,7 @@ jobs:
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v5
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.PERSONAL_PAT }}
           commit-message: "Add redirect ${{ github.event.inputs.postfix }}"
           branch: "add-redirect-${{ github.event.inputs.postfix }}"
           title: "Add redirect ${{ github.event.inputs.postfix }}"
