@@ -91,7 +91,7 @@ async function loadPage(url) {
 // 👇 Forward query params into iframe via `page` param, default = form.html
 (async function forwardParamsToIframe() {
     const params = new URLSearchParams(window.location.search);
-    let page = params.get("page") || "form.html"; // default page
+    let page = params.get("page") || "home.html"; // default page
     let url = "";
 
     // sanitize input and create full path
