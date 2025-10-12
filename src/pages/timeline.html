@@ -1,43 +1,51 @@
-<link rel="stylesheet" href="../styles/common.css">
-<link rel="stylesheet" href="../styles/timeline.css">
-<section id="timeline">
-    <div id="loader">
-        <div class="loader-container">
-            <div class="cube">
-                <div class="cube__inner"></div>
-            </div>
-            <div class="cube">
-                <div class="cube__inner"></div>
-            </div>
-            <div class="cube">
-                <div class="cube__inner"></div>
-            </div>
-        </div>
-    </div>
-    <div id="featuredContainer">
-        <h1 id="featuredTitle">Featured Events</h1>
-        <div id="featuredEvents">
-            <div class="featured same" id="fashionEuphoria">
-                <p class="featuredTitle">Fashion Euphoria</p>
-            </div>
-            <div class="featured same" id="rangotsav">
-                <p class="featuredTitle">Rangotsav</p>
+
+
+<head>
+    <link rel="stylesheet" href="../styles/common.css">
+    <link rel="stylesheet" href="../styles/timeline.css">
+</head>
+
+<body>
+    <section id="timeline">
+        <div id="loader">
+            <div class="loader-container">
+                <div class="cube">
+                    <div class="cube__inner"></div>
+                </div>
+                <div class="cube">
+                    <div class="cube__inner"></div>
+                </div>
+                <div class="cube">
+                    <div class="cube__inner"></div>
+                </div>
             </div>
         </div>
-    </div>
-    <div id="timelineDiv">
-        <h1>Timeline</h1>
-        <p>Explore the history of Malang through our timeline, showcasing significant events and milestones that
-            have shaped our journey.</p>
-        <div id="events">
-            <div class="event" id="upcoming">
-                <a href="events.html">Upcoming Events</a>
+        <div id="featuredContainer">
+            <h1 id="featuredTitle">Featured Events</h1>
+            <div id="featuredEvents">
+                <div class="featured" id="fashionEuphoria">
+                    <p class="featuredTitle">Fashion Euphoria</p>
+                </div>
+                <div class="featured" id="rangotsav">
+                    <p class="featuredTitle">Rangotsav</p>
+                </div>
             </div>
-            <div id="last"></div>
-            <button class="long-btn" id="viewMoreBtn">View Older</button>
         </div>
-    </div>
-</section>
-<div data-include="../components/footer.html"></div>
-<script src="../scripts/common.js"></script>
-<script src="../scripts/timeline.js"></script>
+        <div id="timelineDiv">
+            <h1>Timeline</h1>
+            <p>Explore the history of Malang through our timeline, showcasing significant events and milestones that
+                have shaped our journey.</p>
+            <div id="events">
+                <div class="event" id="upcoming">
+                    <a href="events.html">Upcoming Events</a>
+                </div>
+                <div id="last"></div>
+                <button class="long-btn" id="viewMoreBtn">View Older</button>
+            </div>
+        </div>
+    </section>
+    <div data-include="../components/footer.html"></div>
+    <script src="../scripts/common.js"></script>
+    <script src="../scripts/timeline.js"></script>
+</body>
+

@@ -46,17 +46,27 @@
     // Utility: update URL (replace state so back button is sane)
     function updateURL({ mode, type, artist }, replace = true) {
         const params = new URLSearchParams();
-        if (mode && mode !== 'artworks') params.set('mode', mode); // default artworks — only include if not default (optional)
+
+        // Always include the page parameter
+        params.set('page', 'gallery');
+
+        if (mode && mode !== 'artworks') params.set('mode', mode);
         if (type && type !== 'all') params.set('type', type);
         if (artist && artist !== 'all') params.set('artist', artist);
+
         const newUrl = `${location.pathname}${params.toString() ? '?' + params.toString() : ''}${location.hash || ''}`;
-        if (replace) history.replaceState({}, '', newUrl); else history.pushState({}, '', newUrl);
+        if (replace) history.replaceState({}, '', newUrl);
+        else history.pushState({}, '', newUrl);
     }
 
     // Utility: copy link to clipboard
     async function copyShareableURL() {
         try {
             const params = new URLSearchParams();
+
+            // Always include the page parameter
+            params.set('page', 'gallery');
+
             if (currentMode && currentMode !== 'artworks') params.set('mode', currentMode);
             if (selectedType && selectedType !== 'all') params.set('type', selectedType);
             if (selectedArtist && selectedArtist !== 'all') params.set('artist', selectedArtist);
@@ -70,7 +80,6 @@
             window.prompt('Copy this link:', parentUrl);
         }
     }
-
 
     // Load metadata JSON for current mode
     async function loadMetadata(mode) {
@@ -228,7 +237,7 @@
 
         for (const item of batch) {
             const wrapper = document.createElement('div');
-            wrapper.className = 'gallery-item same';
+            wrapper.className = 'gallery-item';
 
             const img = document.createElement('img');
             img.src = item.src;

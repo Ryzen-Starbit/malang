@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", () => {
           div.className = "event";
 
           const imageHtml = (event.image && event.image.trim() !== "")
-            ? `<img src="${event.image}" alt="${event.name}" loading="lazy" class="event-image same" />`
+            ? `<img src="${event.image}" alt="${event.name}" loading="lazy" class="event-image" />`
             : "";
 
           div.innerHTML = `

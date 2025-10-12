@@ -1,3 +1,5 @@
+
+
 <head>
     <link rel="stylesheet" href="../styles/common.css">
     <link rel="stylesheet" href="../styles/core.css">
@@ -23,13 +25,11 @@
         <div id="members-carousel" class="carousel">
             <div class="carousel-wrapper" id="carousel-wrapper"></div>
         </div>
-
-
     </section>
     <div id="image-modal" class="modal" style="display:none;">
         <div class="modal-content">
             <span class="modal-close">&times;</span>
-            <img id="modal-image" class="same" />
+            <img id="modal-image" />
             <div id="modal-caption">
                 <p id="modal-title">Name: NA</p>
                 <p id="modal-position">Position: NA</p>
@@ -97,7 +97,7 @@
                             imagePromises.push(loadImageWithFallback(img, imagePath, fallbackPath));
 
                             img.alt = "";
-                            img.className = "same";
+                            //img.className = "same";
 
                             const name = document.createElement("h4");
                             name.style.margin = "5px 0 0";
@@ -245,3 +245,4 @@
         }
     </script>
 </body>
+

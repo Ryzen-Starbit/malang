@@ -89,6 +89,7 @@ canvas {
     background-image: linear-gradient(to top, black 98%, transparent 100%);
     background-size: cover;
     text-align: center;
+    max-width: 100vw;
 }
 
 #landingCanvas {
@@ -216,7 +217,7 @@ canvas {
 
 .cards-container {
     position: relative;
-    width: calc(100vw - 20px);
+    width: calc(100% - 20px);
     padding: 10px;
 }
 

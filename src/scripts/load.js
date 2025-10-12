@@ -76,19 +76,17 @@ async function loadPage(url) {
         if (response.ok) {
             content.src = url;
         } else {
-            const errorHtml = await fetch("/404.html").then(r => r.text());
+            const errorHtml = await fetch("/index.html?page=404").then(r => r.text());
             content.srcdoc = errorHtml;
         }
     } catch {
-        const errorHtml = await fetch("/404.html").then(r => r.text());
+        const errorHtml = await fetch("/index.html?page=404").then(r => r.text());
         content.srcdoc = errorHtml;
     }
 
     if (nav && nav.classList.contains("active")) toggleMenu();
 }
 
-// 👇 Forward query params into iframe, default = home.html
-// 👇 Forward query params into iframe via `page` param, default = form.html
 (async function forwardParamsToIframe() {
     const params = new URLSearchParams(window.location.search);
     let page = params.get("page") || "home.html"; // default page

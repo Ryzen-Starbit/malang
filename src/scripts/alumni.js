@@ -53,7 +53,7 @@ if (container) {
                     imagePromises.push(loadImageWithFallback(img, imagePath, fallbackPath));
 
                     img.alt = "";
-                    img.className = "same";
+                    //img.className = "same";
                     img.style.cursor = "pointer";
 
                     // modal click

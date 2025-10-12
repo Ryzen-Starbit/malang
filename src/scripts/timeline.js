@@ -40,7 +40,7 @@ document.addEventListener("DOMContentLoaded", () => {
       if (Array.isArray(event.images)) {
         html += `<div class="image-row">`;
         event.images.forEach(img => {
-          html += `<img src="${img}" class="event-image same" loading="lazy">`;
+          html += `<img src="${img}" class="event-image" loading="lazy">`;
         });
         html += `</div>`;
       }
