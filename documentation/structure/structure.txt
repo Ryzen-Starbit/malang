@@ -257,6 +257,7 @@
 │   │   ├── footer.html
 │   │   └── nav.html
 │   ├── pages/
+│   │   ├── 404.html
 │   │   ├── account.html
 │   │   ├── alumni.html
 │   │   ├── aruco.html
