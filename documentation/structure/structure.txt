@@ -254,8 +254,7 @@
 ├── src/
 │   ├── components/
 │   │   ├── footer.html
-│   │   ├── nav.html
-│   │   └── temp_nav.html
+│   │   └── nav.html
 │   ├── pages/
 │   │   ├── account.html
 │   │   ├── alumni.html
@@ -265,7 +264,7 @@
 │   │   ├── core.html
 │   │   ├── documentation.html
 │   │   ├── events.html
-│   │   ├── form_template.html
+│   │   ├── form.html
 │   │   ├── gallery.html
 │   │   ├── home.html
 │   │   ├── privacy-policy.html
