@@ -20,11 +20,11 @@
                 </div>
             </div>
         </div>
-        <button id="toggleFiltersBtn" title="Show/Hide Filters" onclick="toggleFilters()"><img
+        <button id="toggleFiltersBtn" title="Show/Hide Filters" onclick="toggleFilters()" class="filterButtons"><img
                 src="/resrc/images/icons/filters.png" class="icon-small" alt="filter" id="toggleFiltersIcon"></button>
 
         <div id="filtersContainer">
-            <button id="copyFiltersBtn" title="Copy shareable URL"><img src="/resrc/images/icons/link.webp"
+            <button id="copyFiltersBtn" title="Copy shareable URL" class="filterButtons"><img src="/resrc/images/icons/link.webp"
                     class="icon-small" alt="link" id="copyFiltersIcon"></button>
             <div class="filters" id="filters-category">
                 <p>Category</p>
@@ -33,6 +33,7 @@
             </div>
             <div class="filters" id="filters-type"></div>
             <div class="filters" id="filters-artist"></div>
+            <button id="apply" class="long-btn">Filter</button>
         </div>
         <h2 id="heading"></h2>
         <div id="none"><img src="/resrc/images/icons/favicon.webp" alt="" class="icon-small">Nothing to see here...

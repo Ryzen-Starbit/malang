@@ -828,3 +828,120 @@ section.modal-active {
         margin-left: 100px;
     }
 }
+@media (min-width: 1030px) {
+    
+
+    nav {
+        top: 5px;
+        right: 45px;
+        width: calc(100vw - 200px);
+        height: 55px;
+        padding: 2px;
+        visibility: visible;
+        opacity: 1;
+        filter: none;
+        display: flex;
+        justify-content: right;
+        overflow: visible;
+    }
+
+    nav ul {
+        max-width: 100%;
+        grid-template-columns: none;
+        width: fit-content;
+        margin: 0;
+        margin-top: 3px;
+        display: flex;
+    }
+
+    nav hr {
+        display: none;
+    }
+
+    /* Dropdown menu (hidden by default but renderable for animation) */
+    nav details>*:not(summary) {
+        opacity: 0;
+        visibility: hidden;
+        position: absolute;
+        top: 60px;
+        background: #000000;
+        border: 1px solid rgb(50, 50, 50);
+        padding: 10px 0;
+        z-index: 300;
+        border-radius: 8px;
+    }
+
+    /* ✅ FIXED: ensure visibility works on hover (merged duplicate blocks) */
+    nav details:hover>*:not(summary) {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+    }
+
+    details ul {
+        display: flex;
+        flex-direction: column;
+        gap: 0px;
+        min-width: 150px;
+    }
+
+    details ul li{
+        margin: 0px;
+        border: none;
+    }
+
+    /* Arrow setup */
+    nav summary {
+        position: relative;
+        cursor: pointer;
+    }
+
+    /* Remove default marker */
+    nav summary::-webkit-details-marker {
+        display: none;
+    }
+
+    /* Add custom arrow */
+    nav summary::before {
+        display: none;
+    }
+
+    /* Flip arrow on hover */
+    nav details:hover>summary::before {
+        transform: rotate(180deg);
+    }
+
+    #nav-buttons {
+        padding-right: 0;
+        width: max-content;
+        margin: 0px;
+        background-color: black;
+    }
+
+    #nav-buttons button {
+        margin: 0;
+        padding: 5px 6px 2px 6px;
+        border: 1px solid rgb(50, 50, 50);
+    }
+
+    #nav-buttons button img {
+        width: 17px;
+        height: 17px;
+    }
+
+    #nav-buttons p {
+        display: none;
+    }
+
+    .nav-bottom {
+        display: none;
+    }
+
+    nav .icon-small {
+        display: none;
+    }
+
+    #burger {
+        display: none;
+    }
+}

@@ -19,6 +19,20 @@
     let selectedType = 'all';
     let selectedArtist = 'all';
 
+    // Pending (temporary) selections — only applied when user clicks the "Apply" button
+    let pendingType = selectedType;
+    let pendingArtist = selectedArtist;
+
+    // Highlight pending buttons (visual only — pending state)
+    function highlightPendingFilterButtons() {
+        document.querySelectorAll('.filter-btn.type').forEach(b => {
+            b.classList.toggle('pending', b.dataset.filter === pendingType);
+        });
+        document.querySelectorAll('.filter-btn.artist').forEach(b => {
+            b.classList.toggle('pending', b.dataset.filter === pendingArtist);
+        });
+    }
+
     // Utility: parse URL query params
     function parseQuery() {
         const q = new URLSearchParams(window.location.search);
@@ -134,6 +148,9 @@
 
         // Highlight selected buttons
         highlightSelectedFilterButtons();
+        // show pending selection (initially same as committed)
+        highlightPendingFilterButtons();
+
 
         // Delegated click handler (single listener)
         filtersContainer.removeEventListener('click', filtersClickHandler);
@@ -151,23 +168,23 @@
     }
 
     // Delegated handler for filter clicks
+    // Delegated handler for filter clicks (updates pending only — NO reload)
     function filtersClickHandler(e) {
         const btn = e.target.closest('.filter-btn');
         if (!btn) return;
 
         if (btn.classList.contains('type')) {
-            selectedType = btn.dataset.filter || 'all';
+            pendingType = btn.dataset.filter || 'all';
         } else if (btn.classList.contains('artist')) {
-            selectedArtist = btn.dataset.filter || 'all';
+            pendingArtist = btn.dataset.filter || 'all';
         } else {
             return;
         }
 
-        highlightSelectedFilterButtons();
-        // Save in URL + reload gallery content (reset displayed)
-        updateURL({ mode: currentMode, type: selectedType, artist: selectedArtist }, true);
-        resetGalleryAndLoad(currentMode);
+        // Update visual pending state only — do NOT change selectedType/selectedArtist yet
+        highlightPendingFilterButtons();
     }
+
 
     // Append a batch of images that match current filters
     function loadImagesBatch() {
@@ -319,8 +336,6 @@
             if (!img) return;
             openModalWithImage(img);
         });
-
-        // Close modal handlers are unchanged from your previous code: keep your existing modal close logic in the page (not duplicated here)
     }
 
     // Modal helper (keeps your existing modal DOM IDs)
@@ -389,6 +404,7 @@
         const btn = e.target.closest('.filter-btn');
         if (!btn) return;
 
+        // Update pending selections (don’t apply yet)
         if (btn.classList.contains('type')) {
             selectedType = btn.dataset.filter || 'all';
         } else if (btn.classList.contains('artist')) {
@@ -397,17 +413,20 @@
             return;
         }
 
+        // Just highlight button — no reloading, no loader
         highlightSelectedFilterButtons();
-
-        // 1. Update the URL
+    }
+    // Apply button click — actually reloads the gallery
+    document.getElementById('apply')?.addEventListener('click', () => {
+        // Update URL and heading
         updateURL({ mode: currentMode, type: selectedType, artist: selectedArtist }, true);
-
-        // 2. Update the heading immediately based on the new filters
         updateHeading();
 
-        // 3. Reset and load new gallery content
+        // Now show loader and reload gallery
+        loader.style.display = 'flex';
         resetGalleryAndLoad(currentMode);
-    }
+        toggleFilters();
+    });
 
 
     // On initial load: read URL params to set mode/type/artist (UPDATED)
@@ -500,7 +519,7 @@ function toggleFilters() {
         filtersContainer.style.opacity = '1';
         filtersContainer.style.filter = 'blur(0)';
         document.body.style.overflow = 'hidden';
-        document.getElementById('toggleFiltersIcon').src = '/resrc/images/icons/close.png'; 
+        document.getElementById('toggleFiltersIcon').src = '/resrc/images/icons/close.png';
     } else {
         filtersContainer.style.visibility = 'hidden';
         filtersContainer.style.opacity = '0';

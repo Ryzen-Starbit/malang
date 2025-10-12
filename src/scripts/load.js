@@ -85,7 +85,7 @@ async function loadPage(url) {
 // 👇 Forward query params into iframe, default = home.html
 (async function forwardParamsToIframe() {
     const params = new URLSearchParams(window.location.search);
-    let url = "/src/pages/home.html"; // default page
+    let url = "/src/pages/gallery.html"; // default page
 
     if (params.has("mode") || params.has("type") || params.has("artist")) {
         url = "/src/pages/gallery.html";
