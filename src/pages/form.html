@@ -4,8 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="../../resrc/images/icons/malang.webp" type="image/x-icon">
+    <link rel="shortcut icon" href="../../resrc/images/icons/favicon.webp" type="image/x-icon">
     <link rel="stylesheet" href="../styles/common.css">
+    <link rel="stylesheet" href="../styles/authentication.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <title>Malang | Recruitments</title>
@@ -15,19 +16,10 @@
             overflow-y: hidden;
             margin: 10px;
         }
-
-        #recruitmentForm {
-            min-height: max-content;
-            width: calc(100% - 44px);
-            margin: auto;
-            overflow-y: scroll;
-        }
-
-        #recruitmentForm input {
+        #templateForm input {
             width: calc(100% - 20px);
         }
-
-        #recruitmentForm p {
+        #templateForm p {
             font-size: 14px;
             text-align: left;
             color: #9e9e9e;
@@ -37,7 +29,7 @@
         .form-step {
             flex-direction: column;
             justify-content: space-between;
-            max-height: 0;
+
             display: none;
             opacity: 0;
             transition: opacity 0.4s ease-in-out, visibility 0.4s ease-in-out;
@@ -49,7 +41,7 @@
             opacity: 1;
         }
 
-        #skills {
+        #checks {
             width: calc(100% - 20px);
             font-size: 14px;
             padding: 10px;
@@ -57,14 +49,14 @@
             border: 1px solid #383838;
             border-radius: 10px;
             background-color: #1a1a1aa1;
-            margin: auto;
+            margin: 10px auto;
         }
 
         .checkbox-group {
             display: flex;
             flex-wrap: wrap;
             gap: 5px;
-            margin-top: 10px;
+            margin-top: 10px 0;
         }
 
         .checkbox-group input[type="checkbox"] {
@@ -133,11 +125,10 @@
 </head>
 
 <body>
-    <div data-include="../components/temp_nav.html"></div>
     <section id="recruitments">
-        <form id="recruitmentForm"
-            onsubmit="handleButtonAction('register', 'Registering' , 'Registered' , () => handleFormSubmit(event))">
-            <h3>Malang Form</h3>
+        <canvas id="gradientCanvas"></canvas>
+        <form id="templateForm" onsubmit="handleButtonAction('request', 'Requesting' , 'Requested' , () => handleFormSubmit(event))">
+            <h3>Feature Request</h3>
 
             <!--Step 1-->
             <div class="form-step active" id="step1">
@@ -145,27 +136,12 @@
                     <input type="text" id="name" name="name" placeholder="Full Name *" required />
                     <input type="text" id="email" name="email" placeholder="Email ID *" required />
                     <input type="text" id="phone" name="phone" placeholder="Phone Number *" required />
-                    <input type="text" id="insta" name="insta" placeholder="Instagram ID" />
-                    <select id="year-dropdown" name="year-dropdown" required>
-                        <option value="" disabled selected>Year *</option>
-                        <option value="1">1st</option>
-                        <option value="2">2nd</option>
-                        <option value="3">3rd</option>
-                    </select>
-
-                    <select id="branch-dropdown" name="branch-dropdown" required>
-                        <option value="" disabled selected>Branch *</option>
-                        <option value="CSBS">CSBS</option>
-                        <option value="CSE">CSE</option>
-                        <option value="CE">CE</option>
-                        <option value="EnTC">EnTC</option>
-                        <option value="ECE">ECE</option>
-                        <option value="Civil">Civil</option>
-                        <option value="R&A">R&A</option>
-                        <option value="Electronics">Electronics</option>
-                        <option value="Mechanical">Mechanical</option>
-                        <option value="IT">IT</option>
-                        <option value="Chemical">Chemical</option>
+                    <select id="position" name="position" required>
+                        <option value="" disabled selected>Position *</option>
+                        <option value="Alumni">Alumni</option>
+                        <option value="CoreMember">Core Member</option>
+                        <option value="Member">Member</option>
+                        <option value="Other">Other</option>
                     </select>
 
                 </div>
@@ -178,26 +154,23 @@
         
             <div class="form-step" id="step2">
                 <div class="inputs">
-                    <div id="skills">
-                        <p>What are you good at? *</p>
+                    <div id="checks">
+                        <p>Request Type? *</p>
                         <div class="checkbox-group">
-                            <input type="checkbox" id="Art" name="skills" value="Art"><label for="Art">Fine Art</label>
-                            <input type="checkbox" id="Photography" name="skills" value="Photography"><label
-                                for="Photography">Photography</label>
-                            <input type="checkbox" id="Video_Editing" name="skills" value="Video_Editing"><label
-                                for="Video_Editing">Video Editing</label>
-                            <input type="checkbox" id="Digital_Art" name="skills" value="Digital_Art"><label
-                                for="Digital_Art">Digital Art</label>
-                            <input type="checkbox" id="Modeling" name="skills" value="Modeling"><label
-                                for="Modeling">Modeling</label>
-                            <input type="checkbox" id="Marketing" name="skills" value="Marketing"><label
-                                for="Marketing">Marketing</label>
-                            <input type="checkbox" id="Other" name="skills" value="Other"><label
+                            <input type="checkbox" id="bug" name="type" value="bug"><label for="bug">Report a Bug</label>
+                            <input type="checkbox" id="info" name="type" value="info"><label
+                                for="info">Update My Information</label>
+                            <input type="checkbox" id="portfolio" name="type" value="portfolio"><label
+                                for="portfolio">Add My Artworks</label>
+                            <input type="checkbox" id="Other" name="Other" value="Other"><label
                                 for="Other">Other</label>
                             <div class="other-input"><input type="text" id="other_text" name="other_text"
                                     placeholder="Please specify... *"></div>
                         </div>
                     </div>
+
+                    <textarea name="description" id="description" placeholder="Describe your request. (Include all relevant details). *"
+                        required></textarea>
                 </div>
 
                 <div class="btn-group">
@@ -209,22 +182,20 @@
         
             <div class="form-step" id="step3">
                 <div class="inputs">
-                    <textarea name="motivation" id="motivation" placeholder="Motivation behind joining us? *"
-                        required></textarea>
-                    <p>We'd love to see your creativity! Upload your work through a Google Drive link, Instagram page,
-                        or any platform you prefer.</p>
-                    <input type="text" id="portfolio" name="portfolio" placeholder="Share your work!" />
+                    <p>Attach a link (if any):</p>
+                    <input type="text" id="link" name="link" placeholder="Attach a link" />
+                    <p>Attach a file (if any):</p>
+                    <input type="file" id="file" name="file" placeholder="Attach a file" />
                 </div>
                 <div class="btn-group">
                     <button type="button" onclick="prevStep(3)" class="long-btn">Previous</button>
-                    <button type="submit" onclick="validateStep(3)" class="long-btn" id="register">Register</button>
+                    <button type="submit" onclick="validateStep(3)" class="long-btn" id="request">Request</button>
                 </div>
             </div>
         </form>
     </section>
-
-    <script src="../scripts/load.js"></script>
     <script src="../scripts/common.js"></script>
+    <script src="../scripts/authentication.js"></script>
     <script>
         let currentStep = 1;
 
@@ -243,15 +214,12 @@
                 ["name", "email", "phone"].forEach(id => {
                     if (!document.getElementById(id).value.trim()) valid = false;
                 });
-                if (!document.getElementById("year-dropdown").value) valid = false;
-                if (!document.getElementById("branch-dropdown").value) valid = false;
+                if (!document.getElementById("position").value) valid = false;
             }
 
             if (step === 2) {
-                if (document.querySelectorAll("input[name='skills']:checked").length === 0) valid = false;
-            }
-            if (step === 3) {
-                ["motivation",].forEach(id => {
+                if (document.querySelectorAll("input[name='type']:checked").length === 0) valid = false;
+                ["description"].forEach(id => {
                     if (!document.getElementById(id).value.trim()) valid = false;
                 });
             }
@@ -271,8 +239,8 @@
         }
         async function handleFormSubmit(e) {
             e.preventDefault();
-            const url = "https://script.google.com/macros/s/AKfycbyEin0bH_paUOcTqK8xJMnH7POS0O_1kbDGksFRYR366D_AQjsR9zNYvKKh4yacKQCbSQ/exec";
-            const form = document.getElementById("recruitmentForm");
+            const url = "https://script.google.com/macros/s/AKfycbzOQzwj7qcwvdJhgKkQtjItYx6ZfyX3BVw48TnvkS6t8tQA4uWRIrsg-Izp7xJkcQ61/exec";
+            const form = document.getElementById("templateForm");
             const formData = new FormData(form);
 
             try {
@@ -280,15 +248,7 @@
                 const json = await response.json();
 
                 if (json.result === "success") {
-                    showAlert("Registration successful!", "You will receive further instructions via email shortly.", [{
-                        text: "Yay!", onClick: () =>
-                            showAlert(
-                                "Stay Tuned!",
-                                "Join our Whatsapp community for future updates:",
-                                [{ text: "Cancel" }, { text: "Join", onClick: () => window.open("https://malangbvp.github.io/go/📢") }],
-                                "https://malangbvp.github.io/go/📢"
-                            )
-                    }]);
+                    showAlert("Request Sent!", "Your request has been submitted successfully and will be reviewed shortly.", [{ text: "OK" }]);
                     confetti();
                     form.reset();
                     showStep(1);

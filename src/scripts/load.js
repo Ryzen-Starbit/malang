@@ -49,18 +49,23 @@ function initNavScripts() {
     });
 
     document.getElementById("copy").addEventListener("click", function () {
-        vibrate();
-        navigator.clipboard.writeText(`${window.location.origin}`).then(() => {
-            const themeIcon = this.querySelector("img");
-            setTimeout(() => {
-                themeIcon.src = "/resrc/images/icons/link.webp";
-            }, 1200);
-            themeIcon.src = themeIcon.src.includes("link.webp") ? "/resrc/images/icons/tick.webp" : "/resrc/images/icons/link.webp";
-        }).catch(err => {
-            console.error("Failed to copy: ", err);
-            alert("Failed to copy URL.");
-        });
+    vibrate();
+    let currentPage = content.src || "";
+    const baseOrigin = window.location.origin;
+    let pagePath = currentPage.replace(baseOrigin + "/src/pages/", "");
+    const shareUrl = `${baseOrigin}/?page=${pagePath}`;
+    navigator.clipboard.writeText(shareUrl).then(() => {
+        const themeIcon = this.querySelector("img");
+        themeIcon.src = themeIcon.src.includes("link.webp") ? "/resrc/images/icons/tick.webp" : "/resrc/images/icons/link.webp";
+        setTimeout(() => {
+            themeIcon.src = "/resrc/images/icons/link.webp";
+        }, 1200);
+    }).catch(err => {
+        console.error("Failed to copy: ", err);
+        showAlert("Failed","Failed to copy URL.", [{ text: "OK" }]);
     });
+});
+
 
     burgerButton.classList.remove('loading');
 }
@@ -83,16 +88,40 @@ async function loadPage(url) {
 }
 
 // 👇 Forward query params into iframe, default = home.html
+// 👇 Forward query params into iframe via `page` param, default = form.html
 (async function forwardParamsToIframe() {
     const params = new URLSearchParams(window.location.search);
-    let url = "/src/pages/gallery.html"; // default page
+    let page = params.get("page") || "form.html"; // default page
+    let url = "";
 
-    if (params.has("mode") || params.has("type") || params.has("artist")) {
-        url = "/src/pages/gallery.html";
+    // sanitize input and create full path
+    if (page.endsWith(".html")) {
+        url = `/src/pages/${page}`;
+    } else {
+        url = `/src/pages/${page}.html`;
     }
 
-    if ([...params].length > 0) {
-        url += "?" + params.toString();
+    // keep other query params for sharing
+    params.delete("page"); // remove page so it doesn't duplicate
+    const otherParams = params.toString();
+    if (otherParams) url += "?" + otherParams;
+
+    // load page with fallback to 404
+    try {
+        const response = await fetch(url);
+        if (response.ok) {
+            content.src = url;
+        } else {
+            const errorHtml = await fetch("/404.html").then(r => r.text());
+            content.srcdoc = errorHtml;
+        }
+    } catch {
+        const errorHtml = await fetch("/404.html").then(r => r.text());
+        content.srcdoc = errorHtml;
     }
-    await loadPage(url);
+
+    // close nav if open
+    const nav = document.querySelector("#nav");
+    if (nav && nav.classList.contains("active")) toggleMenu();
 })();
+

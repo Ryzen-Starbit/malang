@@ -11,13 +11,14 @@
     width: 100vw;
 }
 
-form, #loginForm {
-    transform: translate(-50%, -50%);
-    position: absolute;
-    top:50vh;
+form, #loginForm, #templateForm {
+    position: relative;
+    top: calc(0px);
     left: 50%;
+    transform: translateX(-50%);
     z-index: 100;
     max-width: 400px;
+    margin-bottom: 40px;
 }
 /*Used in redirector.html*/
 .url {

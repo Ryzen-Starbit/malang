@@ -15,7 +15,7 @@
     const page = params.get("page");
 
     if (!authMap[page]) {
-        console.error("Invalid or missing page parameter.");
+        showAlert("Error","Invalid or missing page parameter.", [{ text: "OK", onClick: () => {} }]);
         return;
     }
 
