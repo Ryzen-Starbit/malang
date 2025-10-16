@@ -31,7 +31,7 @@
         }
 
         .form-step.active {
-            min-height: calc(100vh - 220px);
+            min-height: calc(100vh - 280px);
             display: flex;
             opacity: 1;
         }
@@ -258,25 +258,22 @@
             data.fileName = fileName;
 
             try {
-                const response = await fetch(url, {
+                await fetch(url, {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify(data)
+                    body: JSON.stringify(data),
+                    mode: "no-cors"  // bypass CORS restriction
                 });
-                const json = await response.json();
 
-                if (json.result === "success") {
-                    showAlert("Request Sent!", "Your request has been submitted successfully.", [{ text: "OK" }]);
-                    confetti();
-                    form.reset();
-                    showStep(1);
-                } else {
-                    showAlert("⚠️", json.message, [{ text: "OK" }]);
-                }
+                showAlert("Request Sent!", "Your request has been submitted successfully.", [{ text: "OK" }]);
+                confetti();
+                form.reset();
+                showStep(1);
             } catch (err) {
                 console.error(err);
                 showAlert("❌ Something went wrong!", "Please try again later.", [{ text: "OK" }]);
             }
+
         }
 
         function toBase64(file) {
