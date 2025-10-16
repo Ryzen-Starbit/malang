@@ -508,7 +508,6 @@ textarea {
     resize: vertical;
     min-height: 70px;
     margin-bottom: 10px;
-    width: calc(100% - 20px);
 }
 
 #submit {
@@ -829,20 +828,18 @@ section.modal-active {
         margin-left: 100px;
     }
 }
-@media (min-width: 1030px) {
-    
-
+@media (min-width: 1200px) {
     nav {
         top: 5px;
         right: 45px;
         width: calc(100vw - 200px);
-        height: 55px;
+        height: 53px;
         padding: 2px;
         visibility: visible;
         opacity: 1;
         filter: none;
         display: flex;
-        justify-content: right;
+        justify-content: space-between;
         overflow: visible;
     }
 

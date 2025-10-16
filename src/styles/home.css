@@ -96,16 +96,30 @@ canvas {
     position: fixed;
     top: 60px;
     margin-top: -60px;
-    background:
-        linear-gradient(20deg, black 60%, teal 100%),
-        linear-gradient(-20deg, black 60%, rgb(216, 173, 0) 100%);
-    background-blend-mode: screen;
     width: 100%;
     height: 300px;
     padding: 80px 0 40px 0;
     text-align: center;
     overflow: hidden;
     z-index: -1;
+}
+
+#landingCanvas::before {
+    content: "";
+    position: absolute;
+    top: -15%;
+    left: 50%;
+    width: 700px;
+    height: 700px;
+    border-radius: 50%;
+    background: conic-gradient(rgba(255, 217, 0, 0.8) 0deg,
+            rgba(0, 255, 234, 0.726) 20deg,
+            rgba(255, 217, 0, 0.8) 60deg,
+            transparent 60deg 330deg);
+
+    transform: translate(-50%, -50%) rotate(-210deg);
+    filter: blur(40px);
+    z-index: 0;
 }
 
 #landingCanvas h1 {

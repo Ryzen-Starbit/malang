@@ -13,6 +13,7 @@
             overflow-y: hidden;
             margin: 10px;
         }
+
         #templateForm p {
             font-size: 14px;
             text-align: left;
@@ -121,7 +122,8 @@
 <body>
     <section id="recruitments">
         <canvas id="gradientCanvas"></canvas>
-        <form id="templateForm" onsubmit="handleButtonAction('request', 'Requesting' , 'Requested' , () => handleFormSubmit(event))">
+        <form id="templateForm"
+            onsubmit="handleButtonAction('request', 'Requesting' , 'Requested' , () => handleFormSubmit(event))">
             <h3>Feature Request</h3>
 
             <!--Step 1-->
@@ -145,15 +147,16 @@
                 </div>
             </div>
 
-        
+
             <div class="form-step" id="step2">
                 <div class="inputs">
                     <div id="checks">
                         <p>Request Type? *</p>
                         <div class="checkbox-group">
-                            <input type="checkbox" id="bug" name="type" value="bug"><label for="bug">Report a Bug</label>
-                            <input type="checkbox" id="info" name="type" value="info"><label
-                                for="info">Update My Information</label>
+                            <input type="checkbox" id="bug" name="type" value="bug"><label for="bug">Report a
+                                Bug</label>
+                            <input type="checkbox" id="info" name="type" value="info"><label for="info">Update My
+                                Information</label>
                             <input type="checkbox" id="portfolio" name="type" value="portfolio"><label
                                 for="portfolio">Add My Artworks</label>
                             <input type="checkbox" id="Other" name="Other" value="Other"><label
@@ -163,8 +166,8 @@
                         </div>
                     </div>
 
-                    <textarea name="description" id="description" placeholder="Describe your request. (Include all relevant details). *"
-                        required></textarea>
+                    <textarea name="description" id="description"
+                        placeholder="Describe your request. (Include all relevant details). *" required></textarea>
                 </div>
 
                 <div class="btn-group">
@@ -173,7 +176,7 @@
                 </div>
             </div>
 
-        
+
             <div class="form-step" id="step3">
                 <div class="inputs">
                     <p>Attach a link (if any):</p>
@@ -233,16 +236,37 @@
         }
         async function handleFormSubmit(e) {
             e.preventDefault();
-            const url = "https://script.google.com/macros/s/AKfycbzOQzwj7qcwvdJhgKkQtjItYx6ZfyX3BVw48TnvkS6t8tQA4uWRIrsg-Izp7xJkcQ61/exec";
+            const url = "https://script.google.com/macros/s/AKfycbyuHgxF8JjScAHpo3ZCajlIbpQGs_W0sBfsf6blGjkawRcD4TpFnG4xKEcWORNKi9gS/exec";
+
             const form = document.getElementById("templateForm");
             const formData = new FormData(form);
 
+            // Convert file to base64 if selected
+            const fileInput = document.getElementById("file");
+            let base64File = "";
+            let fileName = "";
+
+            if (fileInput.files.length > 0) {
+                const file = fileInput.files[0];
+                fileName = file.name;
+                base64File = await toBase64(file);
+            }
+
+            // Build plain JSON payload
+            const data = Object.fromEntries(formData.entries());
+            data.fileData = base64File;
+            data.fileName = fileName;
+
             try {
-                const response = await fetch(url, { method: "POST", body: formData });
+                const response = await fetch(url, {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify(data)
+                });
                 const json = await response.json();
 
                 if (json.result === "success") {
-                    showAlert("Request Sent!", "Your request has been submitted successfully and will be reviewed shortly.", [{ text: "OK" }]);
+                    showAlert("Request Sent!", "Your request has been submitted successfully.", [{ text: "OK" }]);
                     confetti();
                     form.reset();
                     showStep(1);
@@ -253,6 +277,15 @@
                 console.error(err);
                 showAlert("❌ Something went wrong!", "Please try again later.", [{ text: "OK" }]);
             }
+        }
+
+        function toBase64(file) {
+            return new Promise((resolve, reject) => {
+                const reader = new FileReader();
+                reader.readAsDataURL(file);
+                reader.onload = () => resolve(reader.result.split(",")[1]);
+                reader.onerror = (error) => reject(error);
+            });
         }
 
         (function () {
@@ -384,6 +417,3 @@
 
     </script>
 </body>
-
-
-
