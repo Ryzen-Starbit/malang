@@ -15,7 +15,7 @@
 
 <body>
     <div data-include="/src/components/nav.html"></div>
-    <iframe style="border: none; position: fixed; top:0px; left:0; width: 100vw; height: 100vh; overflow-x: hidden;"
+    <iframe style="border: none; position: fixed; top:0px; left:0; width: 100vw; height: 100vh; overflow-x: auto;"
         id="content"></iframe>
     <script src="src/scripts/common.js"></script>
     <script src="src/scripts/load.js"></script>
@@ -61,6 +61,12 @@
 
         // Expose auth to iframes
         window.firebaseAuth = auth;
+
+        const iframe = document.querySelector("#content");
+        iframe.addEventListener("wheel", (e) => {
+            iframe.contentWindow.dispatchEvent(new WheelEvent("wheel", e));
+        });
+
     </script>
 
 </body>

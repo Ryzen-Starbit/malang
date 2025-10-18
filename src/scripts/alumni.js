@@ -58,27 +58,24 @@ if (container) {
 
                     // modal click
                     img.addEventListener("click", () => {
-                        document.querySelector("section").classList.add("modal-active");
-                        document.getElementById("image-modal").style.display = "flex";
-                        document.getElementById("modal-image").src = img.src;
-                        document.getElementById("modal-title").textContent = `Name: ${member.name}`;
-                        document.getElementById("modal-position").textContent = `Position: ${member.role}`;
-                        document.getElementById("modal-batch").textContent = `Batch: ${genData.year.slice(-4)}`;
-                        document.getElementById("modal-branch").textContent = `Branch: ${member.branch || "NA"}`;
-
-                        const socials = document.getElementById("modal-socials");
-                        socials.innerHTML = "";
-                        if (member.instagram)
-                            socials.innerHTML += `<a href="${member.instagram}" target="_blank"><i class="fab fa-instagram"></i></a>`;
-                        if (member.linkedin)
-                            socials.innerHTML += `<a href="${member.linkedin}" target="_blank"><i class="fab fa-linkedin"></i></a>`;
-                        if (member.email)
-                            socials.innerHTML += `<a href="mailto:${member.email}" target="_blank"><i class="far fa-envelope"></i></a>`;
-                        if (member.github)
-                            socials.innerHTML += `<a href="${member.github}" target="_blank"><i class="fab fa-github"></i></a>`;
-                        if (member.website)
-                            socials.innerHTML += `<a href="${member.website}" target="_blank"><i class="fas fa-globe"></i></a>`;
+                        openModal({
+                            imgSrc: img.src,
+                            name: `Name: ${member.name}`,
+                            subtitle: `Position: ${member.role}`,
+                            extraInfo: {
+                                batch: `Batch: ${genData.year.slice(-4)}`,
+                                branch: `Branch: ${member.branch || "NA"}`
+                            },
+                            socials: {
+                                instagram: member.instagram,
+                                linkedin: member.linkedin,
+                                email: member.email,
+                                github: member.github,
+                                website: member.website
+                            }
+                        });
                     });
+
 
                     imgTd.appendChild(img);
                     imgRow.appendChild(imgTd);
@@ -115,19 +112,6 @@ if (container) {
                     if (loader) loader.textContent = "Failed to load alumni data.";
                     console.error("Alumni data load error:", err);
                 });
-
-            // Modal close
-            document.querySelector(".modal-close")?.addEventListener("click", () => {
-                document.querySelector("section").classList.remove("modal-active");
-                document.getElementById("image-modal").style.display = "none";
-            });
-
-            window.addEventListener("click", (e) => {
-                if (e.target.id === "image-modal") {
-                    document.querySelector("section").classList.remove("modal-active");
-                    document.getElementById("image-modal").style.display = "none";
-                }
-            });
         })
         .catch((err) => {
             if (loader) loader.textContent = "Failed to load alumni data.";

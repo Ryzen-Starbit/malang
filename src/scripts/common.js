@@ -315,3 +315,68 @@ document.addEventListener('click', (e) => {
         link.href
     );
 });
+
+
+function openModal({ imgSrc,name= '', title = '', subtitle = '', extraInfo = {}, socials = {} }) {
+    const modal = document.getElementById("image-modal");
+    const modalImg = document.getElementById("modal-image");
+    const modalName = document.getElementById("modal-name");
+    const modalTitle = document.getElementById("modal-title");
+    const modalSubtitle = document.getElementById("modal-subtitle"); // optional extra line
+    const socialsContainer = document.getElementById("modal-socials");
+
+    // Set image
+    modalImg.src = imgSrc;
+
+    // Set title and subtitle
+    if (modalTitle){  
+    modalTitle.style.fontWeight = "bold";
+    modalTitle.style.fontStyle = "italic";
+    modalTitle.textContent = title;
+    }
+    modalSubtitle ? modalSubtitle.textContent = subtitle : null;
+    modalName? modalName.textContent = name : null;
+
+    // Extra info (like role, batch, branch)
+    if (extraInfo) {
+        for (const [key, value] of Object.entries(extraInfo)) {
+            const el = document.getElementById(`modal-${key}`);
+            if (el) el.textContent = value;
+        }
+    }
+
+    // Social links
+    if (socialsContainer) {
+        socialsContainer.innerHTML = '';
+        const icons = {
+            instagram: 'fab fa-instagram',
+            linkedin: 'fab fa-linkedin',
+            email: 'far fa-envelope',
+            github: 'fab fa-github',
+            website: 'fas fa-globe'
+        };
+        for (const [platform, link] of Object.entries(socials)) {
+            if (link && icons[platform]) {
+                socialsContainer.innerHTML += `<a href="${link}" target="_blank"><i class="${icons[platform]}"></i></a>`;
+            }
+        }
+    }
+
+    // Show modal
+    document.querySelector("section").classList.add("modal-active");
+    modal.style.display = "flex";
+    document.body.style.overflow = "hidden";
+
+    // Close handlers
+    const closeModal = () => {
+        document.querySelector("section").classList.remove("modal-active");
+        modal.style.display = "none";
+        document.body.style.overflow = "auto";
+        window.removeEventListener("click", outsideClick);
+    };
+    const outsideClick = (e) => { if (e.target === modal) closeModal(); };
+
+    document.querySelector(".modal-close")?.addEventListener("click", closeModal, { once: true });
+    window.addEventListener("click", outsideClick);
+}
+

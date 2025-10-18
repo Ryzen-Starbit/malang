@@ -339,52 +339,21 @@
             copyBtn.addEventListener('click', copyShareableURL);
         }
 
-        // Modal (delegated from gallery)
         gallery.addEventListener('click', (e) => {
             const img = e.target.closest('img');
             if (!img) return;
-            openModalWithImage(img);
+            const fileName = img.src.split('/').pop();
+            const imageId = fileName.split('.')[0];
+            const meta = imageMeta[imageId] || {};
+
+            openModal({
+                imgSrc: img.src,
+                title: meta.title || '',
+                subtitle: `~ ${meta.artist || 'NA'}`,
+            });
         });
     }
 
-    // Modal helper (keeps your existing modal DOM IDs)
-    function openModalWithImage(img) {
-        const modal = document.getElementById("image-modal");
-        const modalImg = document.getElementById("modal-image");
-        const modalTitle = document.getElementById("modal-title");
-        const modalArtist = document.getElementById("modal-artist");
-
-        const fileName = img.src.split("/").pop();
-        const imageId = fileName.split('.')[0];
-        const meta = imageMeta[imageId] || {};
-
-        modalImg.src = img.src;
-        // Check for title and clear if none is present, or set it if present.
-        if (meta.title) {
-            modalTitle.innerHTML = `<h4><i>${meta.title}</i></h4>`;
-        } else {
-            modalTitle.innerHTML = ''; // IMPORTANT: Clear the title if meta.title is falsy
-        }
-        modalArtist.textContent = `~ ${meta.artist || 'NA'}`;
-        document.querySelector("section").classList.add("modal-active");
-
-        modal.style.display = "flex";
-        document.body.style.overflow = "hidden";
-
-        document.querySelector(".modal-close")?.addEventListener("click", () => {
-            document.querySelector("section").classList.remove("modal-active");
-            document.getElementById("image-modal").style.display = "none";
-            document.body.style.overflow = "auto";
-        });
-
-        window.addEventListener("click", (e) => {
-            if (e.target.id === "image-modal") {
-                document.querySelector("section").classList.remove("modal-active");
-                document.getElementById("image-modal").style.display = "none";
-                document.body.style.overflow = "auto";
-            }
-        });
-    }
 
     // On initial load: read URL params to set mode/type/artist
     function updateHeading() {
