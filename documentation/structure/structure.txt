@@ -271,6 +271,7 @@
 │   │   ├── home.html
 │   │   ├── privacy-policy.html
 │   │   ├── redirector.html
+│   │   ├── test.html
 │   │   ├── timeline.html
 │   │   ├── treasury.html
 │   │   └── unsubscribe.html
@@ -284,6 +285,7 @@
 │   │   ├── gallery.js
 │   │   ├── home.js
 │   │   ├── load.js
+│   │   ├── test.js
 │   │   ├── timeline.js
 │   │   └── treasury.js
 │   └── styles/
@@ -296,6 +298,7 @@
 │       ├── events.css
 │       ├── gallery.css
 │       ├── home.css
+│       ├── test.css
 │       └── timeline.css
 ├── variables/
 │   ├── last-updated.txt
