@@ -1,6 +1,6 @@
 let eventsData = [];
 let currentIndex = 0;
-const batchSize = 5;
+const batchSize = 7;
 
 document.addEventListener("DOMContentLoaded", () => {
   const loader = document.getElementById("loader");
@@ -30,23 +30,44 @@ document.addEventListener("DOMContentLoaded", () => {
       const eventDiv = document.createElement("div");
       eventDiv.className = "event";
 
-      let html = `
-        <details>
-          <summary class="title">${event.title}
-            <p class="date">${event.date}</p>
-          </summary>
-      `;
+      // Create <details> wrapper
+      const details = document.createElement("details");
 
-      if (Array.isArray(event.images)) {
-        html += `<div class="image-row">`;
-        event.images.forEach(img => {
-          html += `<img src="${img}" class="event-image" loading="lazy">`;
+      // Create <summary> with title and date
+      const summary = document.createElement("summary");
+      summary.className = "title";
+      summary.innerHTML = `${event.title}<p class="date">${event.date}</p>`;
+      details.appendChild(summary);
+
+      // Add image row if any
+      if (Array.isArray(event.images) && event.images.length > 0) {
+        const imageRow = document.createElement("div");
+        imageRow.className = "image-row";
+
+        event.images.forEach(imgSrc => {
+          const img = document.createElement("img");
+          img.src = imgSrc;
+          img.className = "event-image";
+          img.loading = "lazy";
+
+          img.addEventListener("click", () => {
+            openModal({ imgSrc });
+          });
+
+          imageRow.appendChild(img);
         });
-        html += `</div>`;
+
+        details.appendChild(imageRow);
       }
 
-      html += `<p class="description">${event.description}</p></details>`;
-      eventDiv.innerHTML = html;
+      // Add description
+      const desc = document.createElement("p");
+      desc.className = "description";
+      desc.textContent = event.description;
+      details.appendChild(desc);
+
+      // Combine all
+      eventDiv.appendChild(details);
       fragment.appendChild(eventDiv);
     });
 

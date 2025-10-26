@@ -1,6 +1,6 @@
 (() => {
     // Config
-    const batchSize = 15;
+    const batchSize = 20;
     const gallery = document.getElementById('gallery');
     const viewMoreBtn = document.getElementById('viewMoreBtn');
     const loader = document.getElementById('loader');
@@ -339,17 +339,16 @@
             copyBtn.addEventListener('click', copyShareableURL);
         }
 
-        gallery.addEventListener('click', (e) => {
-            const img = e.target.closest('img');
+        gallery.addEventListener("click", e => {
+            const img = e.target.closest("img");
             if (!img) return;
-            const fileName = img.src.split('/').pop();
-            const imageId = fileName.split('.')[0];
-            const meta = imageMeta[imageId] || {};
+            const id = img.src.split("/").pop().split(".")[0];
+            const meta = imageMeta[id] || {};
 
             openModal({
                 imgSrc: img.src,
-                title: meta.title || '',
-                subtitle: `~ ${meta.artist || 'NA'}`,
+                title: meta.title || "",
+                subtitle: `~ ${meta.artist || "NA"}`
             });
         });
     }
@@ -508,3 +507,14 @@ function toggleFilters() {
 
     vibrate();
 }
+
+let lock = false;
+const warn = () => {
+    if (!lock) {
+        showAlert("⚠️ Warning", "All artworks and photographs displayed on this page are the exclusive property of Malang and are subject to copyright protection. Unauthorized copying, downloading or use of these images may result in legal proceedings.", [{ text: "OK" }]); lock = true; setTimeout(() => lock = false, 2500)
+    }
+};
+addEventListener("wheel", e => { if (e.ctrlKey) { e.preventDefault(); warn() } }, { passive: false });
+addEventListener("keydown", e => {
+    if ((e.ctrlKey || e.metaKey) && /[\+\-\=\_]/.test(e.key)) { e.preventDefault(); warn() }
+});   // block Ctrl/⌘ + plus/minus zoom
