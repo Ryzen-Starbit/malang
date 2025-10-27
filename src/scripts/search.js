@@ -25,6 +25,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     searchToggle.addEventListener("click", () => {
         searchOverlay.style.display = "flex";
         input.focus();
+        vibrate(50);
     });
 
     // Hide overlay

@@ -839,6 +839,7 @@ section.modal-active {
         opacity: 1;
         filter: none;
         display: flex;
+        flex-direction: row-reverse;
         justify-content: space-between;
         overflow: visible;
     }
