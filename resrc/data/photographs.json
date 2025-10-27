@@ -203,5 +203,40 @@
         "title": "",
         "artist": "Hersheyy",
         "type": "Nature"
+    },
+    "42": {
+        "title": "Stars",
+        "artist": "Tejas",
+        "type": "Space"
+    },
+    "43": {
+        "title": "Moon",
+        "artist": "Tejas",
+        "type": "Space"
+    },
+    "44": {
+        "title": "",
+        "artist": "Tejas",
+        "type": "Space"
+    },
+    "45": {
+        "title": "Aeroplane",
+        "artist": "Tejas",
+        "type": "Street"
+    },
+    "46": {
+        "title": "Shooting Star",
+        "artist": "Tejas",
+        "type": "Space"
+    },
+    "47": {
+        "title": "Moon",
+        "artist": "Tejas",
+        "type": "Space"
+    },
+    "48": {        
+        "title": "Stars",
+        "artist": "Tejas",
+        "type": "Space"
     }
 }

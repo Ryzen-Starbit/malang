@@ -115,7 +115,7 @@
                 }
             }(o),
             function(t) {
-                const e = "artworks" === t ? 68 : 42;
+                const e = "artworks" === t ? 68 : 49;
                 d = Array.from({
                     length: e
                 }, ((e, n) => {
