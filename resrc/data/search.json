@@ -1,6 +1,6 @@
 [
     {
-        "title": "About Malang",
+        "title": "Home",
         "url": "home.html",
         "content": "Malang is the Fine Arts and Photography club of BVP COE Pune."
     },
@@ -15,8 +15,8 @@
         "content": "Explore our creative works including photos, paintings, and digital art."
     },
     {
-        "title": "Team",
+        "title": "Core Members",
         "url": "core.html",
-        "content": "Meet the talented artists, designers, and photographers behind Malang."
+        "content": "Meet the talented artists, designers, and photographers behind Malang. Core members: Prasun, Goutam, Tejas, Mohini, Priya, Satyam."
     }
 ]

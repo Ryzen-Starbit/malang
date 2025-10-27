@@ -31,7 +31,7 @@ function applyTheme(toggle = false) {
     if (themeIcon) {
         themeIcon.src = currentTheme === "light"
             ? "/resrc/images/icons/night-mode.webp"
-            : "/resrc/images/icons/sun.webp";
+            : "/resrc/images/icons/sun.png";
     }
 }
 

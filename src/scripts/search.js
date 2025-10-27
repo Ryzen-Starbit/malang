@@ -37,7 +37,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     // Render results
     function renderResults(results) {
         if (!results.length) {
-            resultsDiv.innerHTML = `<div class="no-results">No results found</div>`;
+            resultsDiv.innerHTML = `<div class="no-results">No results found.</div>`;
             return;
         }
         resultsDiv.innerHTML = results
