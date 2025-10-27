@@ -150,12 +150,12 @@
 │   │   │   ├── 25-5.webp
 │   │   │   ├── 26-1.webp
 │   │   │   ├── 26-2.webp
+│   │   │   ├── 26-3.webp
 │   │   │   ├── 26-4.webp
 │   │   │   ├── 26-5.jpg
 │   │   │   ├── 26-5.webp
 │   │   │   ├── 26-6.webp
-│   │   │   ├── person.png
-│   │   │   └── tejas.webp
+│   │   │   └── person.png
 │   │   ├── misc/
 │   │   │   ├── FE25-1.webp
 │   │   │   ├── FE25-10.webp
