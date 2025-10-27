@@ -7,9 +7,10 @@
 
 <body>
     <section id="core">
-    <div id="loader">
-        <div class="loader-container"></div>
-    </div>
+        <div id="loader">
+            <div class="loader-container"></div>
+        </div>
+        <div id="dots"></div>
         <h1 style="text-align: center;">Core Members</h1>
         <div id="members-carousel" class="carousel">
             <div class="carousel-wrapper" id="carousel-wrapper"></div>
@@ -214,6 +215,31 @@
                     if (loader) loader.textContent = "Failed to load alumni data.";
                     console.error("Alumni data load error:", err);
                 });
+        }
+
+
+        var i = 0;
+        var stars = document.getElementById("dots");
+        //-----------------------------------------------------------number of stars
+        for (i = 0; i < 100; i++) {
+            let star = document.createElement('div');
+            star.classList.add("star");
+
+
+            let size = Math.random() * 2 + 1;
+            //--------------------------------------------------------------------------
+            const _width = stars.scrollWidth - 2;
+            star.style.top = Math.random() * stars.scrollHeight + "px";
+            star.style.left = Math.random() * _width + "px";
+            star.style.width = size + "px";
+            star.style.height = size + "px";
+            //--------------------------------------------------------------------------
+
+            let delayValue = Math.random() * 4;
+
+            star.style.animationDelay = delayValue + "s";
+
+            stars.appendChild(star);
         }
     </script>
 </body>

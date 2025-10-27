@@ -4,20 +4,8 @@
     height: calc(100vh - 130px);
     min-height: 400px;
     position: relative;
-    background:
-        /* vignette to keep top + edges dark */
-        radial-gradient(
-            circle at center,
-            rgba(0, 0, 0, 0) 70%,
-            rgba(0, 0, 0, 0.9) 100%
-        ),
-        /* fade out top */
-        linear-gradient(to top, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 40%),
-        /* angled color beams */
-        linear-gradient(20deg, black 30%, rgba(0, 128, 128, 0.25) 60%, black 90%),
-        linear-gradient(-20deg, black 30%, rgba(216,173,0,0.25) 60%, black 90%),
-        /* base */
-        black;
+    background: linear-gradient(to top,#151515 0%, rgba(132, 92, 0, 0.11) 20%, transparent 60%),
+    radial-gradient(circle at center, rgba(255, 255, 255, 0.05), transparent 70%);
     background-blend-mode: normal, multiply, screen, screen, normal;
 }
 
@@ -61,6 +49,40 @@
     object-fit: cover;
     border-radius: 12px;
     pointer-events: none;
-    backface-visibility: hidden; /* hides content on the back side */
-    transform-style: preserve-3d; /* ensures children maintain 3D space */
+    backface-visibility: hidden;
+    /* hides content on the back side */
+    transform-style: preserve-3d;
+    /* ensures children maintain 3D space */
+}
+
+
+#dots {
+    width: 100vw;
+    height: calc(70vh - 10vw);
+    position: absolute;
+}
+
+.star {
+    border-radius: 100%;
+    background-color: white;
+    position: absolute;
+    animation: moveit;
+    animation-duration: 2.5s;
+    animation-iteration-count: infinite;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+@keyframes moveit {
+    0% {
+        opacity: 0.2;
+    }
+
+    50% {
+        opacity: 0.8;
+    }
+
+    100% {
+        opacity: 0.2;
+    }
 }
