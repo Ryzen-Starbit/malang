@@ -1,555 +1,280 @@
 (() => {
-    // Config
-    const batchSize = 20;
-    const gallery = document.getElementById('gallery');
-    const viewMoreBtn = document.getElementById('viewMoreBtn');
-    const loader = document.getElementById('loader');
-    const noneDiv = document.getElementById('none');
-    const filtersContainer = document.getElementById('filtersContainer'); // parent container
-    const copyBtn = document.getElementById('copyFiltersBtn');
-    const copyIcon = document.getElementById('copyFiltersIcon');
-    const heading = document.getElementById('heading');
+    const t = document.getElementById("gallery"),
+        e = document.getElementById("viewMoreBtn"),
+        n = document.getElementById("loader"),
+        s = document.getElementById("none"),
+        a = document.getElementById("filtersContainer"),
+        o = document.getElementById("copyFiltersBtn"),
+        r = document.getElementById("copyFiltersIcon"),
+        l = document.getElementById("heading");
+    let i = "artworks",
+        c = {},
+        d = [],
+        p = 0,
+        y = new Set,
+        g = "all",
+        u = "all",
+        m = g,
+        f = u;
 
-    // State
-    let currentMode = 'artworks'; // 'artworks' | 'photographs'
-    let imageMeta = {};           // metadata loaded from JSON
-    let allImages = [];           // master ordered array of image objects for currentMode
-    let scanIndex = 0;            // index into allImages for the next scanning position
-    let displayedIds = new Set(); // to avoid duplicates
-    let selectedType = 'all';
-    let selectedArtist = 'all';
-
-    // Pending (temporary) selections — only applied when user clicks the "Apply" button
-    let pendingType = selectedType;
-    let pendingArtist = selectedArtist;
-
-    // Highlight pending buttons (visual only — pending state)
-    function highlightPendingFilterButtons() {
-        document.querySelectorAll('.filter-btn.type').forEach(b => {
-            b.classList.toggle('pending', b.dataset.filter === pendingType);
-        });
-        document.querySelectorAll('.filter-btn.artist').forEach(b => {
-            b.classList.toggle('pending', b.dataset.filter === pendingArtist);
-        });
+    function h() {
+        document.querySelectorAll(".filter-btn.type").forEach((t => {
+            t.classList.toggle("pending", t.dataset.filter === m)
+        })), document.querySelectorAll(".filter-btn.artist").forEach((t => {
+            t.classList.toggle("pending", t.dataset.filter === f)
+        }))
     }
 
-    // Utility: parse URL query params
-    function parseQuery() {
-        const q = new URLSearchParams(window.location.search);
+    function w() {
+        const t = new URLSearchParams(window.location.search);
         return {
-            mode: q.get('mode') || undefined,
-            type: q.get('type') || undefined,
-            artist: q.get('artist') || undefined
-        };
+            mode: t.get("mode") || void 0,
+            type: t.get("type") || void 0,
+            artist: t.get("artist") || void 0
+        }
     }
 
-    // Utility: update URL (replace state so back button is sane)
-    function updateURL({ mode, type, artist }, replace = true) {
-        const params = new URLSearchParams();
-
-        // Always include the page parameter
-        params.set('page', 'gallery');
-
-        if (mode && mode !== 'artworks') params.set('mode', mode);
-        if (type && type !== 'all') params.set('type', type);
-        if (artist && artist !== 'all') params.set('artist', artist);
-
-        const newUrl = `${location.pathname}${params.toString() ? '?' + params.toString() : ''}${location.hash || ''}`;
-        if (replace) history.replaceState({}, '', newUrl);
-        else history.pushState({}, '', newUrl);
+    function v({
+        mode: t,
+        type: e,
+        artist: n
+    }, s = !0) {
+        const a = new URLSearchParams;
+        a.set("page", "gallery"), t && "artworks" !== t && a.set("mode", t), e && "all" !== e && a.set("type", e), n && "all" !== n && a.set("artist", n);
+        const o = `${location.pathname}${a.toString()?"?"+a.toString():""}${location.hash||""}`;
+        s ? history.replaceState({}, "", o) : history.pushState({}, "", o)
     }
-
-    // Utility: copy link to clipboard
-    async function copyShareableURL() {
+    async function E() {
         try {
-            const params = new URLSearchParams();
-
-            // Always include the page parameter
-            params.set('page', 'gallery');
-
-            if (currentMode && currentMode !== 'artworks') params.set('mode', currentMode);
-            if (selectedType && selectedType !== 'all') params.set('type', selectedType);
-            if (selectedArtist && selectedArtist !== 'all') params.set('artist', selectedArtist);
-
-            const parentUrl = `${window.location.origin}/index.html${params.toString() ? '?' + params.toString() : ''}`;
-
-            await navigator.clipboard.writeText(parentUrl);
-            copyIcon.src = '/resrc/images/icons/tick.webp';
-            setTimeout(() => (copyIcon.src = '/resrc/images/icons/link.webp'), 1500);
-        } catch (err) {
-            window.prompt('Copy this link:', parentUrl);
+            const t = new URLSearchParams;
+            t.set("page", "gallery"), i && "artworks" !== i && t.set("mode", i), g && "all" !== g && t.set("type", g), u && "all" !== u && t.set("artist", u);
+            const e = `${window.location.origin}/index.html${t.toString()?"?"+t.toString():""}`;
+            await navigator.clipboard.writeText(e), r.src = "/resrc/images/icons/tick.webp", setTimeout((() => r.src = "/resrc/images/icons/link.webp"), 1500)
+        } catch (t) {
+            window.prompt("Copy this link:", parentUrl)
         }
     }
 
-    // Load metadata JSON for current mode
-    async function loadMetadata(mode) {
-        const path = mode === 'artworks'
-            ? '../../resrc/data/artworks.json'
-            : '../../resrc/data/photographs.json';
-
-        try {
-            const res = await fetch(path);
-            const data = await res.json();
-            imageMeta = data || {};
-        } catch (err) {
-            console.warn('Failed to load metadata for', mode, err);
-            imageMeta = {};
-        }
+    function k() {
+        document.querySelectorAll(".filter-btn.type").forEach((t => {
+            t.classList.toggle("selected", t.dataset.filter === g)
+        })), document.querySelectorAll(".filter-btn.artist").forEach((t => {
+            t.classList.toggle("selected", t.dataset.filter === u)
+        }))
     }
 
-    // Build the ordered allImages array for currentMode
-    function buildAllImages(mode) {
-        // artwork count and photograph count
-        const total = mode === 'artworks' ? 68 : 42;
-
-        allImages = Array.from({ length: total }, (_, i) => {
-            const imageId = String(i);
-            const src = mode === 'artworks'
-                ? `/resrc/images/artworks/${imageId}.webp`
-                : `/resrc/images/photographs/${imageId}.webp`;
-
-            const meta = imageMeta[imageId] || {};
-            const typeToken = (meta.type || 'unknown').replace(/\s+/g, '-');
-            const artistToken = (meta.artist || 'unknown').replace(/\s+/g, '-');
-
-            return {
-                imageId,
-                src,
-                alt: meta.title || 'Untitled',
-                typeToken,
-                artistToken,
-                meta
-            };
-        });
-
-        // Reset scanning state; we only scan forward from scanIndex to keep previous order stable.
-        scanIndex = 0;
-        displayedIds = new Set();
-    }
-
-    // Populate filter buttons (type & artist) and attach delegated event handler
-    function populateFiltersAndBind() {
-        // collect tokens
-        const types = new Set();
-        const artists = new Set();
-        allImages.forEach(img => {
-            if (img.meta && img.meta.type) types.add(img.meta.type);
-            if (img.meta && img.meta.artist) artists.add(img.meta.artist);
-        });
-
-        // Build type HTML
-        const typeContainer = document.getElementById('filters-type');
-        typeContainer.innerHTML = '<p>Type</p>';
-        typeContainer.insertAdjacentHTML('beforeend', `<button class="filter-btn type" data-filter="all">All</button>`);
-        Array.from(types).sort().forEach(t => {
-            const token = t.replace(/\s+/g, '-');
-            typeContainer.insertAdjacentHTML('beforeend', `<button class="filter-btn type" data-filter="${token}">${t}</button>`);
-        });
-
-        // Build artist HTML
-        const artistContainer = document.getElementById('filters-artist');
-        artistContainer.innerHTML = currentMode === 'artworks' ? '<p>Artist</p>' : '<p>Shot By</p>';
-        artistContainer.insertAdjacentHTML('beforeend', `<button class="filter-btn artist" data-filter="all">All</button>`);
-        Array.from(artists).sort().forEach(a => {
-            const token = a.replace(/\s+/g, '-');
-            artistContainer.insertAdjacentHTML('beforeend', `<button class="filter-btn artist" data-filter="${token}">${a}</button>`);
-        });
-
-        // Highlight selected buttons
-        highlightSelectedFilterButtons();
-        // show pending selection (initially same as committed)
-        highlightPendingFilterButtons();
-
-
-        // Delegated click handler (single listener)
-        filtersContainer.removeEventListener('click', filtersClickHandler);
-        filtersContainer.addEventListener('click', filtersClickHandler);
-    }
-
-    // Highlight currently selected buttons
-    function highlightSelectedFilterButtons() {
-        document.querySelectorAll('.filter-btn.type').forEach(b => {
-            b.classList.toggle('selected', b.dataset.filter === selectedType);
-        });
-        document.querySelectorAll('.filter-btn.artist').forEach(b => {
-            b.classList.toggle('selected', b.dataset.filter === selectedArtist);
-        });
-    }
-
-    // Delegated handler for filter clicks
-    // Delegated handler for filter clicks (updates pending only — NO reload)
-    function filtersClickHandler(e) {
-        const btn = e.target.closest('.filter-btn');
-        if (!btn) return;
-
-        if (btn.classList.contains('type')) {
-            pendingType = btn.dataset.filter || 'all';
-        } else if (btn.classList.contains('artist')) {
-            pendingArtist = btn.dataset.filter || 'all';
-        } else {
-            return;
-        }
-
-        // Update visual pending state only — do NOT change selectedType/selectedArtist yet
-        highlightPendingFilterButtons();
-    }
-
-
-    // Append a batch of images that match current filters
-    function loadImagesBatch() {
-        if (!allImages || allImages.length === 0) {
-            viewMoreBtn.style.display = 'none';
-            noneDiv.style.display = 'flex';
-            return;
-        }
-
-        const batch = [];
-        // scan forward until we collect batchSize matches or exhaust list
-        while (batch.length < batchSize && scanIndex < allImages.length) {
-            const img = allImages[scanIndex];
-            scanIndex++; // advance scan pointer no matter match or not (ensures stability)
-            const matchesType = selectedType === 'all' || img.typeToken === selectedType;
-            const matchesArtist = selectedArtist === 'all' || img.artistToken === selectedArtist;
-            if (matchesType && matchesArtist && !displayedIds.has(img.imageId)) {
-                batch.push(img);
-                displayedIds.add(img.imageId);
+    function b(t) {
+        const e = t.target.closest(".filter-btn");
+        if (e) {
+            if (e.classList.contains("type")) m = e.dataset.filter || "all";
+            else {
+                if (!e.classList.contains("artist")) return;
+                f = e.dataset.filter || "all"
             }
+            h()
         }
+    }
 
-        if (batch.length === 0) {
-            // If nothing in this scan, either no matches remaining or exhausted
-            if (scanIndex >= allImages.length) {
-                // exhausted the list
-                if (gallery.children.length === 0) {
-                    noneDiv.style.display = 'flex';
-                    viewMoreBtn.style.display = 'none';
-                } else {
-                    // no more matches; hide view more
-                    viewMoreBtn.style.display = 'none';
+    function L() {
+        if (!d || 0 === d.length) return e.style.display = "none", void(s.style.display = "flex");
+        const a = [];
+        for (; a.length < 20 && p < d.length;) {
+            const t = d[p];
+            p++;
+            const e = "all" === g || t.typeToken === g,
+                n = "all" === u || t.artistToken === u;
+            e && n && !y.has(t.imageId) && (a.push(t), y.add(t.imageId))
+        }
+        if (0 === a.length) return void(p >= d.length && (0 === t.children.length ? (s.style.display = "flex", e.style.display = "none") : e.style.display = "none"));
+        const o = document.createDocumentFragment(),
+            r = [];
+        for (const t of a) {
+            const e = document.createElement("div");
+            e.className = "gallery-item";
+            const n = document.createElement("img");
+            n.src = t.src, n.alt = t.alt, n.className = `${t.typeToken} ${t.artistToken}`, e.appendChild(n), o.appendChild(e), r.push(new Promise((t => {
+                if (n.complete) return t();
+                n.onload = n.onerror = () => t()
+            })))
+        }
+        t.appendChild(o), Promise.all(r).then((() => {
+            n.style.display = "none", applyTheme?.()
+        })), p >= d.length ? e.style.display = "none" : e.style.display = "block";
+        const l = t.querySelectorAll(".gallery-item").length;
+        s.style.display = 0 === l ? "flex" : "none"
+    }
+    async function A(o) {
+        s.style.display = "none", n.style.display = "flex", t.innerHTML = "", y = new Set, p = 0, e.style.display = "none", i = o, await async function(t) {
+                const e = "artworks" === t ? "../../resrc/data/artworks.json" : "../../resrc/data/photographs.json";
+                try {
+                    const t = await fetch(e),
+                        n = await t.json();
+                    c = n || {}
+                } catch (t) {
+                    c = {}
                 }
+            }(o),
+            function(t) {
+                const e = "artworks" === t ? 68 : 42;
+                d = Array.from({
+                    length: e
+                }, ((e, n) => {
+                    const s = String(n),
+                        a = "artworks" === t ? `/resrc/images/artworks/${s}.webp` : `/resrc/images/photographs/${s}.webp`,
+                        o = c[s] || {},
+                        r = (o.type || "unknown").replace(/\s+/g, "-"),
+                        l = (o.artist || "unknown").replace(/\s+/g, "-");
+                    return {
+                        imageId: s,
+                        src: a,
+                        alt: o.title || "Untitled",
+                        typeToken: r,
+                        artistToken: l,
+                        meta: o
+                    }
+                })), p = 0, y = new Set
+            }(o),
+            function() {
+                const t = new Set,
+                    e = new Set;
+                d.forEach((n => {
+                    n.meta && n.meta.type && t.add(n.meta.type), n.meta && n.meta.artist && e.add(n.meta.artist)
+                }));
+                const n = document.getElementById("filters-type");
+                n.innerHTML = "<p>Type</p>", n.insertAdjacentHTML("beforeend", '<button class="filter-btn type" data-filter="all">All</button>'), Array.from(t).sort().forEach((t => {
+                    const e = t.replace(/\s+/g, "-");
+                    n.insertAdjacentHTML("beforeend", `<button class="filter-btn type" data-filter="${e}">${t}</button>`)
+                }));
+                const s = document.getElementById("filters-artist");
+                s.innerHTML = "artworks" === i ? "<p>Artist</p>" : "<p>Shot By</p>", s.insertAdjacentHTML("beforeend", '<button class="filter-btn artist" data-filter="all">All</button>'), Array.from(e).sort().forEach((t => {
+                    const e = t.replace(/\s+/g, "-");
+                    s.insertAdjacentHTML("beforeend", `<button class="filter-btn artist" data-filter="${e}">${t}</button>`)
+                })), k(), h(), a.removeEventListener("click", b), a.addEventListener("click", b)
+            }();
+        const r = w();
+        r.type && (g = r.type), r.artist && (u = r.artist), k(), L(), setTimeout((() => {
+            n.style.display = "none"
+        }), 3e3)
+    }
+
+    function S() {
+        const t = w(),
+            e = i.charAt(0).toUpperCase() + i.slice(1),
+            n = t.artist,
+            s = i || "work";
+        if (n && "all" !== n) {
+            const t = n.replace(/-/g, " ");
+            l.textContent = `${t}'s ${s.charAt(0).toUpperCase()+s.slice(1)}`
+        } else l.textContent = e
+    }
+
+    function b(t) {
+        const e = t.target.closest(".filter-btn");
+        if (e) {
+            if (e.classList.contains("type")) g = e.dataset.filter || "all";
+            else {
+                if (!e.classList.contains("artist")) return;
+                u = e.dataset.filter || "all"
             }
-            return;
-        }
-
-        // Append batch to DOM
-        const fragment = document.createDocumentFragment();
-        const imagePromises = [];
-
-        for (const item of batch) {
-            const wrapper = document.createElement('div');
-            wrapper.className = 'gallery-item';
-
-            const img = document.createElement('img');
-            img.src = item.src;
-            img.alt = item.alt;
-            img.className = `${item.typeToken} ${item.artistToken}`;
-
-            wrapper.appendChild(img);
-            fragment.appendChild(wrapper);
-
-            // image loaded promise
-            imagePromises.push(new Promise(resolve => {
-                if (img.complete) return resolve();
-                img.onload = img.onerror = () => resolve();
-            }));
-        }
-
-        gallery.appendChild(fragment);
-
-        // hide loader when loaded (if shown)
-        Promise.all(imagePromises).then(() => {
-            loader.style.display = 'none';
-            applyTheme?.();
-        });
-
-        // control view more visibility
-        // If scanIndex exhausted and no matches left, hide
-        if (scanIndex >= allImages.length) {
-            viewMoreBtn.style.display = 'none';
-        } else {
-            viewMoreBtn.style.display = 'block';
-        }
-
-        // match/no match for noneDiv
-        const currentlyVisibleCount = gallery.querySelectorAll('.gallery-item').length;
-        noneDiv.style.display = currentlyVisibleCount === 0 ? 'flex' : 'none';
-    }
-
-    // Reset gallery and load first batch
-    async function resetGalleryAndLoad(mode) {
-        noneDiv.style.display = 'none';
-        loader.style.display = 'flex';
-        gallery.innerHTML = '';
-        displayedIds = new Set();
-        scanIndex = 0;
-        viewMoreBtn.style.display = 'none';
-
-        currentMode = mode;
-        await loadMetadata(mode);
-        buildAllImages(mode);
-        populateFiltersAndBind();
-
-        // Set selected filters from URL (if present), else keep defaults
-        const q = parseQuery();
-        if (q.type) selectedType = q.type;
-        if (q.artist) selectedArtist = q.artist;
-
-        // Highlight selected (after populate)
-        highlightSelectedFilterButtons();
-
-        // Load initial batch
-        loadImagesBatch();
-
-        // Hide loader when stable or shortly
-        setTimeout(() => {
-            loader.style.display = 'none';
-        }, 3000);
-    }
-
-    // Attach main event listeners
-    function bindUI() {
-        const photographsBtn = document.getElementById('photographs');
-        const artworksBtn = document.getElementById('artworks');
-
-        photographsBtn.addEventListener('click', () => {
-            currentMode = 'photographs'; // Set current mode immediately
-            selectedType = 'all';
-            selectedArtist = 'all';
-            updateURL({ mode: currentMode, type: selectedType, artist: selectedArtist }, true);
-            resetGalleryAndLoad(currentMode);
-            updateHeading();
-        });
-
-        artworksBtn.addEventListener('click', () => {
-            currentMode = 'artworks'; // Set current mode immediately
-            selectedType = 'all';
-            selectedArtist = 'all';
-            updateURL({ mode: currentMode, type: selectedType, artist: selectedArtist }, true);
-            resetGalleryAndLoad(currentMode);
-            updateHeading();
-        });
-
-        // view more
-        viewMoreBtn.addEventListener('click', () => {
-            loadImagesBatch();
-        });
-
-        // copy url
-        if (copyBtn) {
-            copyBtn.addEventListener('click', copyShareableURL);
-        }
-
-        gallery.addEventListener("click", e => {
-            const img = e.target.closest("img");
-            if (!img) return;
-            const id = img.src.split("/").pop().split(".")[0];
-            const meta = imageMeta[id] || {};
-
-            openModal({
-                imgSrc: img.src,
-                title: meta.title || "",
-                subtitle: `~ ${meta.artist || "NA"}`
-            });
-        });
-    }
-
-
-    // On initial load: read URL params to set mode/type/artist
-    function updateHeading() {
-        const q = parseQuery();
-        const currentModeText = currentMode.charAt(0).toUpperCase() + currentMode.slice(1); // 'Artworks' or 'Photographs'
-
-        // Get the artist from URL or current state (URL is more reliable here)
-        const artist = q.artist;
-
-        // Get the mode name to append, or default to 'work'
-        const modeText = currentMode || 'work';
-
-        if (artist && artist !== 'all') {
-            const displayArtist = artist.replace(/-/g, ' ');
-
-            heading.textContent = `${displayArtist}'s ${modeText.charAt(0).toUpperCase() + modeText.slice(1)}`;
-        } else {
-            // Default heading: "Artworks" or "Photographs"
-            heading.textContent = currentModeText;
+            k()
         }
     }
-
-
-    // Delegated handler for filter clicks (UPDATED)
-    function filtersClickHandler(e) {
-        const btn = e.target.closest('.filter-btn');
-        if (!btn) return;
-
-        // Update pending selections (don’t apply yet)
-        if (btn.classList.contains('type')) {
-            selectedType = btn.dataset.filter || 'all';
-        } else if (btn.classList.contains('artist')) {
-            selectedArtist = btn.dataset.filter || 'all';
-        } else {
-            return;
-        }
-
-        // Just highlight button — no reloading, no loader
-        highlightSelectedFilterButtons();
-    }
-    // Apply button click — actually reloads the gallery
-    document.getElementById('apply')?.addEventListener('click', () => {
-        // Update URL and heading
-        updateURL({ mode: currentMode, type: selectedType, artist: selectedArtist }, true);
-        updateHeading();
-
-        // Now show loader and reload gallery
-        loader.style.display = 'flex';
-        resetGalleryAndLoad(currentMode);
-        toggleFilters();
-    });
-
-
-    // On initial load: read URL params to set mode/type/artist (UPDATED)
-    async function init() {
-        bindUI();
-
-        const q = parseQuery();
-        const initialMode = q.mode === 'photographs' ? 'photographs' : 'artworks';
-        // assign selected tokens if provided
-        selectedType = q.type || 'all';
-        selectedArtist = q.artist || 'all';
-
-        // Update URL to normalized form (so default params are hidden)
-        updateURL({ mode: initialMode, type: selectedType, artist: selectedArtist }, true);
-
-        await resetGalleryAndLoad(initialMode);
-
-        // *** CALL THE NEW HEADING FUNCTION HERE ***
-        updateHeading();
-
-        // handle browser navigation (back/forward)
-        window.addEventListener('popstate', () => {
-            const q2 = parseQuery();
-            selectedType = q2.type || 'all';
-            selectedArtist = q2.artist || 'all';
-            const mode = q2.mode === 'photographs' ? 'photographs' : 'artworks';
-            resetGalleryAndLoad(mode);
-            // Also update heading on popstate
-            updateHeading();
-        });
-    }
-
-    // start
-    init();
+    document.getElementById("apply")?.addEventListener("click", (() => {
+        v({
+            mode: i,
+            type: g,
+            artist: u
+        }, !0), S(), n.style.display = "flex", A(i), toggleFilters()
+    })), async function() {
+        ! function() {
+            const n = document.getElementById("photographs"),
+                s = document.getElementById("artworks");
+            n.addEventListener("click", (() => {
+                i = "photographs", g = "all", u = "all", v({
+                    mode: i,
+                    type: g,
+                    artist: u
+                }, !0), A(i), S()
+            })), s.addEventListener("click", (() => {
+                i = "artworks", g = "all", u = "all", v({
+                    mode: i,
+                    type: g,
+                    artist: u
+                }, !0), A(i), S()
+            })), e.addEventListener("click", (() => {
+                L()
+            })), o && o.addEventListener("click", E), t.addEventListener("click", (t => {
+                const e = t.target.closest("img");
+                if (!e) return;
+                const n = e.src.split("/").pop().split(".")[0],
+                    s = c[n] || {};
+                openModal({
+                    imgSrc: e.src,
+                    title: s.title || "",
+                    subtitle: `~ ${s.artist||"NA"}`
+                })
+            }))
+        }();
+        const n = w(),
+            s = "photographs" === n.mode ? "photographs" : "artworks";
+        g = n.type || "all", u = n.artist || "all", v({
+            mode: s,
+            type: g,
+            artist: u
+        }, !0), await A(s), S(), window.addEventListener("popstate", (() => {
+            const t = w();
+            g = t.type || "all", u = t.artist || "all";
+            A("photographs" === t.mode ? "photographs" : "artworks"), S()
+        }))
+    }()
 })();
-
-const secureAction = (e) => {
-    e.preventDefault();
-    e.stopPropagation();
-    showAlert("⚠️ Warning", "All artworks and photographs displayed on this page are the exclusive property of Malang and are subject to copyright protection. Unauthorized copying, downloading or use of these images may result in legal proceedings.", [{ text: "OK" }]);
-    navigator.vibrate(150);
-    try { navigator.clipboard?.writeText?.(""); } catch { }
+const secureAction = t => {
+    t.preventDefault(), t.stopPropagation(), showAlert("⚠️ Warning", "All artworks and photographs displayed on this page are the exclusive property of Malang and are subject to copyright protection. Unauthorized copying, downloading or use of these images may result in legal proceedings.", [{
+        text: "OK"
+    }]), navigator.vibrate(150);
+    try {
+        navigator.clipboard?.writeText?.("")
+    } catch {}
 };
-
-document.addEventListener("keydown", function (e) {
-    const k = (e.key || "").toLowerCase();
-    const isControlOrMeta = e.ctrlKey || e.metaKey;
-
-    const blocked = (
-        // Copy, Save, View Source, Inspect
-        (isControlOrMeta && (k === "c" || k === "s" || k === "u" || k === "j" || k === "i")) ||
-        k === "f12" || // Dev Tools
-        // Common Screenshot Keys
-        k === "printscreen" || k === "print" || k === "snapshot" ||
-        (e.altKey && k === "printscreen") ||
-        (e.shiftKey && k === "printscreen") ||
-        (e.key === "Meta" && e.shiftKey && (k === "3" || k === "4")) // Mac Screenshot Cmd+Shift+3/4
-    );
-
-    if (blocked) {
-        secureAction(e);
-    }
-});
-
-// Block right-click/long-press context menu (Desktop & Mobile)
-document.addEventListener("contextmenu", function (e) {
-    secureAction(e);
-});
-
-// Block text selection
-document.addEventListener("selectstart", function (e) {
-    e.preventDefault();
-});
-
-// Block image dragging
-document.querySelectorAll("img").forEach(img => {
-    img.setAttribute("draggable", "false");
-    img.addEventListener("dragstart", secureAction);
-});
 
 function toggleFilters() {
-    const filtersContainer = document.getElementById('filtersContainer');
-    if (!filtersContainer) return;
-
-    const isHidden = getComputedStyle(filtersContainer).visibility === 'hidden';
-
-
-    if (isHidden) {
-        filtersContainer.style.visibility = 'visible';
-        filtersContainer.style.opacity = '1';
-        filtersContainer.style.filter = 'blur(0)';
-        document.body.style.overflow = 'hidden';
-        document.getElementById('toggleFiltersIcon').src = '/resrc/images/icons/close.png';
-    } else {
-        filtersContainer.style.visibility = 'hidden';
-        filtersContainer.style.opacity = '0';
-        filtersContainer.style.filter = 'blur(5px)';
-        document.body.style.overflow = '';
-        document.getElementById('toggleFiltersIcon').src = '/resrc/images/icons/filters.png';
-    }
-
-    vibrate();
+    const t = document.getElementById("filtersContainer");
+    if (!t) return;
+    "hidden" === getComputedStyle(t).visibility ? (t.style.visibility = "visible", t.style.opacity = "1", t.style.filter = "blur(0)", document.body.style.overflow = "hidden", document.getElementById("toggleFiltersIcon").src = "/resrc/images/icons/close.png") : (t.style.visibility = "hidden", t.style.opacity = "0", t.style.filter = "blur(5px)", document.body.style.overflow = "", document.getElementById("toggleFiltersIcon").src = "/resrc/images/icons/filters.png"), vibrate()
 }
-
-let lock = false;
-
+document.addEventListener("keydown", (function(t) {
+    const e = (t.key || "").toLowerCase();
+    ((t.ctrlKey || t.metaKey) && ("c" === e || "s" === e || "u" === e || "j" === e || "i" === e) || "f12" === e || "printscreen" === e || "print" === e || "snapshot" === e || t.altKey && "printscreen" === e || t.shiftKey && "printscreen" === e || "Meta" === t.key && t.shiftKey && ("3" === e || "4" === e)) && secureAction(t)
+})), document.addEventListener("contextmenu", (function(t) {
+    secureAction(t)
+})), document.addEventListener("selectstart", (function(t) {
+    t.preventDefault()
+})), document.querySelectorAll("img").forEach((t => {
+    t.setAttribute("draggable", "false"), t.addEventListener("dragstart", secureAction)
+}));
+let lock = !1;
 const warn = () => {
-    if (!lock) {
-        showAlert(
-            "⚠️ Warning",
-            "All artworks and photographs displayed on this page are the exclusive property of Malang and are subject to copyright protection. Unauthorized copying, downloading or use of these images may result in legal proceedings.",
-            [{ text: "OK" }]
-        );
-        lock = true;
-        setTimeout(() => lock = false, 2500);
-    }
+    lock || (showAlert("⚠️ Warning", "All artworks and photographs displayed on this page are the exclusive property of Malang and are subject to copyright protection. Unauthorized copying, downloading or use of these images may result in legal proceedings.", [{
+        text: "OK"
+    }]), lock = !0, setTimeout((() => lock = !1), 2500))
 };
-
-// 🖥️ Desktop zoom prevention
-addEventListener("wheel", e => {
-    if (e.ctrlKey) { e.preventDefault(); warn(); }
-}, { passive: false });
-
-addEventListener("keydown", e => {
-    if ((e.ctrlKey || e.metaKey) && /[\+\-\=\_]/.test(e.key)) {
-        e.preventDefault(); warn();
-    }
-});
-
-// 📱 Mobile pinch zoom prevention
+addEventListener("wheel", (t => {
+    t.ctrlKey && (t.preventDefault(), warn())
+}), {
+    passive: !1
+}), addEventListener("keydown", (t => {
+    (t.ctrlKey || t.metaKey) && /[\+\-\=\_]/.test(t.key) && (t.preventDefault(), warn())
+}));
 let lastTouchDistance = 0;
-
-addEventListener("touchmove", e => {
-    if (e.touches.length === 2) {
-        e.preventDefault();
-        warn();
-    }
-}, { passive: false });
-
-// Optional: prevent double-tap zoom
+addEventListener("touchmove", (t => {
+    2 === t.touches.length && (t.preventDefault(), warn())
+}), {
+    passive: !1
+});
 let lastTouchEnd = 0;
-addEventListener("touchend", e => {
-    const now = Date.now();
-    if (now - lastTouchEnd <= 300) {
-        e.preventDefault();
-        warn();
-    }
-    lastTouchEnd = now;
-}, { passive: false });
+addEventListener("touchend", (t => {
+    const e = Date.now();
+    e - lastTouchEnd <= 300 && (t.preventDefault(), warn()), lastTouchEnd = e
+}), {
+    passive: !1
+});

@@ -49,24 +49,22 @@ function initNavScripts() {
     });
 
     document.getElementById("copy").addEventListener("click", function () {
-    vibrate();
-    let currentPage = content.src || "";
-    const baseOrigin = window.location.origin;
-    let pagePath = currentPage.replace(baseOrigin + "/src/pages/", "");
-    const shareUrl = `${baseOrigin}/?page=${pagePath}`;
-    navigator.clipboard.writeText(shareUrl).then(() => {
-        const themeIcon = this.querySelector("img");
-        themeIcon.src = themeIcon.src.includes("link.webp") ? "/resrc/images/icons/tick.webp" : "/resrc/images/icons/link.webp";
-        setTimeout(() => {
-            themeIcon.src = "/resrc/images/icons/link.webp";
-        }, 1200);
-    }).catch(err => {
-        console.error("Failed to copy: ", err);
-        showAlert("Failed","Failed to copy URL.", [{ text: "OK" }]);
+        vibrate();
+        let currentPage = content.src || "";
+        const baseOrigin = window.location.origin;
+        let pagePath = currentPage.replace(baseOrigin + "/src/pages/", "");
+        const shareUrl = `${baseOrigin}/?page=${pagePath}`;
+        navigator.clipboard.writeText(shareUrl).then(() => {
+            const themeIcon = this.querySelector("img");
+            themeIcon.src = themeIcon.src.includes("link.webp") ? "/resrc/images/icons/tick.webp" : "/resrc/images/icons/link.webp";
+            setTimeout(() => {
+                themeIcon.src = "/resrc/images/icons/link.webp";
+            }, 1200);
+        }).catch(err => {
+            console.error("Failed to copy: ", err);
+            showAlert("Failed", "Failed to copy URL.", [{ text: "OK" }]);
+        });
     });
-});
-
-
     burgerButton.classList.remove('loading');
 }
 
@@ -85,6 +83,7 @@ async function loadPage(url) {
     }
 
     if (nav && nav.classList.contains("active")) toggleMenu();
+    document.getElementById("searchOverlay").style.display = "none";
 }
 
 (async function forwardParamsToIframe() {
