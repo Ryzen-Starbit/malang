@@ -99,7 +99,7 @@ h1 {
 .loader-container {
     --uib-size: 80px;
     --uib-color: rgb(255, 255, 255);
-    --uib-speed: 1s;
+    --uib-speed: 0.7s;
     --uib-stroke: 5px;
     --uib-bg-opacity: .1;
     position: relative;
