@@ -1,6 +1,5 @@
 document.addEventListener("DOMContentLoaded", async () => {
 
-    // ✅ Utility: Wait until an element exists in DOM
     const waitForElement = (selector) => {
         return new Promise(resolve => {
             if (document.querySelector(selector)) return resolve(document.querySelector(selector));
@@ -31,13 +30,52 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     const fuse = new Fuse(data, {
         keys: ["title", "content"],
-        threshold: 0.3
+        threshold: 0.3,
+        includeMatches: true
     });
+
+    function highlightText(text, indices) {
+        if (!indices || !indices.length) return text;
+        let result = "";
+        let lastIndex = 0;
+        indices.forEach(([start, end]) => {
+            result += text.slice(lastIndex, start);
+            result += `<mark>${text.slice(start, end + 1)}</mark>`;
+            lastIndex = end + 1;
+        });
+        result += text.slice(lastIndex);
+        return result;
+    }
+
+    function renderResults(results) {
+        if (!results.length) {
+            resultsDiv.innerHTML = `<div class="no-results">No results found.</div>`;
+            return;
+        }
+
+        resultsDiv.innerHTML = results
+            .map(r => {
+                const item = r.item;
+                const titleMatch = r.matches?.find(m => m.key === "title");
+                const contentMatch = r.matches?.find(m => m.key === "content");
+
+                const highlightedTitle = highlightText(item.title, titleMatch?.indices);
+                const highlightedContent = highlightText(item.content.substring(0, 120), contentMatch?.indices);
+
+                return `
+                    <a href="#" onclick="loadPage('${item.url}'); return false;">
+                        <strong>${highlightedTitle}</strong><br>
+                        <small>${highlightedContent}...</small>
+                    </a>
+                `;
+            })
+            .join("");
+    }
 
     searchToggle.addEventListener("click", () => {
         searchOverlay.style.display = "flex";
         input.focus();
-        if (navigator.vibrate) navigator.vibrate(50);
+        if (typeof vibrate === "function") vibrate(50);
     });
 
     searchClose.addEventListener("click", () => {
@@ -45,21 +83,6 @@ document.addEventListener("DOMContentLoaded", async () => {
         input.value = "";
         resultsDiv.innerHTML = "";
     });
-
-    function renderResults(results) {
-        if (!results.length) {
-            resultsDiv.innerHTML = `<div class="no-results">No results found.</div>`;
-            return;
-        }
-        resultsDiv.innerHTML = results
-            .map(r => `
-                <a href="${r.item.url}">
-                    <strong>${r.item.title}</strong><br>
-                    <small>${r.item.content.substring(0, 80)}...</small>
-                </a>
-            `)
-            .join("");
-    }
 
     let debounceTimer;
     input.addEventListener("input", () => {
