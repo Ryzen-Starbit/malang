@@ -1,23 +1,23 @@
 [
     {
-        "title": "404.html",
+        "title": "Malang | 404 Not Found",
         "url": "/src/pages/404.html",
-        "content": "404 Page Not Found This content doesn't exist, or you don't have permission to view it. Go Back"
+        "content": "Malang | 404 Not Found 404 Page Not Found This content doesn't exist, or you don't have permission to view it. Go Back"
     },
     {
-        "title": "account.html",
+        "title": "Malang | Account",
         "url": "/src/pages/account.html",
-        "content": "Authentication Required. You can now access the following tools: Claims Media Kit Redirector Site Docs Treasury Log in with Google Log out"
+        "content": "Malang | Account Authentication Required. You can now access the following tools: Claims Media Kit Redirector Site Docs Treasury Log in with Google Log out"
     },
     {
-        "title": "alumni.html",
+        "title": "Malang | Alumni",
         "url": "/src/pages/alumni.html",
-        "content": "Malang Alumni Celebrating the legacy, talent, and stories of those who once walked the halls of Malang. \u00d7 Name: NA Position: NA Batch: NA Branch: NA"
+        "content": "Malang | Alumni Malang Alumni Celebrating the legacy, talent, and stories of those who once walked the halls of Malang. \u00d7 Name: NA Position: NA Batch: NA Branch: NA"
     },
     {
-        "title": "aruco.html",
+        "title": "Malang | ArUCo",
         "url": "/src/pages/aruco.html",
-        "content": "Scan. Discover. Experience Art Differently. Point your camera at our ArUCo marker."
+        "content": "Malang | ArUCo Scan. Discover. Experience Art Differently. Point your camera at our ArUCo marker."
     },
     {
         "title": "Malang | Authenticator",
@@ -25,14 +25,14 @@
         "content": "Malang | Authenticator You must be signed in to view this page. Authentication Required. Incorrect password. Try again. Enter"
     },
     {
-        "title": "claims.html",
+        "title": "Malang | Claims",
         "url": "/src/pages/claims.html",
-        "content": "You must be signed in to view this page. Claim your bills Bill Attachment * . Claim"
+        "content": "Malang | Claims You must be signed in to view this page. Claim your bills Bill Attachment * . Claim"
     },
     {
-        "title": "core.html",
+        "title": "Malang | Core Members",
         "url": "/src/pages/core.html",
-        "content": "Core Members \u00d7 Name: NA Position: NA Batch: NA Branch: NA"
+        "content": "Malang | Core Members Core Members \u00d7 Name: NA Position: NA Batch: NA Branch: NA"
     },
     {
         "title": "Malang | Site Documentation",
@@ -40,53 +40,53 @@
         "content": "Malang | Site Documentation Last Updated: Loading... Loading... Site Structure \u26cf\ufe0e W/\u2665 for"
     },
     {
-        "title": "events.html",
+        "title": "Malang | Events",
         "url": "/src/pages/events.html",
-        "content": "Calendar | Malang Events Happening Now!"
+        "content": "Malang | Events Calendar | Malang Events Happening Now!"
     },
     {
-        "title": "Malang | Recruitments",
+        "title": "Malang | Form",
         "url": "/src/pages/form.html",
-        "content": "Malang | Recruitments Feature Request Position * Malang Alumni Core Member Member Other Next Request Type? * Report a Bug Update My Information Add My Artworks Other Previous Next Attach a link (if any): Attach a file (if any): Previous Request"
+        "content": "Malang | Form Feature Request Position * Malang Alumni Core Member Member Other Next Request Type? * Report a Bug Update My Information Add My Artworks Other Previous Next Attach a link (if any): Attach a file (if any): Previous Request"
     },
     {
-        "title": "Malang | Art Gallery",
+        "title": "Malang | Gallery",
         "url": "/src/pages/gallery.html",
-        "content": "Malang | Art Gallery Category Artworks Photographs Filter Nothing to see here... View More \u00d7"
-    },
-    {
-        "title": "home.html",
-        "url": "/src/pages/home.html",
-        "content": "Fine Arts & Photography Club For the Kalakaar in you! Contact Us Discover Your Creative Oasis at Malang Our mission is to provide a platform for individuals to express themselves, explore their artistic passions, and collaborate with like-minded individuals. Whether you're a painter, photographer, sculptor, or any form of creative soul, Malang Fine Arts Arts & Photography Club is the place to be. Upcoming EventsCheckout Events Fashion EuphoriaLearn More RangotsavLearn More Art GalleryView Gallery Our Partners \u00d7"
-    },
-    {
-        "title": "privacy-policy.html",
-        "url": "/src/pages/privacy-policy.html",
-        "content": "Privacy Policy Effective Date: July 1, 2023 Malang \u2013 Fine Arts & Photography Club (\u201cMalang,\u201d \u201cwe,\u201d \u201cus,\u201d or \u201cour\u201d) is committed to protecting your privacy. This Privacy Policy outlines how we handle any personal information you choose to share with us through our website and services. 1. Data Collection We do not collect any personal information unless you explicitly provide it\u2014such as through forms or by sharing your email address voluntarily. 2. Use of Information If you provide your email address, we may use it to: Send club updates or newsletters. Share information about events, activities, or announcements. We will only use your email for the purpose it was provided. 3. Data Sharing We do not sell, share, or disclose your personal information to third parties. Your data stays confiden"
-    },
-    {
-        "title": "redirector.html",
-        "url": "/src/pages/redirector.html",
-        "content": "You must be signed in to view this page. Customise URL Custom URL will be:Postfix Create View Redirects"
+        "content": "Malang | Gallery Category Artworks Photographs Filter Nothing to see here... View More \u00d7"
     },
     {
         "title": "Malang | Home",
+        "url": "/src/pages/home.html",
+        "content": "Malang | Home Fine Arts & Photography Club For the Kalakaar in you! Contact Us Discover Your Creative Oasis at Malang Our mission is to provide a platform for individuals to express themselves, explore their artistic passions, and collaborate with like-minded individuals. Whether you're a painter, photographer, sculptor, or any form of creative soul, Malang Fine Arts Arts & Photography Club is the place to be. Upcoming EventsCheckout Events Fashion EuphoriaLearn More RangotsavLearn More Art GalleryView Gallery Our Partners \u00d7"
+    },
+    {
+        "title": "Malang | Privacy Policy",
+        "url": "/src/pages/privacy-policy.html",
+        "content": "Malang | Privacy Policy Privacy Policy Effective Date: July 1, 2023 Malang \u2013 Fine Arts & Photography Club (\u201cMalang,\u201d \u201cwe,\u201d \u201cus,\u201d or \u201cour\u201d) is committed to protecting your privacy. This Privacy Policy outlines how we handle any personal information you choose to share with us through our website and services. 1. Data Collection We do not collect any personal information unless you explicitly provide it\u2014such as through forms or by sharing your email address voluntarily. 2. Use of Information If you provide your email address, we may use it to: Send club updates or newsletters. Share information about events, activities, or announcements. We will only use your email for the purpose it was provided. 3. Data Sharing We do not sell, share, or disclose your personal information to third parties. "
+    },
+    {
+        "title": "Malang | Redirector",
+        "url": "/src/pages/redirector.html",
+        "content": "Malang | Redirector You must be signed in to view this page. Customise URL Custom URL will be:Postfix Create View Redirects"
+    },
+    {
+        "title": "Malang | Test",
         "url": "/src/pages/test.html",
-        "content": "Malang | Home For the Kalakaar in you! Fine Arts & Photography Club Page 2 Page 3 Page 4 Page 5 1 2 3 4 5"
+        "content": "Malang | Test For the Kalakaar in you! Fine Arts & Photography Club Page 2 Page 3 Page 4 Page 5 1 2 3 4 5"
     },
     {
-        "title": "timeline.html",
+        "title": "Malang | Timeline",
         "url": "/src/pages/timeline.html",
-        "content": "Featured Events Fashion Euphoria Rangotsav Timeline Explore the history of Malang through our timeline, showcasing significant events and milestones that have shaped our journey. Upcoming Events View Older \u00d7"
+        "content": "Malang | Timeline Featured Events Fashion Euphoria Rangotsav Timeline Explore the history of Malang through our timeline, showcasing significant events and milestones that have shaped our journey. Upcoming Events View Older \u00d7"
     },
     {
-        "title": "treasury.html",
+        "title": "Malang | Treasury",
         "url": "/src/pages/treasury.html",
-        "content": "You must be signed in to view this page. Malang's Treasury Total Amount: Loading... Select Header Bharatiyam Claims Development Funds Party / Trip Other + \u2212 \u26a0\ufe0f Heads Up! Double-check values. Transactions instantly affect the treasury balance. Log Transaction"
+        "content": "Malang | Treasury You must be signed in to view this page. Malang's Treasury Total Amount: Loading... Select Header Bharatiyam Claims Development Funds Party / Trip Other + \u2212 \u26a0\ufe0f Heads Up! Double-check values. Transactions instantly affect the treasury balance. Log Transaction"
     },
     {
-        "title": "Malang | Authenticator",
+        "title": "Malang | Unsubscribe",
         "url": "/src/pages/unsubscribe.html",
-        "content": "Malang | Authenticator Unsubscribe from Newsletter Unsubscribe We'll miss you! Read our Privacy Policy for more information."
+        "content": "Malang | Unsubscribe Unsubscribe from Newsletter Unsubscribe We'll miss you! Read our Privacy Policy for more information."
     }
 ]
