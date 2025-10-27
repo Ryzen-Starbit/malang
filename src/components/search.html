@@ -1,0 +1,103 @@
+<div id="searchOverlay" class="search-overlay">
+  <div class="search-container">
+    <div class="search-header">
+      <input type="text" id="searchInput" placeholder="Search..." autocomplete="off" />
+      <button id="searchClose" class="close-btn" aria-label="Close">✖</button>
+    </div>
+    <div id="searchResults" class="search-results"></div>
+  </div>
+</div>
+<style>
+  /* Fullscreen overlay */
+  .search-overlay {
+    position: fixed;
+    inset: 0;
+    top: 60px;
+    display: none;
+    justify-content: right;
+    align-items: flex-start;
+    z-index: 9999;
+    animation: fadeIn 0.25s ease-in-out;
+    border-top: 1px solid #292929;
+  }
+
+  /* Search box container */
+  .search-container {
+  background: rgba(0, 0, 0, 0.9);
+  backdrop-filter: blur(8px);
+    width: 100%;
+    height: 100%;
+    max-width: 400px;
+    overflow: hidden;
+    border-bottom: 1px solid #292929;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+
+    to {
+      opacity: 1;
+    }
+  }
+
+  /* Header */
+  .search-header {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+  }
+
+  #searchInput {
+    flex: 1;
+    padding: 5px;
+    font-size: 15px;
+    border: 1px solid #393939;
+    border-radius: 7px;
+    outline: none;
+    margin-bottom: 0;
+  }
+
+  .close-btn {
+    margin-left: 8px;
+    background: transparent;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    color: #9b9b9b;
+    padding: 2px 7px;
+    border: 1px solid #393939;
+  }
+
+  /* Results */
+  .search-results {
+    max-height: calc(100vh - 100px);
+    overflow-y: auto;
+  }
+
+  .search-results a {
+    display: block;
+    padding: 10px 14px;
+    text-decoration: none;
+    color: #e1e1e1;
+    border-top: 1px solid #292929;
+  }
+
+  .search-results a:hover {
+    background: #2f2f2f;
+  }
+
+  .no-results {
+    padding: 12px 14px;
+    color: #8f8f8f;
+    font-style: italic;
+  }
+
+  @media (min-width: 1200px) {
+    .search-container {
+    border-left: 1px solid #292929;
+    border-bottom: none;
+    }
+  }
+</style>

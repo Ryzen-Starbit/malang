@@ -78,7 +78,6 @@ canvas {
 
 #landingWindow {
     margin-top: 270px;
-    padding-top: 20px;
     position: relative;
     width: 100%;
     overflow: hidden;
@@ -111,10 +110,9 @@ canvas {
     left: 50%;
     width: 700px;
     height: 700px;
-    border-radius: 50%;
-    background: conic-gradient(rgba(255, 217, 0, 0.8) 0deg,
-            rgba(0, 255, 234, 0.726) 20deg,
-            rgba(255, 217, 0, 0.8) 60deg,
+    background: conic-gradient(rgba(187, 0, 255, 0.8) 0deg,
+            rgba(0, 247, 255, 0.726) 20deg,
+            rgba(255, 213, 0, 0.8) 60deg,
             transparent 60deg 330deg);
 
     transform: translate(-50%, -50%) rotate(-210deg);
@@ -162,7 +160,7 @@ canvas {
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
-    height: calc(100vh - 390px);
+    height: calc(100vh - 370px);
 }
 
 #malangTitle {
@@ -197,16 +195,6 @@ canvas {
     gap: 30px;
     padding-bottom: 20px;
 }
-
-#landingButtons button {
-    width: 80%;
-    max-width: 250px;
-    padding: 10px 30px;
-    background-color: rgba(15, 15, 15, 0.647);
-    border-radius: 50px;
-    transition: background-color 0.3s ease;
-}
-
 #landingButtons button:hover {
     background-color: rgba(23, 23, 23, 0.847);
 }
@@ -439,4 +427,56 @@ canvas {
     .fade-right {
         width: 100px;
     }
+}
+
+.search-container {
+    position: relative;
+    display: inline-block;
+}
+
+#searchInput {
+    padding: 8px 12px;
+    border-radius: 20px;
+    border: 1px solid #ccc;
+    outline: none;
+    width: 180px;
+    transition: width 0.3s ease;
+}
+
+#searchInput:focus {
+    width: 250px;
+    border-color: #000;
+}
+
+.search-results {
+    position: absolute;
+    top: 110%;
+    left: 0;
+    width: 100%;
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    display: none;
+    max-height: 220px;
+    overflow-y: auto;
+}
+
+.search-results a {
+    display: block;
+    padding: 10px 12px;
+    text-decoration: none;
+    color: #333;
+    font-size: 14px;
+    transition: background 0.2s;
+}
+
+.search-results a:hover {
+    background: #f5f5f5;
+}
+
+.no-results {
+    padding: 10px 12px;
+    color: #999;
 }
