@@ -509,12 +509,47 @@ function toggleFilters() {
 }
 
 let lock = false;
+
 const warn = () => {
     if (!lock) {
-        showAlert("⚠️ Warning", "All artworks and photographs displayed on this page are the exclusive property of Malang and are subject to copyright protection. Unauthorized copying, downloading or use of these images may result in legal proceedings.", [{ text: "OK" }]); lock = true; setTimeout(() => lock = false, 2500)
+        showAlert(
+            "⚠️ Warning",
+            "All artworks and photographs displayed on this page are the exclusive property of Malang and are subject to copyright protection. Unauthorized copying, downloading or use of these images may result in legal proceedings.",
+            [{ text: "OK" }]
+        );
+        lock = true;
+        setTimeout(() => lock = false, 2500);
     }
 };
-addEventListener("wheel", e => { if (e.ctrlKey) { e.preventDefault(); warn() } }, { passive: false });
+
+// 🖥️ Desktop zoom prevention
+addEventListener("wheel", e => {
+    if (e.ctrlKey) { e.preventDefault(); warn(); }
+}, { passive: false });
+
 addEventListener("keydown", e => {
-    if ((e.ctrlKey || e.metaKey) && /[\+\-\=\_]/.test(e.key)) { e.preventDefault(); warn() }
-});   // block Ctrl/⌘ + plus/minus zoom
+    if ((e.ctrlKey || e.metaKey) && /[\+\-\=\_]/.test(e.key)) {
+        e.preventDefault(); warn();
+    }
+});
+
+// 📱 Mobile pinch zoom prevention
+let lastTouchDistance = 0;
+
+addEventListener("touchmove", e => {
+    if (e.touches.length === 2) {
+        e.preventDefault();
+        warn();
+    }
+}, { passive: false });
+
+// Optional: prevent double-tap zoom
+let lastTouchEnd = 0;
+addEventListener("touchend", e => {
+    const now = Date.now();
+    if (now - lastTouchEnd <= 300) {
+        e.preventDefault();
+        warn();
+    }
+    lastTouchEnd = now;
+}, { passive: false });
