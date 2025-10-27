@@ -2,6 +2,7 @@
 │   └── favicon.ico
 ├── .github/
 │   ├── scripts/
+│   │   ├── generate-search-json.py
 │   │   └── update_structure.py
 │   └── workflows/
 │       ├── create-pr.yml
