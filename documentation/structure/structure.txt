@@ -20,12 +20,6 @@
 │   └── structure/
 │       └── structure.txt
 ├── index.html
-├── r/
-│   ├── 404.html
-│   ├── help.html
-│   ├── index.html
-│   ├── script.js
-│   └── style.css
 ├── resrc/
 │   ├── data/
 │   │   ├── alumni.json
@@ -283,6 +277,7 @@
 │   │   ├── home.html
 │   │   ├── privacy-policy.html
 │   │   ├── redirector.html
+│   │   ├── redirects.html
 │   │   ├── test.html
 │   │   ├── timeline.html
 │   │   ├── treasury.html
