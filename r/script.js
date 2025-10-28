@@ -1,6 +1,6 @@
 // Set your prefix (must start and end with a slash)
 const PREFIX = '/r/';
-
+console.log('Redirector script loaded. Prefix:', PREFIX);
 // Fetch the redirects JSON from GitHub
 fetch('https://raw.githubusercontent.com/multiverseweb/redirector/main/r/redirects.json')
   .then(response => {

@@ -4,7 +4,39 @@ console.log("+-----------------+");
 
 const content = document.getElementById("content");
 
-// move toggleMenu outside
+// ---------------- REDIRECT HANDLER ----------------
+(async function handleRedirects() {
+    const pathname = decodeURIComponent(window.location.pathname.replace(/^\/+/, ""));
+
+    // If the URL path is not empty or index.html, try redirect
+    if (pathname && pathname !== "index.html") {
+        console.log("Detected custom path:", pathname);
+
+        try {
+            const res = await fetch("https://raw.githubusercontent.com/multiverseweb/redirector/main/r/redirects.json");
+            if (!res.ok) throw new Error("Failed to fetch redirects.json");
+
+            const redirects = await res.json();
+            const target = redirects[pathname];
+
+            if (target) {
+                console.log(`Redirecting "${pathname}" → ${target}`);
+                window.location.replace(target);
+                return; // stop rest of script
+            } else {
+                console.warn(`No redirect found for "${pathname}"`);
+            }
+        } catch (err) {
+            console.error("Redirect lookup failed:", err);
+        }
+    }
+
+    // If no redirect found, continue normal site loading
+    forwardParamsToIframe();
+})();
+// --------------------------------------------------
+
+// Everything below is your original script
 function toggleMenu() {
     vibrate();
     const nav = document.querySelector("#nav");
@@ -20,16 +52,14 @@ function toggleMenu() {
 const observer = new MutationObserver(() => {
     const nav = document.querySelector("#nav");
     if (nav) {
-        observer.disconnect(); // stop watching
-        initNavScripts();      // run your logic
+        observer.disconnect();
+        initNavScripts();
     }
 });
-
 observer.observe(document.body, { childList: true, subtree: true });
 
 function initNavScripts() {
     const burgerButton = document.getElementById("burger");
-
     burgerButton.addEventListener("click", toggleMenu);
 
     document.getElementById("theme").addEventListener("click", () => {
@@ -82,33 +112,27 @@ async function loadPage(url) {
         content.srcdoc = errorHtml;
     }
 
+    const nav = document.querySelector("#nav");
     if (nav && nav.classList.contains("active")) toggleMenu();
     document.getElementById("searchOverlay").style.display = "none";
 }
 
-(async function forwardParamsToIframe() {
+async function forwardParamsToIframe() {
     const params = new URLSearchParams(window.location.search);
-    let page = params.get("page") || "home.html"; // default page
+    let page = params.get("page") || "home.html";
     let url = "";
 
-    // sanitize input and create full path
-    if (page.endsWith(".html")) {
-        url = `/src/pages/${page}`;
-    } else {
-        url = `/src/pages/${page}.html`;
-    }
+    if (page.endsWith(".html")) url = `/src/pages/${page}`;
+    else url = `/src/pages/${page}.html`;
 
-    // keep other query params for sharing
-    params.delete("page"); // remove page so it doesn't duplicate
+    params.delete("page");
     const otherParams = params.toString();
     if (otherParams) url += "?" + otherParams;
 
-    // load page with fallback to 404
     try {
         const response = await fetch(url);
-        if (response.ok) {
-            content.src = url;
-        } else {
+        if (response.ok) content.src = url;
+        else {
             const errorHtml = await fetch("/404.html").then(r => r.text());
             content.srcdoc = errorHtml;
         }
@@ -117,8 +141,6 @@ async function loadPage(url) {
         content.srcdoc = errorHtml;
     }
 
-    // close nav if open
     const nav = document.querySelector("#nav");
     if (nav && nav.classList.contains("active")) toggleMenu();
-})();
-
+}

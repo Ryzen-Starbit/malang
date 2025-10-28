@@ -1,0 +1,58 @@
+<head>
+    <title>Malang | Google Form Embed</title>
+    <link rel="stylesheet" href="../styles/authentication.css">
+</head>
+<section id="googleForm">
+    <canvas id="gradientCanvas"></canvas>
+    <iframe id="formFrame"
+        src="https://docs.google.com/forms/d/e/1FAIpQLSf4QFX5P4AahPXGxCTEik8tjX3Q-d8qAnDQV6zhTfoc2AhbAg/viewform?embedded=true"
+        allowfullscreen loading="lazy" scrolling="no">
+    </iframe>
+</section>
+
+<style>
+    body::-webkit-scrollbar {
+        display: none;
+    }
+
+    body {
+        -ms-overflow-style: none;
+        /* IE & Edge */
+        scrollbar-width: none;
+        /* Firefox */
+    }
+
+    #googleForm {
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        padding-top: 60px;
+        width: 100%;
+        overflow: hidden;
+    }
+
+    #googleForm iframe {
+        width: 100%;
+        max-width: 800px;
+        border: none;
+        filter: invert(1);
+        overflow: hidden;
+        opacity: 0.8;
+    }
+</style>
+<script src="/src/scripts/authentication.js"></script>
+
+<script>
+    // Dynamically adjust iframe height
+    window.addEventListener("load", () => {
+        const iframe = document.getElementById("formFrame");
+
+        // Try different preset heights to fit form without scroll
+        const adjustHeight = () => {
+            iframe.style.height = window.innerHeight + 1000 + "px";
+        };
+
+        adjustHeight();
+        window.addEventListener("resize", adjustHeight);
+    });
+</script>
