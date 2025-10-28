@@ -117,14 +117,24 @@ async function forwardParamsToIframe() {
 
 // ---------------- REDIRECT HANDLER (RUNS LAST) ----------------
 (async function handleRedirects() {
+    // Get the visible URL path
     const rawPath = decodeURIComponent(window.location.href.split(window.location.origin)[1] || "/");
     const pathname = rawPath.replace(/^\/+/, "");
 
     console.log("Full pathname:", rawPath);
     console.log("Decoded path:", pathname);
 
+    // Ignore if URL includes ?page= (means we’re inside the SPA already)
+    if (window.location.search.includes("page=")) {
+        console.log("Inside SPA (page param found) — skipping redirect check.");
+        forwardParamsToIframe();
+        return;
+    }
+
+    // Handle shortlinks only
     if (pathname && pathname !== "index.html") {
         console.log("Detected custom path:", pathname);
+
         try {
             console.log("control was here");
             const res = await fetch("https://raw.githubusercontent.com/multiverseweb/redirector/main/r/redirects.json");
@@ -136,7 +146,7 @@ async function forwardParamsToIframe() {
             if (target) {
                 console.log(`Redirecting "${pathname}" → ${target}`);
                 window.location.replace(target);
-                return; // stop here
+                return;
             } else {
                 console.warn(`No redirect found for "${pathname}"`);
             }
@@ -145,6 +155,6 @@ async function forwardParamsToIframe() {
         }
     }
 
-    // If no redirect → continue to load page normally
+    // Fallback to normal site loading
     forwardParamsToIframe();
 })();
