@@ -117,8 +117,8 @@ async function forwardParamsToIframe() {
 
 // ---------------- REDIRECT HANDLER (RUNS LAST) ----------------
 (async function handleRedirects() {
-    const rawPath = window.location.pathname;
-    const pathname = decodeURIComponent(rawPath.replace(/^\/+/, ""));
+    const rawPath = decodeURIComponent(window.location.href.split(window.location.origin)[1] || "/");
+    const pathname = rawPath.replace(/^\/+/, "");
 
     console.log("Full pathname:", rawPath);
     console.log("Decoded path:", pathname);
@@ -126,6 +126,7 @@ async function forwardParamsToIframe() {
     if (pathname && pathname !== "index.html") {
         console.log("Detected custom path:", pathname);
         try {
+            console.log("control was here");
             const res = await fetch("https://raw.githubusercontent.com/multiverseweb/redirector/main/r/redirects.json");
             if (!res.ok) throw new Error("Failed to fetch redirects.json");
 
