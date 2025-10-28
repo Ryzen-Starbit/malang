@@ -4,44 +4,9 @@ console.log("+-----------------+");
 
 const content = document.getElementById("content");
 
-// ---------------- REDIRECT HANDLER ----------------
+// ---------------- CORE FUNCTIONS FIRST ----------------
 
-console.log("Full pathname:", window.location.pathname);
-console.log("Decoded path:", decodeURIComponent(window.location.pathname.replace(/^\/+/, "")));
-
-(async function handleRedirects() {
-    const pathname = decodeURIComponent(window.location.pathname.replace(/^\/+/, ""));
-
-
-    // If the URL path is not empty or index.html, try redirect
-    if (pathname && pathname !== "index.html") {
-        console.log("Detected custom path:", pathname);
-
-        try {
-            const res = await fetch("https://raw.githubusercontent.com/multiverseweb/redirector/main/r/redirects.json");
-            if (!res.ok) throw new Error("Failed to fetch redirects.json");
-
-            const redirects = await res.json();
-            const target = redirects[pathname];
-
-            if (target) {
-                console.log(`Redirecting "${pathname}" → ${target}`);
-                window.location.replace(target);
-                return; // stop rest of script
-            } else {
-                console.warn(`No redirect found for "${pathname}"`);
-            }
-        } catch (err) {
-            console.error("Redirect lookup failed:", err);
-        }
-    }
-
-    // If no redirect found, continue normal site loading
-    forwardParamsToIframe();
-})();
-// --------------------------------------------------
-
-// Everything below is your original script
+// menu toggle
 function toggleMenu() {
     vibrate();
     const nav = document.querySelector("#nav");
@@ -54,6 +19,7 @@ function toggleMenu() {
     document.body.style.overflow = isActive ? "hidden" : "scroll";
 }
 
+// observer for nav
 const observer = new MutationObserver(() => {
     const nav = document.querySelector("#nav");
     if (nav) {
@@ -106,14 +72,13 @@ function initNavScripts() {
 async function loadPage(url) {
     try {
         const response = await fetch(url);
-        if (response.ok) {
-            content.src = url;
-        } else {
-            const errorHtml = await fetch("/index.html?page=404").then(r => r.text());
+        if (response.ok) content.src = url;
+        else {
+            const errorHtml = await fetch("/404.html").then(r => r.text());
             content.srcdoc = errorHtml;
         }
     } catch {
-        const errorHtml = await fetch("/index.html?page=404").then(r => r.text());
+        const errorHtml = await fetch("/404.html").then(r => r.text());
         content.srcdoc = errorHtml;
     }
 
@@ -149,3 +114,36 @@ async function forwardParamsToIframe() {
     const nav = document.querySelector("#nav");
     if (nav && nav.classList.contains("active")) toggleMenu();
 }
+
+// ---------------- REDIRECT HANDLER (RUNS LAST) ----------------
+(async function handleRedirects() {
+    const rawPath = window.location.pathname;
+    const pathname = decodeURIComponent(rawPath.replace(/^\/+/, ""));
+
+    console.log("Full pathname:", rawPath);
+    console.log("Decoded path:", pathname);
+
+    if (pathname && pathname !== "index.html") {
+        console.log("Detected custom path:", pathname);
+        try {
+            const res = await fetch("https://raw.githubusercontent.com/multiverseweb/redirector/main/r/redirects.json");
+            if (!res.ok) throw new Error("Failed to fetch redirects.json");
+
+            const redirects = await res.json();
+            const target = redirects[pathname];
+
+            if (target) {
+                console.log(`Redirecting "${pathname}" → ${target}`);
+                window.location.replace(target);
+                return; // stop here
+            } else {
+                console.warn(`No redirect found for "${pathname}"`);
+            }
+        } catch (err) {
+            console.error("Redirect lookup failed:", err);
+        }
+    }
+
+    // If no redirect → continue to load page normally
+    forwardParamsToIframe();
+})();
