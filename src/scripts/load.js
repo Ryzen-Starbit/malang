@@ -5,8 +5,13 @@ console.log("+-----------------+");
 const content = document.getElementById("content");
 
 // ---------------- REDIRECT HANDLER ----------------
+
+console.log("Full pathname:", window.location.pathname);
+console.log("Decoded path:", decodeURIComponent(window.location.pathname.replace(/^\/+/, "")));
+
 (async function handleRedirects() {
     const pathname = decodeURIComponent(window.location.pathname.replace(/^\/+/, ""));
+
 
     // If the URL path is not empty or index.html, try redirect
     if (pathname && pathname !== "index.html") {
