@@ -124,13 +124,6 @@ async function forwardParamsToIframe() {
     console.log("Full pathname:", rawPath);
     console.log("Decoded path:", pathname);
 
-    // Ignore if URL includes ?page= (means we’re inside the SPA already)
-    if (window.location.search.includes("page=")) {
-        console.log("Inside SPA (page param found) — skipping redirect check.");
-        forwardParamsToIframe();
-        return;
-    }
-
     // Handle shortlinks only
     if (pathname && pathname !== "index.html") {
         console.log("Detected custom path:", pathname);
