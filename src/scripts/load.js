@@ -149,5 +149,5 @@ async function forwardParamsToIframe() {
     }
 
     // Fallback to normal site loading
-    //forwardParamsToIframe();
+    forwardParamsToIframe();
 })();
