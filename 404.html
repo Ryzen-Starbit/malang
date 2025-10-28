@@ -5,16 +5,45 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" href="/resrc/images/icons/favicon.webp" />
+    <link rel="stylesheet" href="/src/styles/common.css">
     <title>Malang | Redirector</title>
-    <link rel="stylesheet" href="/r/style.css" />
+    <style>
+        body {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .container {
+            text-align: center;
+        }
+
+        .container img {
+            margin-top: 15px;
+            width: 30px;
+            opacity: 0.8;
+        }
+    </style>
 </head>
 
 <body>
+    <div id="loader">
+        <div class="loader-container"></div>
+    </div>
     <div class="container">
-        <img src="/resrc/images/icons/malang.webp" alt="Malang">
+        <h3>Page not found.</h3>
+        <p>The link is invalid or has expired.</p>
+        <img src="/resrc/images/icons/favicon.webp" alt="Malang">
     </div>
 </body>
 
 </html>
 <script src="/src/scripts/load.js"></script>
-</body>
+<script>
+    window.addEventListener('load', () => {
+        const loader = document.getElementById('loader');
+        if (loader) {
+            loader.style.display = 'none';
+        }
+    });
+</script>

@@ -18,7 +18,7 @@
                     id="url">Postfix</span></a>
             <button type="submit" class="long-btn" id="submit">Create</button>
             <hr>
-            <button class="long-btn" onclick="parent.loadPage('/r/help.html')">View Redirects</button>
+            <button class="long-btn" onclick="parent.loadPage('/src/pages/redirects.html')">View Redirects</button>
         </form>
     </section>
     <script src="../scripts/common.js"></script>
@@ -34,11 +34,11 @@
         const baseOrigin = window.location.origin; // dynamic base URL
 
         // Set initial value
-        baseURL.textContent = `${baseOrigin}/r/`;
+        baseURL.textContent = `${baseOrigin}/`;
 
         // Update preview
         function updateURL() {
-            const base = longURL.value.trim() || `${baseOrigin}/r/`;
+            const base = longURL.value.trim() || `${baseOrigin}/`;
             const post = postfix.value.trim() || '';
             urlSpan.textContent = post || 'Postfix';
             urlLink.href = base + post;
@@ -67,7 +67,7 @@
                         "GitHub Action triggered! A pull request will be created to update the redirector.",
                         [
                             { text: "OK" },
-                            { text: "View Redirects", onClick: () => parent.loadPage('/r/help.html') }
+                            { text: "View Redirects", onClick: () => parent.loadPage('/src/pages/redirects.html') }
                         ]
                     );
                 } else {
