@@ -3,35 +3,49 @@ html {
 }
 
 #documentation {
-    max-width: calc(100% - 20px);
+    width: 100%;
     background-color: black;
     overflow-x: auto;
     text-overflow: clip;
     overflow-wrap: break-word;
     padding: 10px;
-    padding-top: 70px;
-    max-width: 600px;
-    margin: auto;
+    padding-top: 80px;
+    max-width: calc(100vw - 20px);
 }
 
-#readme-content ol{
+#toggleListBtn {
+    position: fixed;
+    right: 10px;
+    top: 70px;
+    z-index: 100;
+    padding: 4px 7px 7px 7px;
+    backdrop-filter: blur(8px) saturate(120%);
+}
+
+#toggleListBtn img {
+    margin: 0;
+}
+
+#readme-content ol {
     padding-left: 20px;
 }
 
 #readme-content a {
     color: gold;
 }
+
 #readme-content a:hover {
     text-decoration: underline;
 }
 
-#site-structure summary{
-    max-width: 600px;
-    margin: auto;
+#site-structure summary {
+    margin-top: 10px;
+    max-width: calc(100vw - 20px);
     width: calc(100% - 42px);
     border: 2px solid rgba(255, 255, 255, 0.138);
 }
-#structure{
+
+#structure {
     margin: 0px 10px;
     padding: 10px;
     border: 2px solid rgba(255, 255, 255, 0.138);
@@ -39,10 +53,20 @@ html {
 }
 
 #docList {
+    z-index: 50;
+    position: fixed;
+    background-color: black;
+    top: 60px;
+    left: 0px;
+    height: calc(100vh - 60px);
     list-style: none;
-    border: 2px solid rgba(255, 255, 255, 0.138);
-    border-radius: 5px;
-    padding-bottom: 10px;
+    width: 100%;
+    max-width: 800px;
+    overflow-y: scroll;
+    opacity: 0;
+    visibility: hidden;
+    filter: blur(5px);
+    transition: opacity 0.3s ease, visibility 0.3s ease, filter 0.3s ease;
 }
 
 #docList h1 {
@@ -50,7 +74,8 @@ html {
     border-bottom: 2px solid rgba(255, 255, 255, 0.138);
     margin-bottom: 10px;
 }
-#docList ul{
+
+#docList ul {
     list-style: none;
     margin: 0px;
     padding: 0px;
@@ -65,20 +90,13 @@ html {
     border-radius: 7px;
 }
 
-#docList a:hover{
+#docList a:hover {
     background-color: rgba(43, 43, 43, 0.527);
     text-decoration: none;
 }
 
 #docList li details ul li a {
     padding: 10px;
-}
-
-.info {
-    padding: 10px;
-    padding-bottom: 0px;
-    max-width: 600px;
-    margin: auto;
 }
 
 #last-updated {
@@ -122,6 +140,7 @@ td:hover {
 #readme-content a {
     text-decoration: none;
 }
+
 pre {
     border-radius: 5px;
     overflow-x: auto;
@@ -164,9 +183,9 @@ pre code.hljs * {
     position: fixed;
     right: 10px;
     bottom: 10px;
-    width: 35px;
-    height: 38px;
-    padding: 8px;
+    width: 34px;
+    height: 34px;
+    padding: 5px;
     display: inline-grid;
     place-items: center;
     border: 1px solid rgba(255, 255, 255, 0.138);
@@ -176,11 +195,9 @@ pre code.hljs * {
     background: linear-gradient(135deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.02));
     box-shadow: 0 6px 18px rgba(11, 14, 22, 0.35);
     color: rgb(221, 221, 221);
-    cursor: pointer;
     z-index: 9999;
     opacity: 0;
     transform: translateY(8px) scale(0.98);
-    pointer-events: none;
     transition: opacity 220ms ease, transform 220ms cubic-bezier(.2, .9, .2, 1);
 }
 
@@ -208,6 +225,29 @@ pre code.hljs * {
     will-change: transform;
 }
 
-footer{
+footer {
     margin-top: 10px;
+}
+
+@media (min-width: 800px) {
+    #docList {
+        max-width: 300px;
+        border-right: 2px solid rgba(255, 255, 255, 0.138);
+        opacity: 1;
+        visibility: visible;
+        filter: none;
+    }
+
+    #documentation {
+        margin-left: 400px;
+        max-width: calc(100vw - 500px);
+    }
+
+    #structure summary {
+        max-width: calc(100vw - 500px);
+    }
+
+    #toggleListBtn {
+        display: none;
+    }
 }

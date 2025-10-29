@@ -86,3 +86,17 @@ Promise.all([
   // initial check
   onScroll();
 })();
+
+function toggleList() {
+  const t = document.getElementById("docList"), i = document.getElementById("toggleListIcon");
+  if (!t || !i) return;
+  const s = t.style.visibility === "visible";
+  Object.assign(t.style, {
+    visibility: s ? "hidden" : "visible",
+    opacity: s ? "0" : "1",
+    filter: s ? "blur(5px)" : "blur(0)"
+  });
+  document.body.style.overflow = s ? "" : "hidden";
+  i.src = s ? "/resrc/images/icons/admin.webp" : "/resrc/images/icons/close.png";
+  vibrate();
+}

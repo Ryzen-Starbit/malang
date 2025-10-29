@@ -89,7 +89,7 @@ async function loadPage(url) {
 
 async function forwardParamsToIframe() {
     const params = new URLSearchParams(window.location.search);
-    let page = params.get("page") || "home.html";
+    let page = params.get("page") || "documentation.html";
     let url = "";
 
     if (page.endsWith(".html")) url = `/src/pages/${page}`;
