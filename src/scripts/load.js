@@ -126,7 +126,7 @@ async function forwardParamsToIframe() {
     if (pathname && pathname !== "index.html") {
 
         try {
-            const res = await fetch("https://github.com/MalangBvp/redirector/blob/main/r/redirects.json");
+            const res = await fetch("https://raw.githubusercontent.com/MalangBvp/redirector/main/r/redirects.json");
             if (!res.ok) throw new Error("Failed to fetch redirects.json");
 
             const redirects = await res.json();
