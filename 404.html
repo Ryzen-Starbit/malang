@@ -8,20 +8,24 @@
     <link rel="stylesheet" href="/src/styles/common.css">
     <title>Malang | Redirector</title>
     <style>
-        body {
+        .container {
             height: 100vh;
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
-        }
-        .container {
             text-align: center;
         }
 
         .container img {
-            margin-top: 15px;
+            margin: 15px;
             width: 30px;
             opacity: 0.8;
+        }
+        a{
+            font-size: 12px;
+            color: #b0b0b0;
+            text-decoration: underline;
         }
     </style>
 </head>
@@ -34,6 +38,7 @@
         <h3>Page not found.</h3>
         <p>The link is invalid or has expired.</p>
         <img src="/resrc/images/icons/favicon.webp" alt="Malang">
+        <div>&nbsp;&nbsp;<a href="/index.html">Go to Home</a> | <a href="/index.html?page=form">Report Issue</a></div>
     </div>
 </body>
 
