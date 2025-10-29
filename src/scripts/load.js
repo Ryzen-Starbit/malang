@@ -108,6 +108,7 @@ async function forwardParamsToIframe() {
         }
     } catch {
         const errorHtml = await fetch("/404.html").then(r => r.text());
+        window.dispatchEvent(new Event("loadjs:done"));
         content.srcdoc = errorHtml;
     }
 
@@ -134,7 +135,7 @@ async function forwardParamsToIframe() {
                 window.location.replace(target);
                 return;
             } else {
-                console.warn(`No redirect found for "${pathname}"`);
+                window.dispatchEvent(new Event("loadjs:done"));
             }
         } catch (err) {
             showAlert("Error", "Redirection failed. Please try again later.", [{ text: "OK" }]);

@@ -22,7 +22,8 @@
             width: 30px;
             opacity: 0.8;
         }
-        a{
+
+        a {
             font-size: 12px;
             color: #b0b0b0;
             text-decoration: underline;
@@ -34,21 +35,23 @@
     <div id="loader">
         <div class="loader-container"></div>
     </div>
-    <div class="container">
+    <div class="container" style="display:none;">
         <h3>Page not found.</h3>
-        <p>The link is invalid or has expired.</p>
+        <p>This link is invalid or has expired.</p>
         <img src="/resrc/images/icons/favicon.webp" alt="Malang">
         <div>&nbsp;&nbsp;<a href="/index.html">Go to Home</a> | <a href="/index.html?page=form">Report Issue</a></div>
     </div>
+
+    <script src="/src/scripts/load.js"></script>
+    <script>
+        // Listen for a custom event fired by load.js after it finishes running
+        window.addEventListener("loadjs:done", () => {
+            const loader = document.getElementById("loader");
+            const container = document.querySelector(".container");
+            if (loader) loader.style.display = "none";
+            if (container) container.style.display = "flex";
+        });
+    </script>
 </body>
 
 </html>
-<script src="/src/scripts/load.js"></script>
-<script>
-    window.addEventListener('load', () => {
-        const loader = document.getElementById('loader');
-        if (loader) {
-            loader.style.display = 'none';
-        }
-    });
-</script>
