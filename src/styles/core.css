@@ -58,7 +58,7 @@
 
 #dots {
     width: 100vw;
-    height: calc(70vh - 10vw);
+    height: 100vh;
     position: absolute;
 }
 

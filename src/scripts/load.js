@@ -101,8 +101,9 @@ async function forwardParamsToIframe() {
 
     try {
         const response = await fetch(url);
-        if (response.ok) content.src = url;
-        else {
+        if (response.ok) {
+            content.src = url;
+        } else {
             const errorHtml = await fetch("/404.html").then(r => r.text());
             content.srcdoc = errorHtml;
         }

@@ -15,6 +15,7 @@
             justify-content: center;
             align-items: center;
             text-align: center;
+            z-index: 10;
         }
 
         .container img {
@@ -28,6 +29,39 @@
             color: #b0b0b0;
             text-decoration: underline;
         }
+
+        
+#dots {
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    z-index: -1;
+}
+
+.star {
+    border-radius: 100%;
+    background-color: white;
+    position: absolute;
+    animation: moveit;
+    animation-duration: 2.5s;
+    animation-iteration-count: infinite;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+@keyframes moveit {
+    0% {
+        opacity: 0.2;
+    }
+
+    50% {
+        opacity: 0.8;
+    }
+
+    100% {
+        opacity: 0.2;
+    }
+}
     </style>
 </head>
 
@@ -35,6 +69,7 @@
     <div id="loader">
         <div class="loader-container"></div>
     </div>
+    <div id="dots"></div>
     <div class="container" style="display:none;">
         <h3>Page not found.</h3>
         <p>This link is invalid or has expired.</p>
@@ -51,6 +86,30 @@
             if (loader) loader.style.display = "none";
             if (container) container.style.display = "flex";
         });
+
+        var i = 0;
+        var stars = document.getElementById("dots");
+        //-----------------------------------------------------------number of stars
+        for (i = 0; i < 100; i++) {
+            let star = document.createElement('div');
+            star.classList.add("star");
+
+
+            let size = Math.random() * 2 + 1;
+            //--------------------------------------------------------------------------
+            const _width = stars.scrollWidth - 2;
+            star.style.top = Math.random() * stars.scrollHeight + "px";
+            star.style.left = Math.random() * _width + "px";
+            star.style.width = size + "px";
+            star.style.height = size + "px";
+            //--------------------------------------------------------------------------
+
+            let delayValue = Math.random() * 4;
+
+            star.style.animationDelay = delayValue + "s";
+
+            stars.appendChild(star);
+        }
     </script>
 </body>
 
