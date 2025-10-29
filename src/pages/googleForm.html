@@ -4,8 +4,9 @@
 </head>
 <section id="googleForm">
     <canvas id="gradientCanvas"></canvas>
-    <iframe id="formFrame"
-        src="https://docs.google.com/forms/d/e/1FAIpQLSf4QFX5P4AahPXGxCTEik8tjX3Q-d8qAnDQV6zhTfoc2AhbAg/viewform?embedded=true"
+
+<iframe id="formFrame"
+        src="https://docs.google.com/forms/d/e/1FAIpQLSeYH-pL0LsKzaudykoP_yYIv73HLrF3sGn6ZrgU-bPQ9vpHaw/viewform?embedded=true"
         allowfullscreen loading="lazy" scrolling="no">
     </iframe>
 </section>
@@ -35,7 +36,7 @@
         width: 100%;
         max-width: 800px;
         border: none;
-        filter: invert(1);
+        filter: invert(1) hue-rotate(0deg);
         overflow: hidden;
     }
 </style>
@@ -48,7 +49,7 @@
 
         // Try different preset heights to fit form without scroll
         const adjustHeight = () => {
-            iframe.style.height = window.innerHeight + 1000 + "px";
+            iframe.style.height = window.innerHeight + 900 + "px";
         };
 
         adjustHeight();
