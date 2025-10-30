@@ -196,7 +196,7 @@
 
 <h3 id="Certificate-Tool">Certificate Tool</h3>
 
-<a href="https://github.com/MalangBvp/Malang-Tools/tree/main/Certificate-tool">GitHub Link</a>
+<a href="https://github.com/MalangBvp/Malang-Tools/tree/main/Certificate-tool" target="_blank">GitHub Link</a>
 
 
 For creating bulk certificated with custom names and font-style.
@@ -239,7 +239,7 @@ pdfmetrics.registerFont(TTFont('NoticiaText', 'Certificate-tool/NoticiaText-Bold
 
 <h3 id="Contact-Tool">Contact Tool</h3>
 
-<a href="https://github.com/MalangBvp/Malang-Tools/tree/main/Contact-tool">GitHub Link</a>
+<a href="https://github.com/MalangBvp/Malang-Tools/tree/main/Contact-tool" target="_blank">GitHub Link</a>
 
 
 For saving bulk contacts to Google contacts, generally useful for adding multiple people to Whatsapp group.
@@ -281,7 +281,7 @@ prefix = "malang2025@"                        # Contact name prefix
 
 <h3 id="Mail-Tool">Mail Tool</h3>
 
-<a href="https://github.com/MalangBvp/Malang-Tools/tree/main/Mail-tool">GitHub Link</a>
+<a href="https://github.com/MalangBvp/Malang-Tools/tree/main/Mail-tool" target="_blank">GitHub Link</a>
 
 Used for sending bulk emails with customised names, template and attachments.
 
