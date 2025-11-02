@@ -1,5 +1,5 @@
 ├── .desktop/
-│   └── favicon.ico
+│   └── malang.ico
 ├── .github/
 │   ├── scripts/
 │   │   ├── generate-search-json.py
@@ -112,13 +112,13 @@
 │   │   │   ├── down.webp
 │   │   │   ├── download.webp
 │   │   │   ├── events.webp
-│   │   │   ├── favicon.ico
-│   │   │   ├── favicon.webp
+│   │   │   ├── favicon.png
 │   │   │   ├── filters.png
 │   │   │   ├── google.png
 │   │   │   ├── home.webp
 │   │   │   ├── link.webp
 │   │   │   ├── loading.gif
+│   │   │   ├── malang.ico
 │   │   │   ├── malang.png
 │   │   │   ├── malang.webp
 │   │   │   ├── members.webp
