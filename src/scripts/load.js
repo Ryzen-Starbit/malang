@@ -38,50 +38,6 @@ function initNavScripts() {
         applyTheme(true);
     });
 
-    if ("serviceWorker" in navigator) {
-        navigator.serviceWorker.register("/service-worker.js").catch(console.error);
-    }
-
-    let deferredPrompt;
-    let pwaPromptShown = false;
-
-    window.addEventListener("beforeinstallprompt", (e) => {
-        e.preventDefault();
-        deferredPrompt = e;
-
-        if (!pwaPromptShown) {
-            pwaPromptShown = true;
-
-            const pwaBtn = document.getElementById("pwa");
-            if (pwaBtn) {
-                pwaBtn.addEventListener("click", async () => {
-                    if (!deferredPrompt) return;
-
-                    showAlert(
-                        "PWA Installation",
-                        "Install our app for faster access and a smoother experience.",
-                        [
-                            { text: "Cancel" },
-                            {
-                                text: "Install",
-                                onClick: async () => {
-                                    deferredPrompt.prompt();
-                                    const choice = await deferredPrompt.userChoice;
-                                    if (choice.outcome === "accepted") {
-                                    } else {
-                                        console.log("PWA installation dismissed.");
-                                    }
-                                    deferredPrompt = null;
-                                },
-                            },
-                        ]
-                    );
-                });
-            }
-        }
-    });
-
-
     document.getElementById("copy").addEventListener("click", function () {
         vibrate();
         let currentPage = content.src || "";
@@ -101,6 +57,58 @@ function initNavScripts() {
     });
     burgerButton.classList.remove('loading');
 }
+
+// Register Service Worker
+if ("serviceWorker" in navigator) {
+    navigator.serviceWorker.register("/service-worker.js").catch(console.error);
+}
+
+let deferredPrompt;
+const pwaBtn = document.getElementById("pwa");
+
+// Detect install prompt availability
+window.addEventListener("beforeinstallprompt", (e) => {
+    e.preventDefault(); // stop auto-banner
+    deferredPrompt = e; // save event for later use
+});
+
+// On "Install" button click
+if (pwaBtn) {
+    pwaBtn.addEventListener("click", async () => {
+        console.log("PWA install button clicked");
+        const isInstalled = window.matchMedia("(display-mode: standalone)").matches;
+
+        if (isInstalled) {
+            showAlert("PWA Installed", "You already have the app installed.", [{ text: "OK" }]);
+            return;
+        }
+
+        if (deferredPrompt) {
+            // manually show the install prompt
+            deferredPrompt.prompt();
+            const choice = await deferredPrompt.userChoice;
+
+            if (choice.outcome === "accepted") {
+                console.log("✅ User accepted install");
+            } else {
+                console.log("❌ User dismissed install");
+            }
+
+            deferredPrompt = null; // reset
+        } else {
+            showAlert(
+                "Install Unavailable",
+                "Your browser doesn't support app installation or it's already installed.",
+                [{ text: "OK" }]
+            );
+        }
+    });
+}
+
+// Handle installed event
+window.addEventListener("appinstalled", () => {
+    showAlert("PWA Installed", "The app has been successfully installed!", [{ text: "OK" }]);
+});
 
 async function loadPage(url) {
     try {
