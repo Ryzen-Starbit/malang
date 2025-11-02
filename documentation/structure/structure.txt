@@ -20,6 +20,7 @@
 │   └── structure/
 │       └── structure.txt
 ├── index.html
+├── manifest.json
 ├── resrc/
 │   ├── data/
 │   │   ├── alumni.json
@@ -256,6 +257,7 @@
 │   │       └── 9.webp
 │   └── models/
 │       └── logo.glb
+├── service-worker.js
 ├── src/
 │   ├── components/
 │   │   ├── footer.html
