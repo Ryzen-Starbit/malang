@@ -112,6 +112,7 @@
 │   │   │   ├── down.webp
 │   │   │   ├── download.webp
 │   │   │   ├── events.webp
+│   │   │   ├── favicon.ico
 │   │   │   ├── favicon.webp
 │   │   │   ├── filters.png
 │   │   │   ├── google.png
