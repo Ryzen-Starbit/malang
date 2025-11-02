@@ -38,16 +38,49 @@ function initNavScripts() {
         applyTheme(true);
     });
 
-    document.getElementById("pwa").addEventListener("click", function () {
-        showAlert(
-            "PWA Installation",
-            "Install our app for faster access, offline support and a smoother experience.",
-            [
-                { text: "Cancel" },
-                { text: "Install", onClick: () => showAlert("PWA Installation", "This feature will be available soon.", [{ text: "OK" }]) }
-            ]
-        );
+    if ("serviceWorker" in navigator) {
+        navigator.serviceWorker.register("/service-worker.js").catch(console.error);
+    }
+
+    let deferredPrompt;
+    let pwaPromptShown = false;
+
+    window.addEventListener("beforeinstallprompt", (e) => {
+        e.preventDefault();
+        deferredPrompt = e;
+
+        if (!pwaPromptShown) {
+            pwaPromptShown = true;
+
+            const pwaBtn = document.getElementById("pwa");
+            if (pwaBtn) {
+                pwaBtn.addEventListener("click", async () => {
+                    if (!deferredPrompt) return;
+
+                    showAlert(
+                        "PWA Installation",
+                        "Install our app for faster access and a smoother experience.",
+                        [
+                            { text: "Cancel" },
+                            {
+                                text: "Install",
+                                onClick: async () => {
+                                    deferredPrompt.prompt();
+                                    const choice = await deferredPrompt.userChoice;
+                                    if (choice.outcome === "accepted") {
+                                    } else {
+                                        console.log("PWA installation dismissed.");
+                                    }
+                                    deferredPrompt = null;
+                                },
+                            },
+                        ]
+                    );
+                });
+            }
+        }
     });
+
 
     document.getElementById("copy").addEventListener("click", function () {
         vibrate();
