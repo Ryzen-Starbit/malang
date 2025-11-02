@@ -119,6 +119,7 @@
 │   │   │   ├── home.webp
 │   │   │   ├── link.webp
 │   │   │   ├── loading.gif
+│   │   │   ├── malang.png
 │   │   │   ├── malang.webp
 │   │   │   ├── members.webp
 │   │   │   ├── night-mode.webp
