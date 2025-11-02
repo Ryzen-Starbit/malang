@@ -10,7 +10,6 @@
 │       └── update-structure.yml
 ├── .gitignore
 ├── 404.html
-├── CNAME
 ├── LICENSE
 ├── README.md
 ├── api/
