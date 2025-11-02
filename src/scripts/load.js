@@ -55,60 +55,60 @@ function initNavScripts() {
             showAlert("Failed", "Failed to copy URL.", [{ text: "OK" }]);
         });
     });
-    burgerButton.classList.remove('loading');
-}
 
-// Register Service Worker
-if ("serviceWorker" in navigator) {
-    navigator.serviceWorker.register("/service-worker.js").catch(console.error);
-}
+    // Register Service Worker
+    if ("serviceWorker" in navigator) {
+        navigator.serviceWorker.register("/service-worker.js").catch(() => { });
+    }
 
-let deferredPrompt;
-const pwaBtn = document.getElementById("pwa");
+    let deferredPrompt;
+    const pwaBtn = document.getElementById("pwa");
 
-// Detect install prompt availability
-window.addEventListener("beforeinstallprompt", (e) => {
-    e.preventDefault(); // stop auto-banner
-    deferredPrompt = e; // save event for later use
-});
+    // Detect install prompt availability
+    window.addEventListener("beforeinstallprompt", (e) => {
+        e.preventDefault();
+        deferredPrompt = e;
+        pwaBtn.style.display = "block"; // show button only when available
+    });
 
-// On "Install" button click
-if (pwaBtn) {
-    pwaBtn.addEventListener("click", async () => {
-        console.log("PWA install button clicked");
-        const isInstalled = window.matchMedia("(display-mode: standalone)").matches;
+    // Handle PWA install button click
+    if (pwaBtn) {
+        pwaBtn.addEventListener("click", async () => {
+            const isInstalled = window.matchMedia("(display-mode: standalone)").matches;
 
-        if (isInstalled) {
-            showAlert("PWA Installed", "You already have the app installed.", [{ text: "OK" }]);
-            return;
-        }
-
-        if (deferredPrompt) {
-            // manually show the install prompt
-            deferredPrompt.prompt();
-            const choice = await deferredPrompt.userChoice;
-
-            if (choice.outcome === "accepted") {
-                console.log("✅ User accepted install");
-            } else {
-                console.log("❌ User dismissed install");
+            if (isInstalled) {
+                showAlert("PWA Installed", "You already have the app installed.", [{ text: "OK" }]);
+                return;
             }
 
-            deferredPrompt = null; // reset
-        } else {
-            showAlert(
-                "Install Unavailable",
-                "Your browser doesn't support app installation or it's already installed.",
-                [{ text: "OK" }]
-            );
-        }
-    });
-}
+            if (deferredPrompt) {
+                deferredPrompt.prompt();
+                const choice = await deferredPrompt.userChoice;
+                deferredPrompt = null;
 
-// Handle installed event
-window.addEventListener("appinstalled", () => {
-    showAlert("PWA Installed", "The app has been successfully installed!", [{ text: "OK" }]);
-});
+                if (choice.outcome === "accepted") {
+                    showAlert("PWA Installed", "The app has been successfully installed!", [{ text: "OK" }]);
+                } else {
+                    showAlert("Install Cancelled", "Installation was dismissed.", [{ text: "OK" }]);
+                }
+            } else {
+                showAlert(
+                    "Install Unavailable",
+                    "App installation is not available or already installed.",
+                    [{ text: "OK" }]
+                );
+            }
+        });
+    }
+
+    // Handle when app is installed
+    window.addEventListener("appinstalled", () => {
+        showAlert("PWA Installed", "The app has been successfully installed!", [{ text: "OK" }]);
+        deferredPrompt = null;
+    });
+
+    burgerButton.classList.remove('loading');
+}
 
 async function loadPage(url) {
     try {

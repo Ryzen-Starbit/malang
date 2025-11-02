@@ -381,25 +381,35 @@ details ul li {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: calc(100% - 40px);
+    width: calc(100% - 30px);
+    background-color: #151515;
     max-width: 460px;
     margin: auto;
     margin-top: 20px;
     gap: 5px;
-    padding: 7px 10px;
-    border-radius: 7px;
-    background-color: rgb(23, 23, 23);
+    border-radius: 9px;
+    padding: 7px;
     height: min-content;
 }
 
 #nav-buttons button {
     border: none;
-    margin: 0 5px;
+    padding: 4px 5px 1px 5px;
+}
+#nav-buttons button:hover {
+    background-color: rgb(40, 40, 40);
 }
 
 #nav-buttons img {
-    width: 22px;
-    height: 22px;
+    width: 20px;
+    height: 20px;
+}
+
+.util-buttons{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
 }
 
 .nav-bottom {
