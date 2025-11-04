@@ -317,5 +317,6 @@
 ├── variables/
 │   ├── last-updated.txt
 │   └── utils.json
+├── vercel.json
 └── zohoverify/
     └── verifyforzoho.html
