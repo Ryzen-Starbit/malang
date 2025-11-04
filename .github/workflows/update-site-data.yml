@@ -1,0 +1,29 @@
+name: Generate Search JSON & Sitemap
+on:
+  workflow_dispatch:  # manual trigger only
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+
+      - name: Install dependencies
+        run: pip install beautifulsoup4
+
+      - name: Generate search.json and sitemap.xml
+        run: python .github/scripts/generate_site_data.py
+
+      - name: Commit and push changes
+        run: |
+          git config user.name "github-actions"
+          git config user.email "actions@github.com"
+          git add resrc/data/search.json sitemap.xml
+          git commit -m "Update sitemap and search.json" || echo "No changes to commit"
+          git push

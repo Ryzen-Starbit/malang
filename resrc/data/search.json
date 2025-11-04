@@ -75,6 +75,11 @@
     "content": "Malang | Redirector You must be signed in to view this page. Customise URL Custom URL will be:Postfix Create View Redirects"
   },
   {
+    "title": "Malang Redirects",
+    "url": "/src/pages/redirects.html",
+    "content": "Malang Redirects Malang Redirects Loading..."
+  },
+  {
     "title": "Malang | Test",
     "url": "/src/pages/test.html",
     "content": "Malang | Test For the Kalakaar in you! Fine Arts & Photography Club Page 2 Page 3 Page 4 Page 5 1 2 3 4 5"

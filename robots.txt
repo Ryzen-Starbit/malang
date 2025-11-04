@@ -1,0 +1,26 @@
+User-agent: *
+Allow: /
+
+Disallow: /.github/
+Disallow: /.desktop/
+Disallow: /api/
+Disallow: /documentation/
+Disallow: /variables/
+Disallow: /zohoverify/
+Disallow: /src/components/
+Disallow: /src/scripts/
+Disallow: /src/styles/
+Disallow: /resrc/data/
+Disallow: /desktop.ini
+Disallow: /LICENSE
+Disallow: /README.md
+Disallow: /manifest.json
+Disallow: /service-worker.js
+
+Allow: /resrc/images/
+Allow: /resrc/models/
+Allow: /src/pages/
+Allow: /index.html
+Allow: /404.html
+
+Sitemap: https://malangbvp.info/sitemap.xml
