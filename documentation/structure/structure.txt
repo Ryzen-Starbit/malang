@@ -2,11 +2,12 @@
 │   └── malang.ico
 ├── .github/
 │   ├── scripts/
-│   │   ├── generate-search-json.py
+│   │   ├── generate_site_data.py
 │   │   └── update_structure.py
 │   └── workflows/
 │       ├── create-pr.yml
 │       ├── last-updated.yml
+│       ├── update-site-data.yml
 │       └── update-structure.yml
 ├── .gitignore
 ├── 404.html
@@ -258,7 +259,9 @@
 │   │       └── 9.webp
 │   └── models/
 │       └── logo.glb
+├── robots.txt
 ├── service-worker.js
+├── sitemap.xml
 ├── src/
 │   ├── components/
 │   │   ├── footer.html
