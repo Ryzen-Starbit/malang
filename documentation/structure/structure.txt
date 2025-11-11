@@ -10,6 +10,8 @@
 │       ├── update-site-data.yml
 │       └── update-structure.yml
 ├── .gitignore
+├── .vscode/
+│   └── settings.json
 ├── 404.html
 ├── LICENSE
 ├── README.md
