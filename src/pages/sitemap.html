@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <link rel="stylesheet" href="/src/styles/common.css" />
+    <title>Malang | Test</title>
+  </head>
+
+  <body>
+    <section>
+      <div id="sitemap-list"></div>
+    </section>
+  </body>
+  <script>
+    fetch("/sitemap.xml")
+      .then((response) => response.text())
+      .then((xmlText) => {
+        const parser = new DOMParser();
+        const xmlDoc = parser.parseFromString(xmlText, "text/xml");
+
+        const urls = xmlDoc.getElementsByTagName("url");
+        const list = document.getElementById("sitemap-list");
+
+        for (let i = 0; i < urls.length; i++) {
+          const loc = urls[i].getElementsByTagName("loc")[0].textContent;
+
+          const li = document.createElement("li");
+          const a = document.createElement("a");
+
+          a.href = loc;
+          a.target = "_blank";
+          a.textContent = loc;
+
+          li.appendChild(a);
+          list.appendChild(li);
+        }
+      })
+      .catch((error) => console.log("Error loading sitemap:", error));
+  </script>
+</html>
