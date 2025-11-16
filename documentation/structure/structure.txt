@@ -303,7 +303,6 @@
 │   │   ├── home.js
 │   │   ├── load.js
 │   │   ├── search.js
-│   │   ├── test.js
 │   │   ├── timeline.js
 │   │   └── treasury.js
 │   └── styles/
