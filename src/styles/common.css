@@ -488,12 +488,6 @@ hr {
   border-top: 3px solid rgb(20, 20, 20);
   background-color: none;
 }
-
-a {
-  color: gold;
-  text-decoration: none;
-}
-
 .long-btn {
   display: block;
   margin: 1rem auto;
