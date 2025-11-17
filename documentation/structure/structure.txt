@@ -197,7 +197,7 @@
 │   │   │   ├── orientation25-6.webp
 │   │   │   ├── payment-qr.webp
 │   │   │   ├── poster.webp
-│   │   │   ├── preview.svg
+│   │   │   ├── preview.png
 │   │   │   ├── preview1.png
 │   │   │   ├── rangotsav24-1.webp
 │   │   │   ├── rangotsav24-2.webp
