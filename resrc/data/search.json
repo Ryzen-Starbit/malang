@@ -7,7 +7,7 @@
   {
     "title": "Malang | Account",
     "url": "/src/pages/account.html",
-    "content": "Malang | Account Authentication Required. You can now access the following tools: Claims Media Kit Redirector Site Docs Treasury Log in with Google Log out"
+    "content": "Malang | Account Authentication Required. You can now access the following pages: T-Shirt Form Hold Claims Media Kit Redirector Site Docs Treasury Log in with Google Log out"
   },
   {
     "title": "Malang | Alumni",
@@ -32,7 +32,7 @@
   {
     "title": "Malang | Core Members: Tejas Gupta, Prasun Ratan, Goutam Sahu, Mohini Walia, Priya Ranjan, Satyam Singh",
     "url": "/src/pages/core.html",
-    "content": "Malang | Core Members Core Members \u00d7 Name: Tejas Gupta, Prasun Ratan, Goutam Sahu, Mohini Walia, Priya Ranjan, Satyam Singh Position: NA Batch: NA Branch: NA"
+    "content": "Malang | Core Members: Tejas Gupta, Prasun Ratan, Goutam Sahu, Mohini Walia, Priya Ranjan, Satyam Singh Core Members \u00d7 Name: Tejas Gupta, Prasun Ratan, Goutam Sahu, Mohini Walia, Priya Ranjan, Satyam Singh Position: NA Batch: NA Branch: NA"
   },
   {
     "title": "Malang | Site Documentation",
@@ -80,6 +80,11 @@
     "content": "Malang Redirects Malang Redirects Loading..."
   },
   {
+    "title": "Malang | Sitemap",
+    "url": "/src/pages/sitemap.html",
+    "content": "Malang | Sitemap"
+  },
+  {
     "title": "Malang | Test",
     "url": "/src/pages/test.html",
     "content": "Malang | Test"
@@ -93,6 +98,11 @@
     "title": "Malang | Treasury",
     "url": "/src/pages/treasury.html",
     "content": "Malang | Treasury You must be signed in to view this page. Malang's Treasury Total Amount: Loading... Select Header Bharatiyam Claims Development Funds Party / Trip Other + \u2212 \u26a0\ufe0f Heads Up! Double-check values. Transactions instantly affect the treasury balance. Log Transaction"
+  },
+  {
+    "title": "Malang | \ud83d\udc55 Form",
+    "url": "/src/pages/tshirt.html",
+    "content": "Malang | \ud83d\udc55 Form You must be signed in to view this page. Login Malang T-Shirts 2025-26 Next Year? * 1st 2nd 3rd Branch? * CSE CSBS CE IT E&TC ECE R&A ElCE Mechanical Civil Chemical Previous Next Size Chest (inches) S 41 M 43 L 45 XL 47 XXL 49 Size? * S M L XL XXL Previous Next Please make a payment of Rs. 600/- on the QR given below: Attach a screenshot of the payment * Previous Submit"
   },
   {
     "title": "Malang | Unsubscribe",

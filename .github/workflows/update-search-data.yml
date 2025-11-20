@@ -25,7 +25,7 @@ jobs:
         run: pip install beautifulsoup4
 
       - name: Generate search.json and sitemap.xml
-        run: python .github/scripts/generate_site_data.py
+        run: python .github/scripts/generate_search_data.py
 
       - name: Commit and push changes
         run: |

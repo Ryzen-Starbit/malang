@@ -35,7 +35,7 @@ os.makedirs(os.path.dirname(SEARCH_OUTPUT), exist_ok=True)
 with open(SEARCH_OUTPUT, "w", encoding="utf-8") as f:
     json.dump(entries, f, indent=2)
 
-print(f"✅ Generated {SEARCH_OUTPUT} with {len(entries)} entries")
+print(f"Generated {SEARCH_OUTPUT} with {len(entries)} entries")
 
 # ==========================
 # GENERATE SITEMAP.XML
@@ -68,4 +68,4 @@ sitemap.append("</urlset>")
 with open(SITEMAP_OUTPUT, "w", encoding="utf-8") as f:
     f.write("\n".join(sitemap))
 
-print(f"✅ Generated {SITEMAP_OUTPUT} with {len(urls)} URLs")
+print(f"Generated {SITEMAP_OUTPUT} with {len(urls)} URLs")
