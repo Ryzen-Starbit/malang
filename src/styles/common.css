@@ -305,6 +305,7 @@ summary {
   color: #c8c8c8;
   text-decoration: none;
   border-radius: 7px;
+  position: relative;
 }
 
 nav ul button {
@@ -361,10 +362,11 @@ details ul li {
 }
 
 #live {
-  margin-left: 10px;
-  color: rgb(65, 218, 0);
-  border: 1px solid rgba(0, 198, 0, 0.456);
-  background-color: rgba(34, 120, 0, 0.159);
+  position: absolute;
+  right: 10px;
+  color: rgb(218, 185, 0);
+  border: 1px solid rgba(198, 171, 0, 0.456);
+  background-color: rgba(120, 88, 0, 0.159);
   border-radius: 20px;
   padding: 2px 5px;
   font-size: 12px;
@@ -489,6 +491,7 @@ hr {
   background-color: none;
 }
 .long-btn {
+  position: relative;
   display: block;
   margin: 1rem auto;
   padding: 0.5rem;

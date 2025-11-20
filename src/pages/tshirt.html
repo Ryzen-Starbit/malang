@@ -1,0 +1,684 @@
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link
+    rel="shortcut icon"
+    href="../../resrc/images/icons/favicon.png"
+    type="image/x-icon"
+  />
+  <link rel="stylesheet" href="../styles/common.css" />
+  <link rel="stylesheet" href="../styles/authentication.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <title>Malang | Form</title>
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+  />
+  <style>
+    #formSection {
+      overflow-y: hidden;
+      margin: 10px;
+    }
+
+    #templateForm p {
+      font-size: 14px;
+      text-align: left;
+      color: #9e9e9e;
+      margin-bottom: 10px;
+    }
+
+    .form-step {
+      flex-direction: column;
+      justify-content: space-between;
+
+      display: none;
+      opacity: 0;
+      transition: opacity 0.4s ease-in-out, visibility 0.4s ease-in-out;
+    }
+
+    .form-step.active {
+      min-height: calc(100vh - 280px);
+      display: flex;
+      opacity: 1;
+    }
+
+    .checks {
+      width: calc(100% - 20px);
+      font-size: 14px;
+      padding: 10px;
+      color: #9e9e9e;
+      border: 1px solid #383838;
+      border-radius: 10px;
+      background-color: #1a1a1aa1;
+      margin: 0px auto 10px auto;
+    }
+
+    .checkbox-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px;
+      margin-top: 10px 0;
+    }
+
+    .checkbox-group input[type="checkbox"] {
+      display: none;
+      /* hide default checkbox */
+    }
+
+    .checkbox-group label {
+      display: inline-block;
+      padding: 5px 10px;
+      border: 1px solid #383838;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      user-select: none;
+    }
+
+    /* Checked state */
+    .checkbox-group input[type="checkbox"]:checked + label {
+      background-color: rgba(0, 251, 255, 0.096);
+      color: rgb(0, 255, 200);
+      border-color: rgba(0, 255, 208, 0.575);
+    }
+
+    /* Hidden text input */
+    .other-input {
+      max-height: 0;
+      opacity: 0;
+      width: calc(100% - 22px);
+      transform: translateY(-10px);
+      transition: all 0.3s ease;
+    }
+
+    .other-input input {
+      margin-top: 7px;
+      width: 100%;
+      outline: none;
+      transition: box-shadow 0.3s ease;
+    }
+
+    /* Show animation when "Other" is checked */
+    #Other:checked ~ .other-input {
+      max-height: 70px;
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    select {
+      color: grey;
+      margin-bottom: 10px;
+      padding: 9px;
+    }
+
+    option {
+      color: grey;
+      background-color: black;
+      font-size: 15px;
+    }
+
+    .btn-group {
+      display: flex;
+      gap: 10px;
+    }
+
+    #qr {
+      width: 70%;
+      border-radius: 7px;
+      margin-bottom: 10px;
+    }
+
+    .size-table {
+      width: 100%;
+      border-collapse: separate; /* required for border-radius */
+      border-spacing: 0;
+      border: 1px solid #383838;
+      border-radius: 7px;
+      overflow: hidden; /* ensures rounded corners stay visible */
+      text-align: center;
+      margin-bottom: 10px;
+    }
+
+    .size-table th,
+    .size-table td {
+      padding: 3px;
+      border: 1px solid #383838;
+    }
+
+    .size-table tr:last-child td {
+      border-bottom: none; /* remove last row border */
+    }
+
+    #login-btn{
+        color: white;
+        text-decoration: none;
+        border: 1px solid #383838;
+        padding: 10px 20px;
+        border-radius: 7px;
+        background-color: #0c0c0c;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="protected">
+    <h3>You must be signed in to view this page.</h3>
+    <a href="/src/pages/account.html" id="login-btn">Login</a>
+  </div>
+  <section id="formSection" class="restricted">
+    <canvas id="gradientCanvas"></canvas>
+    <form
+      id="templateForm"
+      onsubmit="handleButtonAction('submit', 'Submitting' , 'Submitted' , () => handleFormSubmit(event))"
+    >
+      <h3>Malang T-Shirts 2025-26</h3>
+
+      <!--Step 1-->
+      <div class="form-step active" id="step1">
+        <div class="inputs">
+          <input
+            type="text"
+            id="name"
+            name="name"
+            placeholder="Full Name *"
+            required
+          />
+          <input
+            type="text"
+            id="email"
+            name="email"
+            placeholder="Email ID *"
+            required
+          />
+          <input
+            type="text"
+            id="phone"
+            name="phone"
+            placeholder="Phone Number *"
+            required
+          />
+        </div>
+        <div class="btn-group">
+          <span></span>
+          <button type="button" onclick="nextStep(1)" class="long-btn">
+            Next
+          </button>
+        </div>
+      </div>
+
+      <!-- Form Step - 2-->
+
+      <div class="form-step" id="step2">
+        <div class="inputs">
+          <input type="text" id="prn" name="prn" placeholder="PRN *" required />
+          <div class="checks">
+            <p>Year? *</p>
+            <div class="checkbox-group">
+              <input type="checkbox" id="1st" name="year" value="1st" />
+              <label for="1st">1st</label>
+
+              <input type="checkbox" id="2nd" name="year" value="2nd" />
+              <label for="2nd">2nd</label>
+
+              <input type="checkbox" id="3rd" name="year" value="3rd" />
+              <label for="3rd">3rd</label>
+            </div>
+          </div>
+          <div class="checks">
+            <p>Branch? *</p>
+            <div class="checkbox-group">
+              <input type="checkbox" id="cse" name="branch" value="CSE" />
+              <label for="cse">CSE</label>
+              <input type="checkbox" id="csbs" name="branch" value="CSBS" />
+              <label for="csbs">CSBS</label>
+              <input type="checkbox" id="ce" name="branch" value="CE" />
+              <label for="ce">CE</label>
+              <input type="checkbox" id="it" name="branch" value="IT" />
+              <label for="it">IT</label>
+              <input type="checkbox" id="entc" name="branch" value="ENTC" />
+              <label for="entc">E&TC</label>
+              <input type="checkbox" id="ece" name="branch" value="ECE" />
+              <label for="ece">ECE</label>
+              <input type="checkbox" id="ra" name="branch" value="RA" />
+              <label for="ra">R&A</label>
+              <input type="checkbox" id="elce" name="branch" value="ELCE" />
+              <label for="elce">ElCE</label>
+              <input
+                type="checkbox"
+                id="mechanical"
+                name="branch"
+                value="Mechanical"
+              />
+              <label for="mechanical">Mechanical</label>
+              <input type="checkbox" id="civil" name="branch" value="Civil" />
+              <label for="civil">Civil</label>
+              <input
+                type="checkbox"
+                id="chemical"
+                name="branch"
+                value="Chemical"
+              />
+              <label for="chemical">Chemical</label>
+            </div>
+          </div>
+        </div>
+        <div class="btn-group">
+          <button type="button" onclick="prevStep(2)" class="long-btn">
+            Previous
+          </button>
+          <button type="button" onclick="nextStep(2)" class="long-btn">
+            Next
+          </button>
+        </div>
+      </div>
+
+      <!-- Form Step - 3 -->
+
+      <div class="form-step" id="step3">
+        <div class="inputs">
+          <input
+            type="text"
+            id="t-name"
+            name="t-name"
+            placeholder="Name to be printed on the T-Shirt *"
+            required
+          />
+
+          <div class="checks">
+            <table class="size-table">
+              <tr>
+                <th>Size</th>
+                <th>Chest (inches)</th>
+              </tr>
+
+              <tr>
+                <td>S</td>
+                <td>41</td>
+              </tr>
+
+              <tr>
+                <td>M</td>
+                <td>43</td>
+              </tr>
+
+              <tr>
+                <td>L</td>
+                <td>45</td>
+              </tr>
+
+              <tr>
+                <td>XL</td>
+                <td>47</td>
+              </tr>
+
+              <tr>
+                <td>XXL</td>
+                <td>49</td>
+              </tr>
+            </table>
+            <p>Size? *</p>
+            <div class="checkbox-group">
+              <input type="checkbox" id="s" name="size" value="S" />
+              <label for="s">S</label>
+
+              <input type="checkbox" id="m" name="size" value="M" />
+              <label for="m">M</label>
+
+              <input type="checkbox" id="l" name="size" value="L" />
+              <label for="l">L</label>
+
+              <input type="checkbox" id="xl" name="size" value="XL" />
+              <label for="xl">XL</label>
+
+              <input type="checkbox" id="xxl" name="size" value="XXL" />
+              <label for="xxl">XXL</label>
+            </div>
+          </div>
+        </div>
+        <div class="btn-group">
+          <button type="button" onclick="prevStep(3)" class="long-btn">
+            Previous
+          </button>
+          <button type="button" onclick="nextStep(3)" class="long-btn">
+            Next
+          </button>
+        </div>
+      </div>
+
+      <!-- Form Step - 4 -->
+
+      <div class="form-step" id="step4">
+        <div class="inputs">
+          <p>Please make a payment of Rs. 600/- on the QR given below:</p>
+          <img
+            src="/resrc/images/misc/payment-qr.webp"
+            alt="Payment-QR"
+            id="qr"
+          />
+          <p>Attach a screenshot of the payment *</p>
+          <input
+            type="file"
+            id="screenshot"
+            name="screenshot"
+            placeholder="Attach a file"
+          />
+        </div>
+        <div class="btn-group">
+          <button type="button" onclick="prevStep(4)" class="long-btn">
+            Previous
+          </button>
+          <button
+            type="submit"
+            onclick="validateStep(4)"
+            class="long-btn"
+            id="submit"
+          >
+            Submit
+          </button>
+        </div>
+      </div>
+    </form>
+  </section>
+  <script src="../scripts/common.js"></script>
+  <script src="../scripts/authentication.js"></script>
+  <script>
+    let currentStep = 1;
+
+    // ❗ Allow only ONE checkbox per group
+    document.querySelectorAll(".checkbox-group").forEach((group) => {
+      const checkboxes = group.querySelectorAll("input[type='checkbox']");
+      checkboxes.forEach((box) => {
+        box.addEventListener("change", () => {
+          if (box.checked) {
+            checkboxes.forEach((other) => {
+              if (other !== box) other.checked = false;
+            });
+          }
+        });
+      });
+    });
+
+    // ----------------------------
+    // SHOW STEP
+    // ----------------------------
+    function showStep(step) {
+      document.querySelectorAll(".form-step").forEach((el, i) => {
+        el.classList.remove("active");
+        if (i === step - 1) el.classList.add("active");
+      });
+      currentStep = step;
+    }
+
+    // ----------------------------
+    // VALIDATION
+    // ----------------------------
+    function validateStep(step) {
+      let valid = true;
+
+      // STEP 1 VALIDATION
+      if (step === 1) {
+        ["name", "email", "phone"].forEach((id) => {
+          if (!document.getElementById(id).value.trim()) valid = false;
+        });
+      }
+
+      // STEP 2 VALIDATION
+      if (step === 2) {
+        if (
+          document.querySelectorAll("input[name='year']:checked").length === 0
+        )
+          valid = false;
+
+        if (
+          document.querySelectorAll("input[name='branch']:checked").length === 0
+        )
+          valid = false;
+      }
+
+      // STEP 3 VALIDATION
+      if (step === 3) {
+        if (!document.getElementById("t-name").value.trim()) valid = false;
+
+        if (
+          document.querySelectorAll("input[name='size']:checked").length === 0
+        )
+          valid = false;
+      }
+
+      // STEP 4 VALIDATION (Payment screenshot)
+      if (step === 4) {
+        const screenshot = document.getElementById("screenshot");
+        if (!screenshot.files.length) valid = false;
+      }
+
+      if (!valid) {
+        showAlert("⚠️", "Please fill all required fields before continuing.", [
+          { text: "OK" },
+        ]);
+      }
+
+      return valid;
+    }
+
+    // ----------------------------
+    // NEXT & PREVIOUS STEP
+    // ----------------------------
+    function nextStep(step) {
+      if (validateStep(step)) showStep(step + 1);
+    }
+
+    function prevStep(step) {
+      showStep(step - 1);
+    }
+
+    // ----------------------------
+    // FORM SUBMIT
+    // ----------------------------
+    async function handleFormSubmit(e) {
+      e.preventDefault();
+
+      const url =
+        "https://script.google.com/macros/s/AKfycbyuHgxF8JjScAHpo3ZCajlIbpQGs_W0sBfsf6blGjkawRcD4TpFnG4xKEcWORNKi9gS/exec";
+
+      const form = document.getElementById("templateForm");
+      const formData = new FormData(form);
+
+      // Convert optional file to base64
+      const fileInput = document.getElementById("file");
+      let base64File = "";
+      let fileName = "";
+
+      if (fileInput.files.length > 0) {
+        const file = fileInput.files[0];
+        fileName = file.name;
+        base64File = await toBase64(file);
+      }
+
+      // Build JSON payload
+      const data = Object.fromEntries(formData.entries());
+      data.fileData = base64File;
+      data.fileName = fileName;
+
+      try {
+        await fetch(url, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(data),
+          mode: "no-cors",
+        });
+
+        showAlert(
+          "Request Sent!",
+          "Your request has been submitted successfully.",
+          [{ text: "OK" }]
+        );
+
+        confetti();
+        form.reset();
+        showStep(1);
+      } catch (err) {
+        console.error(err);
+        showAlert("❌ Something went wrong!", "Please try again later.", [
+          { text: "OK" },
+        ]);
+      }
+    }
+
+    function toBase64(file) {
+      return new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onload = () => resolve(reader.result.split(",")[1]);
+        reader.onerror = (error) => reject(error);
+      });
+    }
+
+    (function () {
+      function rand(min, max) {
+        return Math.random() * (max - min) + min;
+      }
+
+      const COLORS = [
+        "#ff004f",
+        "#ff7a00",
+        "#ffd400",
+        "#00e676",
+        "#00b0ff",
+        "#7c4dff",
+        "#ff1744",
+        "#ffea00",
+        "#00e5ff",
+        "#69f0ae",
+        "#b388ff",
+        "#ff80ab",
+      ];
+
+      // Public API
+      window.confetti = function confetti(opts = {}) {
+        const {
+          particleCount = 220,
+          scalar = 1,
+          gravity = 0.33,
+          drift = 0.03,
+          decay = 0.007, // higher = faster fade
+          spread = 70, // degrees
+          angle = -90, // -90 = straight up
+          origin = { x: 0.5, y: 0.7 }, // normalized viewport
+          shapes = ["square", "circle", "triangle"],
+        } = opts;
+
+        // Canvas setup
+        const dpr = Math.min(window.devicePixelRatio || 1, 2);
+        const canvas = document.createElement("canvas");
+        const ctx = canvas.getContext("2d");
+        canvas.style.cssText =
+          "position:fixed;inset:0;pointer-events:none;z-index:999999";
+        document.body.appendChild(canvas);
+
+        function resize() {
+          canvas.width = innerWidth * dpr;
+          canvas.height = innerHeight * dpr;
+          ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+        }
+        resize();
+        addEventListener("resize", resize);
+
+        // Particle factory
+        const angleRad = (angle * Math.PI) / 180;
+        const spreadRad = (spread * Math.PI) / 180;
+        const ox = innerWidth * origin.x;
+        const oy = innerHeight * origin.y;
+
+        const particles = [];
+        for (let i = 0; i < particleCount; i++) {
+          const t = angleRad + rand(-spreadRad / 2, spreadRad / 2);
+          const speed = rand(6, 12) * scalar;
+          particles.push({
+            x: ox,
+            y: oy,
+            vx: Math.cos(t) * speed + rand(-1, 1),
+            vy: Math.sin(t) * speed + rand(-1, 1),
+            w: rand(6, 12) * scalar,
+            h: rand(6, 12) * scalar,
+            r: rand(0, Math.PI * 2),
+            rv: rand(-0.2, 0.2),
+            color: COLORS[(Math.random() * COLORS.length) | 0],
+            shape: shapes[(Math.random() * shapes.length) | 0],
+            alpha: 1,
+            life: rand(220, 340),
+          });
+        }
+
+        let raf;
+        function drawShape(p) {
+          ctx.fillStyle = p.color;
+          switch (p.shape) {
+            case "circle":
+              ctx.beginPath();
+              ctx.arc(p.x, p.y, p.w * 0.6, 0, Math.PI * 2);
+              ctx.fill();
+              break;
+            case "triangle":
+              ctx.beginPath();
+              ctx.moveTo(p.x + Math.cos(p.r) * p.w, p.y + Math.sin(p.r) * p.h);
+              ctx.lineTo(
+                p.x + Math.cos(p.r + 2.09) * p.w,
+                p.y + Math.sin(p.r + 2.09) * p.h
+              );
+              ctx.lineTo(
+                p.x + Math.cos(p.r + 4.18) * p.w,
+                p.y + Math.sin(p.r + 4.18) * p.h
+              );
+              ctx.closePath();
+              ctx.fill();
+              break;
+            default: // square/rect
+              ctx.save();
+              ctx.translate(p.x, p.y);
+              ctx.rotate(p.r);
+              ctx.fillRect(-p.w / 2, -p.h / 2, p.w, p.h);
+              ctx.restore();
+          }
+        }
+
+        function frame() {
+          ctx.clearRect(0, 0, canvas.width, canvas.height);
+          let alive = 0;
+
+          for (const p of particles) {
+            p.x += p.vx + drift * (Math.random() - 0.5) * 20;
+            p.y += p.vy += gravity; // gravity accelerates downward
+            p.r += p.rv;
+            p.life--;
+            p.alpha = Math.max(0, p.alpha - decay);
+
+            if (p.alpha > 0 && p.life > 0 && p.y < innerHeight + 40) {
+              ctx.globalAlpha = p.alpha;
+              drawShape(p);
+              ctx.globalAlpha = 1;
+              alive++;
+            }
+          }
+
+          if (alive > 0) {
+            raf = requestAnimationFrame(frame);
+          } else {
+            cleanup();
+          }
+        }
+
+        function cleanup() {
+          cancelAnimationFrame(raf);
+          removeEventListener("resize", resize);
+          canvas.remove();
+        }
+
+        raf = requestAnimationFrame(frame);
+
+        // Return a tiny controller in case you want to kill early
+        return { stop: cleanup, canvas };
+      };
+    })();
+  </script>
+</body>

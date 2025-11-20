@@ -4,6 +4,8 @@
 
 .protected{
     display: flex;
+    flex-direction: column;
+    gap: 50px;
     text-align: center;
     justify-content: center;
     align-items: center;
