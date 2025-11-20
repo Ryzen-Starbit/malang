@@ -2,12 +2,12 @@
 │   └── malang.ico
 ├── .github/
 │   ├── scripts/
-│   │   ├── generate_site_data.py
+│   │   ├── generate_search_data.py
 │   │   └── update_structure.py
 │   └── workflows/
 │       ├── create-pr.yml
 │       ├── last-updated.yml
-│       ├── update-site-data.yml
+│       ├── update-search-data.yml
 │       └── update-structure.yml
 ├── .gitignore
 ├── .vscode/
