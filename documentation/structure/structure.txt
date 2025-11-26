@@ -34,6 +34,7 @@
 │   │   ├── photographs.json
 │   │   ├── search.json
 │   │   └── timeline.json
+│   ├── event.ics
 │   ├── images/
 │   │   ├── artworks/
 │   │   │   ├── 0.webp
