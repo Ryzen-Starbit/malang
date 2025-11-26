@@ -7,6 +7,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <title>Malang | Form</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <style>
         #formSection {
@@ -21,10 +24,16 @@
             margin-bottom: 10px;
         }
 
+        #templateForm h3 {
+            border-bottom: 1px solid #383838;
+            padding-bottom: 10px;
+            width: calc(100% + 40px);
+            margin-left: -20px;
+        }
+
         .form-step {
             flex-direction: column;
             justify-content: space-between;
-
             display: none;
             opacity: 0;
             transition: opacity 0.4s ease-in-out, visibility 0.4s ease-in-out;
@@ -116,6 +125,13 @@
             display: flex;
             gap: 10px;
         }
+
+        .iti {
+            width: 100%;
+        }
+        #phoneContainer{
+            margin-bottom: 10px;
+        }
     </style>
 </head>
 
@@ -130,14 +146,16 @@
             <div class="form-step active" id="step1">
                 <div class="inputs">
                     <input type="text" id="name" name="name" placeholder="Full Name *" required />
-                    <input type="text" id="email" name="email" placeholder="Email ID *" required />
-                    <input type="text" id="phone" name="phone" placeholder="Phone Number *" required />
+                    <input type="email" id="email" name="email" placeholder="Email ID *" required />
+                    <div id="phoneContainer">
+                        <input id="phone" name="phone" placeholder="Phone Number *" required />
+                    </div>
                     <select id="position" name="position" required>
                         <option value="" disabled selected>Position *</option>
                         <option value="Alumni">Malang Alumni</option>
                         <option value="CoreMember">Core Member</option>
                         <option value="Member">Member</option>
-                        <option value="Other">Other</option>
+                        <option value="Other">Outside Malang</option>
                     </select>
 
                 </div>
@@ -159,8 +177,7 @@
                                 Information</label>
                             <input type="checkbox" id="portfolio" name="type" value="portfolio"><label
                                 for="portfolio">Add My Artworks</label>
-                            <input type="checkbox" id="Other" name="type" value="Other"><label
-                                for="Other">Other</label>
+                            <input type="checkbox" id="Other" name="type" value="Other"><label for="Other">Other</label>
                             <div class="other-input"><input type="text" id="other_text" name="other_text"
                                     placeholder="Please specify... *"></div>
                         </div>
@@ -194,6 +211,12 @@
     <script src="../scripts/common.js"></script>
     <script src="../scripts/authentication.js"></script>
     <script>
+        const p = document.querySelector("#phone");
+        window.intlTelInput(p, {
+            initialCountry: "in",
+            separateDialCode: true
+        });
+
         let currentStep = 1;
 
         function showStep(step) {
