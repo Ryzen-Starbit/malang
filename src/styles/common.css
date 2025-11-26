@@ -96,55 +96,46 @@ h1 {
 }
 
 .loader-container {
-  --uib-size: 80px;
+  --uib-size: 45px;
   --uib-color: rgb(255, 255, 255);
-  --uib-speed: 0.7s;
-  --uib-stroke: 5px;
-  --uib-bg-opacity: 0.1;
+  --uib-speed: 2s;
   position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: var(--uib-stroke);
+  height: var(--uib-size);
   width: var(--uib-size);
-  border-radius: calc(var(--uib-stroke) / 2);
-  overflow: hidden;
-  transform: translate3d(0, 0, 0);
 }
 
-.loader-container::before {
-  content: "";
+.loader-container::before,
+.loader-container::after {
+  content: '';
   position: absolute;
   top: 0;
   left: 0;
   height: 100%;
   width: 100%;
+  border-radius: 50%;
   background-color: var(--uib-color);
-  opacity: var(--uib-bg-opacity);
+  animation: pulse var(--uib-speed) linear infinite;
+  transform: scale(0);
+  opacity: 0;
   transition: background-color 0.3s ease;
 }
 
 .loader-container::after {
-  content: "";
-  height: 100%;
-  width: 100%;
-  border-radius: calc(var(--uib-stroke) / 2);
-  animation: wobble var(--uib-speed) ease-in-out infinite;
-  transform: translateX(-95%);
-  background-color: var(--uib-color);
-  transition: background-color 0.3s ease;
+  animation-delay: calc(var(--uib-speed) / -2);
 }
 
-@keyframes wobble {
-  0%,
+@keyframes pulse {
+  0% {
+    transform: scale(0);
+    opacity: 1;
+  }
+
   100% {
-    transform: translateX(-95%);
-  }
-
-  50% {
-    transform: translateX(95%);
+    transform: scale(1);
+    opacity: 0;
   }
 }
+
 
 .malang {
   text-decoration: none;
@@ -351,7 +342,7 @@ summary::before {
   transform-origin: center;
 }
 
-details[open] > summary::before {
+details[open]>summary::before {
   transform: rotate(180deg);
 }
 
@@ -364,7 +355,7 @@ details ul li {
 #live {
   position: absolute;
   right: 10px;
-  color: rgb(218, 185, 0);
+  color: rgb(255, 217, 0);
   border: 1px solid rgba(198, 171, 0, 0.456);
   background-color: rgba(120, 88, 0, 0.159);
   border-radius: 20px;
@@ -392,6 +383,7 @@ details ul li {
   border: none;
   padding: 4px 5px 1px 5px;
 }
+
 #nav-buttons button:hover {
   background-color: rgb(40, 40, 40);
 }
@@ -491,6 +483,7 @@ hr {
   border-top: 3px solid rgb(20, 20, 20);
   background-color: none;
 }
+
 .long-btn {
   position: relative;
   display: block;
@@ -816,7 +809,7 @@ section.modal-active {
   }
 
   /* Dropdown menu (hidden by default but renderable for animation) */
-  nav details > *:not(summary) {
+  nav details>*:not(summary) {
     opacity: 0;
     visibility: hidden;
     position: absolute;
@@ -829,7 +822,7 @@ section.modal-active {
   }
 
   /* ✅ FIXED: ensure visibility works on hover (merged duplicate blocks) */
-  nav details:hover > *:not(summary) {
+  nav details:hover>*:not(summary) {
     opacity: 1;
     visibility: visible;
     transform: translateY(0);
@@ -864,7 +857,7 @@ section.modal-active {
   }
 
   /* Flip arrow on hover */
-  nav details:hover > summary::before {
+  nav details:hover>summary::before {
     transform: rotate(180deg);
   }
 

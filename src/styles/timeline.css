@@ -75,6 +75,10 @@
     left: -5px;
 }
 
+#upcoming a {
+    color: gold;
+    text-decoration: none;
+}
 #upcoming::before {
     background-color: gold;
     animation: blink 1s infinite ease-in;
