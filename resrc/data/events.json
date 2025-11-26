@@ -7,13 +7,13 @@
     "image": "",
     "buttons": [
       {
-        "text": "Add to Calendar",
+        "text": "+ Calendar",
         "link": "https://www.google.com/calendar/render?action=TEMPLATE&text=Malang+-+Graphic+Design+and+Digital+Illustration+Workshop&dates=20251201/20251202&details=An+exclusive+in-person+workshop+on+graphic+designing+and+digital+illustration+for+Malang+members.+Learn+essential+design+principles%2C+digital+art+techniques%2C+and+hands-on+tools+to+enhance+your+creative+skills.+Perfect+for+members+looking+to+level+up+their+visual+design+and+illustration+abilities.&location=3rd+Floor%2C+Central+Library",
         "focus": false,
         "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Google_Calendar_icon_%282020%29.svg/2048px-Google_Calendar_icon_%282020%29.svg.png"
       },
       {
-        "text": "Add to Calendar",
+        "text": "+ Calendar",
         "link": "/resrc/event.ics",
         "focus": false,
         "image": "https://upload.wikimedia.org/wikipedia/commons/1/1c/MacOSCalendar.png"
