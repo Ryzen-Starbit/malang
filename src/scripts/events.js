@@ -32,24 +32,30 @@ document.addEventListener("DOMContentLoaded", () => {
             </div>
             ${imageHtml}
             <p class="event-description">${event.description}</p>
-            <div class="event-buttons">
-              ${event.buttons.map(btn => {
-                if (btn.alertMessage) {
-                  return `
-                    <button class="long-btn${btn.focus ? ' focus' : ''}" onclick="showAlert('${event.name}', '${btn.alertMessage}', [{ text: 'OK' }])">
-                      ${btn.text}
-                    </button>
-                  `;
-                } else if (btn.link) {
-                  return `
-                    <button class="long-btn${btn.focus ? ' focus' : ''}" onclick="window.open('${btn.link}','_blank')">
-                      ${btn.text}
-                    </button>
-                  `;
-                } else {
-                  return '';
-                }
-              }).join('')}
+            <div class="event-buttons">${event.buttons.map(btn => {
+            const img = btn.image
+              ? `<img src="${btn.image}" style="height:20px; margin-right:8px; vertical-align:middle;">`
+              : "";
+
+            if (btn.alertMessage) {
+              return `
+      <button class="long-btn${btn.focus ? ' focus' : ''}"
+              onclick="showAlert('${event.name}', '${btn.alertMessage}', [{ text: 'OK' }])">
+        ${img}${btn.text}
+      </button>
+    `;
+            } else if (btn.link) {
+              return `
+      <button class="long-btn${btn.focus ? ' focus' : ''}"
+              onclick="window.open('${btn.link}','_blank')">
+        ${img}${btn.text}
+      </button>
+    `;
+            } else {
+              return "";
+            }
+          }).join('')}
+
             </div>
           `;
 
