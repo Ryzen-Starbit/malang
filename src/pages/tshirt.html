@@ -164,9 +164,6 @@
     .iti{
       width: 100%;
     }
-    .loader-container{
-      margin:  30px auto;
-    }
   </style>
 </head>
 
@@ -181,8 +178,165 @@
       onsubmit="handleButtonAction('submit', 'Submitting' , 'Submitted' , () => handleFormSubmit(event))">
       <h3>Malang T-Shirts 2025-26</h3>
 
-      The form will reopen by 3:00 PM.
-        <div class="loader-container"></div>
+      <!--Step 1-->
+      <div class="form-step active" id="step1">
+        <div class="inputs">
+          <input type="text" id="name" name="name" placeholder="Full Name *" required />
+          <input type="email" id="email" name="email" placeholder="Email ID *" required />
+          <input id="phone" name="phone" placeholder="Phone Number *" required />
+        </div>
+        <div class="btn-group">
+          <span></span>
+          <button type="button" onclick="nextStep(1)" class="long-btn">
+            Next
+          </button>
+        </div>
+      </div>
+
+      <!-- Form Step - 2-->
+
+      <div class="form-step" id="step2">
+        <div class="inputs">
+          <input type="text" id="prn" name="prn" placeholder="PRN *" required />
+          <div class="checks">
+            <p>Year? *</p>
+            <div class="checkbox-group">
+              <input type="checkbox" id="1st" name="year" value="1st" />
+              <label for="1st">1st</label>
+
+              <input type="checkbox" id="2nd" name="year" value="2nd" />
+              <label for="2nd">2nd</label>
+
+              <input type="checkbox" id="3rd" name="year" value="3rd" />
+              <label for="3rd">3rd</label>
+
+              <input type="checkbox" id="4th" name="year" value="4th" />
+              <label for="4th">4th</label>
+            </div>
+          </div>
+          <div class="checks">
+            <p>Branch? *</p>
+            <div class="checkbox-group">
+              <input type="checkbox" id="cse" name="branch" value="CSE" />
+              <label for="cse">CSE</label>
+              <input type="checkbox" id="csbs" name="branch" value="CSBS" />
+              <label for="csbs">CSBS</label>
+              <input type="checkbox" id="ce" name="branch" value="CE" />
+              <label for="ce">CE</label>
+              <input type="checkbox" id="it" name="branch" value="IT" />
+              <label for="it">IT</label>
+              <input type="checkbox" id="entc" name="branch" value="ENTC" />
+              <label for="entc">E&TC</label>
+              <input type="checkbox" id="ece" name="branch" value="ECE" />
+              <label for="ece">ECE</label>
+              <input type="checkbox" id="ra" name="branch" value="RA" />
+              <label for="ra">R&A</label>
+              <input type="checkbox" id="elce" name="branch" value="ELCE" />
+              <label for="elce">ElCE</label>
+              <input type="checkbox" id="mechanical" name="branch" value="Mechanical" />
+              <label for="mechanical">Mechanical</label>
+              <input type="checkbox" id="civil" name="branch" value="Civil" />
+              <label for="civil">Civil</label>
+              <input type="checkbox" id="chemical" name="branch" value="Chemical" />
+              <label for="chemical">Chemical</label>
+            </div>
+          </div>
+        </div>
+        <div class="btn-group">
+          <button type="button" onclick="prevStep(2)" class="long-btn">
+            Previous
+          </button>
+          <button type="button" onclick="nextStep(2)" class="long-btn">
+            Next
+          </button>
+        </div>
+      </div>
+
+      <!-- Form Step - 3 -->
+
+      <div class="form-step" id="step3">
+        <div class="inputs">
+          <input type="text" id="tname" name="tname" placeholder="Name to be printed on the T-Shirt *" required />
+
+          <div class="checks">
+            <table class="size-table">
+              <tr>
+                <th>Size</th>
+                <th>Chest (inches)</th>
+              </tr>
+
+              <tr>
+                <td>S</td>
+                <td>41</td>
+              </tr>
+
+              <tr>
+                <td>M</td>
+                <td>43</td>
+              </tr>
+
+              <tr>
+                <td>L</td>
+                <td>45</td>
+              </tr>
+
+              <tr>
+                <td>XL</td>
+                <td>47</td>
+              </tr>
+
+              <tr>
+                <td>XXL</td>
+                <td>49</td>
+              </tr>
+            </table>
+            <p>Size? *</p>
+            <div class="checkbox-group">
+              <input type="checkbox" id="s" name="size" value="S" />
+              <label for="s">S</label>
+
+              <input type="checkbox" id="m" name="size" value="M" />
+              <label for="m">M</label>
+
+              <input type="checkbox" id="l" name="size" value="L" />
+              <label for="l">L</label>
+
+              <input type="checkbox" id="xl" name="size" value="XL" />
+              <label for="xl">XL</label>
+
+              <input type="checkbox" id="xxl" name="size" value="XXL" />
+              <label for="xxl">XXL</label>
+            </div>
+          </div>
+        </div>
+        <div class="btn-group">
+          <button type="button" onclick="prevStep(3)" class="long-btn">
+            Previous
+          </button>
+          <button type="button" onclick="nextStep(3)" class="long-btn">
+            Next
+          </button>
+        </div>
+      </div>
+
+      <!-- Form Step - 4 -->
+
+      <div class="form-step" id="step4">
+        <div class="inputs">
+          <p>Please make a payment of Rs. 550/- on the QR given below:</p>
+          <img src="/resrc/images/misc/payment-qr.webp" alt="Payment-QR" id="qr" />
+          <p>Attach a screenshot of the payment *</p>
+          <input type="file" id="screenshot" name="screenshot" placeholder="Attach a file" />
+        </div>
+        <div class="btn-group">
+          <button type="button" onclick="prevStep(4)" class="long-btn">
+            Previous
+          </button>
+          <button type="submit" onclick="validateStep(4)" class="long-btn" id="submit">
+            Submit
+          </button>
+        </div>
+      </div>
     </form>
   </section>
   <script src="../scripts/common.js"></script>
@@ -289,11 +443,12 @@
       e.preventDefault();
 
       if (!validateStep(4)){
+        throw new Error("Please attach a screenshot of the payment.");
         return;
       }
 
       const url =
-        "https://script.google.com/macros/s/AKfycbz4BXEo_kKaSbGfeBuWjD3GBxxb5TksIg6g1sHk7Y98wiOKPfoFRsMh-joF4nEpzwlF/exec";
+        "https://script.google.com/macros/s/AKfycbwf8Oxhfg-Pwj0R--A7zoffnEvRr8K0LA_npx_C9ivq0f9J4RH4AaJRY3VFH3wgoK3Pxg/exec";
 
       const form = document.getElementById("templateForm");
       const formData = new FormData(form);
