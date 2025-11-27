@@ -290,7 +290,6 @@
 │   │   ├── redirector.html
 │   │   ├── redirects.html
 │   │   ├── sitemap.html
-│   │   ├── temp.html
 │   │   ├── test.html
 │   │   ├── timeline.html
 │   │   ├── treasury.html
