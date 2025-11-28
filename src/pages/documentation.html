@@ -1,6 +1,5 @@
-
-
 <head>
+    <script type="module" src="https://cdn.jsdelivr.net/npm/ldrs/dist/auto/lineSpinner.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/12.0.2/marked.min.js"></script>
@@ -13,9 +12,9 @@
 
 <body>
     <section id="documentation">
-    <div id="loader">
-        <div class="loader-container"></div>
-    </div>
+        <div id="loader">
+            <l-line-spinner size="30" stroke="2" speed="0.8" color="white"></l-line-spinner>
+        </div>
         <div class="info">
             <img src="https://api.visitorbadge.io/api/visitors?path=multiverseweb2%2malang%20&countColor=%23263759&style=flat"
                 alt="Visitors Count">
@@ -28,7 +27,7 @@
         </div>
         <div class="restricted">
             <button id="toggleListBtn" title="Show/Hide List" onclick="toggleList()" class="navButton"><img
-                src="/resrc/images/icons/admin.webp" class="icon-small" alt="list" id="toggleListIcon"></button>
+                    src="/resrc/images/icons/admin.webp" class="icon-small" alt="list" id="toggleListIcon"></button>
             <div id="readme-content">Loading...</div>
             <details id="site-structure">
                 <summary>Site Structure</summary>
@@ -54,4 +53,3 @@
         });
     </script>
 </body>
-

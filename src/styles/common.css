@@ -95,48 +95,6 @@ h1 {
   z-index: 99;
 }
 
-.loader-container {
-  --uib-size: 45px;
-  --uib-color: rgb(255, 255, 255);
-  --uib-speed: 2s;
-  position: relative;
-  height: var(--uib-size);
-  width: var(--uib-size);
-}
-
-.loader-container::before,
-.loader-container::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
-  border-radius: 50%;
-  background-color: var(--uib-color);
-  animation: pulse var(--uib-speed) linear infinite;
-  transform: scale(0);
-  opacity: 0;
-  transition: background-color 0.3s ease;
-}
-
-.loader-container::after {
-  animation-delay: calc(var(--uib-speed) / -2);
-}
-
-@keyframes pulse {
-  0% {
-    transform: scale(0);
-    opacity: 1;
-  }
-
-  100% {
-    transform: scale(1);
-    opacity: 0;
-  }
-}
-
-
 .malang {
   text-decoration: none;
   color: white;

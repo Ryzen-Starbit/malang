@@ -1,15 +1,17 @@
 <head>
     <title>Malang | Home</title>
+    <script type="module" src="https://cdn.jsdelivr.net/npm/ldrs/dist/auto/lineSpinner.js"></script>
     <link rel="stylesheet" href="/src/styles/common.css">
     <link rel="stylesheet" href="/src/styles/home.css">
     <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
     <link href="https://db.onlinewebfonts.com/c/f56de887103fafbc50b8d846974cd5d4?family=Samarkan+Normal+V1"
         rel="stylesheet">
     <script type="module" src="https://cdn.jsdelivr.net/npm/@google/model-viewer/dist/model-viewer.min.js"></script>
+    <script type="module" src="https://cdn.jsdelivr.net/npm/ldrs/dist/auto/lineSpinner.js"></script>
 </head>
 <section id="home">
     <div id="loader">
-        <div class="loader-container"></div>
+        <l-line-spinner size="30" stroke="2" speed="0.8" color="white"></l-line-spinner>
     </div>
     <div id="landingCanvas">
         <model-viewer id="logo" src="/resrc/models/logo.glb" alt="Logo" camera-controls camera-orbit="0deg 0deg auto"
