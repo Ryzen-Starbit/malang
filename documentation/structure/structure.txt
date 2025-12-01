@@ -211,6 +211,8 @@
 │   │   │   ├── rangotsav25-4.webp
 │   │   │   ├── team.webp
 │   │   │   ├── team2.webp
+│   │   │   ├── tshirt1.png
+│   │   │   ├── tshirt2.png
 │   │   │   └── vlcc.webp
 │   │   └── photographs/
 │   │       ├── 0.webp
