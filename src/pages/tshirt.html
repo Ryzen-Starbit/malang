@@ -161,8 +161,26 @@
       background-color: #0c0c0c;
     }
 
-    .iti{
+    .iti {
       width: 100%;
+    }
+
+    #tshirts {
+      margin: 10px;
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+    }
+
+    #tshirts img {
+      border: 1px sold #383838;
+      width: 100%;
+      max-width: 210px;
+      border-radius: 10px;
+      border: 1px solid #383838;
     }
   </style>
 </head>
@@ -252,9 +270,26 @@
         </div>
       </div>
 
-      <!-- Form Step - 3 -->
 
       <div class="form-step" id="step3">
+        <h4>T-Shirt Preview</h4>
+        <div id="tshirts">
+          <img src="/resrc/images/misc/tshirt1.png" alt="" class="tshirt">
+          <img src="/resrc/images/misc/tshirt2.png" alt="" class="tshirt">
+        </div>
+        <div class="btn-group">
+          <button type="button" onclick="prevStep(3)" class="long-btn">
+            Previous
+          </button>
+          <button type="button" onclick="nextStep(3)" class="long-btn">
+            Next
+          </button>
+        </div>
+      </div>
+
+      <!-- Form Step - 3 -->
+
+      <div class="form-step" id="step4">
         <div class="inputs">
           <input type="text" id="tname" name="tname" placeholder="Name to be printed on the T-Shirt *" required />
 
@@ -310,18 +345,17 @@
           </div>
         </div>
         <div class="btn-group">
-          <button type="button" onclick="prevStep(3)" class="long-btn">
+          <button type="button" onclick="prevStep(4)" class="long-btn">
             Previous
           </button>
-          <button type="button" onclick="nextStep(3)" class="long-btn">
+          <button type="button" onclick="nextStep(4)" class="long-btn">
             Next
           </button>
         </div>
       </div>
 
       <!-- Form Step - 4 -->
-
-      <div class="form-step" id="step4">
+      <div class="form-step" id="step5">
         <div class="inputs">
           <p>Please make a payment of Rs. 550/- on the QR given below:</p>
           <img src="/resrc/images/misc/payment-qr.webp" alt="Payment-QR" id="qr" />
@@ -329,16 +363,22 @@
           <input type="file" id="screenshot" name="screenshot" placeholder="Attach a file" />
         </div>
         <div class="btn-group">
-          <button type="button" onclick="prevStep(4)" class="long-btn">
+          <button type="button" onclick="prevStep(5)" class="long-btn">
             Previous
           </button>
-          <button type="submit" onclick="validateStep(4)" class="long-btn" id="submit">
+          <button type="submit" onclick="validateStep(5)" class="long-btn" id="submit">
             Submit
           </button>
         </div>
       </div>
     </form>
   </section>
+    <div id="image-modal" class="modal">
+      <div class="modal-content">
+        <span class="modal-close">&times;</span>
+        <img id="modal-image" />
+      </div>
+    </div>
   <script src="../scripts/common.js"></script>
   <script src="../scripts/authentication.js"></script>
   <script>
@@ -401,7 +441,7 @@
       }
 
       // STEP 3 VALIDATION
-      if (step === 3) {
+      if (step === 4) {
         if (!document.getElementById("tname").value.trim()) valid = false;
 
         if (
@@ -411,7 +451,7 @@
       }
 
       // STEP 4 VALIDATION (Payment screenshot)
-      if (step === 4) {
+      if (step === 5) {
         const screenshot = document.getElementById("screenshot");
         if (!screenshot.files.length) valid = false;
       }
@@ -442,7 +482,7 @@
     async function handleFormSubmit(e) {
       e.preventDefault();
 
-      if (!validateStep(4)){
+      if (!validateStep(4)) {
         throw new Error("Please attach a screenshot of the payment.");
         return;
       }
@@ -649,5 +689,14 @@
         return { stop: cleanup, canvas };
       };
     })();
+
+    document.getElementById("tshirts").addEventListener("click", (e) => {
+    const target = e.target;
+    if (target.tagName === "IMG") {
+        openModal({
+            imgSrc: target.src
+        });
+    }
+});
   </script>
 </body>
