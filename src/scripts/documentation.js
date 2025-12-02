@@ -36,6 +36,26 @@ Promise.all([
       document.querySelectorAll("pre code").forEach(block => {
         hljs.highlightElement(block);
       });
+
+      document.querySelectorAll("pre").forEach(pre => {
+        const btn = document.createElement("button")
+        btn.textContent = "Copy"
+        btn.style.position = "absolute"
+        btn.style.top = "6px"
+        btn.style.right = "6px"
+        btn.style.padding = "2px 5px"
+
+
+        pre.style.position = "relative"
+        pre.appendChild(btn)
+
+        btn.onclick = () => {
+          const code = pre.querySelector("code").textContent  // copy ONLY code
+          navigator.clipboard.writeText(code)
+          btn.textContent = "Copied!"
+          setTimeout(() => (btn.textContent = "Copy"), 1200)
+        }
+      })
     })
 ])
   .then(() => {

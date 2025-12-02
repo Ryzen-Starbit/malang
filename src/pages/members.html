@@ -1,0 +1,92 @@
+<head>
+    <title>Malang | Associates
+    </title>
+    <link rel="stylesheet" href="../styles/common.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <script type="module" src="https://cdn.jsdelivr.net/npm/ldrs/dist/auto/lineSpinner.js"></script>
+    <style>
+        .table-wrapper {
+            width: 100%;
+            overflow-x: auto;
+        }
+
+        table {
+            width: calc(100% - 20px);
+            border-collapse: collapse;
+            font-size: 13px;
+            border-radius: 7px;
+            min-width: 600px;
+            margin: 10px;
+        }
+
+        th,
+        td {
+            border: 1px solid #1b1b1b;
+            padding: 8px;
+            text-align: left;
+            white-space: nowrap;
+        }
+
+        th {
+            background: #1b1b1b;
+        }
+
+        tr:nth-child(even) {
+            background: #0f0f0f;
+        }
+
+        tr:hover {
+            background: rgb(25, 21, 0);
+            color: rgb(255, 214, 0);
+        }
+    </style>
+</head>
+
+<body>
+    <section>
+    <div id="loader">
+        <l-line-spinner size="30" stroke="2" speed="0.8" color="white"></l-line-spinner>
+    </div>
+    <h1 style="margin-left: 10px;">Malang Associates</h1>
+    <div class="table-wrapper">
+        <table id="csv-table" class="styled-table" style="margin: 70px 10x;"></table>
+    </div>
+    </section>
+</body>
+
+<script>
+    const url = "https://raw.githubusercontent.com/MalangBvp/media/f50749861653e264c0e2e1fe33a7920cedd16d87/members.csv"
+
+const columnsToShow = ["Name","Position","Year","Branch","Division","Socials Media Handles"]
+
+fetch(url)
+  .then(res => res.text())
+  .then(csv => {
+    const rows = csv.trim().split("\n").map(r => r.split(","))
+
+    const header = rows[0]
+    const data = rows.slice(7) // skip core records
+
+    const colIndexes = columnsToShow.map(c => header.indexOf(c))
+
+    const table = document.getElementById("csv-table")
+
+    // Add Sr. No. column
+    let thead =
+      "<tr><th>Sr. No.</th>" +
+      columnsToShow.map(c => `<th>${c}</th>`).join("") +
+      "</tr>"
+
+    let tbody = data
+      .map((row, index) =>
+        "<tr>" +
+          `<td>${index + 1}</td>` + // Sr No.
+          colIndexes.map(i => `<td>${row[i] || ""}</td>`).join("") +
+        "</tr>"
+      )
+      .join("")
+
+    table.innerHTML = thead + tbody
+    document.getElementById("loader").style.display = "none"
+  })
+</script>

@@ -7,7 +7,7 @@
   {
     "title": "Malang | Account",
     "url": "/src/pages/account.html",
-    "content": "Malang | Account Authentication Required. You can now access the following pages: T-Shirt Form Hold Claims Media Kit Redirector Site Docs Treasury Log in with Google Log out"
+    "content": "Malang | Account Authentication Required. You can now access the following pages: T-Shirt Form Live Claims Media Kit RedirectorAuth Site Docs TreasuryAuth Log in with Google Log out"
   },
   {
     "title": "Malang | Alumni",
@@ -47,7 +47,7 @@
   {
     "title": "Malang | Form",
     "url": "/src/pages/form.html",
-    "content": "Malang | Form Feature Request Position * Malang Alumni Core Member Member Other Next Request Type? * Report a Bug Update My Information Add My Artworks Other Previous Next Attach a link (if any): Attach a file (if any): Previous Request"
+    "content": "Malang | Form Feature Request Position * Malang Alumni Core Member Member Outside Malang Next Request Type? * Report a Bug Update My Information Add My Artworks Other Previous Next Attach a link (if any): Attach a file (if any): Previous Request"
   },
   {
     "title": "Malang | Gallery",
@@ -63,6 +63,11 @@
     "title": "Malang | Home",
     "url": "/src/pages/home.html",
     "content": "Malang | Home Fine Arts & Photography Club For the Kalakaar in you! Contact Us Discover Your Creative Oasis at Malang Our mission is to provide a platform for individuals to express themselves, explore their artistic passions, and collaborate with like-minded individuals. Whether you're a painter, photographer, sculptor, or any form of creative soul, Malang Fine Arts Arts & Photography Club is the place to be. Upcoming EventsCheckout Events Fashion EuphoriaLearn More RangotsavLearn More Art GalleryView Gallery Our Partners \u00d7"
+  },
+  {
+    "title": "Malang | Associates",
+    "url": "/src/pages/members.html",
+    "content": "Malang | Associates Malang Associates"
   },
   {
     "title": "Malang | Privacy Policy",
@@ -102,7 +107,7 @@
   {
     "title": "Malang | \ud83d\udc55 Form",
     "url": "/src/pages/tshirt.html",
-    "content": "Malang | \ud83d\udc55 Form You must be signed in to view this page. Login Malang T-Shirts 2025-26 Next Year? * 1st 2nd 3rd Branch? * CSE CSBS CE IT E&TC ECE R&A ElCE Mechanical Civil Chemical Previous Next Size Chest (inches) S 41 M 43 L 45 XL 47 XXL 49 Size? * S M L XL XXL Previous Next Please make a payment of Rs. 600/- on the QR given below: Attach a screenshot of the payment * Previous Submit"
+    "content": "Malang | \ud83d\udc55 Form You must be signed in to view this page. Login Malang T-Shirts 2025-26 Next Year? * 1st 2nd 3rd 4th Branch? * CSE CSBS CE IT E&TC ECE R&A ElCE Mechanical Civil Chemical Previous Next T-Shirt Preview Previous Next Size Chest (inches) S 41 M 43 L 45 XL 47 XXL 49 Size? * S M L XL XXL Previous Next Please make a payment of Rs. 550/- on the QR given below: Attach a screenshot of the payment * Previous Submit \u00d7"
   },
   {
     "title": "Malang | Unsubscribe",

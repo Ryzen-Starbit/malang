@@ -250,4 +250,9 @@ footer {
     #toggleListBtn {
         display: none;
     }
+
+    footer {
+        margin-left: 300px;
+        max-width: calc(100vw - 350px);
+    }
 }
