@@ -33,6 +33,7 @@
                     <ul>
                       <li><a href="#">Core Members</a></li>
                       <li><a href="#">Malang Alumni</a></li>
+                      <li><a href="#">Associates</a></li>
                     </ul>
                   </details>
                 </li>
