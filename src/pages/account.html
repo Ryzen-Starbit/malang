@@ -12,8 +12,9 @@
             signInWithPopup,
             signOut,
             onAuthStateChanged,
-            fetchSignInMethodsForEmail
+            linkWithCredential
         } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
+
         // ---------------------------
         // Firebase Initialization
         // ---------------------------
@@ -30,6 +31,7 @@
         const app = initializeApp(firebaseConfig);
         getAnalytics(app);
         const auth = getAuth(app);
+
         // ---------------------------
         // Providers (Expandable)
         // ---------------------------
@@ -41,14 +43,20 @@
                 return p;
             })()
         };
+
         // ---------------------------
         // Allowed Email List
         // ---------------------------
-
         let allowedEmails = [];
         fetch("/resrc/data/member-emails.json")
             .then(res => res.json())
             .then(data => allowedEmails = data);
+
+        // --------------------------------
+        // Multi-provider linking support
+        // --------------------------------
+        let pendingCred = null;
+        let pendingEmail = null;
 
         // ---------------------------
         // UI Update
@@ -69,12 +77,12 @@
                 profilePic.classList.remove("profile-pic");
                 localStorage.setItem("loggedIn", "false");
             }
-            // works with your existing global function
+
             toggleRestricted();
         }
+
         // ---------------------------
         // Generic Login Function
-        // (Expandable for more providers)
         // ---------------------------
 
         async function loginWith(providerName) {
@@ -86,18 +94,16 @@
 
             try {
                 const { user } = await signInWithPopup(auth, provider);
+
                 if (!user.email) {
                     showAlert("Email Private", "Your GitHub email is hidden. Please make it public or use Google login.", [{ text: "OK" }]);
                     await signOut(auth);
                     return;
                 }
+
                 if (!allowedEmails.includes(user.email)) {
                     vibrate(200);
-                    showAlert(
-                        "Unauthorised Access Attempt.",
-                        "Login restricted: Membership with Malang is required.",
-                        [{ text: "OK" }]
-                    );
+                    showAlert("Unauthorised Access Attempt.", "Login restricted: Membership with Malang is required.", [{ text: "OK" }]);
                     await signOut(auth);
                 } else {
                     vibrate(50);
@@ -107,22 +113,47 @@
                 updateUI(user);
 
             } catch (error) {
+
+                // ----------------------------------------
+                // MULTI-PROVIDER ACCOUNT LINKING HANDLING
+                // ----------------------------------------
                 if (error.code === "auth/account-exists-with-different-credential") {
-                    const email = error.customData?.email;
-                    const methods = await fetchSignInMethodsForEmail(auth, email);
-                    console.log(methods);
+                    pendingCred = error.credential;
+                    pendingEmail = error.customData?.email;
 
                     showAlert(
                         "Account already exists",
-                        `You previously logged in using: ${methods[0]}. Please use the same provider.`,
+                        "Please sign in via the provider you used earlier.",
                         [{ text: "OK" }]
                     );
-                    return;
+
+                    return; // Stop normal flow
                 }
 
-                showAlert("Login failed.", error.message, [{ text: "OK" }]);
+                vibrate(50);
+                showAlert("Login failed.", error.message || error, [{ text: "OK" }]);
             }
         }
+
+        // ---------------------------
+        // Automatic linking after relogin
+        // ---------------------------
+        onAuthStateChanged(auth, async (user) => {
+            if (user && pendingCred && user.email === pendingEmail) {
+                try {
+                    await linkWithCredential(user, pendingCred);
+                    pendingCred = null;
+                    pendingEmail = null;
+
+                    showAlert("Accounts Linked", "You can now log in using multiple providers.", [{ text: "OK" }]);
+                } catch (linkErr) {
+                    showAlert("Link Failed", linkErr.message, [{ text: "OK" }]);
+                }
+            }
+
+            updateUI(user);
+        });
+
         // ---------------------------
         // Logout
         // ---------------------------
@@ -131,17 +162,13 @@
             updateUI(null);
             showAlert("Logged Out", "You've been logged out.", [{ text: "Close" }]);
         }
-        // ---------------------------
-        // Auth State Listener
-        // ---------------------------
-        onAuthStateChanged(auth, updateUI);
+
         // ---------------------------
         // Expose Functions Globally
         // ---------------------------
-        window.login = provider => {
-            loginWith(provider);
-        };
+        window.login = provider => loginWith(provider);
         window.logout = logout;
+
     </script>
 </head>
 
@@ -149,7 +176,7 @@
     <section>
         <canvas id="gradientCanvas"></canvas>
         <div id="loginForm">
-            <h3 id="status">Authentication Required.</h3>
+            <h3 id="status" style="margin-bottom: 10px;">Authentication Required.</h3>
             <div class="restricted">
                 <p>You can now access the following pages:</p>
                 <a class="long-btn" href="/src/pages/tshirt.html">T-Shirt Form <span id="info" class="g">Live</span></a>
