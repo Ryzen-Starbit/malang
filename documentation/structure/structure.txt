@@ -267,7 +267,7 @@
 │   └── models/
 │       └── logo.glb
 ├── robots.txt
-├── service-worker.js
+├── service-worker-disabled.js
 ├── sitemap.xml
 ├── src/
 │   ├── components/
