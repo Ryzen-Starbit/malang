@@ -1,6 +1,8 @@
 name: Generate Search JSON & Sitemap
+
 on:
-  workflow_dispatch:
+  schedule:
+    - cron: "0 0 * * 0"
 
 permissions:
   contents: write
@@ -13,7 +15,6 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
-          persist-credentials: false
           fetch-depth: 0
 
       - name: Set up Python
@@ -34,11 +35,13 @@ jobs:
 
           git add resrc/data/search.json sitemap.xml
 
-          # Check for changes before committing
-          if git diff --cached --quiet; then
-            echo "✅ No changes to commit."
+          # Commit only if changes exist
+          if git diff --cached --quiet ; then
+            echo "✅ No changes detected. Nothing to commit."
           else
             git commit -m "🧭 Update sitemap.xml and search.json"
-            git remote set-url origin https://x-access-token:${{ secrets.GH_TOKEN }}@github.com/${{ github.repository }}.git
-            git push origin HEAD:${{ github.ref }}
+
+            # Push safely to the exact branch that triggered the workflow
+            BRANCH="${GITHUB_REF#refs/heads/}"
+            git push "https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git" HEAD:$BRANCH
           fi
