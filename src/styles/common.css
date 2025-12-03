@@ -287,7 +287,6 @@ summary::marker {
 }
 
 summary::before {
-  /*arrow image*/
   width: 16px;
   height: 16px;
   content: "";
