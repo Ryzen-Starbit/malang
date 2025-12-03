@@ -4,11 +4,43 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <script type="module" src="https://cdn.jsdelivr.net/npm/ldrs/dist/auto/lineSpinner.js"></script>
     <style>
+        .styled-table {
+            width: 100%;
+            border-collapse: collapse;
+            border-spacing: 0;
+            border-radius: 7px;
+            overflow: hidden;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        .styled-table th,
+        .styled-table td {
+            padding: 5px;
+            border: 1px solid #383838;
+            text-align: left;
+            white-space: nowrap;
+        }
+
+        .styled-table th {
+            background: #1b1b1b;
+        }
+
+        .styled-table tr:nth-child(even) {
+            background: #0f0f0f;
+        }
+
+        .styled-table tr:hover {
+            background: rgb(25, 21, 0);
+            color: rgb(255, 214, 0);
+        }
+
         .table-wrapper {
             width: 100%;
             overflow-x: auto;
         }
-        table {
+
+        #csv-table {
             width: calc(100% - 20px);
             margin: 10px;
         }
