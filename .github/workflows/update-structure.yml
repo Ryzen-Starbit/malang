@@ -1,4 +1,4 @@
-name: Update Repository structure
+name: Update Repository Structure
 
 on:
   push:
@@ -9,15 +9,18 @@ jobs:
   detect-and-update-structure:
     runs-on: ubuntu-latest
     permissions:
-      contents: write 
+      contents: write
+
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Set up Python
-        uses: actions/setup-python@v2
+        uses: actions/setup-python@v5
         with:
-          python-version: 3.12
+          python-version: "3.12"
 
       - name: Install dependencies
         run: |
@@ -31,9 +34,8 @@ jobs:
 
       - name: Pull latest changes safely
         run: |
-          git stash push --include-untracked
-          git pull --rebase origin main
-          git stash pop || true
+          git fetch origin main
+          git reset --soft origin/main
 
       - name: Run update script
         env:
@@ -43,5 +45,8 @@ jobs:
 
       - name: Commit and push if changed
         run: |
-          git add .
-          git diff --quiet && git diff --staged --quiet || (git commit -m "GW | Updated repo structure" && git push origin main)
+          if ! git diff --quiet || ! git diff --staged --quiet; then
+            git add .
+            git commit -m "GW | Updated repo structure"
+            git push origin main
+          fi
