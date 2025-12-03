@@ -1,4 +1,5 @@
-const CACHE_NAME = "malang-cache-v1";
+const VERSION = "1.0.0";
+const CACHE_NAME = `malang-${VERSION}`;
 const ASSETS = [
     "/",
     "/index.html",

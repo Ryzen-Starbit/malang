@@ -57,8 +57,14 @@ function initNavScripts() {
     });
 
     // Register Service Worker
+    //if ("serviceWorker" in navigator) {
+    //    navigator.serviceWorker.register("/service-worker.js").catch(() => { });
+    //}
+
     if ("serviceWorker" in navigator) {
-        navigator.serviceWorker.register("/service-worker.js").catch(() => { });
+        navigator.serviceWorker.getRegistrations().then(regs => {
+            regs.forEach(r => r.unregister());
+        });
     }
 
     let deferredPrompt;
