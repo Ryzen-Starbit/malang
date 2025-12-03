@@ -225,10 +225,6 @@ pre code.hljs * {
     will-change: transform;
 }
 
-footer {
-    margin-top: 10px;
-}
-
 @media (min-width: 800px) {
     #docList {
         max-width: 300px;
@@ -249,10 +245,5 @@ footer {
 
     #toggleListBtn {
         display: none;
-    }
-
-    footer {
-        margin-left: 300px;
-        max-width: calc(100vw - 350px);
     }
 }

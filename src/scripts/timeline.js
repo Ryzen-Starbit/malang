@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", () => {
       loader.style.display = 'none';
       viewMoreBtn.style.display = 'block';
       loadNextBatch();
-      applyTheme(false); // re-apply saved theme to newly added .same elements
+      //applyTheme(false); // re-apply saved theme to newly added .same elements
     })
     .catch(err => {
       console.error("Error loading events:", err);

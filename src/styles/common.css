@@ -459,7 +459,7 @@ hr {
 .long-btn {
   position: relative;
   display: block;
-  margin: 1rem auto;
+  margin: 10px auto;
   padding: 0.5rem;
   width: 90%;
   max-width: 400px;

@@ -41,14 +41,14 @@
     }, s = !0) {
         const a = new URLSearchParams;
         a.set("page", "gallery"), t && "artworks" !== t && a.set("mode", t), e && "all" !== e && a.set("type", e), n && "all" !== n && a.set("artist", n);
-        const o = `${location.pathname}${a.toString()?"?"+a.toString():""}${location.hash||""}`;
+        const o = `${location.pathname}${a.toString() ? "?" + a.toString() : ""}${location.hash || ""}`;
         s ? history.replaceState({}, "", o) : history.pushState({}, "", o)
     }
     async function E() {
         try {
             const t = new URLSearchParams;
             t.set("page", "gallery"), i && "artworks" !== i && t.set("mode", i), g && "all" !== g && t.set("type", g), u && "all" !== u && t.set("artist", u);
-            const e = `${window.location.origin}/index.html${t.toString()?"?"+t.toString():""}`;
+            const e = `${window.location.origin}/index.html${t.toString() ? "?" + t.toString() : ""}`;
             await navigator.clipboard.writeText(e), r.src = "/resrc/images/icons/tick.webp", setTimeout((() => r.src = "/resrc/images/icons/link.webp"), 1500)
         } catch (t) {
             window.prompt("Copy this link:", parentUrl)
@@ -76,7 +76,7 @@
     }
 
     function L() {
-        if (!d || 0 === d.length) return e.style.display = "none", void(s.style.display = "flex");
+        if (!d || 0 === d.length) return e.style.display = "none", void (s.style.display = "flex");
         const a = [];
         for (; a.length < 20 && p < d.length;) {
             const t = d[p];
@@ -85,7 +85,7 @@
                 n = "all" === u || t.artistToken === u;
             e && n && !y.has(t.imageId) && (a.push(t), y.add(t.imageId))
         }
-        if (0 === a.length) return void(p >= d.length && (0 === t.children.length ? (s.style.display = "flex", e.style.display = "none") : e.style.display = "none"));
+        if (0 === a.length) return void (p >= d.length && (0 === t.children.length ? (s.style.display = "flex", e.style.display = "none") : e.style.display = "none"));
         const o = document.createDocumentFragment(),
             r = [];
         for (const t of a) {
@@ -97,24 +97,28 @@
                 n.onload = n.onerror = () => t()
             })))
         }
-        t.appendChild(o), Promise.all(r).then((() => {
-            n.style.display = "none", applyTheme?.()
-        })), p >= d.length ? e.style.display = "none" : e.style.display = "block";
+        t.appendChild(o);
+        Promise.all(r).then(() => {
+            n.style.display = "none";
+            // applyTheme?.();
+        });
+        p >= d.length ? e.style.display = "none" : e.style.display = "block";
         const l = t.querySelectorAll(".gallery-item").length;
-        s.style.display = 0 === l ? "flex" : "none"
+        s.style.display = l === 0 ? "flex" : "none";
+
     }
     async function A(o) {
-        s.style.display = "none", n.style.display = "flex", t.innerHTML = "", y = new Set, p = 0, e.style.display = "none", i = o, await async function(t) {
-                const e = "artworks" === t ? "../../resrc/data/artworks.json" : "../../resrc/data/photographs.json";
-                try {
-                    const t = await fetch(e),
-                        n = await t.json();
-                    c = n || {}
-                } catch (t) {
-                    c = {}
-                }
-            }(o),
-            function(t) {
+        s.style.display = "none", n.style.display = "flex", t.innerHTML = "", y = new Set, p = 0, e.style.display = "none", i = o, await async function (t) {
+            const e = "artworks" === t ? "../../resrc/data/artworks.json" : "../../resrc/data/photographs.json";
+            try {
+                const t = await fetch(e),
+                    n = await t.json();
+                c = n || {}
+            } catch (t) {
+                c = {}
+            }
+        }(o),
+            function (t) {
                 const e = "artworks" === t ? 68 : 49;
                 d = Array.from({
                     length: e
@@ -134,7 +138,7 @@
                     }
                 })), p = 0, y = new Set
             }(o),
-            function() {
+            function () {
                 const t = new Set,
                     e = new Set;
                 d.forEach((n => {
@@ -164,7 +168,7 @@
             s = i || "work";
         if (n && "all" !== n) {
             const t = n.replace(/-/g, " ");
-            l.textContent = `${t}'s ${s.charAt(0).toUpperCase()+s.slice(1)}`
+            l.textContent = `${t}'s ${s.charAt(0).toUpperCase() + s.slice(1)}`
         } else l.textContent = e
     }
 
@@ -185,8 +189,8 @@
             type: g,
             artist: u
         }, !0), S(), n.style.display = "flex", A(i), toggleFilters()
-    })), async function() {
-        ! function() {
+    })), async function () {
+        ! function () {
             const n = document.getElementById("photographs"),
                 s = document.getElementById("artworks");
             n.addEventListener("click", (() => {
@@ -211,7 +215,7 @@
                 openModal({
                     imgSrc: e.src,
                     title: s.title || "",
-                    subtitle: `~ ${s.artist||"NA"}`
+                    subtitle: `~ ${s.artist || "NA"}`
                 })
             }))
         }();
@@ -234,7 +238,7 @@ const secureAction = t => {
     }]), navigator.vibrate(150);
     try {
         navigator.clipboard?.writeText?.("")
-    } catch {}
+    } catch { }
 };
 
 function toggleFilters() {
@@ -242,12 +246,12 @@ function toggleFilters() {
     if (!t) return;
     "hidden" === getComputedStyle(t).visibility ? (t.style.visibility = "visible", t.style.opacity = "1", t.style.filter = "blur(0)", document.body.style.overflow = "hidden", document.getElementById("toggleFiltersIcon").src = "/resrc/images/icons/close.png") : (t.style.visibility = "hidden", t.style.opacity = "0", t.style.filter = "blur(5px)", document.body.style.overflow = "", document.getElementById("toggleFiltersIcon").src = "/resrc/images/icons/filters.png"), vibrate()
 }
-document.addEventListener("keydown", (function(t) {
+document.addEventListener("keydown", (function (t) {
     const e = (t.key || "").toLowerCase();
     ((t.ctrlKey || t.metaKey) && ("c" === e || "s" === e || "u" === e || "j" === e || "i" === e) || "f12" === e || "printscreen" === e || "print" === e || "snapshot" === e || t.altKey && "printscreen" === e || t.shiftKey && "printscreen" === e || "Meta" === t.key && t.shiftKey && ("3" === e || "4" === e)) && secureAction(t)
-})), document.addEventListener("contextmenu", (function(t) {
+})), document.addEventListener("contextmenu", (function (t) {
     secureAction(t)
-})), document.addEventListener("selectstart", (function(t) {
+})), document.addEventListener("selectstart", (function (t) {
     t.preventDefault()
 })), document.querySelectorAll("img").forEach((t => {
     t.setAttribute("draggable", "false"), t.addEventListener("dragstart", secureAction)

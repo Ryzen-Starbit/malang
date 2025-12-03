@@ -106,7 +106,7 @@ if (container) {
             Promise.all(imagePromises)
                 .then(() => {
                     if (loader) loader.style.display = "none";
-                    applyTheme(false); // re-apply saved theme to newly added .same elements
+                    //applyTheme(false);
                 })
                 .catch((err) => {
                     if (loader) loader.textContent = "Failed to load alumni data.";

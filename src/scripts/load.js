@@ -33,10 +33,10 @@ function initNavScripts() {
     const burgerButton = document.getElementById("burger");
     burgerButton.addEventListener("click", toggleMenu);
 
-    document.getElementById("theme").addEventListener("click", () => {
-        vibrate();
-        applyTheme(true);
-    });
+    //document.getElementById("theme").addEventListener("click", () => {
+    //    vibrate();
+    //    applyTheme(true);
+    //});
 
     document.getElementById("copy").addEventListener("click", function () {
         vibrate();

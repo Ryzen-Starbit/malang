@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             const res = await fetch(file);
             el.innerHTML = await res.text();
         }
-    document.getElementById('year').textContent = new Date().getFullYear();
+        document.getElementById('year').textContent = new Date().getFullYear();
     });
 });
 
@@ -43,12 +43,13 @@ function toggleRestricted() {
     document.querySelectorAll(".protected").forEach(el => {
         el.style.display = isLoggedIn ? "none" : "flex";
     });
-    const accountLogin = document.getElementById("loginForm");
-    if (accountLogin) {
-        document.getElementById("loginBtn").style.display = isLoggedIn ? "none" : "inline-block";
-        document.getElementById("logoutBtn").style.display = isLoggedIn ? "inline-block" : "none";
-    }
+    document.querySelectorAll(".loginBtn").forEach(el => {
+        el.style.display = isLoggedIn ? "none" : "inline-block";
+    });
+    const logoutBtn = document.getElementById("logoutBtn");
+    if (logoutBtn) logoutBtn.style.display = isLoggedIn ? "inline-block" : "none";
 }
+
 
 
 //=======================================================================common button behavior
@@ -302,7 +303,7 @@ document.addEventListener('click', (e) => {
         [
             {
                 text: "Cancel",
-                onClick: () => {}
+                onClick: () => { }
             },
             {
                 text: "Open",
@@ -316,7 +317,7 @@ document.addEventListener('click', (e) => {
 });
 
 
-function openModal({ imgSrc,name= '', title = '', subtitle = '', extraInfo = {}, socials = {} }) {
+function openModal({ imgSrc, name = '', title = '', subtitle = '', extraInfo = {}, socials = {} }) {
     const modal = document.getElementById("image-modal");
     const modalImg = document.getElementById("modal-image");
     const modalName = document.getElementById("modal-name");
@@ -328,13 +329,13 @@ function openModal({ imgSrc,name= '', title = '', subtitle = '', extraInfo = {},
     modalImg.src = imgSrc;
 
     // Set title and subtitle
-    if (modalTitle){  
-    modalTitle.style.fontWeight = "bold";
-    modalTitle.style.fontStyle = "italic";
-    modalTitle.textContent = title;
+    if (modalTitle) {
+        modalTitle.style.fontWeight = "bold";
+        modalTitle.style.fontStyle = "italic";
+        modalTitle.textContent = title;
     }
     modalSubtitle ? modalSubtitle.textContent = subtitle : null;
-    modalName? modalName.textContent = name : null;
+    modalName ? modalName.textContent = name : null;
 
     // Extra info (like role, batch, branch)
     if (extraInfo) {

@@ -3,17 +3,20 @@
     <link rel="stylesheet" href="../styles/common.css">
     <link rel="stylesheet" href="../styles/authentication.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <script type="module">
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
+    <script type="module">import { initializeApp } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
         import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-analytics.js";
         import {
             getAuth,
             GoogleAuthProvider,
+            GithubAuthProvider,
             signInWithPopup,
             signOut,
-            onAuthStateChanged
+            onAuthStateChanged,
+            fetchSignInMethodsForEmail
         } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
-
+        // ---------------------------
+        // Firebase Initialization
+        // ---------------------------
         const firebaseConfig = {
             apiKey: "AIzaSyD20pmHMSjDirK1CFEz1EIrUJWwqbVLev4",
             authDomain: "malang-auth.firebaseapp.com",
@@ -24,17 +27,32 @@
             measurementId: "G-GHFQ1YG8WZ"
         };
 
-        // Firebase init
         const app = initializeApp(firebaseConfig);
         getAnalytics(app);
         const auth = getAuth(app);
-        const provider = new GoogleAuthProvider();
+        // ---------------------------
+        // Providers (Expandable)
+        // ---------------------------
+        const providers = {
+            google: new GoogleAuthProvider(),
+            github: (() => {
+                const p = new GithubAuthProvider();
+                p.addScope("user:email");
+                return p;
+            })()
+        };
+        // ---------------------------
+        // Allowed Email List
+        // ---------------------------
 
-        // Allowed emails
         let allowedEmails = [];
         fetch("/resrc/data/member-emails.json")
             .then(res => res.json())
             .then(data => allowedEmails = data);
+
+        // ---------------------------
+        // UI Update
+        // ---------------------------
 
         function updateUI(user) {
             const status = document.getElementById("status");
@@ -48,41 +66,81 @@
             } else {
                 status.innerText = user ? "Unauthorised Access Attempt." : "Authentication Required.";
                 profilePic.src = "/resrc/images/icons/user.png";
-                localStorage.setItem("loggedIn", "false");
                 profilePic.classList.remove("profile-pic");
+                localStorage.setItem("loggedIn", "false");
             }
+            // works with your existing global function
             toggleRestricted();
         }
+        // ---------------------------
+        // Generic Login Function
+        // (Expandable for more providers)
+        // ---------------------------
 
+        async function loginWith(providerName) {
+            const provider = providers[providerName];
+            if (!provider) {
+                showAlert("Unsupported Provider", "This login option is not configured.", [{ text: "OK" }]);
+                return;
+            }
 
-        // Auth functions
-        async function login() {
             try {
                 const { user } = await signInWithPopup(auth, provider);
+                if (!user.email) {
+                    showAlert("Email Private", "Your GitHub email is hidden. Please make it public or use Google login.", [{ text: "OK" }]);
+                    await signOut(auth);
+                    return;
+                }
                 if (!allowedEmails.includes(user.email)) {
                     vibrate(200);
-                    showAlert("Unauthorised Access Attempt.", "Login restricted: Membership with Malang is required.", [{ text: "OK" }]);
+                    showAlert(
+                        "Unauthorised Access Attempt.",
+                        "Login restricted: Membership with Malang is required.",
+                        [{ text: "OK" }]
+                    );
                     await signOut(auth);
                 } else {
-                    showAlert("Login successful", "", [{ text: "Proceed" }]);
                     vibrate(50);
+                    showAlert("Login successful", "", [{ text: "Proceed" }]);
                 }
+
                 updateUI(user);
+
             } catch (error) {
-                vibrate(50);
-                showAlert("Login failed.", error, [{ text: "OK" }]);
+                if (error.code === "auth/account-exists-with-different-credential") {
+                    const email = error.customData?.email;
+                    const methods = await fetchSignInMethodsForEmail(auth, email);
+                    console.log(methods);
+
+                    showAlert(
+                        "Account already exists",
+                        `You previously logged in using: ${methods[0]}. Please use the same provider.`,
+                        [{ text: "OK" }]
+                    );
+                    return;
+                }
+
+                showAlert("Login failed.", error.message, [{ text: "OK" }]);
             }
         }
-
+        // ---------------------------
+        // Logout
+        // ---------------------------
         async function logout() {
             await signOut(auth);
             updateUI(null);
             showAlert("Logged Out", "You've been logged out.", [{ text: "Close" }]);
         }
-
+        // ---------------------------
+        // Auth State Listener
+        // ---------------------------
         onAuthStateChanged(auth, updateUI);
-
-        window.login = login;
+        // ---------------------------
+        // Expose Functions Globally
+        // ---------------------------
+        window.login = provider => {
+            loginWith(provider);
+        };
         window.logout = logout;
     </script>
 </head>
@@ -97,16 +155,24 @@
                 <a class="long-btn" href="/src/pages/tshirt.html">T-Shirt Form <span id="info" class="g">Live</span></a>
                 <a class="long-btn" href="/src/pages/claims.html">Claims</a>
                 <a class="long-btn" href='/index.html?page=media'>Media Kit</a>
-                <a class="long-btn" href="/src/pages/authentication.html?page=redirector">Redirector<span id="info" class="y">Auth</span></a>
+                <a class="long-btn" href="/src/pages/authentication.html?page=redirector">Redirector<span id="info"
+                        class="y">Auth</span></a>
                 <a class="long-btn" href='/src/pages/documentation.html'>Site Docs</a>
-                <a class="long-btn" href="/src/pages/authentication.html?page=treasury">Treasury<span id="info" class="y">Auth</span></a>
+                <a class="long-btn" href="/src/pages/authentication.html?page=treasury">Treasury<span id="info"
+                        class="y">Auth</span></a>
                 <hr>
             </div>
-            <button id="loginBtn" class="long-btn" onclick="login()" style="position: relative;"><img
-                    src="/resrc/images/icons/google.png" alt="" id="google"
-                    style="height: 25px; position: absolute; left: 10px; top:6px;">
-                <p style="padding-left: 25px;">Log in with Google</p>
+            <button class="long-btn loginBtn" onclick="login('google')" style="position: relative;">
+                <img src="/resrc/images/icons/google.png" style="height:25px; position:absolute; left:10px; top:6px;">
+                <p style="padding-left:25px;">Log in with Google</p>
             </button>
+
+            <button class="long-btn loginBtn" onclick="login('github')" style="position: relative;">
+                <img src="https://raw.githubusercontent.com/MalangBvp/media/refs/heads/main/images/github.png"
+                    style="height:25px; position:absolute; left:10px; top:6px; filter: invert(1);">
+                <p style="padding-left:25px;">Log in with GitHub</p>
+            </button>
+
             <button id="logoutBtn" class="long-btn" onclick="logout()">Log out</button>
         </div>
     </section>
