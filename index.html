@@ -61,7 +61,6 @@
         id="content"></iframe>
     <script src="src/scripts/common.js"></script>
     <script src="src/scripts/load.js"></script>
-    <script type="module" src="https://cdn.jsdelivr.net/npm/ldrs/dist/auto/lineWobble.js"></script>
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
         import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
@@ -87,7 +86,6 @@
 
         // Update navbar profile picture
         function updateNavbar(user) {
-            const profilePic = document.getElementById("profilePic");
             if (user && allowedEmails.includes(user.email)) {
                 profilePic.src = user.photoURL || "/resrc/images/icons/user.png";
                 profilePic.classList.add("profile-pic");
@@ -100,7 +98,7 @@
         }
 
         // Keep navbar always synced
-        onAuthStateChanged(auth, updateNavbar);
+        onAuthStateChanged(auth, toggleRestricted);
 
         // Expose auth to iframes
         window.firebaseAuth = auth;
@@ -109,8 +107,10 @@
         iframe.addEventListener("wheel", (e) => {
             iframe.contentWindow.dispatchEvent(new WheelEvent("wheel", e));
         });
-
-        toggleRestricted();
+        const profilePic = document.getElementById("profilePic");
+        if (profilePic) {
+            updateNavbar();
+        }
 
     </script>
 
