@@ -4,7 +4,7 @@ on:
   push:
     branches:
       - main
-      - '*'
+      - "**"
 
 jobs:
   update-file:
@@ -13,30 +13,32 @@ jobs:
       contents: write
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
 
-      # Set Timezone to Asia/Kolkata (IST)
       - name: Set IST timezone
-        run: echo "TZ=Asia/Kolkata" >> $GITHUB_ENV
+        run: |
+          sudo timedatectl set-timezone Asia/Kolkata
+          echo "Timezone set to: $(date)"
         shell: bash
 
-      # Generate and save the formatted date to a file
       - name: Generate formatted date
         id: date_step
         run: |
-          # Format: Month Name Day, Year - HH:MM AM/PM IST
-          TIMESTAMP=$(date +"%B %d, %Y - %I:%M %p IST")
-          echo "TIMESTAMP=$TIMESTAMP" >> $GITHUB_OUTPUT
+          echo "TIMESTAMP=$(date +"%B %d, %Y - %I:%M %p IST")" >> $GITHUB_OUTPUT
         shell: bash
 
       - name: Write timestamp to file
-        run: echo "${{ steps.date_step.outputs.TIMESTAMP }}" > variables/last-updated.txt
+        run: |
+          mkdir -p variables
+          echo "${{ steps.date_step.outputs.TIMESTAMP }}" > variables/last-updated.txt
 
-      # Commit the updated file back to the repository
-      - name: Commit and Push changes
+      - name: Commit and push changes
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: "GW | Latest update timestamp"
           file_pattern: variables/last-updated.txt
-          commit_user_name: 'github-actions[bot]'
-          commit_user_email: 'github-actions[bot]@users.noreply.github.com'
+          commit_user_name: "github-actions[bot]"
+          commit_user_email: "github-actions[bot]@users.noreply.github.com"
