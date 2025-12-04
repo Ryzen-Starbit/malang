@@ -270,6 +270,7 @@ nav a:hover,
 button:hover,
 summary:hover {
   background-color: rgb(20, 20, 20);
+  color: white;
 }
 
 summary {
@@ -363,6 +364,7 @@ details ul li {
 #nav-buttons img {
   width: 20px;
   height: 20px;
+  filter: brightness(0) invert(0.7);
 }
 
 .util-buttons {
@@ -784,18 +786,23 @@ section.modal-active {
 
 @media (min-width: 1200px) {
   nav {
-    top: 5px;
-    right: 80px;
-    width: calc(100vw - 265px);
+    top: 7px;
+    background-color: transparent;
+    left: 150px;
+    width: fit-content;
     height: 53px;
-    padding: 2px;
+    padding: 0px;
     visibility: visible;
     opacity: 1;
     filter: none;
     display: flex;
     flex-direction: row-reverse;
-    justify-content: space-between;
+    justify-content: left;
     overflow: visible;
+  }
+
+  #headerButtons button#searchToggle {
+    width: calc(100vw - 1143px);
   }
 
   nav ul {
@@ -807,21 +814,34 @@ section.modal-active {
     display: flex;
   }
 
+
+  nav ul button,
+  nav ul a,
+  summary {
+    width: fit-content;
+    margin: 0px;
+    padding: 7px 15px;
+  }
+
+  nav summary {
+    padding-right: 30px;
+  }
+
   nav hr {
     display: none;
   }
 
   /* Dropdown menu (hidden by default but renderable for animation) */
   nav details>*:not(summary) {
-    opacity: 0;
-    visibility: hidden;
+    /*opacity: 0;
+    visibility: hidden;*/
     position: absolute;
-    top: 60px;
+    top: 55px;
     background: #000000;
     border: 1px solid rgb(50, 50, 50);
     padding: 10px 0;
     z-index: 300;
-    border-radius: 8px;
+    border-radius: 5px;
   }
 
   nav details:hover>*:not(summary) {
@@ -829,6 +849,12 @@ section.modal-active {
     visibility: visible;
     transform: translateY(0);
   }
+/* Make dropdown appear as soon as summary is hovered */
+nav summary:hover ~ * {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
 
   nav details ul {
     display: flex;
@@ -855,7 +881,8 @@ section.modal-active {
 
   /* Add custom arrow */
   nav summary::before {
-    display: none;
+    right: 10px;
+    top: 10px;
   }
 
   /* Flip arrow on hover */
