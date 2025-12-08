@@ -154,6 +154,10 @@ header {
   margin-top: 3px;
 }
 
+#keyCode {
+  display: none;
+}
+
 .burger {
   width: 30px;
   height: 30px;
@@ -801,8 +805,18 @@ section.modal-active {
     overflow: visible;
   }
 
+  #keyCode {
+    display: block;
+    border: 1px solid #383838;
+    padding: 3px 6px;
+    border-radius: 5px;
+  }
+
   #headerButtons button#searchToggle {
     width: calc(100vw - 1143px);
+    display: flex;
+    justify-content: space-between;
+    padding: 4px 10px;
   }
 
   nav ul {
@@ -849,12 +863,13 @@ section.modal-active {
     visibility: visible;
     transform: translateY(0);
   }
-/* Make dropdown appear as soon as summary is hovered */
-nav summary:hover ~ * {
-  opacity: 1;
-  visibility: visible;
-  transform: translateY(0);
-}
+
+  /* Make dropdown appear as soon as summary is hovered */
+  nav summary:hover~* {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
 
   nav details ul {
     display: flex;

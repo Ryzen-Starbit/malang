@@ -31,44 +31,44 @@
             text-decoration: underline;
         }
 
-        
-#dots {
-    width: 100vw;
-    height: 100vh;
-    position: absolute;
-    z-index: -1;
-}
 
-.star {
-    border-radius: 100%;
-    background-color: white;
-    position: absolute;
-    animation: moveit;
-    animation-duration: 2.5s;
-    animation-iteration-count: infinite;
-    opacity: 0;
-    transition: opacity 0.3s;
-}
+        #dots {
+            width: 100vw;
+            height: calc(100vh - 5px);
+            position: absolute;
+            z-index: -1;
+        }
 
-@keyframes moveit {
-    0% {
-        opacity: 0.2;
-    }
+        .star {
+            border-radius: 100%;
+            background-color: white;
+            position: absolute;
+            animation: moveit;
+            animation-duration: 2.5s;
+            animation-iteration-count: infinite;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
 
-    50% {
-        opacity: 0.8;
-    }
+        @keyframes moveit {
+            0% {
+                opacity: 0.2;
+            }
 
-    100% {
-        opacity: 0.2;
-    }
-}
+            50% {
+                opacity: 0.8;
+            }
+
+            100% {
+                opacity: 0.2;
+            }
+        }
     </style>
 </head>
 
 <body>
     <div id="loader">
-            <l-line-spinner size="30" stroke="2" speed="0.8" color="white"></l-line-spinner>
+        <l-line-spinner size="30" stroke="2" speed="0.8" color="white"></l-line-spinner>
     </div>
     <div id="dots"></div>
     <div class="container" style="display:none;">

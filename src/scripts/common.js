@@ -380,3 +380,11 @@ function openModal({ imgSrc, name = '', title = '', subtitle = '', extraInfo = {
     window.addEventListener("click", outsideClick);
 }
 
+
+document.addEventListener('keydown', e => {
+  if (e.key === '\\') {
+    e.preventDefault()
+    const searchToggle = parent.document.getElementById("searchToggle")
+    searchToggle.click()
+  }
+})

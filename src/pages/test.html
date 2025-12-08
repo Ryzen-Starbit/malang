@@ -1,21 +1,95 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <link rel="stylesheet" href="/src/styles/common.css" />
-    <link rel="stylesheet" href="/src/styles/home.css" />
-    <title>Malang | Test</title>
-  </head>
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<title>details/summary hover test</title>
+<style>
+  /* container */
+  nav { position: relative; padding: 20px; background:#111; }
 
-  <body>
-    <section id="test">
-      <div class="home">
-        <div id="landingCanvas">
-        </div>
-      </div>
-    </section>
-    <script src="/src/scripts/common.js"></script>
-    <script src="/src/scripts/home.js"></script>
-  </body>
+  nav details { position: relative; display: inline-block; margin-right: 16px; }
+
+  summary {
+    list-style: none;
+    cursor: pointer;
+    padding: 8px 16px;
+    color: #fff;
+    background: rgba(255,255,255,0.06);
+    border-radius: 6px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    user-select: none;
+  }
+  summary::-webkit-details-marker { display: none; }
+
+  /* arrow */
+  summary::after{
+    content: "▾";
+    display:inline-block;
+    transform-origin: 50% 50%;
+    transition: transform .18s ease;
+    font-size: 0.85em;
+    opacity: .9;
+  }
+
+  /* panel (hidden by default) */
+  nav details > .panel {
+    position: absolute;
+    top: calc(100% + 8px);
+    left: 0;
+    min-width: 170px;
+    border-radius: 6px;
+    padding: 8px 0;
+    background: #000;
+    border: 1px solid #333;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.6);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(6px);
+    transition: opacity .18s ease, transform .18s ease, visibility 0s linear .18s;
+    z-index: 9999;
+  }
+
+  /* show while hovering OR when open */
+  nav details:hover > .panel,
+  nav details[open] > .panel {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    transition-delay: 0s;
+  }
+
+  /* flip arrow while hovered or open */
+  nav details:hover > summary::after,
+  nav details[open] > summary::after {
+    transform: rotate(180deg);
+  }
+
+  /* demo items */
+  .panel a { display:block; padding:8px 14px; color:#ddd; text-decoration:none; }
+  .panel a:hover { background: rgba(255,255,255,0.03); }
+</style>
+</head>
+<body>
+<nav>
+  <details>
+    <summary>Menu A</summary>
+    <div class="panel">
+      <a href="#">Item 1</a>
+      <a href="#">Item 2</a>
+      <a href="#">Item 3</a>
+    </div>
+  </details>
+
+  <details>
+    <summary>Menu B</summary>
+    <div class="panel">
+      <a href="#">Alpha</a>
+      <a href="#">Beta</a>
+    </div>
+  </details>
+</nav>
+</body>
 </html>
