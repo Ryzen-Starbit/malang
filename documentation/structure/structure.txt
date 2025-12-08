@@ -172,6 +172,11 @@
 │   │   │   ├── FE25-7.webp
 │   │   │   ├── FE25-8.webp
 │   │   │   ├── FE25-9.webp
+│   │   │   ├── designworkshop-1.webp
+│   │   │   ├── designworkshop-2.webp
+│   │   │   ├── designworkshop-3.webp
+│   │   │   ├── designworkshop-4.webp
+│   │   │   ├── designworkshop-5.webp
 │   │   │   ├── editingUnlocked1.webp
 │   │   │   ├── editingUnlocked2.webp
 │   │   │   ├── editingUnlocked3.webp
