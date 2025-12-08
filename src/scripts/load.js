@@ -37,7 +37,6 @@ function initNavScripts() {
     //    vibrate();
     //    applyTheme(true);
     //});
-
     document.getElementById("copy").addEventListener("click", function () {
         vibrate();
         let currentPage = content.src || "";
