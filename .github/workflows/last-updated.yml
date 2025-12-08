@@ -46,5 +46,6 @@ jobs:
         with:
           commit_message: "GW | Latest update timestamp"
           file_pattern: variables/last-updated.txt
+          push_options: '--force-with-lease'
           commit_user_name: github-actions[bot]
           commit_user_email: github-actions[bot]@users.noreply.github.com
