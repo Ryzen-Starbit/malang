@@ -37,16 +37,19 @@
 #rangotsav {
     background-image: linear-gradient(to bottom, rgb(0, 0, 0) 0%, rgba(0, 0, 0, 0) 100%), url('/resrc/images/misc/rangotsav24-5.webp');
 }
+
 .featuredTitle {
-    color:rgb(230, 230, 230);
+    color: rgb(230, 230, 230);
     font-size: 1.2em;
     font-weight: 500;
     border-bottom: 1px solid rgb(230, 230, 230);
     padding-bottom: 5px;
 }
+
 .featured:hover {
     scale: 1.02;
 }
+
 #events {
     margin: 10px 0;
     display: grid;
@@ -80,9 +83,11 @@
 }
 
 #upcoming a {
+    margin-left: 10px;
     color: gold;
     text-decoration: none;
 }
+
 #upcoming::before {
     background-color: gold;
     animation: blink 1s infinite ease-in;
@@ -207,5 +212,11 @@ summary.title::before {
         right: auto;
         margin: 10px auto;
         padding: 0 0;
+    }
+    .event{
+        padding-left: 15px;
+    }
+    #upcoming a {
+    margin-left: 0px;
     }
 }
