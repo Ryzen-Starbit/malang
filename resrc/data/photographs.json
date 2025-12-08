@@ -2,17 +2,17 @@
     "1": {
         "title": "",
         "artist": "Manamrit",
-        "type": "Street"
+        "type": "Architectural"
     },
     "0": {
         "title": "",
         "artist": "Ayush",
-        "type": "Nature"
+        "type": "Wildlife"
     },
     "2": {
         "title": "",
         "artist": "Manamrit",
-        "type": "Street"
+        "type": "Architectural"
     },
     "3": {
         "title": "",
@@ -32,12 +32,12 @@
     "6": {
         "title": "",
         "artist": "Sourabh",
-        "type": ""
+        "type": "Architectural"
     },
     "7": {
         "title": "",
         "artist": "Sourabh",
-        "type": "Nature"
+        "type": "Landscape"
     },
     "8": {
         "title": "",
@@ -47,29 +47,34 @@
     "9": {
         "title": "",
         "artist": "Sourabh",
-        "type": ""
+        "type": "Architectural"
     },
     "10": {
         "title": "",
         "artist": "Manoviraj",
-        "type": "Nature"
+        "type": "Wildlife"
     },
     "11": {
         "title": "",
         "artist": "Manoviraj",
-        "type": "Nature"
+        "type": "Wildlife"
     },
     "12": {
         "title": "",
         "artist": "Manoviraj",
-        "type": "Nature"
+        "type": "Wildlife"
     },
     "13": {
         "title": "",
         "artist": "Manoviraj",
-        "type": "Nature"
+        "type": "Wildlife"
     },
     "14": {
+        "title": "",
+        "artist": "Manoviraj",
+        "type": "Street"
+    },
+    "15": {
         "title": "",
         "artist": "Manoviraj",
         "type": "Street"
@@ -77,17 +82,17 @@
     "16": {
         "title": "",
         "artist": "Manoviraj",
-        "type": "Nature"
+        "type": "Landscape"
     },
     "17": {
         "title": "",
         "artist": "Manoviraj",
-        "type": "Nature"
+        "type": "Urban"
     },
     "18": {
         "title": "",
         "artist": "Manoviraj",
-        "type": "Nature"
+        "type": "Cityscape"
     },
     "19": {
         "title": "",
@@ -97,37 +102,37 @@
     "20": {
         "title": "",
         "artist": "Manoviraj",
-        "type": "Nature"
+        "type": "Cityscape"
     },
     "21": {
         "title": "",
         "artist": "Gaurav Kumar",
-        "type": "Nature"
+        "type": "Landscape"
     },
     "22": {
         "title": "",
         "artist": "Gaurav Kumar",
-        "type": "Nature"
+        "type": "Wildlife"
     },
     "23": {
         "title": "",
         "artist": "Gaurav Kumar",
-        "type": "Nature"
+        "type": "Landscape"
     },
     "24": {
         "title": "",
         "artist": "Gaurav Kumar",
-        "type": "Nature"
+        "type": "Urban"
     },
     "25": {
         "title": "",
         "artist": "Gaurav Kumar",
-        "type": "Nature"
+        "type": "Cityscape"
     },
     "26": {
         "title": "",
         "artist": "Gaurav Kumar",
-        "type": "Nature"
+        "type": "Urban"
     },
     "27": {
         "title": "",
@@ -137,7 +142,7 @@
     "28": {
         "title": "",
         "artist": "Gaurav Kumar",
-        "type": "Nature"
+        "type": "Architectural"
     },
     "29": {
         "title": "",
@@ -147,27 +152,27 @@
     "30": {
         "title": "",
         "artist": "Gaurav Kumar",
-        "type": "Nature"
+        "type": "Pet"
     },
     "31": {
         "title": "",
         "artist": "Gaurav Kumar",
-        "type": "Nature"
+        "type": "Cityscape"
     },
     "32": {
         "title": "",
         "artist": "Gaurav Kumar",
-        "type": "Nature"
+        "type": "Cityscape"
     },
     "33": {
         "title": "",
         "artist": "Gaurav Kumar",
-        "type": "Nature"
+        "type": "Pet"
     },
     "34": {
         "title": "",
         "artist": "Gaurav Kumar",
-        "type": "Nature"
+        "type": "Architectural"
     },
     "35": {
         "title": "",
@@ -177,7 +182,7 @@
     "36": {
         "title": "",
         "artist": "Hersheyy",
-        "type": "Nature"
+        "type": "Landscape"
     },
     "37": {
         "title": "",
@@ -187,17 +192,17 @@
     "38": {
         "title": "",
         "artist": "Hersheyy",
-        "type": "Nature"
+        "type": "Street"
     },
     "39": {
         "title": "",
         "artist": "Hersheyy",
-        "type": "Nature"
+        "type": "Street"
     },
     "40": {
         "title": "",
         "artist": "Hersheyy",
-        "type": "Nature"
+        "type": "Architectural"
     },
     "41": {
         "title": "",
@@ -217,12 +222,12 @@
     "44": {
         "title": "",
         "artist": "Tejas",
-        "type": "Space"
+        "type": "Cityscape"
     },
     "45": {
         "title": "Aeroplane",
         "artist": "Tejas",
-        "type": "Street"
+        "type": "Urban"
     },
     "46": {
         "title": "Shooting Star",
@@ -234,9 +239,77 @@
         "artist": "Tejas",
         "type": "Space"
     },
-    "48": {        
+    "48": {
         "title": "Stars",
         "artist": "Tejas",
         "type": "Space"
+    },
+    "49": {        
+        "artist": "Prasun",
+        "type": ""
+    },
+    "50": {        
+        "artist": "Prasun",
+        "type": "Nature"
+    },
+    "51": {        
+        "artist": "Prasun",
+        "type": "Architectural"
+    },
+    "52": {        
+        "artist": "Prasun",
+        "type": "Nature"
+    },
+    "53": {        
+        "artist": "Prasun",
+        "type": "Urban"
+    },
+    "54": {        
+        "artist": "Prasun",
+        "type": "Architectural"
+    },
+    "55": {        
+        "artist": "Prasun",
+        "type": "Nature"
+    },
+    "56": {        
+        "artist": "Prasun",
+        "type": "Nature"
+    },
+    "57": {        
+        "artist": "Prasun",
+        "type": "Urban"
+    },
+    "58": {        
+        "artist": "Prasun",
+        "type": "Urban"
+    },
+    "59": {        
+        "artist": "Prasun",
+        "type": "Nature"
+    },
+    "60": {        
+        "artist": "Prasun",
+        "type": "Street"
+    },
+    "61": {        
+        "artist": "Prasun",
+        "type": ""
+    },
+    "62": {        
+        "artist": "Prasun",
+        "type": "Street"
+    },
+    "63": {        
+        "artist": "Prasun",
+        "type": "Street"
+    },
+    "64": {        
+        "artist": "Prasun",
+        "type": "Street"
+    },
+    "65": {        
+        "artist": "Prasun",
+        "type": "Nature"
     }
 }
