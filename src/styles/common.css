@@ -115,6 +115,14 @@ section.active {
   filter: blur(5px) brightness(0.2);
   transition: filter 0.3s ease;
 }
+footer.modal-active {
+  filter: blur(5px) brightness(0.2);
+  transition: filter 0.3s ease;
+}
+section.modal-active {
+  filter: blur(5px) brightness(0.2);
+  transition: filter 0.3s ease;
+}
 
 header img {
   height: 50px;
@@ -734,11 +742,6 @@ hr {
   /* caption should always remain visible */
   justify-content: flex-start;
   gap: 20px;
-}
-
-section.modal-active {
-  filter: blur(5px) brightness(0.2);
-  transition: filter 0.3s ease;
 }
 
 .modal-close {

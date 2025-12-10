@@ -364,12 +364,14 @@ function openModal({ imgSrc, name = '', title = '', subtitle = '', extraInfo = {
 
     // Show modal
     document.querySelector("section").classList.add("modal-active");
+    document.querySelector("footer").classList.add("modal-active");
     modal.style.display = "flex";
     document.body.style.overflow = "hidden";
 
     // Close handlers
     const closeModal = () => {
         document.querySelector("section").classList.remove("modal-active");
+        document.querySelector("footer").classList.remove("modal-active");
         modal.style.display = "none";
         document.body.style.overflow = "auto";
         window.removeEventListener("click", outsideClick);
