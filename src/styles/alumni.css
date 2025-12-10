@@ -2,19 +2,18 @@
     padding: 0px 10px 10px 10px;
 }
 .table-wrapper {
+    border: 1px solid #383838;
     overflow-x: auto;
     max-width: min-content;
     display: flex;
-    padding: 5px;
     margin: 5px;
-    background-color: #161616;
-    border-radius: 10px;
+    border-radius: 7px;
 }
 .vertical{
     writing-mode: vertical-rl;
     transform: rotate(180deg);
     color: white;
-    background-color: #161616;
+    border: 1px solid #000000;
     text-align: center;
     border-left: none;
     line-height: 22px;
@@ -27,8 +26,8 @@ table {
 }
 
 td {
-    background-color: rgb(10, 10, 10);
-    border: 2px solid #161616;
+    background-color: #000000;
+    border-left: 1px solid #383838;
     text-align: center;
     padding: 5px;
     min-width: 130px;
@@ -37,6 +36,7 @@ td {
 table tr td img {
     height: 130px;
     border-radius: 5px;
+    transition: filter 0.3s, scale 0.3s;
 }
 
 td img:hover{
