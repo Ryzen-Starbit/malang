@@ -364,14 +364,20 @@ function openModal({ imgSrc, name = '', title = '', subtitle = '', extraInfo = {
 
     // Show modal
     document.querySelector("section").classList.add("modal-active");
-    document.querySelector("footer").classList.add("modal-active");
+    footer = document.querySelector("footer");
+    if (footer) {
+        footer.classList.add("modal-active");
+    }
     modal.style.display = "flex";
     document.body.style.overflow = "hidden";
 
     // Close handlers
     const closeModal = () => {
         document.querySelector("section").classList.remove("modal-active");
-        document.querySelector("footer").classList.remove("modal-active");
+        footer = document.querySelector("footer");
+        if (footer) {
+            footer.classList.remove("modal-active");
+        }
         modal.style.display = "none";
         document.body.style.overflow = "auto";
         window.removeEventListener("click", outsideClick);
@@ -384,9 +390,9 @@ function openModal({ imgSrc, name = '', title = '', subtitle = '', extraInfo = {
 
 
 document.addEventListener('keydown', e => {
-  if (e.key === '\\') {
-    e.preventDefault()
-    const searchToggle = parent.document.getElementById("searchToggle")
-    searchToggle.click()
-  }
+    if (e.key === '\\') {
+        e.preventDefault()
+        const searchToggle = parent.document.getElementById("searchToggle")
+        searchToggle.click()
+    }
 })
