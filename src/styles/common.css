@@ -344,7 +344,8 @@ details ul li {
 }
 
 #info.r {
-  color: rgb(255, 49, 49);
+  font-weight: 500;
+  color: rgb(255, 60, 60);
   border: 1px solid rgba(185, 0, 0, 0.905);
   background-color: rgba(120, 0, 0, 0.159);
 }

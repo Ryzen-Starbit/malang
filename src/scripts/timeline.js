@@ -48,7 +48,6 @@ document.addEventListener("DOMContentLoaded", () => {
           const img = document.createElement("img");
           img.src = imgSrc;
           img.className = "event-image";
-          img.loading = "lazy";
 
           img.addEventListener("click", () => {
             openModal({ imgSrc });
