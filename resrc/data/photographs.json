@@ -152,7 +152,7 @@
     "30": {
         "title": "",
         "artist": "Gaurav Kumar",
-        "type": "Pet"
+        "type": "Animal"
     },
     "31": {
         "title": "",
@@ -167,7 +167,7 @@
     "33": {
         "title": "",
         "artist": "Gaurav Kumar",
-        "type": "Pet"
+        "type": "Animal"
     },
     "34": {
         "title": "",
@@ -244,72 +244,280 @@
         "artist": "Tejas",
         "type": "Space"
     },
-    "49": {        
+    "49": {
         "artist": "Prasun",
         "type": ""
     },
-    "50": {        
+    "50": {
         "artist": "Prasun",
         "type": "Nature"
     },
-    "51": {        
+    "51": {
         "artist": "Prasun",
         "type": "Architectural"
     },
-    "52": {        
+    "52": {
         "artist": "Prasun",
         "type": "Nature"
     },
-    "53": {        
+    "53": {
         "artist": "Prasun",
         "type": "Urban"
     },
-    "54": {        
+    "54": {
         "artist": "Prasun",
         "type": "Architectural"
     },
-    "55": {        
+    "55": {
         "artist": "Prasun",
         "type": "Nature"
     },
-    "56": {        
+    "56": {
         "artist": "Prasun",
         "type": "Nature"
     },
-    "57": {        
+    "57": {
         "artist": "Prasun",
         "type": "Urban"
     },
-    "58": {        
+    "58": {
         "artist": "Prasun",
         "type": "Urban"
     },
-    "59": {        
+    "59": {
         "artist": "Prasun",
         "type": "Nature"
     },
-    "60": {        
+    "60": {
         "artist": "Prasun",
         "type": "Street"
     },
-    "61": {        
+    "61": {
         "artist": "Prasun",
         "type": ""
     },
-    "62": {        
+    "62": {
         "artist": "Prasun",
         "type": "Street"
     },
-    "63": {        
+    "63": {
         "artist": "Prasun",
         "type": "Street"
     },
-    "64": {        
+    "64": {
         "artist": "Prasun",
         "type": "Street"
     },
-    "65": {        
+    "65": {
         "artist": "Prasun",
         "type": "Nature"
+    },
+    "66": {
+        "artist": "Shourya Gupta",
+        "type": "Space"
+    },
+    "67": {
+        "artist": "Shourya Gupta",
+        "type": "Space"
+    },
+    "68": {
+        "artist": "Shourya Gupta",
+        "type": "Space"
+    },
+    "69": {
+        "artist": "Shourya Gupta",
+        "type": "Space"
+    },
+    "70": {
+        "artist": "Shourya Gupta",
+        "type": "Cityscape"
+    },
+    "71": {
+        "artist": "Ayushi Sonwane",
+        "type": "Landscape"
+    },
+    "72": {
+        "artist": "Ayushi Sonwane",
+        "type": "Landscape"
+    },
+    "73": {
+        "artist": "Ayushi Sonwane",
+        "type": "Landscape"
+    },
+    "74": {
+        "artist": "Ayushi Sonwane",
+        "type": "Landscape"
+    },
+    "75": {
+        "artist": "Arav",
+        "type": "Street"
+    },
+    "76": {
+        "artist": "Shivam",
+        "type": "Urban"
+    },
+    "77": {
+        "artist": "Shivam",
+        "type": "Urban"
+    },
+    "78": {
+        "artist": "Shivam",
+        "type": "Urban"
+    },
+    "79": {
+        "artist": "Shivam",
+        "type": "Urban"
+    },
+    "80": {
+        "artist": "Lokesh",
+        "type": "Macro"
+    },
+    "81": {
+        "artist": "Lokesh",
+        "type": "Landscape"
+    },
+    "82": {
+        "artist": "Lokesh",
+        "type": ""
+    },
+    "83": {
+        "artist": "Lokesh",
+        "type": "Macro"
+    },
+    "84": {
+        "artist": "Lokesh",
+        "type": "Macro"
+    },
+    "85": {
+        "artist": "Shivam",
+        "type": "Architectural"
+    },
+    "86": {
+        "artist": "Tanushryy",
+        "type": "Cityscape"
+    },
+    "87": {
+        "artist": "Tanushryy",
+        "type": "Animal"
+    },
+    "88": {
+        "artist": "Tanushryy",
+        "type": "Street"
+    },
+    "89": {
+        "artist": "Tanushryy",
+        "type": "Nature"
+    },
+    "90": {
+        "artist": "Tanushryy",
+        "type": "Macro"
+    },
+    "91": {
+        "artist": "Tanushryy",
+        "type": "Architectural"
+    },
+    "92": {
+        "artist": "Shourya Gupta",
+        "type": "Nature"
+    },
+    "93": {
+        "artist": "Shourya Gupta",
+        "type": "Urban"
+    },
+    "94": {
+        "artist": "Shourya Gupta",
+        "type": "Nature"
+    },
+    "95": {
+        "artist": "Shourya Gupta",
+        "type": "Nature"
+    },
+    "96": {
+        "artist": "Shourya Gupta",
+        "type": "Cityscape"
+    },
+    "97": {
+        "artist": "Shourya Gupta",
+        "type": "Street"
+    },
+    "98": {
+        "artist": "Shourya Gupta",
+        "type": "Nature"
+    },
+    "99": {
+        "artist": "Shourya Gupta",
+        "type": "Street"
+    },
+    "100": {
+        "artist": "Shourya Gupta",
+        "type": "Urban"
+    },
+    "101": {
+        "artist": "Shourya Gupta",
+        "type": "Street"
+    },
+    "102": {
+        "artist": "Shourya Gupta",
+        "type": ""
+    },
+    "103": {
+        "artist": "Shourya Gupta",
+        "type": ""
+    },
+    "104": {
+        "artist": "Shivam",
+        "type": "Urban"
+    },
+    "105": {
+        "artist": "Shourya Gupta",
+        "type": "Nature"
+    },
+    "106": {
+        "artist": "Shourya Gupta",
+        "type": "Cityscape"
+    },
+    "107": {
+        "artist": "Shourya Gupta",
+        "type": "Nature"
+    },
+    "108": {
+        "artist": "Shourya Gupta",
+        "type": "Nature"
+    },
+    "109": {
+        "artist": "Shourya Gupta",
+        "type": "Nature"
+    },
+    "110": {
+        "artist": "Shourya Gupta",
+        "type": "Nature"
+    },
+    "111": {
+        "artist": "Shourya Gupta",
+        "type": "Street"
+    },
+    "112": {
+        "artist": "Shourya Gupta",
+        "type": "Wildlife"
+    },
+    "113": {
+        "artist": "Shivam",
+        "type": "Nature"
+    },
+    "114": {
+        "artist": "Shivam",
+        "type": "Urban"
+    },
+    "115": {
+        "artist": "Lokesh",
+        "type": "Street"
+    },
+    "116": {
+        "artist": "Lokesh",
+        "type": ""
+    },
+    "117": {
+        "artist": "Shivam",
+        "type": "Vintage"
     }
 }

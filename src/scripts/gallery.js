@@ -119,7 +119,7 @@
             }
         }(o),
             function (t) {
-                const e = "artworks" === t ? 68 : 66;
+                const e = "artworks" === t ? 68 : 118;
                 d = Array.from({
                     length: e
                 }, ((e, n) => {
