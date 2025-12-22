@@ -67,7 +67,7 @@ function handleButtonAction(buttonId, loaderText, successText, taskFunction, err
         .then(taskFunction)
         .then(() => {
             button.style.borderColor = 'green';
-            button.style.color = 'green';
+            button.style.color = 'limegreen';
             button.innerHTML = `${successText}! ✔`;
             setTimeout(() => resetButton(), 4000);
         })

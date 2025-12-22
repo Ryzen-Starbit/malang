@@ -76,37 +76,66 @@
     }
 
     function L() {
-        if (!d || 0 === d.length) return e.style.display = "none", void (s.style.display = "flex");
-        const a = [];
-        for (; a.length < 20 && p < d.length;) {
-            const t = d[p];
-            p++;
-            const e = "all" === g || t.typeToken === g,
-                n = "all" === u || t.artistToken === u;
-            e && n && !y.has(t.imageId) && (a.push(t), y.add(t.imageId))
-        }
-        if (0 === a.length) return void (p >= d.length && (0 === t.children.length ? (s.style.display = "flex", e.style.display = "none") : e.style.display = "none"));
-        const o = document.createDocumentFragment(),
-            r = [];
-        for (const t of a) {
-            const e = document.createElement("div");
-            e.className = "gallery-item";
-            const n = document.createElement("img");
-            n.src = t.src, n.alt = t.alt, n.className = `${t.typeToken} ${t.artistToken}`, e.appendChild(n), o.appendChild(e), r.push(new Promise((t => {
-                if (n.complete) return t();
-                n.onload = n.onerror = () => t()
-            })))
-        }
-        t.appendChild(o);
-        Promise.all(r).then(() => {
-            n.style.display = "none";
-            // applyTheme?.();
-        });
-        p >= d.length ? e.style.display = "none" : e.style.display = "block";
-        const l = t.querySelectorAll(".gallery-item").length;
-        s.style.display = l === 0 ? "flex" : "none";
+        return new Promise((resolve, reject) => {
+            if (!d || d.length === 0) {
+                e.style.display = "none";
+                s.style.display = "flex";
+                return resolve();
+            }
 
+            const batchItems = [];
+            while (batchItems.length < 26 && p < d.length) {
+                const item = d[p++];
+                const okType = g === "all" || item.typeToken === g;
+                const okArtist = u === "all" || item.artistToken === u;
+
+                if (okType && okArtist && !y.has(item.imageId)) {
+                    batchItems.push(item);
+                    y.add(item.imageId);
+                }
+            }
+
+            if (batchItems.length === 0) {
+                e.style.display = "none";
+                return resolve();
+            }
+
+            const batch = document.createElement("div");
+            batch.className = "gallery-batch";
+
+            const frag = document.createDocumentFragment();
+            const loaders = [];
+
+            for (const item of batchItems) {
+                const wrap = document.createElement("div");
+                wrap.className = "gallery-item";
+
+                const img = document.createElement("img");
+                img.src = item.src;
+                img.alt = item.alt;
+                img.className = `${item.typeToken} ${item.artistToken}`;
+
+                wrap.appendChild(img);
+                frag.appendChild(wrap);
+
+                loaders.push(new Promise(res => {
+                    if (img.complete) res();
+                    else img.onload = img.onerror = res;
+                }));
+            }
+
+            batch.appendChild(frag);
+
+            Promise.all(loaders)
+                .then(() => {
+                    t.appendChild(batch);
+                    e.style.display = p >= d.length ? "none" : "block";
+                    resolve();
+                })
+                .catch(reject);
+        });
     }
+
     async function A(o) {
         s.style.display = "none", n.style.display = "flex", t.innerHTML = "", y = new Set, p = 0, e.style.display = "none", i = o, await async function (t) {
             const e = "artworks" === t ? "../../resrc/data/artworks.json" : "../../resrc/data/photographs.json";
@@ -205,9 +234,14 @@
                     type: g,
                     artist: u
                 }, !0), A(i), S()
-            })), e.addEventListener("click", (() => {
-                L()
-            })), o && o.addEventListener("click", E), t.addEventListener("click", (t => {
+            })), e.addEventListener("click", () => {
+                handleButtonAction(
+                    'viewMoreBtn',
+                    'Loading',
+                    'View More',
+                    () => L()
+                );
+            }), o && o.addEventListener("click", E), t.addEventListener("click", (t => {
                 const e = t.target.closest("img");
                 if (!e) return;
                 const n = e.src.split("/").pop().split(".")[0],

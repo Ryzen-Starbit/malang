@@ -8,10 +8,14 @@ body {
     margin: 10px 10px;
     padding-right: 40px;
 }
-.gallery {
+#gallery{
+    display: flex;
+    flex-direction: column;
+}
+.gallery-batch{
     column-count: 4;
     column-gap: 10px;
-    padding: 10px;
+    padding: 5px 10px;
 }
 
 .gallery-item {
@@ -122,27 +126,27 @@ body {
     display: none;
 }
 @media (min-width: 1200px) {
-    .gallery {
+    .gallery-batch{
         column-count: 6;
     }
 }
 
 @media (max-width: 900px) {
-    .gallery {
+    .gallery-batch{
         column-count: 4;
         column-gap: 14px;
     }
 }
 
 @media (max-width: 768px) {
-    .gallery {
+    .gallery-batch{
         column-count: 3;
         column-gap: 10px;
     }
 }
 
 @media (max-width: 480px) {
-    .gallery {
+    .gallery-batch{
         column-count: 2;
     }
 }
