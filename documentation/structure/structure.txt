@@ -419,7 +419,7 @@
 │   └── models/
 │       └── logo.glb
 ├── robots.txt
-├── service-worker-disabled.js
+├── service-worker.js
 ├── sitemap.xml
 ├── src/
 │   ├── components/
