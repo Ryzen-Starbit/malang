@@ -7,7 +7,7 @@
     "0": {
         "title": "",
         "artist": "Ayush",
-        "type": "Wildlife"
+        "type": "Animal"
     },
     "2": {
         "title": "",
@@ -52,22 +52,22 @@
     "10": {
         "title": "",
         "artist": "Manoviraj",
-        "type": "Wildlife"
+        "type": "Animal"
     },
     "11": {
         "title": "",
         "artist": "Manoviraj",
-        "type": "Wildlife"
+        "type": "Animal"
     },
     "12": {
         "title": "",
         "artist": "Manoviraj",
-        "type": "Wildlife"
+        "type": "Animal"
     },
     "13": {
         "title": "",
         "artist": "Manoviraj",
-        "type": "Wildlife"
+        "type": "Animal"
     },
     "14": {
         "title": "",
@@ -112,7 +112,7 @@
     "22": {
         "title": "",
         "artist": "Gaurav Kumar",
-        "type": "Wildlife"
+        "type": "Animal"
     },
     "23": {
         "title": "",
@@ -498,7 +498,7 @@
     },
     "112": {
         "artist": "Shourya Gupta",
-        "type": "Wildlife"
+        "type": "Animal"
     },
     "113": {
         "artist": "Shivam",
