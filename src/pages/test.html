@@ -1,95 +1,340 @@
 <!doctype html>
 <html>
+
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width">
-<title>details/summary hover test</title>
-<style>
-  /* container */
-  nav { position: relative; padding: 20px; background:#111; }
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <link rel="stylesheet" href="/src/styles/common.css">
+  <title>test</title>
+  <style>
+    .wrapper {
+      display: flex;
+      height: calc(100vh - 60px);
+      margin-top: -10px;
+    }
 
-  nav details { position: relative; display: inline-block; margin-right: 16px; }
+    .panel {
+      flex: 0 0 calc(100vw - 100px);
+      height: calc(100vh - 160px);
+      padding: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+    }
 
-  summary {
-    list-style: none;
-    cursor: pointer;
-    padding: 8px 16px;
-    color: #fff;
-    background: rgba(255,255,255,0.06);
-    border-radius: 6px;
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    user-select: none;
-  }
-  summary::-webkit-details-marker { display: none; }
+    #one {
+      background: linear-gradient(to right, black, rgb(0, 59, 59));
+    }
 
-  /* arrow */
-  summary::after{
-    content: "▾";
-    display:inline-block;
-    transform-origin: 50% 50%;
-    transition: transform .18s ease;
-    font-size: 0.85em;
-    opacity: .9;
-  }
+    #two {
+      background: linear-gradient(to right, rgb(0, 59, 59), black);
+    }
 
-  /* panel (hidden by default) */
-  nav details > .panel {
-    position: absolute;
-    top: calc(100% + 8px);
-    left: 0;
-    min-width: 170px;
-    border-radius: 6px;
-    padding: 8px 0;
-    background: #000;
-    border: 1px solid #333;
-    box-shadow: 0 8px 24px rgba(0,0,0,0.6);
-    opacity: 0;
-    visibility: hidden;
-    transform: translateY(6px);
-    transition: opacity .18s ease, transform .18s ease, visibility 0s linear .18s;
-    z-index: 9999;
-  }
+    #three {
+      background: linear-gradient(to right, black, rgb(59, 50, 0));
+    }
 
-  /* show while hovering OR when open */
-  nav details:hover > .panel,
-  nav details[open] > .panel {
-    opacity: 1;
-    visibility: visible;
-    transform: translateY(0);
-    transition-delay: 0s;
-  }
+    #four {
+      background: linear-gradient(to right, rgb(59, 50, 0), rgb(0, 0, 0));
+      position: relative;
+      overflow: hidden;
+    }
 
-  /* flip arrow while hovered or open */
-  nav details:hover > summary::after,
-  nav details[open] > summary::after {
-    transform: rotate(180deg);
-  }
+    .fade-content {
+      opacity: 0;
+      filter: blur(20px);
+      transition: opacity 0.8s ease, filter 0.8s ease;
+    }
 
-  /* demo items */
-  .panel a { display:block; padding:8px 14px; color:#ddd; text-decoration:none; }
-  .panel a:hover { background: rgba(255,255,255,0.03); }
-</style>
+    .fade-content.active {
+      opacity: 1;
+      filter: blur(0);
+    }
+
+    .cards {
+      position: relative;
+      width: 100vw;
+      height: 100vh;
+    }
+
+    .card {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 300px;
+      height: 400px;
+      transform: translate(-50%, -50%);
+      background: white;
+      color: black;
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      transition: transform 0.4s ease;
+    }
+
+    .card:nth-child(1) {
+      z-index: 4;
+    }
+
+    .card:nth-child(2) {
+      z-index: 3;
+      background: green;
+    }
+
+    .card:nth-child(3) {
+      z-index: 2;
+      background: blue;
+    }
+
+    .card:nth-child(4) {
+      z-index: 1;
+      background: yellow;
+    }
+
+    .masonry {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .row {
+      display: flex;
+      gap: 20px;
+    }
+
+    .row img {
+      width: 200px;
+      border-radius: 12px;
+    }
+    .sponsor-container{
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .track{
+      display: flex;
+      text-align: center;
+      justify-content: center;
+      align-items: center;
+      border: 1px solid grey;
+      padding: 2px;
+    }
+    .track img{
+      height: 80px;
+      filter: brightness(0) invert(1);
+      padding: 10px 70px;
+    }
+
+    /* Mobile text size */
+    @media (max-width: 768px) {
+      .panel {
+        font-size: 8vw;
+      }
+    }
+  </style>
 </head>
-<body>
-<nav>
-  <details>
-    <summary>Menu A</summary>
-    <div class="panel">
-      <a href="#">Item 1</a>
-      <a href="#">Item 2</a>
-      <a href="#">Item 3</a>
-    </div>
-  </details>
 
-  <details>
-    <summary>Menu B</summary>
-    <div class="panel">
-      <a href="#">Alpha</a>
-      <a href="#">Beta</a>
+<body>
+  <section id="home">
+    <div class="wrapper">
+      <div class="panel" id="one">Section 1</div>
+      <div class="panel" id="two">
+        <div class="fade-content">
+          <h2>Discover Your Creative Oasis at Malang</h2>
+            <p><br>Our mission is to provide a platform for individuals to express themselves, explore their
+                artistic passions, and collaborate with like-minded individuals. Whether you're a painter,
+                photographer, sculptor, or any form of creative soul, Malang Fine Arts Arts &
+                Photography Club is the place to be.</p>
+        </div>
+      </div>
+      <div class="panel" id="three">
+        <div class="cards">
+          <div class="card">Card 1</div>
+          <div class="card">Card 2</div>
+          <div class="card">Card 3</div>
+          <div class="card">Card 4</div>
+        </div>
+      </div>
+      <div class="panel" id="four">
+        <div class="masonry">
+          <div class="row mid">
+            <img src="https://picsum.photos/400/300?3">
+            <img src="https://picsum.photos/400/300?4">
+            <img src="https://picsum.photos/400/300?3">
+            <img src="https://picsum.photos/400/300?4">
+            <img src="https://picsum.photos/400/300?3">
+            <img src="https://picsum.photos/400/300?4">
+            <img src="https://picsum.photos/400/300?3">
+            <img src="https://picsum.photos/400/300?4">
+            <img src="https://picsum.photos/400/300?3">
+            <img src="https://picsum.photos/400/300?4">
+            <img src="https://picsum.photos/400/300?3">
+            <img src="https://picsum.photos/400/300?4">
+            <img src="https://picsum.photos/400/300?3">
+            <img src="https://picsum.photos/400/300?4">
+          </div>
+          <div class="row fast">
+            <img src="https://picsum.photos/400/300?5">
+            <img src="https://picsum.photos/400/300?6">
+            <img src="https://picsum.photos/400/300?3">
+            <img src="https://picsum.photos/400/300?4">
+            <img src="https://picsum.photos/400/300?3">
+            <img src="https://picsum.photos/400/300?4">
+            <img src="https://picsum.photos/400/300?3">
+            <img src="https://picsum.photos/400/300?4">
+            <img src="https://picsum.photos/400/300?3">
+            <img src="https://picsum.photos/400/300?4">
+            <img src="https://picsum.photos/400/300?3">
+            <img src="https://picsum.photos/400/300?4">
+            <img src="https://picsum.photos/400/300?3">
+            <img src="https://picsum.photos/400/300?4">
+          </div>
+          <div class="row mid">
+            <img src="https://picsum.photos/400/300?3">
+            <img src="https://picsum.photos/400/300?4">
+            <img src="https://picsum.photos/400/300?3">
+            <img src="https://picsum.photos/400/300?4">
+            <img src="https://picsum.photos/400/300?3">
+            <img src="https://picsum.photos/400/300?4">
+            <img src="https://picsum.photos/400/300?3">
+            <img src="https://picsum.photos/400/300?4">
+            <img src="https://picsum.photos/400/300?3">
+            <img src="https://picsum.photos/400/300?4">
+            <img src="https://picsum.photos/400/300?3">
+            <img src="https://picsum.photos/400/300?4">
+            <img src="https://picsum.photos/400/300?3">
+            <img src="https://picsum.photos/400/300?4">
+          </div>
+          <div class="row slow">
+            <img src="https://picsum.photos/400/300?1">
+            <img src="https://picsum.photos/400/300?2">
+            <img src="https://picsum.photos/400/300?3">
+            <img src="https://picsum.photos/400/300?4">
+            <img src="https://picsum.photos/400/300?3">
+            <img src="https://picsum.photos/400/300?4">
+            <img src="https://picsum.photos/400/300?3">
+            <img src="https://picsum.photos/400/300?4">
+            <img src="https://picsum.photos/400/300?3">
+            <img src="https://picsum.photos/400/300?4">
+          </div>
+        </div>
+      </div>
+      <div class="panel" id="five">
+        <div class="sponsor-container">
+          <div class="track">
+            <img src="/resrc/images/misc/gstudios.webp" alt="G Studios">
+            <img src="/resrc/images/misc/vlcc.webp" alt="VLCC">
+          </div>
+          <div class="track"><h1>Our Partners</h1></div>
+          <div class="track">
+            <img src="/resrc/images/misc/lakme.webp" alt="Lakme Academy">
+            <img src="/resrc/images/misc/hashtag.webp" alt="Team Hashtag">
+          </div>
+        </div>
+      </div>
     </div>
-  </details>
-</nav>
+    </div>
+  </section>
+
+  <script>
+    const fadeEl = document.querySelector('.fade-content');
+
+    function handleFade() {
+      if (!fadeEl) return;
+
+      const rect = fadeEl.getBoundingClientRect();
+      if (rect.left < innerWidth * 0.7) {
+        fadeEl.classList.add('active');
+      }
+    }
+
+
+    const cards = document.querySelectorAll('.card');
+    const section3 = document.querySelector('#three');
+
+    function handleCards(scrollX) {
+      if (!section3 || cards.length === 0) return;
+
+      const start = section3.offsetLeft;
+      const end = start + innerWidth;
+
+      if (scrollX >= start && scrollX <= end) {
+        cards.forEach((card, i) => {
+          card.style.transform =
+            `translate(calc(-50% + ${i * 30}px), -50%)`;
+        });
+      }
+
+      if (scrollX > end) {
+        cards.forEach(card => {
+          card.style.transform =
+            `translate(calc(-50% - ${(scrollX - end)}px), -50%)`;
+        });
+      }
+    }
+
+
+    const rows = document.querySelectorAll('.row');
+    function handleMasonry(scrollX) {
+      if (!section3 || rows.length === 0) return;
+
+      const start = section3.offsetLeft;
+      const end = start + innerWidth + 1000;
+
+      if (scrollX < start || scrollX > end) return;
+
+      const progress = scrollX - start;
+
+      rows.forEach(row => {
+        const speed =
+          row.classList.contains('slow') ? 0.3 :
+            row.classList.contains('mid') ? 0.6 : 1;
+
+        row.style.transform =
+          `translateX(${-progress * speed}px)`;
+      });
+    }
+
+
+
+    const wrapper = document.querySelector('.wrapper');
+
+    let current = 0;
+    let target = 0;
+    const maxScroll = () => wrapper.scrollWidth - innerWidth;
+
+    window.addEventListener('wheel', e => {
+      e.preventDefault();
+
+      // Combine vertical + horizontal scroll input
+      const delta = Math.abs(e.deltaX) > Math.abs(e.deltaY)
+        ? e.deltaX
+        : e.deltaY;
+
+      target += delta;
+      target = Math.max(0, Math.min(target, maxScroll()));
+    }, { passive: false });
+
+    function animate() {
+      current += (target - current) * 0.08;
+      wrapper.style.transform = `translate3d(${-current}px,0,0)`;
+
+      handleFade();
+      handleCards(current);
+      handleMasonry(current);
+
+      requestAnimationFrame(animate);
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      animate();
+    });
+
+  </script>
 </body>
+
+
 </html>
