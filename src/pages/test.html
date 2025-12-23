@@ -109,12 +109,14 @@
       width: 200px;
       border-radius: 12px;
     }
-    .sponsor-container{
+
+    .sponsor-container {
       display: flex;
       flex-direction: column;
       justify-content: space-between;
     }
-    .track{
+
+    .track {
       display: flex;
       text-align: center;
       justify-content: center;
@@ -122,7 +124,8 @@
       border: 1px solid grey;
       padding: 2px;
     }
-    .track img{
+
+    .track img {
       height: 80px;
       filter: brightness(0) invert(1);
       padding: 10px 70px;
@@ -144,10 +147,10 @@
       <div class="panel" id="two">
         <div class="fade-content">
           <h2>Discover Your Creative Oasis at Malang</h2>
-            <p><br>Our mission is to provide a platform for individuals to express themselves, explore their
-                artistic passions, and collaborate with like-minded individuals. Whether you're a painter,
-                photographer, sculptor, or any form of creative soul, Malang Fine Arts Arts &
-                Photography Club is the place to be.</p>
+          <p><br>Our mission is to provide a platform for individuals to express themselves, explore their
+            artistic passions, and collaborate with like-minded individuals. Whether you're a painter,
+            photographer, sculptor, or any form of creative soul, Malang Fine Arts Arts &
+            Photography Club is the place to be.</p>
         </div>
       </div>
       <div class="panel" id="three">
@@ -228,7 +231,9 @@
             <img src="/resrc/images/misc/gstudios.webp" alt="G Studios">
             <img src="/resrc/images/misc/vlcc.webp" alt="VLCC">
           </div>
-          <div class="track"><h1>Our Partners</h1></div>
+          <div class="track">
+            <h1>Our Partners</h1>
+          </div>
           <div class="track">
             <img src="/resrc/images/misc/lakme.webp" alt="Lakme Academy">
             <img src="/resrc/images/misc/hashtag.webp" alt="Team Hashtag">
@@ -317,6 +322,31 @@
       target += delta;
       target = Math.max(0, Math.min(target, maxScroll()));
     }, { passive: false });
+
+    let touchStartX = 0;
+    let touchStartY = 0;
+
+    window.addEventListener('touchstart', e => {
+      const t = e.touches[0];
+      touchStartX = t.clientX;
+      touchStartY = t.clientY;
+    }, { passive: true });
+
+    window.addEventListener('touchmove', e => {
+      const t = e.touches[0];
+
+      const dx = touchStartX - t.clientX;
+      const dy = touchStartY - t.clientY;
+
+      const delta = Math.abs(dx) > Math.abs(dy) ? dx : dy;
+
+      target += delta;
+      target = Math.max(0, Math.min(target, maxScroll()));
+
+      touchStartX = t.clientX;
+      touchStartY = t.clientY;
+    }, { passive: true });
+
 
     function animate() {
       current += (target - current) * 0.08;
