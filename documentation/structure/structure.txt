@@ -6,7 +6,6 @@
 │   │   └── update_structure.py
 │   └── workflows/
 │       ├── create-pr.yml
-│       ├── last-updated.yml
 │       ├── update-search-data.yml
 │       └── update-structure.yml
 ├── .gitignore
@@ -34,7 +33,6 @@
 │   │   ├── photographs.json
 │   │   ├── search.json
 │   │   └── timeline.json
-│   ├── event.ics
 │   ├── images/
 │   │   ├── artworks/
 │   │   │   ├── 0.webp
@@ -476,7 +474,6 @@
 │       ├── test.css
 │       └── timeline.css
 ├── variables/
-│   ├── last-updated.txt
 │   └── utils.json
 └── zohoverify/
     └── verifyforzoho.html
