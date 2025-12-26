@@ -3,13 +3,6 @@ document.getElementById("loader").style.display = "flex";
 
 // Track async tasks
 Promise.all([
-  // last-updated
-  fetch('../../variables/last-updated.txt')
-    .then(res => res.text())
-    .then(date => {
-      document.getElementById('last-updated').textContent = "Last Updated: " + date;
-    }),
-
   // structure
   fetch('../../documentation/structure/structure.txt')
     .then(res => res.text())
@@ -71,7 +64,7 @@ Promise.all([
   const btn = document.getElementById('scrollTopBtn');
   if (!btn) return;
 
-  const showAfter = 200; // pixels scrolled before showing
+  const showAfter = 200;
 
   // toggle visibility
   function onScroll() {
@@ -102,7 +95,6 @@ Promise.all([
     }
   });
 
-  // initial check
   onScroll();
 })();
 
@@ -119,3 +111,12 @@ function toggleList() {
   i.src = s ? "/resrc/images/icons/admin.webp" : "/resrc/images/icons/close.png";
   vibrate();
 }
+
+const url = "https://api.github.com/repos/malangbvp/malang/commits/main";
+
+fetch(url)
+  .then(r => r.json())
+  .then(d => {
+    lastCommit.innerText = d.commit.message.split('\n')[0];
+    lastUpdated.innerText = new Date(d.commit.committer.date).toLocaleString();
+  });
