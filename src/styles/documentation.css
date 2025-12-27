@@ -4,7 +4,6 @@ html {
 
 #documentation {
     width: 100%;
-    background-color: black;
     overflow-x: auto;
     text-overflow: clip;
     overflow-wrap: break-word;
@@ -42,20 +41,20 @@ html {
     margin-top: 10px;
     max-width: calc(100vw - 20px);
     width: calc(100% - 42px);
-    border: 2px solid rgba(255, 255, 255, 0.138);
+    border: 1px solid var(--border-color);
 }
 
 #structure {
     margin: 0px 10px;
     padding: 10px;
-    border: 2px solid rgba(255, 255, 255, 0.138);
+    border: 1px solid var(--border-color);
     border-top: none;
 }
 
 #docList {
     z-index: 50;
     position: fixed;
-    background-color: black;
+    background-color: var(--background-color);
     top: 60px;
     left: 0px;
     height: calc(100vh - 60px);
@@ -71,7 +70,7 @@ html {
 
 #docList h1 {
     padding: 5px 10px;
-    border-bottom: 2px solid rgba(255, 255, 255, 0.138);
+    border-bottom: 1px solid var(--border-color);
     margin-bottom: 10px;
 }
 
@@ -188,7 +187,7 @@ pre code.hljs * {
     padding: 5px;
     display: inline-grid;
     place-items: center;
-    border: 1px solid rgba(255, 255, 255, 0.138);
+    border: 1px solid var(--border-color);
     border-radius: 7px;
     backdrop-filter: blur(8px) saturate(120%);
     -webkit-backdrop-filter: blur(8px) saturate(120%);
@@ -228,7 +227,7 @@ pre code.hljs * {
 @media (min-width: 800px) {
     #docList {
         max-width: 300px;
-        border-right: 2px solid rgba(255, 255, 255, 0.138);
+        border-right: 1px solid var(--border-color);
         opacity: 1;
         visibility: visible;
         filter: none;

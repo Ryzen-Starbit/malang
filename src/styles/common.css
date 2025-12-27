@@ -1,5 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet');
 
+:root {
+  --background-color: #151515;
+  --border-color: #383838;
+  --hover-color: #1f1f1f;
+}
+
+
 * {
   margin: 0;
   padding: 0;
@@ -23,7 +30,7 @@ html.light {
 }
 
 body {
-  background-color: rgb(0, 0, 0);
+  background-color: var(--background-color);
   color: rgb(227, 227, 227);
   overflow-x: hidden;
   font-family: "IBM Plex Sans", sans-serif;
@@ -36,7 +43,7 @@ body {
 button {
   background-color: transparent;
   border: 1px solid transparent;
-  border: 1px solid rgb(50, 50, 50);
+  border: 1px solid var(--border-color);
   color: rgb(227, 227, 227);
   border-radius: 7px;
   cursor: pointer;
@@ -47,14 +54,12 @@ button {
 
 .button-loading {
   border: 1px solid #facc15;
-  /* yellow-400 */
   color: #facc15;
   pointer-events: none;
 }
 
 .button-success {
   border: 1px solid #22c55e;
-  /* green-500 */
   color: #22c55e;
 }
 
@@ -88,7 +93,7 @@ h1 {
   left: 0;
   width: 100%;
   height: 100%;
-  background: #000000;
+  background: var(--background-color);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -134,11 +139,11 @@ header {
   align-items: center;
   padding: 5px 7px 7px 0px;
   width: calc(100% - 7px);
-  border-bottom: 1px solid rgb(50, 50, 50);
+  border-bottom: 1px solid var(--border-color);
   position: fixed;
   top: 0;
   z-index: 200;
-  background-color: rgb(0, 0, 0);
+  background-color: var(--background-color);
 }
 
 #headerButtons {
@@ -169,7 +174,7 @@ header {
 .burger {
   width: 30px;
   height: 30px;
-  border: 1px solid rgb(50, 50, 50);
+  border: 1px solid var(--border-color);
   border-radius: 7px;
   display: flex;
   flex-direction: column;
@@ -180,12 +185,12 @@ header {
 }
 
 #headerButtons button:hover {
-  background-color: rgba(80, 80, 80, 0.223);
+  background-color: var(--hover-color);
 }
 
 .burger span {
   width: 50%;
-  height: 1px;
+  height: 2px;
   background-color: rgb(166, 166, 166);
 }
 
@@ -221,7 +226,7 @@ nav {
   width: 100vw;
   height: calc(100% - 60px);
   padding: 2px 0 120px;
-  background: #000000;
+  background-color: var(--background-color);
   box-sizing: border-box;
   z-index: 210;
   overflow-y: scroll;
@@ -281,7 +286,7 @@ nav hr {
 nav a:hover,
 button:hover,
 summary:hover {
-  background-color: rgb(20, 20, 20);
+  background-color: var(--hover-color);
   color: white;
 }
 
@@ -319,7 +324,7 @@ details[open]>summary::before {
 details ul li {
   margin-left: 30px;
   border-bottom: none;
-  border-left: 3px solid rgb(20, 20, 20);
+  border-left: 1px solid var(--border-color);
 }
 
 #info {
@@ -355,7 +360,7 @@ details ul li {
   justify-content: space-between;
   align-items: center;
   width: calc(100% - 30px);
-  background-color: #151515;
+  background-color: var(--background-color);
   max-width: 460px;
   margin: auto;
   margin-top: 20px;
@@ -371,7 +376,7 @@ details ul li {
 }
 
 #nav-buttons button:hover {
-  background-color: rgb(40, 40, 40);
+  background-color: var(--hover-color);
 }
 
 #nav-buttons img {
@@ -392,8 +397,8 @@ details ul li {
   bottom: 0;
   width: calc(100% - 20px);
   padding: 0 10px 20px;
-  background: #000;
-  border-top: 1px solid rgb(50, 50, 50);
+  background-color: var(--background-color);
+  border-top: 1px solid var(--border-color);
   font-size: 12px;
   text-align: center;
 }
@@ -411,7 +416,7 @@ form,
   max-width: 700px;
   text-align: center;
   box-shadow: 0 0 10px black;
-  border: 1px solid #3e3e3e;
+  border: 1px solid var(--border-color);
   backdrop-filter: blur(50px);
   padding: 20px;
   border-radius: 7px;
@@ -422,7 +427,7 @@ textarea,
 select {
   width: 100%;
   padding: 10px;
-  border: 1px solid #4a4a4a;
+  border: 1px solid var(--border-color);
   border-radius: 7px;
   background-color: #1a1a1aa1;
   color: white;
@@ -467,7 +472,7 @@ hr {
   width: 100%;
   margin: 10px auto;
   border: none;
-  border-top: 3px solid rgb(20, 20, 20);
+  border-top: 1px solid var(--border-color);
   background-color: none;
 }
 
@@ -480,21 +485,20 @@ hr {
   max-width: 400px;
   font-size: 1rem;
   text-decoration: none;
-  background-color: #11111181;
+  background-color: var(--background-color);
   color: #fff;
   cursor: pointer;
   transition: background-color 0.3s ease;
-  border: 1px solid rgb(50, 50, 50);
+  border: 1px solid var(--border-color);
   border-radius: 7px;
 }
 
 .long-btn:hover {
-  background-color: #0f0f0f;
+  background-color: var(--hover-color);
 }
 
 .footer {
-  background-color: #151515;
-  color: #c9d1d9;
+  background: var(--background-color);
   width: calc(100vw - 50px);
   margin-bottom: -40px;
   padding: 40px 25px;
@@ -553,7 +557,7 @@ hr {
   border-radius: 4px;
   top: -1px;
   right: 5px;
-  background-color: #151515;
+  background-color: var(--background-color);
 }
 
 #failure {
@@ -613,7 +617,7 @@ hr {
   display: flex;
   flex-direction: column;
   font-size: 13px;
-  background-color: #202020;
+  border-top: 1px dashed var(--border-color);
   flex-wrap: wrap;
   gap: 5px;
 }
@@ -672,17 +676,17 @@ hr {
 .styled-table th,
 .styled-table td {
   padding: 5px;
-  border: 1px solid #383838;
+  border: 1px solid var(--border-color);
   text-align: left;
   white-space: nowrap;
 }
 
 .styled-table th {
-  background: #1b1b1b;
+  background: #222222;
 }
 
 .styled-table tr:nth-child(even) {
-  background: #0f0f0f;
+  background: #181818;
 }
 
 .styled-table tr:hover {
@@ -703,22 +707,18 @@ hr {
 
 .modal-content {
   position: relative;
-  background: rgb(0, 0, 0);
-  border: 1px solid rgb(50, 50, 50);
+  background: var(--background-color);
+  border: 1px solid var(--border-color);
   border-radius: 10px;
   padding: 10px;
   padding-top: 50px;
-
   width: fit-content;
   max-width: calc(100vw - 20px);
   max-height: calc(100vh - 130px);
-
   box-sizing: border-box;
   overflow: hidden;
-  /* no scroll */
   display: flex;
   flex-direction: column;
-  /* stack image + caption */
 }
 
 #modal-image {
@@ -726,21 +726,17 @@ hr {
   border-radius: 7px;
   max-width: 100%;
   max-height: calc(100vh - 320px);
-  /* reduce to leave room for caption */
   margin: 0 auto;
   flex-shrink: 1;
-  /* allow image to shrink */
 }
 
 #modal-caption {
   margin-top: 10px;
   flex-shrink: 0;
-  /* caption should always remain visible */
 }
 
 #modal-socials {
   flex-shrink: 0;
-  /* caption should always remain visible */
   justify-content: flex-start;
   gap: 20px;
 }
@@ -756,11 +752,10 @@ hr {
   cursor: pointer;
   user-select: none;
   text-align: right;
-
-  border-bottom: 1px solid rgb(50, 50, 50);
+  border-bottom: 1px solid var(--border-color);
   padding: 0 10px 4px 10px;
   line-height: 1;
-  background: rgba(0, 0, 0, 0.6);
+  background: var(--background-color);
 }
 
 @media (min-width: 500px) {
@@ -769,7 +764,6 @@ hr {
   }
 }
 
-/* Responsive */
 @media (min-width: 768px) {
   .footer-container {
     display: flex;
@@ -811,7 +805,7 @@ hr {
 
   #keyCode {
     display: block;
-    border: 1px solid #383838;
+    border: 1px solid var(--border-color);
     padding: 3px 6px;
     border-radius: 5px;
   }
@@ -855,8 +849,8 @@ hr {
     visibility: hidden;*/
     position: absolute;
     top: 55px;
-    background: #000000;
-    border: 1px solid rgb(50, 50, 50);
+  background-color: var(--background-color);
+    border: 1px solid var(--border-color);
     padding: 10px 0;
     z-index: 300;
     border-radius: 5px;
@@ -868,7 +862,6 @@ hr {
     transform: translateY(0);
   }
 
-  /* Make dropdown appear as soon as summary is hovered */
   nav summary:hover~* {
     opacity: 1;
     visibility: visible;
@@ -887,24 +880,20 @@ hr {
     border: none;
   }
 
-  /* Arrow setup */
   nav summary {
     position: relative;
     cursor: pointer;
   }
 
-  /* Remove default marker */
   nav summary::-webkit-details-marker {
     display: none;
   }
 
-  /* Add custom arrow */
   nav summary::before {
     right: 10px;
     top: 10px;
   }
 
-  /* Flip arrow on hover */
   nav details:hover>summary::before {
     transform: rotate(180deg);
   }
@@ -918,13 +907,13 @@ hr {
     padding-right: 0;
     width: max-content;
     margin: 0px;
-    background-color: black;
+  background-color: var(--background-color);
   }
 
   #nav-buttons button {
     margin: 0;
     padding: 5px 6px 2px 6px;
-    border: 1px solid rgb(50, 50, 50);
+    border: 1px solid var(--border-color);
   }
 
   #nav-buttons button img {

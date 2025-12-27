@@ -204,7 +204,7 @@ function showAlert(heading, message, buttons = [{ text: 'OK' }], link) {
         position: 'fixed',
         top: 0, left: 0,
         width: '100%', height: '100%',
-        backgroundColor: 'rgba(0, 0, 0, 0.57)',
+        backgroundColor: 'rgba(21,21,21, 0.57)',
         backdropFilter: 'blur(5px)',
         display: 'flex',
         alignItems: 'center',
@@ -215,9 +215,9 @@ function showAlert(heading, message, buttons = [{ text: 'OK' }], link) {
     // Alert Box
     const box = document.createElement('div');
     Object.assign(box.style, {
-        backgroundColor: '#000',
+        backgroundColor: '#151515',
         borderRadius: '10px',
-        border: '1px solid rgb(50,50,50)',
+        border: '1px solid #383838',
         textAlign: 'left',
         maxWidth: '310px',
         width: '85%'
@@ -229,7 +229,7 @@ function showAlert(heading, message, buttons = [{ text: 'OK' }], link) {
     Object.assign(h.style, {
         margin: '0 0 10px',
         padding: '10px',
-        borderBottom: '1px solid rgb(50,50,50)'
+        borderBottom: '1px solid rgb(56,56,56)'
     });
 
     // Message

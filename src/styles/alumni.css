@@ -2,7 +2,7 @@
     padding: 0px 10px 10px 10px;
 }
 .table-wrapper {
-    border: 1px solid #383838;
+    border: 1px solid var(--border-color);
     overflow-x: auto;
     max-width: min-content;
     display: flex;
@@ -13,7 +13,7 @@
     writing-mode: vertical-rl;
     transform: rotate(180deg);
     color: white;
-    border: 1px solid #000000;
+    border: 1px solid var(--border-color);
     text-align: center;
     border-left: none;
     line-height: 22px;
@@ -26,8 +26,7 @@ table {
 }
 
 td {
-    background-color: #000000;
-    border-left: 1px solid #383838;
+    border-left: 1px solid var(--border-color);
     text-align: center;
     padding: 5px;
     min-width: 130px;

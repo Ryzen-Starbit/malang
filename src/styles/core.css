@@ -5,7 +5,7 @@
     min-height: 400px;
     position: relative;
     background: linear-gradient(to top,#151515 0%, rgba(132, 92, 0, 0.11) 20%, transparent 60%),
-    radial-gradient(circle at center, rgba(255, 255, 255, 0.05), transparent 70%);
+    radial-gradient(circle at center, rgba(80, 80, 80, 0.1), transparent 70%);
     background-blend-mode: normal, multiply, screen, screen, normal;
 }
 
