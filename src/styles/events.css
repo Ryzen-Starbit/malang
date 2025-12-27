@@ -68,7 +68,7 @@ h1 {
 .event {
     break-inside: avoid;
     border-radius: 7px;
-    border: 2px solid rgb(23, 23, 23);
+    border: 1px solid  var(--border-color);
     padding: 10px;
     margin-bottom: 10px;
     width: fit-content;

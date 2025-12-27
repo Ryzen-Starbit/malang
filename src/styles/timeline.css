@@ -24,7 +24,7 @@
     min-width: calc(100vw - 42px);
     max-width: 300px !important;
     aspect-ratio: 1/1;
-    border: 1px solid rgb(50, 50, 50);
+    border: 1px solid var(--border-color);
     border-radius: 7px;
     cursor: pointer;
     background-image: linear-gradient(to bottom, rgb(0, 0, 0) 0%, rgba(0, 0, 0, 0) 30%), url('/resrc/images/misc/FE25-7.webp');
@@ -53,7 +53,7 @@
 #events {
     margin: 10px 0;
     display: grid;
-    border: 1px solid #242424;
+    border: 1px solid var(--border-color);
     padding-left: 10px;
     padding-bottom: 10px;
     border-radius: 7px;
@@ -64,11 +64,11 @@
 }
 
 .event {
-    border-bottom: 1px solid #1e1e1e;
+    border-bottom: 1px solid  var(--border-color);
     position: relative;
     padding: 10px 7px;
     padding-left: 10px;
-    border-left: 1px solid rgb(50, 50, 50);
+    border-left: 1px solid  var(--border-color);
 }
 
 .event::before {
@@ -76,7 +76,7 @@
     position: absolute;
     width: 10px;
     height: 10px;
-    background-color: rgb(50, 50, 50);
+    background-color:  var(--border-color);
     border-radius: 50%;
     top: 15px;
     left: -5px;
@@ -167,7 +167,6 @@ summary.title::before {
 #last {
     position: relative;
     height: 20px;
-    /*gradient border left to bottom*/
     background: linear-gradient(to bottom, rgb(50, 50, 50), transparent);
     background-size: 1px 100%;
     background-repeat: no-repeat;
