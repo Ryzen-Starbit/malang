@@ -471,7 +471,6 @@
 │       ├── events.css
 │       ├── gallery.css
 │       ├── home.css
-│       ├── test.css
 │       └── timeline.css
 ├── variables/
 │   └── utils.json
