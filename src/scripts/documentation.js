@@ -37,6 +37,7 @@ Promise.all([
         btn.style.top = "6px"
         btn.style.right = "6px"
         btn.style.padding = "2px 5px"
+        btn.style.backdropFilter = "blur(5px)"
 
         pre.style.position = "relative"
         pre.appendChild(btn)

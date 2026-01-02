@@ -2,7 +2,8 @@
   <div class="search-container">
     <div class="search-header">
       <input type="text" id="searchInput" placeholder="Search Malang..." autocomplete="off" />
-      <button id="searchClose" class="close-btn" aria-label="Close"><img src="/resrc/images/icons/close.png" style="height: 20px;" alt=""></button>
+      <button id="searchClose" class="close-btn" aria-label="Close"><img src="/resrc/images/icons/close.png"
+          style="height: 20px;" alt=""></button>
     </div>
     <div id="searchResults" class="search-results"></div>
   </div>
@@ -19,14 +20,14 @@
     z-index: 9999;
     animation: fadeIn 0.25s ease-in-out;
     border-top: 1px solid #292929;
-  background: rgba(0, 0, 0, 0.4);
+    background: rgba(0, 0, 0, 0.4);
     backdrop-filter: blur(8px);
   }
 
   /* Search box container */
   .search-container {
-  background: rgba(0, 0, 0, 0.8);
-  backdrop-filter: blur(8px);
+    background: rgba(15, 15, 15, 0.8);
+    backdrop-filter: blur(8px);
     width: 100%;
     height: 100%;
     max-width: 400px;
@@ -96,7 +97,7 @@
     font-style: italic;
   }
 
-  mark{
+  mark {
     color: gold;
     background-color: rgb(30, 25, 0);
     border: 0.1px solid rgb(84, 71, 0);
@@ -105,8 +106,8 @@
 
   @media (min-width: 400px) {
     .search-container {
-    border-left: 1px solid #292929;
-    border-bottom: none;
+      border-left: 1px solid #292929;
+      border-bottom: none;
     }
   }
 </style>

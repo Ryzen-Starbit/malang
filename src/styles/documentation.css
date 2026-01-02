@@ -98,6 +98,10 @@ html {
     padding: 10px;
 }
 
+#doclist summary {
+    width: calc(100% - 30px);
+}
+
 #last-updated {
     font-size: 14px;
 }
