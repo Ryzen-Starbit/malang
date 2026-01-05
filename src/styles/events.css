@@ -76,7 +76,7 @@ h1 {
 
 .event-name {
     font-weight: bold;
-    background-image: linear-gradient(10deg, #000000, #000000, #a2770a);
+    background-image: linear-gradient(10deg, var(--background-color), var(--background-color), #a2770a);
     padding: 10px;
     margin-left: -10px;
     margin-top: -10px;
