@@ -178,6 +178,7 @@
 │   │   │   ├── download.webp
 │   │   │   ├── events.webp
 │   │   │   ├── favicon.png
+│   │   │   ├── fe.png
 │   │   │   ├── filters.png
 │   │   │   ├── google.png
 │   │   │   ├── home.webp
@@ -190,6 +191,7 @@
 │   │   │   ├── night-mode.webp
 │   │   │   ├── prize.webp
 │   │   │   ├── project.webp
+│   │   │   ├── r.png
 │   │   │   ├── search.png
 │   │   │   ├── star.png
 │   │   │   ├── store.webp
