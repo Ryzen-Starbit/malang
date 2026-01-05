@@ -350,9 +350,9 @@ details ul li {
 
 #info.r {
   font-weight: 500;
-  color: rgb(255, 60, 60);
-  border: 1px solid rgba(185, 0, 0, 0.905);
-  background-color: rgba(120, 0, 0, 0.159);
+  color: rgb(255, 71, 71);
+  border: 1px solid rgba(210, 21, 21, 0.905);
+  background-color: rgba(209, 0, 0, 0.159);
 }
 
 #nav-buttons {
@@ -811,7 +811,7 @@ hr {
   }
 
   #headerButtons button#searchToggle {
-    width: calc(100vw - 1143px);
+    width: calc(100vw - 1430px);
     display: flex;
     justify-content: space-between;
     padding: 4px 10px;
@@ -832,7 +832,7 @@ hr {
   summary {
     width: fit-content;
     margin: 0px;
-    padding: 7px 15px;
+    padding: 7px 10px;
   }
 
   nav summary {
