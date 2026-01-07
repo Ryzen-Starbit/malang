@@ -189,10 +189,10 @@ canvas {
 }
 
 #landingButtons {
-    width: 100%;
+    width: calc(100% - 30px);
     display: flex;
     justify-content: center;
-    gap: 30px;
+    gap: 10px;
     padding-bottom: 20px;
 }
 #landingButtons button:hover {

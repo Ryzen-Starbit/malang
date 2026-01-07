@@ -1,17 +1,16 @@
 <head>
     <title>Malang | Home</title>
-    <script type="module" src="https://cdn.jsdelivr.net/npm/ldrs/dist/auto/lineSpinner.js"></script>
+    <script type="module" src="https://cdn.jsdelivr.net/npm/ldrs/dist/auto/ring2.js"></script>
     <link rel="stylesheet" href="/src/styles/common.css">
     <link rel="stylesheet" href="/src/styles/home.css">
     <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
     <link href="https://db.onlinewebfonts.com/c/f56de887103fafbc50b8d846974cd5d4?family=Samarkan+Normal+V1"
         rel="stylesheet">
     <script type="module" src="https://cdn.jsdelivr.net/npm/@google/model-viewer/dist/model-viewer.min.js"></script>
-    <script type="module" src="https://cdn.jsdelivr.net/npm/ldrs/dist/auto/lineSpinner.js"></script>
 </head>
 <section id="home">
     <div id="loader">
-        <l-line-spinner size="30" stroke="2" speed="0.8" color="white"></l-line-spinner>
+            <l-ring-2 size="25" stroke="3" stroke-length="0.25" bg-opacity="0.1" speed="0.8" color="white"></l-ring-2>
     </div>
     <div id="landingCanvas">
         <model-viewer id="logo" src="/resrc/models/logo.glb" alt="Logo" camera-controls camera-orbit="0deg 0deg auto"
@@ -27,6 +26,7 @@
                 </p>
                 <h1 id="tagline">For the <span id="kalakaar">Kalakaar</span> in you!</h1>
                 <div id="landingButtons">
+                    <button onclick="showAlert('Sponsorship','This opportunity will be available soon.')" class="long-btn">Sponsor Us</button>
                     <button onclick="scrollToBottom()" class="long-btn">Contact Us</button>
                 </div>
             </div>
@@ -46,11 +46,11 @@
                 </div>
                 <div class="card">
                     <p class="cardTitle">Fashion Euphoria</p><img src="/resrc/images/misc/FE25-8.webp" alt=""><button
-                        onclick="parent.loadPage('/src/pages/timeline.html')">Learn More</button>
+                        onclick="parent.loadPage('/src/pages/fe.html')">Learn More</button>
                 </div>
                 <div class="card">
                     <p class="cardTitle">Rangotsav</p><img src="/resrc/images/misc/rangotsav24-1.webp" alt=""><button
-                        onclick="parent.loadPage('/src/pages/timeline.html')">Learn More</button>
+                        onclick="parent.loadPage('/src/pages/r.html')">Learn More</button>
                 </div>
                 <div class="card">
                     <p class="cardTitle">Art Gallery</p><img src="/resrc/images/misc/gallery.webp" alt=""><button

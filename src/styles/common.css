@@ -110,10 +110,14 @@ h1 {
   cursor: pointer;
 }
 
+#malang img {
+  height: 50px;
+}
+
 #malang p {
   font-size: 6px;
   margin-left: 50px;
-  margin-top: -15px;
+  margin-top: -14px;
 }
 
 section.active {
@@ -506,6 +510,13 @@ hr {
   z-index: 20;
 }
 
+footer #malang {
+  margin-left: -10px;
+}
+footer #malang p{
+  margin-left: 40px;
+  margin-top: -12px;
+}
 .footer-container {
   max-width: 1200px;
   margin: auto;
@@ -516,17 +527,6 @@ hr {
   flex-direction: column;
   gap: 20px;
   margin-bottom: 10px;
-}
-
-.footer-brand {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.footer-brand img {
-  height: 50px;
-  margin-left: -10px;
 }
 
 .newsletter h3 {
