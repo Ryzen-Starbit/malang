@@ -416,6 +416,8 @@
 │   │       ├── 97.webp
 │   │       ├── 98.webp
 │   │       └── 99.webp
+│   ├── media/
+│   │   └── Malang_Brochure_2026.pdf
 │   └── models/
 │       └── logo.glb
 ├── robots.txt
@@ -432,6 +434,7 @@
 │   │   ├── alumni.html
 │   │   ├── aruco.html
 │   │   ├── authentication.html
+│   │   ├── brochure.html
 │   │   ├── claims.html
 │   │   ├── core.html
 │   │   ├── documentation.html
