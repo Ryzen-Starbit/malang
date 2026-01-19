@@ -235,12 +235,7 @@
                     artist: u
                 }, !0), A(i), S()
             })), e.addEventListener("click", () => {
-                handleButtonAction(
-                    'viewMoreBtn',
-                    'Loading',
-                    'View More',
-                    () => L()
-                );
+                L();
             }), o && o.addEventListener("click", E), t.addEventListener("click", (t => {
                 const e = t.target.closest("img");
                 if (!e) return;
