@@ -2,7 +2,7 @@ const video = document.getElementById('video');
 
 navigator.mediaDevices.getUserMedia({
   video: {
-    facingMode: { ideal: "environment" } // Gently prefers back camera
+    facingMode: { ideal: "environment" }
   }
 })
 .then(stream => {

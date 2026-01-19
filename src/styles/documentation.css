@@ -117,11 +117,8 @@ img {
 
 code {
     overflow-wrap: break-word;
-    /* Ensures long words wrap */
     white-space: normal;
-    /* Allows wrapping instead of one long line */
     overflow-x: hidden;
-    /* Prevents horizontal scroll */
     text-overflow: clip;
     background-color: rgba(255, 255, 255, 0.138);
     padding: 2px 4px;

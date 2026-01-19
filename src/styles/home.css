@@ -18,9 +18,7 @@ html {
     top: 50%;
     left: 50%;
     filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.5)) brightness(1);
-    /* vertical orientation */
     pointer-events: none;
-    /* Floating animation */
     animation: float 3s ease-in-out infinite alternate;
 }
 
@@ -47,9 +45,7 @@ html {
     background: red;
     box-shadow: 0 0 10px white, 0 0 20px red, 0 0 30px orange, 0 0 40px yellow;
     filter: brightness(2);
-    /* glow effect */
     animation: explode 1.8s ease-out forwards;
-    /* slower = longer trail */
 }
 
 @keyframes explode {
@@ -294,9 +290,7 @@ canvas {
     margin: 100px auto;
     margin-bottom: 100px;
     height: 50vh;
-    /* fixed height */
     overflow: hidden;
-    /* prevent overflow */
     position: relative;
 }
 
@@ -365,7 +359,6 @@ canvas {
 }
 
 
-/* Infinite scroll animation */
 @keyframes scroll-left {
     0% {
         transform: translateX(0);
@@ -421,7 +414,6 @@ canvas {
         gap: 7rem;
     }
 
-    /* Fading edges */
     .fade-left,
     .fade-right {
         width: 100px;

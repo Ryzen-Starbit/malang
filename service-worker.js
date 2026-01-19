@@ -17,7 +17,6 @@ self.addEventListener("install", (event) => {
     self.skipWaiting();
 });
 
-// activate event — clear old caches
 self.addEventListener("activate", (event) => {
     event.waitUntil(
         caches.keys().then((keys) =>
@@ -27,7 +26,6 @@ self.addEventListener("activate", (event) => {
     self.clients.claim();
 });
 
-// fetch event — serve cached assets
 self.addEventListener("fetch", (event) => {
     event.respondWith(
         caches.match(event.request).then((cached) => cached || fetch(event.request))

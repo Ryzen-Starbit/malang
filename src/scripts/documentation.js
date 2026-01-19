@@ -1,16 +1,13 @@
 const readmeDiv = document.getElementById("readme-content");
 document.getElementById("loader").style.display = "flex";
 
-// Track async tasks
 Promise.all([
-  // structure
   fetch('../../documentation/structure/structure.txt')
     .then(res => res.text())
     .then(structure => {
       document.getElementById('structure').textContent = structure;
     }),
 
-  // README
   fetch('/README.md')
     .then(res => res.text())
     .then(data => {
@@ -43,7 +40,7 @@ Promise.all([
         pre.appendChild(btn)
 
         btn.onclick = () => {
-          const code = pre.querySelector("code").textContent  // copy ONLY code
+          const code = pre.querySelector("code").textContent
           navigator.clipboard.writeText(code)
           btn.textContent = "Copied!"
           setTimeout(() => (btn.textContent = "Copy"), 1200)
@@ -52,12 +49,11 @@ Promise.all([
     })
 ])
   .then(() => {
-    // Hide loader once everything is done
     document.getElementById("loader").style.display = "none";
   })
   .catch(err => {
     console.error(err);
-    document.getElementById("loader").style.display = "none"; // hide even if error
+    document.getElementById("loader").style.display = "none";
   });
 
 
@@ -67,7 +63,6 @@ Promise.all([
 
   const showAfter = 200;
 
-  // toggle visibility
   function onScroll() {
     if (window.scrollY > showAfter) {
       btn.classList.add('show');
@@ -76,7 +71,6 @@ Promise.all([
     }
   }
 
-  // smooth scroll to top
   function scrollToTop(e) {
     e && e.preventDefault();
     try {
@@ -86,7 +80,6 @@ Promise.all([
     }
   }
 
-  // attach listeners
   window.addEventListener('scroll', onScroll, { passive: true });
   btn.addEventListener('click', scrollToTop);
   btn.addEventListener('keydown', (ev) => {

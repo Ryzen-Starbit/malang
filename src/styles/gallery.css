@@ -1,8 +1,8 @@
 body {
-    -webkit-user-select: none;  /* Safari/Chrome */
-    -moz-user-select: none;     /* Firefox */
-    -ms-user-select: none;      /* IE/Edge */
-    user-select: none;          /* Standard */
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 #heading{
     margin: 10px 10px;

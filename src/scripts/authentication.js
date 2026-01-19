@@ -7,10 +7,9 @@
 
     const authMap = {
         treasury: ["dHJlYXN1cnk=", "treasury.html"],
-        redirector: ["bWVtYmVy", "redirector.html"], // change to media.html when ready
+        redirector: ["bWVtYmVy", "redirector.html"],
     };
 
-    // Read ?page= from URL
     const params = new URLSearchParams(window.location.search);
     const page = params.get("page");
 
@@ -60,13 +59,11 @@ if (canvas) {
 
     const maxTrailLength = 20;
 
-    // Resize
     window.addEventListener('resize', () => {
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
     });
 
-    // Handle move
     function updatePointer(e) {
         lastMoveTime = Date.now();
         targetOpacity = 1;
@@ -79,14 +76,11 @@ if (canvas) {
             pointer.y = e.clientY;
         }
 
-        // Add current position to trail
         trail.push({ x: pointer.x, y: pointer.y, time: Date.now() });
 
-        // Limit trail length
         if (trail.length > maxTrailLength) trail.shift();
     }
 
-    // Animate
     function animate() {
         const now = Date.now();
         if (now - lastMoveTime > 400) targetOpacity = 0;
@@ -100,7 +94,7 @@ if (canvas) {
             trail.forEach((point, i) => {
                 const age = (now - point.time) / 400;
                 const alpha = Math.max(0, opacity * (1 - age));
-                const size = 100 * (1 - i / maxTrailLength); // smaller as it fades
+                const size = 100 * (1 - i / maxTrailLength);
 
                 const gradient = ctx.createRadialGradient(point.x, point.y, 0, point.x, point.y, size);
                 gradient.addColorStop(0, `hsla(${(hue + i * 10) % 360}, 100%, 60%, ${alpha * 0.6})`);

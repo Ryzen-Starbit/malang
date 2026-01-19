@@ -38,7 +38,6 @@ function createFirework(x, y) {
   }
 }
 
-// Run fireworks for 3 seconds only
 const interval = setInterval(() => {
   const x = Math.random() * window.innerWidth;
   const y = Math.random() * window.innerHeight / 2;
@@ -53,11 +52,11 @@ const columns = masonry.querySelectorAll(".masonry-column");
 
 function isInViewport(el) {
   const rect = el.getBoundingClientRect();
-  return rect.top < window.innerHeight && rect.bottom > 100; // visible threshold
+  return rect.top < window.innerHeight && rect.bottom > 100;
 }
 
 window.addEventListener("scroll", () => {
-  if (!isInViewport(masonry)) return; // only move when visible
+  if (!isInViewport(masonry)) return;
 
   const rect = masonry.getBoundingClientRect();
   const progress = Math.min(1, Math.max(0, (window.innerHeight - rect.top) / (window.innerHeight + rect.height)));
@@ -73,10 +72,10 @@ masonry.addEventListener("click", (e) => {
     if (target.tagName === "IMG") {
         openModal({
             imgSrc: target.src,
-            title: '',      // optional, can leave blank
-            subtitle: '',   // optional
-            extraInfo: {},  // optional
-            socials: {}     // optional
+            title: '',
+            subtitle: '',
+            extraInfo: {},
+            socials: {}
         });
     }
 });
@@ -95,26 +94,22 @@ document.fonts.load("1em " + getComputedStyle(kalakaar).fontFamily).then(() => {
 
 
 const logo = document.getElementById("logo");
-const baseDistance = 2; // camera distance
-const maxTilt = 50;     // max degrees for tilt
+const baseDistance = 2;
+const maxTilt = 50;
 
-// Detect if device is mobile
 const isMobile = /Mobi|Android/i.test(navigator.userAgent);
 
 if (isMobile && window.DeviceOrientationEvent) {
-    // Mobile: use gyroscope
     window.addEventListener("deviceorientation", (event) => {
-        let gamma = event.gamma || 0; // left-right tilt
-        let beta = event.beta || 0;   // front-back tilt
+        let gamma = event.gamma || 0;
+        let beta = event.beta || 0;
 
-        // Invert for opposite tilt
         const tiltX = -(beta / 90) * maxTilt;
         const tiltY = -(gamma / 90) * maxTilt;
 
         logo.cameraOrbit = `${tiltY}deg ${tiltX}deg ${baseDistance}m`;
     });
 } else {
-    // Desktop: use mouse
     document.addEventListener("mousemove", (e) => {
         const { innerWidth, innerHeight } = window;
         const x = (e.clientX / innerWidth - 0.5) * maxTilt;

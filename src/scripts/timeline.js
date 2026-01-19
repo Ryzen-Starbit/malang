@@ -13,7 +13,6 @@ document.addEventListener("DOMContentLoaded", () => {
       loader.style.display = 'none';
       viewMoreBtn.style.display = 'block';
       loadNextBatch();
-      //applyTheme(false); // re-apply saved theme to newly added .same elements
     })
     .catch(err => {
       console.error("Error loading events:", err);
@@ -30,16 +29,13 @@ document.addEventListener("DOMContentLoaded", () => {
       const eventDiv = document.createElement("div");
       eventDiv.className = "event";
 
-      // Create <details> wrapper
       const details = document.createElement("details");
 
-      // Create <summary> with title and date
       const summary = document.createElement("summary");
       summary.className = "title";
       summary.innerHTML = `${event.title}<p class="date">${event.date}</p>`;
       details.appendChild(summary);
 
-      // Add image row if any
       if (Array.isArray(event.images) && event.images.length > 0) {
         const imageRow = document.createElement("div");
         imageRow.className = "image-row";
@@ -59,13 +55,11 @@ document.addEventListener("DOMContentLoaded", () => {
         details.appendChild(imageRow);
       }
 
-      // Add description
       const desc = document.createElement("p");
       desc.className = "description";
       desc.textContent = event.description;
       details.appendChild(desc);
 
-      // Combine all
       eventDiv.appendChild(details);
       fragment.appendChild(eventDiv);
     });

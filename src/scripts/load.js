@@ -1,12 +1,13 @@
-console.log("+-----------------+");
-console.log("| Tejas' Codes :D |");
-console.log("+-----------------+");
+//============== NEVER REMOVE THESE LOGS ==============//
+console.log("+-----------------+");                    //
+console.log("| Tejas' Codes :D |");                    //
+console.log("+-----------------+");                    //
+//=====================================================//
 
 const content = document.getElementById("content");
 
 // ---------------- CORE FUNCTIONS FIRST ----------------
 
-// menu toggle
 function toggleMenu() {
     vibrate();
     const nav = document.querySelector("#nav");
@@ -19,7 +20,6 @@ function toggleMenu() {
     document.body.style.overflow = isActive ? "hidden" : "scroll";
 }
 
-// observer for nav
 const observer = new MutationObserver(() => {
     const nav = document.querySelector("#nav");
     if (nav) {
@@ -32,11 +32,6 @@ observer.observe(document.body, { childList: true, subtree: true });
 function initNavScripts() {
     const burgerButton = document.getElementById("burger");
     burgerButton.addEventListener("click", toggleMenu);
-
-    //document.getElementById("theme").addEventListener("click", () => {
-    //    vibrate();
-    //    applyTheme(true);
-    //});
     document.getElementById("copy").addEventListener("click", function () {
         vibrate();
         let currentPage = content.src || "";
@@ -55,7 +50,7 @@ function initNavScripts() {
         });
     });
 
-    // Register Service Worker
+    // Service Worker
     if ("serviceWorker" in navigator) {
         navigator.serviceWorker.register("/service-worker.js").catch(() => { });
     }
@@ -76,7 +71,6 @@ function initNavScripts() {
         pwaBtn.style.display = "block"; // show button only when available
     });
 
-    // Handle PWA install button click
     if (pwaBtn) {
         pwaBtn.addEventListener("click", async () => {
             const isInstalled = window.matchMedia("(display-mode: standalone)").matches;
@@ -106,7 +100,6 @@ function initNavScripts() {
         });
     }
 
-    // Handle when app is installed
     window.addEventListener("appinstalled", () => {
         showAlert("PWA Installed", "The app has been successfully installed!", [{ text: "OK" }]);
         deferredPrompt = null;
@@ -163,9 +156,8 @@ async function forwardParamsToIframe() {
     if (nav && nav.classList.contains("active")) toggleMenu();
 }
 
-// ---------------- REDIRECT HANDLER (RUNS LAST) ----------------
+// ---------------- REDIRECT HANDLER ----------------
 (async function handleRedirects() {
-    // Get the visible URL path
     const rawPath = decodeURIComponent(window.location.href.split(window.location.origin)[1] || "/");
     const pathname = rawPath.replace(/^\/+/, "");
     // Handle shortlinks only

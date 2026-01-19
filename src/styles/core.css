@@ -1,7 +1,8 @@
 .carousel {
     perspective: 1200px;
-    width: 100%;
-    height: calc(100vh - 130px);
+    max-width: 100vw;
+    overflow: hidden;
+    height: calc(100vh - 230px);
     min-height: 400px;
     position: relative;
     background: linear-gradient(to top,#151515 0%, rgba(132, 92, 0, 0.11) 20%, transparent 60%),
@@ -10,16 +11,13 @@
 }
 
 .carousel-wrapper {
-    width: 100%;
+    width: 100vw;
     height: 100%;
     position: absolute;
     transform-style: preserve-3d;
     user-select: none;
-    /* Standard */
     -webkit-user-select: none;
-    /* Chrome, Safari */
     -moz-user-select: none;
-    /* Firefox */
     -ms-user-select: none;
     display: flex;
     align-items: center;
@@ -50,11 +48,14 @@
     border-radius: 12px;
     pointer-events: none;
     backface-visibility: hidden;
-    /* hides content on the back side */
     transform-style: preserve-3d;
-    /* ensures children maintain 3D space */
 }
 
+#alumniBtn{
+    width: min-content;
+    border-radius: 10px;
+    padding: 7px 30px;
+}
 
 #dots {
     width: 100vw;

@@ -10,14 +10,13 @@ if (container) {
             return res.json();
         })
         .then((data) => {
-            const imagePromises = []; // collect all image load promises here
+            const imagePromises = [];
 
-            // helper for loading with fallback
             function loadImageWithFallback(img, primarySrc, fallbackSrc) {
                 return new Promise((resolve) => {
                     img.onload = () => resolve();
                     img.onerror = () => {
-                        img.onerror = () => resolve(); // fallback loaded or failed
+                        img.onerror = () => resolve();
                         img.onload = () => resolve();
                         img.src = fallbackSrc;
                     };
@@ -49,14 +48,11 @@ if (container) {
                     const imagePath = `../../resrc/images/members/${member.image}`;
                     const fallbackPath = "../../resrc/images/members/person.png";
 
-                    // track this image promise
                     imagePromises.push(loadImageWithFallback(img, imagePath, fallbackPath));
 
                     img.alt = "";
-                    //img.className = "same";
                     img.style.cursor = "pointer";
 
-                    // modal click
                     img.addEventListener("click", () => {
                         openModal({
                             imgSrc: img.src,
@@ -102,11 +98,9 @@ if (container) {
                 container.appendChild(wrapper);
             });
 
-            // hide loader only after ALL images are loaded (including fallbacks)
             Promise.all(imagePromises)
                 .then(() => {
                     if (loader) loader.style.display = "none";
-                    //applyTheme(false);
                 })
                 .catch((err) => {
                     if (loader) loader.textContent = "Failed to load alumni data.";

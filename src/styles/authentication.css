@@ -51,9 +51,7 @@ form, #loginForm, #templateForm {
     width: 100vw;
     height: 100vh;
     pointer-events: none;
-    /* So it doesn't block other interactions */
     z-index: 99;
-    /* Always on top */
 }
 #treasury {
     text-align: center;

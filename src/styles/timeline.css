@@ -16,7 +16,6 @@
 
 #featuredEvents::-webkit-scrollbar {
     display: none;
-    /* Hide scrollbar */
 }
 
 .featured {
