@@ -1,5 +1,3 @@
-
-
 <head>
     <title>Malang | Redirector</title>
     <link rel="stylesheet" href="../styles/common.css">
@@ -12,11 +10,12 @@
         <canvas id="gradientCanvas"></canvas>
         <form id="redirectorForm">
             <h3>Customise URL</h3>
-            <input type="url" id="longURL" placeholder="URL" required />
-            <input type="text" id="postfix" placeholder="Postfix" required />
+            <input type="url" id="long" placeholder="URL" required />
+            <input type="text" id="slug" placeholder="slug" required />
             Custom URL will be:<br><a href="" class="url" target="_blank"><span id="baseURL"></span><span
-                    id="url">Postfix</span></a>
+                    id="url">slug</span></a>
             <button type="submit" class="long-btn" id="submit">Create</button>
+            <p id="msg"></p>
             <hr>
             <button class="long-btn" onclick="parent.loadPage('/src/pages/redirects.html')">View Redirects</button>
         </form>
@@ -25,43 +24,45 @@
     <script src="../scripts/authentication.js"></script>
     <script>
         const baseURL = document.getElementById('baseURL');
-        const postfix = document.getElementById('postfix');
-        const longURL = document.getElementById('longURL');
+        const slug = document.getElementById('slug');
+        const long = document.getElementById('long');
         const urlSpan = document.getElementById('url');
         const urlLink = document.querySelector('a.url');
         const form = document.getElementById('redirectorForm');
 
         const baseOrigin = window.location.origin; // dynamic base URL
 
-        // Set initial value
         baseURL.textContent = `${baseOrigin}/`;
 
         // Update preview
         function updateURL() {
-            const base = longURL.value.trim() || `${baseOrigin}/`;
-            const post = postfix.value.trim() || '';
-            urlSpan.textContent = post || 'Postfix';
+            const base = long.value.trim() || `${baseOrigin}/`;
+            const post = slug.value.trim() || '';
+            urlSpan.textContent = post || 'slug';
             urlLink.href = base + post;
         }
 
         // Listen to both inputs
-        [postfix, longURL].forEach(el => el.addEventListener('input', updateURL));
+        [slug, long].forEach(el => el.addEventListener('input', updateURL));
         updateURL();
         form.addEventListener('submit', async e => {
             e.preventDefault();
 
-            const longURLValue = longURL.value.trim();
-            const postfixValue = postfix.value.trim();
+            const longValue = long.value.trim();
+            const slugValue = slug.value.trim();
 
             try {
-                const res = await fetch('https://malangbvp.vercel.app/api/create-redirect', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ longURL: longURLValue, postfix: postfixValue })
+
+                const r = await fetch("/submit", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({
+                        longUrl: longValue,
+                        slug: slugValue
+                    })
                 });
 
-
-                if (res.ok) {
+                if (r.ok) {
                     showAlert(
                         "Requested!",
                         "GitHub Action triggered! A pull request will be created to update the redirector.",
@@ -71,8 +72,10 @@
                         ]
                     );
                 } else {
-                    const errorText = await res.text();
-                    showAlert("Error", `Failed: ${errorText}`);
+                    const errorText = await r.text();
+                    showAlert("Error", `Failed: ${r.status} ${r.statusText}\n${errorText}`, [
+                        { text: "OK" }
+                    ]);
                 }
             } catch (err) {
                 showAlert("Error", "Something went wrong: " + err.message, [
@@ -80,6 +83,6 @@
                 ]);
             }
         });
+
     </script>
 </body>
-
