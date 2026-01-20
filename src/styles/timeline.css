@@ -59,7 +59,7 @@
 }
 
 #events>*:nth-child(even) {
-  background: #181818;
+  background: #0b0b0b;
 }
 
 .event {

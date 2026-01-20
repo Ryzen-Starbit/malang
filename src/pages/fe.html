@@ -11,84 +11,174 @@
 </head>
 
 <body>
-  <div id="dots"></div>
-  <div class="glass">
-    <h1 id="fe">Fashion Euphoria</h1>
-    An inter-college fashion showcase curated by Malang. <br><br>
-    Fashion fades, style is eternal.
-    <div class="timer">
-      <div><span id="d">00</span>
-        <p>Days</p>
+  <section id="fashionEuphoria">
+    <div id="dots"></div>
+    <div class="glass">
+      <h1 id="fe">Fashion Euphoria</h1>
+      An inter-college fashion showcase curated by Malang. <br><br>
+      Fashion fades, style is eternal.
+      <div class="timer">
+        <div><span id="d">00</span>
+          <p>Days</p>
+        </div>
+        <div><span id="h">00</span>
+          <p>Hours</p>
+        </div>
+        <div><span id="m">00</span>
+          <p>Minutes</p>
+        </div>
+        <div><span id="s">00</span>
+          <p>Seconds</p>
+        </div>
       </div>
-      <div><span id="h">00</span>
-        <p>Hours</p>
+      <div class="cta">
+        <a href="" class="long-btn" id="register"
+          style="color: black; background-color: rgb(210, 210, 210); font-weight: 400;">Register Now <img
+            src="/resrc/images/icons/top-right.png" alt=""></a>
       </div>
-      <div><span id="m">00</span>
-        <p>Minutes</p>
+      <hr>
+      <h3>Numbers from Fashion Euphoria 2025</h3>
+      <div id="stats">
+        <div class="stat">
+          <span class="count" data-target="140">0</span>
+          <p>Participants</p>
+        </div>
+        <div class="stat">
+          <span class="count" data-target="12">0</span>
+          <p>Colleges</p>
+        </div>
+        <div class="stat">
+          <span class="count" data-target="20000">0</span>
+          <p>Prize Pool (₹)</p>
+        </div>
+        <div class="stat">
+          <span class="count" data-target="4000">0</span>
+          <p>Footfall</p>
+        </div>
       </div>
-      <div><span id="s">00</span>
-        <p>Seconds</p>
+      <hr>
+      <h3>Previous Partners</h3>
+      <div class="partner-logos">
+        <img src="/resrc/images/misc/lakme.webp">
+        <img src="/resrc/images/misc/vlcc.webp">
       </div>
     </div>
-    <img src="/resrc/images/icons/malang.webp" class="malang">
-    <div>&nbsp;&nbsp;<a href="/index.html">Go to Home</a> | <a href="mailto:connect@malangbvp.info">Contact Us</a></div>
-
-  </div>
+  </section>
+  <div data-include="../components/footer.html"></div>
 
 
+  <script>
+    const end = new Date("2026-02-28T00:00:00").getTime()
+
+    setInterval(() => {
+      const now = Date.now()
+      let t = end - now
+
+      if (t < 0) t = 0
+
+      const d = Math.floor(t / 86400000)
+      const h = Math.floor((t % 86400000) / 3600000)
+      const m = Math.floor((t % 3600000) / 60000)
+      const s = Math.floor((t % 60000) / 1000)
+
+      dEl.textContent = d
+      hEl.textContent = h.toString().padStart(2, '0')
+      mEl.textContent = m.toString().padStart(2, '0')
+      sEl.textContent = s.toString().padStart(2, '0')
+    }, 1000)
+
+    const dEl = document.getElementById("d")
+    const hEl = document.getElementById("h")
+    const mEl = document.getElementById("m")
+    const sEl = document.getElementById("s")
+
+
+    //------------------------------------------------------------
+
+    var i = 0;
+    var stars = document.getElementById("dots");
+    //-----------------------------------------------------------number of stars
+    for (i = 0; i < 100; i++) {
+      let star = document.createElement('div');
+      star.classList.add("star");
+
+
+      let size = Math.random() * 2 + 1;
+      //--------------------------------------------------------------------------
+      const _width = stars.scrollWidth - 2;
+      star.style.top = Math.random() * stars.scrollHeight + "px";
+      star.style.left = Math.random() * _width + "px";
+      star.style.width = size + "px";
+      star.style.height = size + "px";
+      //--------------------------------------------------------------------------
+
+      let delayValue = Math.random() * 4;
+
+      star.style.animationDelay = delayValue + "s";
+
+      stars.appendChild(star);
+    }
+
+    const counters = document.querySelectorAll(".count");
+    let statsPlayed = false;
+
+    const duration = 2000; // ms → all stop together
+
+    const animateStats = () => {
+      if (statsPlayed) return;
+      statsPlayed = true;
+
+      const start = performance.now();
+
+      const tick = (now) => {
+        const progress = Math.min((now - start) / duration, 1);
+
+        counters.forEach(counter => {
+          const target = +counter.dataset.target;
+          const value = Math.floor(target * progress);
+          counter.textContent = value.toLocaleString() + "+";
+        });
+
+        if (progress < 1) requestAnimationFrame(tick);
+      };
+
+      requestAnimationFrame(tick);
+    };
+
+    const observer = new IntersectionObserver(entries => {
+      if (entries[0].isIntersecting) animateStats();
+    }, { threshold: 0.4 });
+
+    observer.observe(document.getElementById("stats"));
+
+    const waitForHeader = () => {
+      const doc = parent.document
+
+      const header = doc.querySelector("header");
+      const nav = doc.querySelector("nav");
+      if (header) {
+        header.style.background = "black"
+        nav.style.background = "black"
+        return
+      }
+
+      const observer = new MutationObserver(() => {
+        const n = doc.querySelector("header")
+        const nav = doc.querySelector("nav");
+        if (n) {
+          n.style.background = "black"
+          nav.style.background = "black"
+          observer.disconnect()
+        }
+      })
+
+      observer.observe(doc.body, { childList: true, subtree: true })
+    }
+
+    waitForHeader()
+
+  </script>
+  <script src="/src/scripts/common.js"></script>
 </body>
-
-<script>
-  const end = new Date("2026-02-28T00:00:00").getTime()
-
-  setInterval(() => {
-    const now = Date.now()
-    let t = end - now
-
-    if (t < 0) t = 0
-
-    const d = Math.floor(t / 86400000)
-    const h = Math.floor((t % 86400000) / 3600000)
-    const m = Math.floor((t % 3600000) / 60000)
-    const s = Math.floor((t % 60000) / 1000)
-
-    dEl.textContent = d
-    hEl.textContent = h.toString().padStart(2, '0')
-    mEl.textContent = m.toString().padStart(2, '0')
-    sEl.textContent = s.toString().padStart(2, '0')
-  }, 1000)
-
-  const dEl = document.getElementById("d")
-  const hEl = document.getElementById("h")
-  const mEl = document.getElementById("m")
-  const sEl = document.getElementById("s")
-
-
-  //------------------------------------------------------------
-
-  var i = 0;
-  var stars = document.getElementById("dots");
-  //-----------------------------------------------------------number of stars
-  for (i = 0; i < 365; i++) {
-    let star = document.createElement('div');
-    star.classList.add("star");
-
-
-    let size = Math.random() * 2 + 1;
-    //--------------------------------------------------------------------------
-    const _width = stars.scrollWidth - 2;
-    star.style.top = Math.random() * stars.scrollHeight + "px";
-    star.style.left = Math.random() * _width + "px";
-    star.style.width = size + "px";
-    star.style.height = size + "px";
-    //--------------------------------------------------------------------------
-
-    let delayValue = Math.random() * 4;
-
-    star.style.animationDelay = delayValue + "s";
-
-    stars.appendChild(star);
-  }
-</script>
 
 </html>

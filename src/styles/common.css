@@ -1,8 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet');
 
 :root {
-  --background-color: #151515;
-  --border-color: #383838;
+  --background-color: #000000;
+  --border-color: #303030;
   --hover-color: #1f1f1f;
 }
 
@@ -682,11 +682,11 @@ footer #malang p{
 }
 
 .styled-table th {
-  background: #222222;
+  background: #181818;
 }
 
 .styled-table tr:nth-child(even) {
-  background: #181818;
+  background: #0a0a0a;
 }
 
 .styled-table tr:hover {
