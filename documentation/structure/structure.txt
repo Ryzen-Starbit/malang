@@ -198,6 +198,7 @@
 │   │   │   ├── sun.png
 │   │   │   ├── tick.webp
 │   │   │   ├── tools.png
+│   │   │   ├── top-right.png
 │   │   │   └── user.png
 │   │   ├── members/
 │   │   │   ├── 24-1.webp
