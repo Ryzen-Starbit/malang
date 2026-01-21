@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../styles/common.css">
+    <link rel="stylesheet" href="../styles/authentication.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <title>Fashion Euphoria 2026</title>
+
+    <style>
+        #formSection {
+            overflow-y: hidden;
+            margin: 10px;
+        }
+
+        #templateForm p {
+            font-size: 14px;
+            text-align: left;
+            color: #9e9e9e;
+            margin-bottom: 10px;
+        }
+
+        #templateForm h3 {
+            border-bottom: 1px solid #383838;
+            padding-bottom: 10px;
+            width: calc(100% + 40px);
+            margin-left: -20px;
+        }
+
+        .form-step {
+            flex-direction: column;
+            justify-content: space-between;
+            display: none;
+            opacity: 0;
+            transition: opacity 0.4s ease-in-out, visibility 0.4s ease-in-out;
+        }
+
+        .form-step.active {
+            min-height: calc(100vh - 280px);
+            display: flex;
+            opacity: 1;
+        }
+
+        #checks {
+            width: calc(100% - 20px);
+            font-size: 14px;
+            padding: 10px;
+            color: #9e9e9e;
+            border: 1px solid #383838;
+            border-radius: 10px;
+            background-color: #1a1a1aa1;
+            margin: 10px auto;
+        }
+
+        .checkbox-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+            margin-top: 10px 0;
+        }
+
+        .checkbox-group input[type="checkbox"] {
+            display: none;
+            /* hide default checkbox */
+        }
+
+        .checkbox-group label {
+            display: inline-block;
+            padding: 5px 10px;
+            border: 1px solid #383838;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            user-select: none;
+        }
+
+        /* Checked state */
+        .checkbox-group input[type="checkbox"]:checked+label {
+            background-color: rgba(255, 217, 0, 0.096);
+            color: gold;
+            border-color: rgba(255, 217, 0, 0.575);
+        }
+
+
+        /* Hidden text input */
+        .other-input {
+            max-height: 0;
+            opacity: 0;
+            width: calc(100% - 22px);
+            transform: translateY(-10px);
+            transition: all 0.3s ease;
+        }
+
+        .other-input input {
+            margin-top: 7px;
+            width: 100%;
+            outline: none;
+            transition: box-shadow 0.3s ease;
+        }
+
+        /* Show animation when "Other" is checked */
+        #Other:checked~.other-input {
+            max-height: 70px;
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        select {
+            color: grey;
+            margin-bottom: 10px;
+            padding: 9px;
+        }
+
+        option {
+            color: grey;
+            background-color: black;
+            font-size: 15px;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 10px;
+        }
+
+        .iti {
+            width: 100%;
+        }
+        #phoneContainer{
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <section id="formSection">
+        <canvas id="gradientCanvas"></canvas>
+        <form id="templateForm">
+            <h3>Fashion Euphoria 2026</h3>
+
+            <!-- STEP 1 : CATEGORY -->
+            <div class="form-step active" id="step1">
+
+                <p>✨
+Get ready to ignite the runway and unleash your fashion flair! 📷🎨
+<br><br>
+Date & Venue<br>
+• 27th Feb 2026<br>
+• Main Ground
+<br><br>
+<b>Guidelines: </b><a href="privacy-policy.html">Read</a> </p>
+                <div class="inputs">
+                    <input type="checkbox" name="agree" id=""> <p>I have read and agree to the <a href="privacy-policy.html" target="_blank">terms
+                        and conditions</a> *</p>
+                    <select id="category" required onchange="handleCategoryChange()">
+                        <option value="" disabled selected>Select Category *</option>
+                        <option value="solo">Solo</option>
+                        <option value="duet">Duet</option>
+                        <option value="group">Group</option>
+                    </select>
+                </div>
+
+                <div class="btn-group">
+                    <span></span>
+                    <button type="button" class="long-btn" onclick="nextDynamic()">Next</button>
+                </div>
+            </div>
+
+            <!-- SOLO -->
+            <div class="form-step" id="soloStep">
+                <div class="inputs">
+                    <input type="text" placeholder="Full Name *" required>
+                    <input type="email" placeholder="Email *" required>
+                    <input type="text" placeholder="College Name *" required>
+                    <input type="text" placeholder="Year *" required>
+                    <input type="text" placeholder="Branch *" required>
+                </div>
+                <div class="btn-group">
+                    <button type="button" class="long-btn secondary" onclick="prevDynamic()">Previous</button>
+                    <button type="button" class="long-btn" onclick="nextDynamic()">Next</button>
+                </div>
+            </div>
+
+            <!-- DUET MEMBER 1 -->
+            <div class="form-step" id="duetStep1">
+                <div class="inputs">
+                    <p>Member 1 (POC)</p>
+                    <input type="text" placeholder="Name *" required>
+                    <input type="email" placeholder="Email *" required>
+                    <input type="text" placeholder="College *" required>
+                    <input type="text" placeholder="Year *" required>
+                    <input type="text" placeholder="Branch *" required>
+                </div>
+                <div class="btn-group">
+                    <button type="button" class="long-btn secondary" onclick="prevDynamic()">Previous</button>
+                    <button type="button" class="long-btn" onclick="nextDynamic()">Next</button>
+                </div>
+            </div>
+
+            <!-- DUET MEMBER 2 -->
+            <div class="form-step" id="duetStep2">
+                <div class="inputs">
+                    <p>Member 2</p>
+                    <input type="text" placeholder="Name *" required>
+                    <input type="email" placeholder="Email *" required>
+                    <input type="text" placeholder="College *" required>
+                    <input type="text" placeholder="Year *" required>
+                    <input type="text" placeholder="Branch *" required>
+                </div>
+                <div class="btn-group">
+                    <button type="button" class="long-btn secondary" onclick="prevDynamic()">Previous</button>
+                    <button type="button" class="long-btn" onclick="nextDynamic()">Next</button>
+                </div>
+            </div>
+
+            <!-- GROUP INFO -->
+            <div class="form-step" id="groupStep2">
+                <div class="inputs">
+                    <input type="number" min="8" max="12" placeholder="Number of Members (8–12) *" required>
+                    <textarea placeholder="Names of all members (comma separated) *" required></textarea>
+                </div>
+                <div class="btn-group">
+                    <button type="button" class="long-btn secondary" onclick="prevDynamic()">Previous</button>
+                    <button type="button" class="long-btn" onclick="nextDynamic()">Next</button>
+                </div>
+            </div>
+
+            <!-- THEME -->
+            <div class="form-step" id="themeStep">
+                <div class="inputs">
+                    <select required>
+                        <option value="" disabled selected>Select Theme *</option>
+                        <option>Traditional</option>
+                        <option>Western</option>
+                        <option>Fusion</option>
+                        <option>Experimental</option>
+                    </select>
+                </div>
+                <div class="btn-group">
+                    <button type="button" class="long-btn secondary" onclick="prevDynamic()">Previous</button>
+                    <button type="button" class="long-btn" onclick="nextDynamic()">Next</button>
+                </div>
+            </div>
+
+            <!-- PAYMENT -->
+            <div class="form-step" id="paymentStep">
+                <div class="inputs">
+                    <p>Upload payment proof</p>
+                    <input type="file" required>
+                </div>
+                <div class="btn-group">
+                    <button type="button" class="long-btn secondary" onclick="prevDynamic()">Previous</button>
+                    <button type="submit" class="long-btn">Submit</button>
+                </div>
+            </div>
+
+        </form>
+    </section>
+    <script src="../scripts/common.js"></script>
+    <script src="../scripts/authentication.js"></script>
+
+    <script>
+        let flow = []
+        let index = 0
+
+        function handleCategoryChange() {
+            const c = document.getElementById("category").value
+            if (c === "solo") flow = ["step1", "soloStep", "themeStep", "paymentStep"]
+            if (c === "duet") flow = ["step1", "duetStep1", "duetStep2", "themeStep", "paymentStep"]
+            if (c === "group") flow = ["step1", "duetStep1", "groupStep2", "themeStep", "paymentStep"]
+            index = 0
+        }
+
+        function showStep() {
+            document.querySelectorAll(".form-step").forEach(s => s.classList.remove("active"))
+            document.getElementById(flow[index]).classList.add("active")
+        }
+
+        function nextDynamic() {
+            if (!flow.length) return
+            index++
+            showStep()
+        }
+
+        function prevDynamic() {
+            index--
+            showStep()
+        }
+
+        document.getElementById("fashionForm").addEventListener("submit", e => {
+            e.preventDefault()
+            alert("Form submitted successfully!")
+            e.target.reset()
+            location.reload()
+        })
+    </script>
+</body>
+
+</html>

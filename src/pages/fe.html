@@ -13,7 +13,8 @@
 <body>
   <section id="fashionEuphoria">
     <div id="dots"></div>
-    <div class="glass">
+    <div id="topDiv">
+      <img src="/resrc/images/misc/FE25-8.webp" alt="" id="headerImg">
       <h1 id="fe">Fashion Euphoria</h1>
       An inter-college fashion showcase curated by Malang. <br><br>
       Fashion fades, style is eternal.
@@ -32,11 +33,16 @@
         </div>
       </div>
       <div class="cta">
-        <a href="" class="long-btn" id="register"
+        <a href="/src/pages/fe-register.html" class="long-btn" id="register"
           style="color: black; background-color: rgb(210, 210, 210); font-weight: 400;">Register Now <img
             src="/resrc/images/icons/top-right.png" alt=""></a>
       </div>
-      <hr>
+    </div>
+    <div class="glass">
+      <video id="bgVideo" muted autoplay playsinline loop>
+        <source src="/resrc/media/fe2025.mp4" type="video/mp4">
+      </video>
+
       <h3>Numbers from Fashion Euphoria 2025</h3>
       <div id="stats">
         <div class="stat">
@@ -151,23 +157,44 @@
 
     observer.observe(document.getElementById("stats"));
 
+      const v = document.getElementById("bgVideo")
+  v.muted = true
+  v.play().catch(()=>{})
+
+    /*
     const waitForHeader = () => {
       const doc = parent.document
 
       const header = doc.querySelector("header");
       const nav = doc.querySelector("nav");
       if (header) {
-        header.style.background = "black"
-        nav.style.background = "black"
+        header.style.background = "transparent"
+        header.style.borderBottom = "none"
+        header.style.backdropFilter = "blur(20px)"
+        header.style.webkitBackdropFilter = "blur(20px)"
+        header.style.transform = "translateZ(0)"
+
+        nav.style.background = "transparent"
+        nav.style.backdropFilter = "blur(20px)"
+        nav.style.webkitBackdropFilter = "blur(20px)"
+
         return
       }
 
       const observer = new MutationObserver(() => {
-        const n = doc.querySelector("header")
+        const header = doc.querySelector("header")
         const nav = doc.querySelector("nav");
-        if (n) {
-          n.style.background = "black"
-          nav.style.background = "black"
+        if (header) {
+          header.style.background = "transparent"
+          header.style.borderBottom = "none"
+          header.style.backdropFilter = "blur(20px)"
+          header.style.webkitBackdropFilter = "blur(20px)"
+          header.style.transform = "translateZ(0)"
+
+          nav.style.background = "transparent"
+          nav.style.backdropFilter = "blur(20px)"
+          nav.style.webkitBackdropFilter = "blur(20px)"
+
           observer.disconnect()
         }
       })
@@ -176,7 +203,7 @@
     }
 
     waitForHeader()
-
+*/
   </script>
   <script src="/src/scripts/common.js"></script>
 </body>
