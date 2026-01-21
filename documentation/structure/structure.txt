@@ -418,7 +418,8 @@
 │   │       ├── 98.webp
 │   │       └── 99.webp
 │   ├── media/
-│   │   └── Malang_Brochure_2026.pdf
+│   │   ├── Malang_Brochure_2026.pdf
+│   │   └── fe2025.mp4
 │   └── models/
 │       └── logo.glb
 ├── robots.txt
@@ -440,6 +441,7 @@
 │   │   ├── core.html
 │   │   ├── documentation.html
 │   │   ├── events.html
+│   │   ├── fe-register.html
 │   │   ├── fe.html
 │   │   ├── form.html
 │   │   ├── gallery.html
