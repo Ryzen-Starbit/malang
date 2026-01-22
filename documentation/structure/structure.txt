@@ -184,6 +184,7 @@
 │   │   │   ├── home.webp
 │   │   │   ├── link.webp
 │   │   │   ├── loading.gif
+│   │   │   ├── malang-black.jpg
 │   │   │   ├── malang.ico
 │   │   │   ├── malang.png
 │   │   │   ├── malang.webp
@@ -449,6 +450,7 @@
 │   │   ├── home.html
 │   │   ├── members.html
 │   │   ├── privacy-policy.html
+│   │   ├── qr.html
 │   │   ├── r.html
 │   │   ├── redirector.html
 │   │   ├── redirects.html
