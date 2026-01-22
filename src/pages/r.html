@@ -8,35 +8,129 @@
     rel="stylesheet">
   <link rel="stylesheet" href="/src/styles/common.css">
   <link rel="stylesheet" href="/src/styles/countdown.css">
+  <style>
+    body {
+      background:
+        radial-gradient(circle at 50% 0%, rgba(13, 148, 132, 0.4), transparent 35%),
+        radial-gradient(circle at 80% 60%, rgba(70, 78, 6, 0.374), transparent 40%),
+        linear-gradient(170deg, #000000, #02142c, #000000);
+      background-blend-mode: screen;
+      background-attachment: fixed;
+    }
+
+    #headerGIF {
+      width: 100vw;
+      max-width: 500px;
+      margin-top: -80px;
+      filter: saturate(1.5);
+    }
+
+    .star {
+      background-color: rgb(255, 239, 145);
+    }
+
+    #people {
+      position: relative;
+      margin-top: -125px;
+      margin-left: -10px;
+      height: 120px;
+      width: 100%;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    /* base image */
+    #people img {
+      position: absolute;
+      bottom: 0;
+      width: 100px;
+    }
+
+    /* manual stacking */
+    .p1 {
+      left: 0px;
+    }
+
+    .p2 {
+      left: 80px;
+      transform: rotateY(180deg);
+    }
+
+    .p3 {
+      left: 160px;
+      width: 115px !important;
+    }
+
+    .p4 {
+      left: 250px;
+    }
+
+    /* hover lift (NO reflow) */
+    #people img:hover {
+      content: url('');
+      z-index: 10;
+    }
+
+    /* keep flip on hover */
+    .p2:hover {
+      transform: rotateY(180deg) translateY(10px) scale(1.25);
+      margin-left: 30px ;
+    }
+    .p3:hover {
+      transform:translateY(12px) scale(1.20) rotate(10deg);
+      margin-left: -10px ;
+    }
+    .p4:hover {
+      transform:translateY(15px) scale(1.40);
+      margin-left: -40px ;
+    }
+    #detailsDiv {
+      color: white;
+      text-align: center;
+      margin-top: 20px;
+      padding: 10px;
+    }
+  </style>
 </head>
 
 <body>
-  <div id="dots"></div>
-  <div class="glass">
-    <h1 id="rangotsav">Rangotsav</h1>
-    An inter-college art & photography festival
-    curated by Malang. <br><br>
-    The stage is being set. <br>
-    The colors arrive soon.
-    <div class="timer">
-      <div><span id="d">00</span>
-        <p>Days</p>
+  <section id="rangotsavSection">
+    <div id="dots"></div>
+    <div class="landingDiv">
+      <img src="/resrc/images/misc/starryNights.gif" alt="" id="headerGIF">
+      <div id="people">
+        <img src="/resrc/images/misc/r_rkLakshman.png" class="p1">
+        <img src="/resrc/images/misc/r_monaLisa.png" class="p2">
+        <img src="/resrc/images/misc/r_rajaRaviVarma.png" class="p3">
+        <img src="/resrc/images/misc/r_vanGogh.png" class="p4">
       </div>
-      <div><span id="h">00</span>
-        <p>Hours</p>
-      </div>
-      <div><span id="m">00</span>
-        <p>Minutes</p>
-      </div>
-      <div><span id="s">00</span>
-        <p>Seconds</p>
-      </div>
+
     </div>
-    <img src="/resrc/images/icons/malang.webp" class="malang">
-    <div>&nbsp;&nbsp;<a href="/index.html">Go to Home</a> | <a href="mailto:connect@malangbvp.info">Contact Us</a></div>
+    <div id="detailsDiv">
+      <h1 id="rangotsav">Rangotsav</h1>
+      An inter-college art & photography festival
+      curated by Malang. <br><br>
+      The stage is being set. <br>
+      The colors arrive soon. <br><br>
+      <div class="timer">
+        <div><span id="d">00</span>
+          <p>Days</p>
+        </div>
+        <div><span id="h">00</span>
+          <p>Hours</p>
+        </div>
+        <div><span id="m">00</span>
+          <p>Minutes</p>
+        </div>
+        <div><span id="s">00</span>
+          <p>Seconds</p>
+        </div>
+      </div>
+      <img src="/resrc/images/icons/malang.webp" class="malang">
+      <div>&nbsp;&nbsp;<a href="/index.html">Go to Home</a> | <a href="mailto:connect@malangbvp.info">Contact Us</a>
+      </div>
 
-  </div>
-
+    </div>
+  </section>
 
 </body>
 
@@ -91,6 +185,14 @@
 
     stars.appendChild(star);
   }
+
+  document.querySelectorAll("#people img").forEach(img => {
+    const original = img.src
+    const hover = original.replace(".png", "_2.png")
+
+    img.addEventListener("mouseenter", () => img.src = hover)
+    img.addEventListener("mouseleave", () => img.src = original)
+  })
 </script>
 
 </html>
