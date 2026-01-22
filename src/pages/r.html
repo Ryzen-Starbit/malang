@@ -18,11 +18,21 @@
       background-attachment: fixed;
     }
 
-    #headerGIF {
-      width: 100vw;
+    #landingDiv {
       max-width: 500px;
-      margin-top: -80px;
+      display: flex;
+      overflow: hidden;
+
+    }
+
+    #headerGIF {
+      width: 100%;
+      max-width: 520px;
+      margin-top: -100px;
+      margin-left: 50vw;
+      transform: translateX(-50%);
       filter: saturate(1.5);
+
     }
 
     .star {
@@ -31,37 +41,42 @@
 
     #people {
       position: relative;
-      margin-top: -125px;
+      margin-top: -185px;
       margin-left: -10px;
-      height: 120px;
+      height: 180px;
       width: 100%;
+      max-width: 500px;
+      margin-left: 50vw;
+      transform: translateX(-50%);
       border-bottom: 1px solid var(--border-color);
+      border-radius: 7px;
+      overflow-y: visible;
     }
 
     /* base image */
     #people img {
       position: absolute;
       bottom: 0;
-      width: 100px;
+      width: calc(100% /4 + 20px);
     }
 
     /* manual stacking */
     .p1 {
-      left: 0px;
+      left: 0%;
     }
 
     .p2 {
-      left: 80px;
+      left: 25%;
       transform: rotateY(180deg);
     }
 
     .p3 {
-      left: 160px;
-      width: 115px !important;
+      left: 50%;
+      width: calc(100% /4 + 30px) !important;
     }
 
     .p4 {
-      left: 250px;
+      left: 75%;
     }
 
     /* hover lift (NO reflow) */
@@ -73,21 +88,28 @@
     /* keep flip on hover */
     .p2:hover {
       transform: rotateY(180deg) translateY(10px) scale(1.25);
-      margin-left: 30px ;
+      margin-left: 30px;
     }
+
     .p3:hover {
-      transform:translateY(12px) scale(1.20) rotate(10deg);
-      margin-left: -10px ;
+      transform: translateY(12px) scale(1.20) rotate(10deg);
+      margin-left: -10px;
     }
+
     .p4:hover {
-      transform:translateY(15px) scale(1.40);
-      margin-left: -40px ;
+      transform: translateY(15px) scale(1.40);
+      margin-left: -40px;
     }
+
     #detailsDiv {
       color: white;
-      text-align: center;
       margin-top: 20px;
       padding: 10px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+
     }
   </style>
 </head>
@@ -103,7 +125,6 @@
         <img src="/resrc/images/misc/r_rajaRaviVarma.png" class="p3">
         <img src="/resrc/images/misc/r_vanGogh.png" class="p4">
       </div>
-
     </div>
     <div id="detailsDiv">
       <h1 id="rangotsav">Rangotsav</h1>
