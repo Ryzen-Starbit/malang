@@ -285,6 +285,14 @@
 │   │   │   ├── poster.webp
 │   │   │   ├── preview.png
 │   │   │   ├── preview1.png
+│   │   │   ├── r_monaLisa.png
+│   │   │   ├── r_monaLisa_2.png
+│   │   │   ├── r_rajaRaviVarma.png
+│   │   │   ├── r_rajaRaviVarma_2.png
+│   │   │   ├── r_rkLakshman.png
+│   │   │   ├── r_rkLakshman_2.png
+│   │   │   ├── r_vanGogh.png
+│   │   │   ├── r_vanGogh_2.png
 │   │   │   ├── rangotsav24-1.webp
 │   │   │   ├── rangotsav24-2.webp
 │   │   │   ├── rangotsav24-3.webp
@@ -294,6 +302,7 @@
 │   │   │   ├── rangotsav25-2.webp
 │   │   │   ├── rangotsav25-3.webp
 │   │   │   ├── rangotsav25-4.webp
+│   │   │   ├── starryNights.gif
 │   │   │   ├── team.webp
 │   │   │   ├── team2.webp
 │   │   │   ├── tshirt1.png
