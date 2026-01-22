@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Malang QR Generator</title>
+    <link rel="stylesheet" href="../styles/common.css">
+    <link rel="stylesheet" href="../styles/authentication.css">
+</head>
+
+<body>
+    <section id="qrSection">
+        <canvas id="gradientCanvas"></canvas>
+        <form id="qrForm">
+            <h3>Malang QR Generator</h3>
+
+            <input id="URL" type="text" placeholder="Enter website URL">
+            <input type="color" id="color" style="height: 40px;" value="#000000">
+
+            <button id="create" type="button" class="long-btn">Create QR</button>
+            <button id="download" type="button" class="long-btn">Download QR</button>
+            <div id="qr" style="width: calc(100% - 20px); padding: 10px; border: 1px solid var(--border-color); border-radius: 5px; display: flex; justify-content: center;">QR Code appears here.</div>
+        </form>
+    </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/qrcodejs/qrcode.min.js"></script>
+    <script src="../scripts/common.js"></script>
+    <script src="../scripts/authentication.js"></script>
+<script>
+(() => {
+  const logoSrc = "/resrc/images/icons/malang-black.jpg"
+  let qrCanvas
+
+  document.getElementById("create").onclick = async () => {
+    const url = document.getElementById("URL").value.trim()
+    const color = document.getElementById("color").value
+    if (!url) return showAlert("Error", "Enter a URL")
+
+    const qrDiv = document.getElementById("qr")
+    qrDiv.innerHTML = ""
+
+    new QRCode(qrDiv, {
+      text: url,
+      width: 240,
+      height: 240,
+      colorDark: color,
+      colorLight: "#ffffff",
+      correctLevel: QRCode.CorrectLevel.H
+    })
+
+    await new Promise(r => setTimeout(r, 50))
+    qrCanvas = qrDiv.querySelector("canvas")
+
+    const ctx = qrCanvas.getContext("2d")
+    const logo = new Image()
+    logo.src = logoSrc
+
+    logo.onload = () => {
+      const s = qrCanvas.width * 0.25
+      const x = (qrCanvas.width - s) / 2
+      const y = (qrCanvas.height - s) / 2
+      const pad = 4
+
+      ctx.fillStyle = "#ffffff"
+      ctx.fillRect(x - pad, y - pad, s + pad * 2, s + pad * 2)
+      ctx.drawImage(logo, x, y, s, s)
+
+      document.getElementById("download").style.display = "block"
+    }
+  }
+
+  document.getElementById("download").onclick = () => {
+    if (!qrCanvas) return showAlert("Error", "Create QR first")
+
+    const a = document.createElement("a")
+    a.href = qrCanvas.toDataURL("image/png")
+    a.download = "malang-qr.png"
+    a.click()
+  }
+})()
+</script>
+
+
+</body>
+
+</html>
