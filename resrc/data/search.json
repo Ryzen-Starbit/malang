@@ -12,12 +12,12 @@
   {
     "title": "Malang | Redirector",
     "url": "/src/pages/redirector.html",
-    "content": "Malang | Redirector You must be signed in to view this page. Customise URL Custom URL will be:Postfix Create View Redirects"
+    "content": "Malang | Redirector You must be signed in to view this page. Customise URL Custom URL will be:slug Create View Redirects"
   },
   {
     "title": "Malang | Account",
     "url": "/src/pages/account.html",
-    "content": "Malang | Account Authentication Required. You can now access the following pages: T-Shirt Form Open Claims Media Kit RedirectorAuth Site Docs TreasuryAuth Log in with Google Log in with GitHub Log out"
+    "content": "Malang | Account Authentication Required. You can now access the following pages: T-Shirt Form Open Claims Media Kit RedirectorAuth Site Docs TreasuryAuth QR Code Generator Log in with Google Log in with GitHub Log out"
   },
   {
     "title": "Malang | Events",
@@ -27,7 +27,7 @@
   {
     "title": "Malang | Site Documentation",
     "url": "/src/pages/documentation.html",
-    "content": "Malang | Site Documentation Last updated: Loading... Last update: Loading... Loading... Site Structure \u26cf\ufe0e W/\u2665 for"
+    "content": "Malang | Site Documentation Last updated: Loading... Last update: Loading... Loading... Site Structure You must be signed in to view this content. \u26cf\ufe0e W/\u2665 for"
   },
   {
     "title": "Rangotsav",
@@ -57,7 +57,7 @@
   {
     "title": "Fashion Euphoria",
     "url": "/src/pages/fe.html",
-    "content": "Fashion Euphoria Fashion Euphoria An inter-college fashion showcase curated by Malang. Fashion fades, style is eternal. 00 Days 00 Hours 00 Minutes 00 Seconds Go to Home | Contact Us"
+    "content": "Fashion Euphoria Fashion Euphoria An inter-college fashion showcase curated by Malang. Fashion fades, style is eternal. 00 Days 00 Hours 00 Minutes 00 Seconds Register Now Numbers from Fashion Euphoria 2025 0 Participants 0 Colleges 0 Prize Pool (\u20b9) 0 Footfall Previous Partners"
   },
   {
     "title": "Malang | Unsubscribe",
@@ -95,6 +95,11 @@
     "content": "Malang | Home Fine Arts & Photography Club For the Kalakaar in you! Sponsor Us Contact Us Discover Your Creative Oasis at Malang Our mission is to provide a platform for individuals to express themselves, explore their artistic passions, and collaborate with like-minded individuals. Whether you're a painter, photographer, sculptor, or any form of creative soul, Malang Fine Arts Arts & Photography Club is the place to be. Upcoming EventsCheckout Events Fashion EuphoriaLearn More RangotsavLearn More Art GalleryView Gallery Our Partners \u00d7"
   },
   {
+    "title": "Fashion Euphoria 2026",
+    "url": "/src/pages/fe-register.html",
+    "content": "Fashion Euphoria 2026 Fashion Euphoria 2026 \u2728 Get ready to ignite the runway and unleash your fashion flair! \ud83d\udcf7\ud83c\udfa8 Date & Venue \u2022 27th Feb 2026 \u2022 Main Ground Guidelines: Read I have read and agree to the terms and conditions * Select Category * Solo Duet Group Next Previous Next Member 1 (POC) Previous Next Member 2 Previous Next Previous Next Select Theme * Traditional Western Fusion Experimental Previous Next Upload payment proof Previous Submit"
+  },
+  {
     "title": "Malang | Claims",
     "url": "/src/pages/claims.html",
     "content": "Malang | Claims You must be signed in to view this page. Claim your bills Bill Attachment * . Claim"
@@ -107,7 +112,7 @@
   {
     "title": "Malang | Core Members: Tejas Gupta, Prasun Ratan, Goutam Sahu, Mohini Walia, Priya Ranjan, Satyam Singh",
     "url": "/src/pages/core.html",
-    "content": "Malang | Core Members: Tejas Gupta, Prasun Ratan, Goutam Sahu, Mohini Walia, Priya Ranjan, Satyam Singh Core Members \u00d7 Name: Tejas Gupta, Prasun Ratan, Goutam Sahu, Mohini Walia, Priya Ranjan, Satyam Singh Position: NA Batch: NA Branch: NA"
+    "content": "Malang | Core Members: Tejas Gupta, Prasun Ratan, Goutam Sahu, Mohini Walia, Priya Ranjan, Satyam Singh Core Members Malang Alumni \u00d7 Name: Tejas Gupta, Prasun Ratan, Goutam Sahu, Mohini Walia, Priya Ranjan, Satyam Singh Position: NA Batch: NA Branch: NA"
   },
   {
     "title": "Malang | Sitemap",
@@ -123,6 +128,11 @@
     "title": "Malang | 404 Not Found",
     "url": "/src/pages/404.html",
     "content": "Malang | 404 Not Found 404 Page Not Found This content doesn't exist, or you don't have permission to view it. Go Back"
+  },
+  {
+    "title": "Malang QR Generator",
+    "url": "/src/pages/qr.html",
+    "content": "Malang QR Generator Malang QR Generator Create QR Download QR QR Code appears here."
   },
   {
     "title": "Malang | Google Form Embed",
