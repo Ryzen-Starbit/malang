@@ -7,12 +7,21 @@
 
 #headerImg {
     width: 100%;
-    height: 130px;
+    height: auto;
     object-fit: cover;
     object-position: 0 80%;
     max-width: 500px;
     border-radius: 10px;
     margin-bottom: 20px;
+}
+
+#headerLogo {
+    width: 150px;
+    height: auto;
+}
+
+#fe{
+    padding: 0;
 }
 
 #topDiv {
@@ -31,30 +40,17 @@
 #rangotsav {
     font-family: 'Samarkan Normal V1';
     font-size: 2.7rem;
+    font-weight: normal;
     background: linear-gradient(to right, rgb(255, 204, 0), rgb(255, 0, 128));
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 
-#fe {
-    padding: 0;
-    font-family: 'Samarkan Normal V1';
-    font-size: 2.5rem;
-    background:
-        linear-gradient(to right,
-            rgb(216, 5, 216),
-            rgb(255, 103, 250),
-            rgb(106, 0, 255));
-
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
-
 #fashionEuphoria {
-    background: radial-gradient(circle at 80% 20%, rgba(236, 72, 153, 0.25), transparent 40%),
+    background: radial-gradient(circle at 80% 50%, rgba(239, 178, 38, 0.25), transparent 60%),
         linear-gradient(180deg, #0a0a0a, #000000);
+        background-attachment: fixed;
 }
 
 .glass {
@@ -67,7 +63,7 @@
     padding: 0px 10px 20px 10px;
     background: linear-gradient(to top,
             #000000 0%,
-            rgba(17, 17, 17, 0) 30%) bottom / 100% 40% no-repeat, radial-gradient(circle at 20% 80%, rgb(27, 0, 69), black 40%);
+            rgba(17, 17, 17, 0) 30%) bottom / 100% 40% no-repeat, radial-gradient(circle at 20% 80%, rgb(37, 0, 69), black 40%);
     margin-top: 100vh;
     position: relative;
     z-index: 100;
@@ -75,12 +71,19 @@
     border-radius: 20px 20px 0 0;
 }
 
+.handle{
+    height: 3px;
+    width: 30px;
+    background-color: rgb(86, 86, 86);
+    border-radius: 5px;
+    margin: 10px auto;
+}
+
 #bgVideo {
-    margin-top: 10px;
     width: 100%;
     max-width: 500px;
     height: auto;
-    border-radius: 10px;
+    border-radius: 15px;
     border: 1px solid var(--border-color);
     object-fit: cover;
     display: block;
@@ -107,6 +110,8 @@
     border-radius: 7px;
     padding: 10px 0px;
     background: rgba(255, 255, 255, 0.092);
+    backdrop-filter: blur(2px);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
 
 .timer span {

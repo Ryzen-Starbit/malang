@@ -1,15 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="../styles/common.css">
-    <link rel="stylesheet" href="../styles/authentication.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <title>Fashion Euphoria 2026</title>
-
+    <link rel="shortcut icon" href="../../resrc/images/icons/favicon.png" type="image/x-icon" />
+    <link rel="stylesheet" href="../styles/common.css" />
+    <link rel="stylesheet" href="../styles/authentication.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>
+    <title>Malang | 👕 Form</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
     <style>
         #formSection {
             overflow-y: hidden;
@@ -21,6 +21,7 @@
             text-align: left;
             color: #9e9e9e;
             margin-bottom: 10px;
+            overflow-y: hidden;
         }
 
         #templateForm h3 {
@@ -35,7 +36,7 @@
             justify-content: space-between;
             display: none;
             opacity: 0;
-            transition: opacity 0.4s ease-in-out, visibility 0.4s ease-in-out;
+            transition: opacity 0.4s ease-in-out;
         }
 
         .form-step.active {
@@ -44,7 +45,7 @@
             opacity: 1;
         }
 
-        #checks {
+        .checks {
             width: calc(100% - 20px);
             font-size: 14px;
             padding: 10px;
@@ -52,7 +53,7 @@
             border: 1px solid #383838;
             border-radius: 10px;
             background-color: #1a1a1aa1;
-            margin: 10px auto;
+            margin: 0px auto 10px auto;
         }
 
         .checkbox-group {
@@ -79,11 +80,10 @@
 
         /* Checked state */
         .checkbox-group input[type="checkbox"]:checked+label {
-            background-color: rgba(255, 217, 0, 0.096);
-            color: gold;
-            border-color: rgba(255, 217, 0, 0.575);
+            background-color: rgba(0, 251, 255, 0.096);
+            color: rgb(0, 255, 200);
+            border-color: rgba(0, 255, 208, 0.575);
         }
-
 
         /* Hidden text input */
         .other-input {
@@ -125,11 +125,41 @@
             gap: 10px;
         }
 
+        #qr {
+            width: 70%;
+            border-radius: 7px;
+            margin-bottom: 10px;
+        }
+
+        #login-btn {
+            color: white;
+            text-decoration: none;
+            border: 1px solid #383838;
+            padding: 10px 20px;
+            border-radius: 7px;
+            background-color: #0c0c0c;
+        }
+
         .iti {
             width: 100%;
         }
-        #phoneContainer{
-            margin-bottom: 10px;
+
+        #tshirts {
+            margin: 10px;
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+        }
+
+        #tshirts img {
+            border: 1px sold #383838;
+            width: 100%;
+            max-width: 210px;
+            border-radius: 10px;
+            border: 1px solid #383838;
         }
     </style>
 </head>
@@ -137,165 +167,402 @@
 <body>
     <section id="formSection">
         <canvas id="gradientCanvas"></canvas>
-        <form id="templateForm">
+        <div id="progressWrap">
+            <div id="progressBar"></div>
+        </div>
+
+        <form id="templateForm"
+            onsubmit="handleButtonAction('submit','Submitting','Submitted',()=>handleFormSubmit(event))">
+
             <h3>Fashion Euphoria 2026</h3>
 
-            <!-- STEP 1 : CATEGORY -->
+            <!-- STEP 1 : COMPETITION -->
             <div class="form-step active" id="step1">
-
-                <p>✨
-Get ready to ignite the runway and unleash your fashion flair! 📷🎨
-<br><br>
-Date & Venue<br>
-• 27th Feb 2026<br>
-• Main Ground
-<br><br>
-<b>Guidelines: </b><a href="privacy-policy.html">Read</a> </p>
                 <div class="inputs">
-                    <input type="checkbox" name="agree" id=""> <p>I have read and agree to the <a href="privacy-policy.html" target="_blank">terms
-                        and conditions</a> *</p>
-                    <select id="category" required onchange="handleCategoryChange()">
-                        <option value="" disabled selected>Select Category *</option>
-                        <option value="solo">Solo</option>
-                        <option value="duet">Duet</option>
-                        <option value="group">Group</option>
+                    <div class="checks">
+                        <div class="checkbox-group">
+                            <a href="privacy-policy.html">Terms & Conditions</a>
+                            <input type="checkbox" id="agree_tc" />
+                            I agree to the Terms & Conditions *
+                            <label for="agree_tc">Yes
+                            </label>
+                        </div>
+                    </div>
+                    <select id="competition" required>
+                        <option value="" disabled selected>Competition *</option>
+                        <option value="fashion">Fashion</option>
+                        <option value="cosplay">Cosplay</option>
                     </select>
                 </div>
-
                 <div class="btn-group">
                     <span></span>
-                    <button type="button" class="long-btn" onclick="nextDynamic()">Next</button>
+                    <button type="button" class="long-btn" onclick="nextStep(1)">Next</button>
                 </div>
             </div>
 
-            <!-- SOLO -->
-            <div class="form-step" id="soloStep">
+            <!-- STEP 2 : CATEGORY -->
+            <div class="form-step" id="step2">
                 <div class="inputs">
-                    <input type="text" placeholder="Full Name *" required>
-                    <input type="email" placeholder="Email *" required>
-                    <input type="text" placeholder="College Name *" required>
-                    <input type="text" placeholder="Year *" required>
-                    <input type="text" placeholder="Branch *" required>
-                </div>
-                <div class="btn-group">
-                    <button type="button" class="long-btn secondary" onclick="prevDynamic()">Previous</button>
-                    <button type="button" class="long-btn" onclick="nextDynamic()">Next</button>
-                </div>
-            </div>
-
-            <!-- DUET MEMBER 1 -->
-            <div class="form-step" id="duetStep1">
-                <div class="inputs">
-                    <p>Member 1 (POC)</p>
-                    <input type="text" placeholder="Name *" required>
-                    <input type="email" placeholder="Email *" required>
-                    <input type="text" placeholder="College *" required>
-                    <input type="text" placeholder="Year *" required>
-                    <input type="text" placeholder="Branch *" required>
-                </div>
-                <div class="btn-group">
-                    <button type="button" class="long-btn secondary" onclick="prevDynamic()">Previous</button>
-                    <button type="button" class="long-btn" onclick="nextDynamic()">Next</button>
-                </div>
-            </div>
-
-            <!-- DUET MEMBER 2 -->
-            <div class="form-step" id="duetStep2">
-                <div class="inputs">
-                    <p>Member 2</p>
-                    <input type="text" placeholder="Name *" required>
-                    <input type="email" placeholder="Email *" required>
-                    <input type="text" placeholder="College *" required>
-                    <input type="text" placeholder="Year *" required>
-                    <input type="text" placeholder="Branch *" required>
-                </div>
-                <div class="btn-group">
-                    <button type="button" class="long-btn secondary" onclick="prevDynamic()">Previous</button>
-                    <button type="button" class="long-btn" onclick="nextDynamic()">Next</button>
-                </div>
-            </div>
-
-            <!-- GROUP INFO -->
-            <div class="form-step" id="groupStep2">
-                <div class="inputs">
-                    <input type="number" min="8" max="12" placeholder="Number of Members (8–12) *" required>
-                    <textarea placeholder="Names of all members (comma separated) *" required></textarea>
-                </div>
-                <div class="btn-group">
-                    <button type="button" class="long-btn secondary" onclick="prevDynamic()">Previous</button>
-                    <button type="button" class="long-btn" onclick="nextDynamic()">Next</button>
-                </div>
-            </div>
-
-            <!-- THEME -->
-            <div class="form-step" id="themeStep">
-                <div class="inputs">
-                    <select required>
-                        <option value="" disabled selected>Select Theme *</option>
-                        <option>Traditional</option>
-                        <option>Western</option>
-                        <option>Fusion</option>
-                        <option>Experimental</option>
+                    <select id="category" required>
+                        <option value="" disabled selected>Category *</option>
+                        <option value="solo">Solo</option>
+                        <option value="duet">Duet</option>
+                        <option value="group">Group (Fashion only)</option>
                     </select>
                 </div>
                 <div class="btn-group">
-                    <button type="button" class="long-btn secondary" onclick="prevDynamic()">Previous</button>
+                    <button type="button" class="long-btn" onclick="prevStep()">Previous</button>
                     <button type="button" class="long-btn" onclick="nextDynamic()">Next</button>
                 </div>
             </div>
 
-            <!-- PAYMENT -->
-            <div class="form-step" id="paymentStep">
+            <!-- STEP 3 : MEMBER 1 / SOLO / POC -->
+            <div class="form-step" id="step3">
                 <div class="inputs">
-                    <p>Upload payment proof</p>
-                    <input type="file" required>
+                    <input id="m1_name" name="m1_name" placeholder="Name *" required />
+                    <select id="m1_gender" name="m1_gender" required>
+                        <option value="" disabled selected>Gender *</option>
+                        <option>Male</option>
+                        <option>Female</option>
+                        <option>Other</option>
+                    </select>
+                    <input type="date" id="m1_dob" name="m1_dob" required />
+                    <input id="m1_phone" name="m1_phone" placeholder="Phone Number *" required />
+                    <input id="m1_alt_phone" name="m1_alt_phone" placeholder="Alternate Phone Number" />
+                    <input type="email" id="m1_email" name="m1_email" placeholder="Email *" required />
+                    <input id="m1_college" name="m1_college" placeholder="College Name *" required />
+                    <input id="m1_year" name="m1_year" placeholder="Year *" required />
+                    <input id="m1_branch" name="m1_branch" placeholder="Branch *" required />
                 </div>
                 <div class="btn-group">
-                    <button type="button" class="long-btn secondary" onclick="prevDynamic()">Previous</button>
-                    <button type="submit" class="long-btn">Submit</button>
+                    <button type="button" class="long-btn" onclick="prevDynamic()">Previous</button>
+                    <button type="button" class="long-btn" onclick="nextDynamic()">Next</button>
                 </div>
             </div>
 
+            <!-- STEP 4 : MEMBER 2 (DUET) -->
+            <div class="form-step" id="step4">
+                <div class="inputs">
+                    <input id="m2_name" name="m2_name" placeholder="Member 2 Name *" required />
+                    <select id="m2_gender" name="m2_gender" required>
+                        <option value="" disabled selected>Gender *</option>
+                        <option>Male</option>
+                        <option>Female</option>
+                        <option>Other</option>
+                    </select>
+                    <input type="date" id="m2_dob" name="m2_dob" required />
+                    <input id="m2_phone" name="m2_phone" placeholder="Phone Number *" required />
+                    <input type="email" id="m2_email" name="m2_email" placeholder="Email *" required />
+                    <input id="m2_college" name="m2_college" placeholder="College Name *" required />
+                    <input id="m2_year" name="m2_year" placeholder="Year *" required />
+                    <input id="m2_branch" name="m2_branch" placeholder="Branch *" required />
+                </div>
+                <div class="btn-group">
+                    <button type="button" class="long-btn" onclick="prevDynamic()">Previous</button>
+                    <button type="button" class="long-btn" onclick="nextDynamic()">Next</button>
+                </div>
+            </div>
+
+            <!-- STEP 5 : GROUP INFO -->
+            <div class="form-step" id="step5">
+                <div class="inputs">
+                    <div class="checks">
+                        <p>Number of Members (3–12) *</p>
+                        <div class="checkbox-group">
+                            <script>
+                                for (let i = 3; i <= 12; i++) {
+                                    document.write(
+                                        `<input type="checkbox" name="group_size" id="g${i}" value="${i}">
+                 <label for="g${i}">${i}</label>`
+                                    )
+                                }
+                            </script>
+                        </div>
+                    </div>
+                    <textarea id="group_members" name="group_members"
+                        placeholder="Names of all members (comma separated) *" required></textarea>
+                </div>
+                <div class="btn-group">
+                    <button type="button" class="long-btn" onclick="prevDynamic()">Previous</button>
+                    <button type="button" class="long-btn" onclick="nextDynamic()">Next</button>
+                </div>
+            </div>
+
+            <div class="form-step" id="stepFinal">
+                <div class="inputs">
+                    <p>🎉 You’re almost done!</p>
+                    <p>Join our official WhatsApp community for updates & coordination:</p>
+
+                    <a href="https://chat.whatsapp.com/YOUR_COMMUNITY_LINK" target="_blank" id="login-btn">
+                        Join WhatsApp Community
+                    </a><br>
+                    <div class="checks">
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="joined_wa" />
+                                I have joined the WhatsApp community *
+                            <label for="joined_wa">Yes
+                            </label>
+                        </div>
+                    </div>
+
+
+                    <p style="margin-top:10px">
+                        Make sure all details are correct before submitting.
+                    </p>
+                </div>
+
+                <div class="btn-group">
+                    <button type="button" class="long-btn" onclick="prevDynamic()">Previous</button>
+                    <button type="submit" class="long-btn" id="submit">Submit</button>
+                </div>
+            </div>
+
+
         </form>
+
+
     </section>
+    <div id="image-modal" class="modal">
+        <div class="modal-content">
+            <span class="modal-close">&times;</span>
+            <img id="modal-image" />
+        </div>
+    </div>
     <script src="../scripts/common.js"></script>
     <script src="../scripts/authentication.js"></script>
-
     <script>
+        // ----------------------------
+        // STATE
+        // ----------------------------
         let flow = []
-        let index = 0
+        let flowIndex = 0
+        const STORAGE_KEY = "malang_fe_register"
 
-        function handleCategoryChange() {
-            const c = document.getElementById("category").value
-            if (c === "solo") flow = ["step1", "soloStep", "themeStep", "paymentStep"]
-            if (c === "duet") flow = ["step1", "duetStep1", "duetStep2", "themeStep", "paymentStep"]
-            if (c === "group") flow = ["step1", "duetStep1", "groupStep2", "themeStep", "paymentStep"]
-            index = 0
+        // ----------------------------
+        // PROGRESS BAR
+        // ----------------------------
+        function updateProgress() {
+            const bar = document.getElementById("progressBar")
+            if (!bar || !flow.length) return
+            const percent = ((flowIndex + 1) / flow.length) * 100
+            bar.style.width = percent + "%"
         }
 
-        function showStep() {
-            document.querySelectorAll(".form-step").forEach(s => s.classList.remove("active"))
-            document.getElementById(flow[index]).classList.add("active")
+        // ----------------------------
+        // SHOW STEP
+        // ----------------------------
+        function showStep(step) {
+            document.querySelectorAll(".form-step")
+                .forEach(s => s.classList.remove("active"))
+
+            const el = document.getElementById(`step${step}`)
+            if (!el) return
+
+            el.classList.add("active")
+            updateProgress()
+            window.scrollTo({ top: 0, behavior: "smooth" })
         }
+
+        // ----------------------------
+        // VALIDATION
+        // ----------------------------
+        function validateStep(step) {
+            let valid = true
+
+            const required = {
+                1: ["competition"],
+                2: ["category"],
+                3: [
+                    "m1_name", "m1_gender", "m1_dob", "m1_phone",
+                    "m1_email", "m1_college", "m1_year", "m1_branch"
+                ],
+                4: [
+                    "m2_name", "m2_gender", "m2_dob", "m2_phone",
+                    "m2_email", "m2_college", "m2_year", "m2_branch"
+                ],
+                5: ["group_members"]
+            }
+
+            if (required[step]) {
+                required[step].forEach(id => {
+                    const el = document.getElementById(id)
+                    if (!el || !el.value.trim()) valid = false
+                })
+            }
+
+            // STEP 1: Terms & Conditions
+            if (step === 1) {
+                const tc = document.getElementById("agree_tc")
+                if (!tc || !tc.checked) valid = false
+            }
+
+            // STEP 5: Group size
+            if (step === 5) {
+                if (
+                    document.querySelectorAll("input[name='group_size']:checked").length === 0
+                ) valid = false
+            }
+
+            // FINAL STEP: WhatsApp joined
+            if (step === "Final") {
+                const wa = document.getElementById("joined_wa")
+                if (!wa || !wa.checked) valid = false
+            }
+
+            if (!valid) {
+                showAlert(
+                    "⚠️",
+                    "Please complete all required confirmations before continuing.",
+                    [{ text: "OK" }]
+                )
+            }
+
+            return valid
+        }
+
+
+        // ----------------------------
+        // BUILD FLOW
+        // ----------------------------
+        function buildFlow() {
+            const comp = competition.value
+            const cat = category.value
+
+            flow = [1, 2, 3]
+
+            if (cat === "duet") flow.push(4)
+            if (cat === "group" && comp === "fashion") flow.push(5)
+
+            flow.push("Final")
+
+            flowIndex = 2
+            showStep(flow[flowIndex])
+        }
+
+        // ----------------------------
+        // NAVIGATION
+        // ----------------------------
+        function nextStep(step) {
+            if (validateStep(step)) showStep(step + 1)
+        }
+        function prevStep(step) { showStep(step - 1); }
 
         function nextDynamic() {
-            if (!flow.length) return
-            index++
-            showStep()
+            if (document.getElementById("step2").classList.contains("active")) {
+                if (!validateStep(2)) return
+                buildFlow()
+                return
+            }
+
+            if (!validateStep(flow[flowIndex])) return
+
+            flowIndex++
+            showStep(flow[flowIndex])
         }
 
         function prevDynamic() {
-            index--
-            showStep()
+            if (flowIndex > 0) {
+                flowIndex--
+                showStep(flow[flowIndex])
+            }
         }
 
-        document.getElementById("fashionForm").addEventListener("submit", e => {
-            e.preventDefault()
-            alert("Form submitted successfully!")
-            e.target.reset()
-            location.reload()
+        // ----------------------------
+        // DISABLE GROUP FOR COSPLAY
+        // ----------------------------
+        competition.addEventListener("change", e => {
+            const g = [...category.options].find(o => o.value === "group")
+            if (g) g.disabled = e.target.value === "cosplay"
         })
-    </script>
-</body>
 
-</html>
+        // ----------------------------
+        // AUTOSAVE (EVERY INPUT)
+        // ----------------------------
+        const form = document.getElementById("templateForm")
+
+        function saveForm() {
+            const data = {}
+            new FormData(form).forEach((v, k) => data[k] = v)
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(data))
+        }
+
+        function restoreForm() {
+            const saved = localStorage.getItem(STORAGE_KEY)
+            if (!saved) return
+
+            const data = JSON.parse(saved)
+            Object.keys(data).forEach(k => {
+                const el = form.elements[k]
+                if (!el) return
+
+                if (el.type === "checkbox") {
+                    el.checked = true
+                } else {
+                    el.value = data[k]
+                }
+            })
+        }
+
+        form.addEventListener("input", saveForm)
+        window.addEventListener("load", restoreForm)
+
+        // ----------------------------
+        // FORM SUBMIT (UNCHANGED + CLEAR STORAGE)
+        // ----------------------------
+        async function handleFormSubmit(e) {
+            e.preventDefault()
+
+            const url =
+                "https://script.google.com/macros/s/AKfycbwf8Oxhfg-Pwj0R--A7zoffnEvRr8K0LA_npx_C9ivq0f9J4RH4AaJRY3VFH3wgoK3Pxg/exec"
+
+            const formData = new FormData(form)
+
+            let base64File = ""
+            let fileName = ""
+            const fileInput = document.getElementById("screenshot")
+
+            if (fileInput && fileInput.files.length) {
+                const file = fileInput.files[0]
+                fileName = file.name
+                base64File = await toBase64(file)
+            }
+
+            const data = Object.fromEntries(formData.entries())
+            data.fileData = base64File
+            data.fileName = fileName
+
+            try {
+                await fetch(url, {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify(data),
+                    mode: "no-cors"
+                })
+
+                localStorage.removeItem(STORAGE_KEY)
+
+                showAlert(
+                    "Submitted!",
+                    "Your registration is complete 🎉",
+                    [{ text: "Awesome!" }]
+                )
+
+                confetti()
+                form.reset()
+                showStep(1)
+            } catch (err) {
+                showAlert("❌ Error", "Please try again later.", [{ text: "OK" }])
+            }
+        }
+
+        function toBase64(file) {
+            return new Promise((res, rej) => {
+                const r = new FileReader()
+                r.readAsDataURL(file)
+                r.onload = () => res(r.result.split(",")[1])
+                r.onerror = rej
+            })
+        }
+    </script>
+
+</body>

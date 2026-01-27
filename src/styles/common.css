@@ -477,6 +477,10 @@ form h3 {
   font-weight: 600;
 }
 
+form a {
+    color: gold;
+}
+
 hr {
   width: 100%;
   margin: 10px auto;
@@ -562,7 +566,6 @@ footer #malang p{
   border-radius: 4px;
   top: -1px;
   right: 5px;
-  background-color: var(--background-color);
 }
 
 #failure {
@@ -819,7 +822,7 @@ footer #malang p{
   }
 
   #headerButtons button#searchToggle {
-    width: calc(100vw - 1352px);
+    width: calc(100vw - 1202px);
     display: flex;
     justify-content: space-between;
     padding: 4px 10px;
