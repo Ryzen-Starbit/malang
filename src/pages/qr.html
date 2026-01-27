@@ -12,8 +12,8 @@
     }
 
     .logoPick {
-      width: 40px;
-      height: 40px;
+      width: 30px;
+      height: 30px;
       cursor: pointer;
       border: 1px solid var(--border-color);
       border-radius: 5px;
@@ -27,16 +27,33 @@
 
     .inline-check {
       display: inline-flex;
-      align-items: flex-start;
+      align-items: center;
+      text-align: left;
+      justify-content:left;
       gap: 8px;
       cursor: pointer;
       margin: 10px 0;
+    }
+
+    .inline-check p {
+      margin: 0;
+      min-width: max-content;
     }
 
     .inline-check input[type="checkbox"] {
       margin: 0;
       width: 20px;
       margin-top: 3px;
+    }
+
+    #qr{
+      border: 1px solid var(--border-color);
+      border-radius: 7px;
+      padding: 10px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
     }
   </style>
 </head>
@@ -45,9 +62,9 @@
   <section id="qrSection">
     <canvas id="gradientCanvas"></canvas>
     <form id="qrForm">
-      <h3>Malang QR Generator</h3>
+      <h3>QR Generator</h3>
 
-      <input id="URL" type="text" placeholder="Enter website URL">
+      <input id="URL" type="text" placeholder="Enter URL">
 
       <label class="inline-check">Foreground
         <input type="color" id="color" value="#000000">
@@ -62,7 +79,7 @@
         </label>
 
         <label class="inline-check">Color 2
-          <input type="color" id="gColor2" value="#ff0066">
+          <input type="color" id="gColor2" value="#ffd700">
         </label>
 
         <select id="gType">
@@ -93,24 +110,24 @@
       </label>
 
       <div id="logoOptions" style="display:none">
-        <label>Choose Logo</label>
-        <div style="display:flex;gap:10px">
-          <img class="logoPick" src="/resrc/images/icons/malang-black.jpg">
-          <img class="logoPick" src="/resrc/images/icons/malang.png">
-          <img class="logoPick" src="/resrc/images/icons/malang.webp">
-          <img class="logoPick" src="/resrc/images/icons/malang.ico">
-        </div>
-
+        <label class="inline-check"><p>Choose Logo:</p>
+          <div style="display:flex;gap:7px">
+            <img class="logoPick" src="/resrc/images/icons/malang-black.jpg">
+            <img class="logoPick" src="/resrc/images/icons/malang.png">
+            <img class="logoPick" src="/resrc/images/icons/malang.webp">
+            <img class="logoPick" src="/resrc/images/icons/malang.ico">
+          </div>
+        </label>
         <input type="file" id="logoUpload" accept="image/*">
 
-        <label>Logo Size</label>
-        <input type="range" id="logoSize" min="0.1" max="0.4" step="0.05" value="0.25">
+        <label class="inline-check"><p>Logo Size:</p>
+        <input type="range" id="logoSize" min="0.1" max="0.4" step="0.05" value="0.25"></label>
       </div>
       <button id="create" type="button" class="long-btn">Create QR</button>
 
       <button id="download" type="button" class="long-btn">Download QR</button>
 
-      <div id="qr" style="display:flex;justify-content:center"></div>
+      <div id="qr">QR Code appears here.</div>
     </form>
 
   </section>
@@ -142,7 +159,10 @@
 
       const buildQR = () => {
         const url = urlInput.value.trim()
-        if (!url) return
+        if (!url) {
+          showAlert("⚠️", "Please enter a URL.");
+          return
+        }
 
         const bg = transparentBg.checked ? "transparent" : bgInput.value
         const dotsOptions = useGradient.checked
@@ -229,7 +249,10 @@
       }
 
       downloadBtn.onclick = () => {
-        if (!qr) return
+        if (!qr) {
+          showAlert("⚠️", "Please create a QR code first.");
+          return
+        }
         qr.download({ name: "malang-qr", extension: "png" })
       }
     })()
