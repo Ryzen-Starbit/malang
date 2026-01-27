@@ -146,7 +146,7 @@ header {
   border-bottom: 1px solid var(--border-color);
   position: fixed;
   top: 0;
-  z-index: 200;
+  z-index: 220;
   background-color: var(--background-color);
 }
 
@@ -439,7 +439,9 @@ select {
 }
 
 input[type="color"]{
-  width: auto;
+  width: 100%;
+  height: 30px;
+  padding: 5px;
 }
 select {
   width: 100%;
@@ -804,6 +806,9 @@ footer #malang p{
     flex-direction: row-reverse;
     justify-content: left;
     overflow: visible;
+  }
+  header{
+    z-index: 200;
   }
 
   #keyCode {

@@ -2,83 +2,238 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <title>Malang QR Generator</title>
-    <link rel="stylesheet" href="../styles/common.css">
-    <link rel="stylesheet" href="../styles/authentication.css">
+  <meta charset="UTF-8">
+  <title>Malang QR Generator</title>
+  <link rel="stylesheet" href="../styles/common.css">
+  <link rel="stylesheet" href="../styles/authentication.css">
+  <style>
+    #qrForm label {
+      text-align: left;
+    }
+
+    .logoPick {
+      width: 40px;
+      height: 40px;
+      cursor: pointer;
+      border: 1px solid var(--border-color);
+      border-radius: 5px;
+      object-fit: contain;
+      margin-bottom: 10px;
+    }
+
+    .logoPick.active {
+      border-color: #b4b4b4;
+    }
+
+    .inline-check {
+      display: inline-flex;
+      align-items: flex-start;
+      gap: 8px;
+      cursor: pointer;
+      margin: 10px 0;
+    }
+
+    .inline-check input[type="checkbox"] {
+      margin: 0;
+      width: 20px;
+      margin-top: 3px;
+    }
+  </style>
 </head>
 
 <body>
-    <section id="qrSection">
-        <canvas id="gradientCanvas"></canvas>
-        <form id="qrForm">
-            <h3>Malang QR Generator</h3>
+  <section id="qrSection">
+    <canvas id="gradientCanvas"></canvas>
+    <form id="qrForm">
+      <h3>Malang QR Generator</h3>
 
-            <input id="URL" type="text" placeholder="Enter website URL">
-            <input type="color" id="color" style="height: 40px;" value="#000000">
-            <button id="create" type="button" class="long-btn">Create QR</button>
-            <button id="download" type="button" class="long-btn">Download QR</button>
-            <div id="qr" style="width: calc(100% - 20px); padding: 10px; border: 1px solid var(--border-color); border-radius: 5px; display: flex; justify-content: center;">QR Code appears here.</div>
-        </form>
-    </section>
+      <input id="URL" type="text" placeholder="Enter website URL">
 
-    <script src="https://cdn.jsdelivr.net/npm/qrcodejs/qrcode.min.js"></script>
-    <script src="../scripts/common.js"></script>
-    <script src="../scripts/authentication.js"></script>
-<script>
-(() => {
-  const logoSrc = "/resrc/images/icons/malang-black.jpg"
-  let qrCanvas
+      <label class="inline-check">Foreground
+        <input type="color" id="color" value="#000000">
+      </label>
+      <label class="inline-check">
+        <input type="checkbox" id="useGradient"> Gradient Foreground
+      </label>
 
-  document.getElementById("create").onclick = async () => {
-    const url = document.getElementById("URL").value.trim()
-    const color = document.getElementById("color").value
-    if (!url) return showAlert("Error", "Enter a URL")
+      <div id="gradientOptions" style="display:none">
+        <label class="inline-check">Color 1
+          <input type="color" id="gColor1" value="#000000">
+        </label>
 
-    const qrDiv = document.getElementById("qr")
-    qrDiv.innerHTML = ""
+        <label class="inline-check">Color 2
+          <input type="color" id="gColor2" value="#ff0066">
+        </label>
 
-    new QRCode(qrDiv, {
-      text: url,
-      width: 240,
-      height: 240,
-      colorDark: color,
-      colorLight: "#ffffff",
-      correctLevel: QRCode.CorrectLevel.H
-    })
+        <select id="gType">
+          <option value="linear">Linear</option>
+          <option value="radial">Radial</option>
+        </select>
+      </div>
 
-    await new Promise(r => setTimeout(r, 50))
-    qrCanvas = qrDiv.querySelector("canvas")
+      <label class="inline-check">Background
+        <input type="color" id="bgColor" value="#ffffff"></label>
+      <label class="inline-check">
+        <input type="checkbox" id="transparentBg"> Transparent Background
+      </label>
 
-    const ctx = qrCanvas.getContext("2d")
-    const logo = new Image()
-    logo.src = logoSrc
+      <select id="qrStyle">
+        <option value="QR Style" selected disabled>QR Style</option>
+        <option value="square">Square</option>
+        <option value="dots">Dots</option>
+        <option value="rounded">Rounded</option>
+        <option value="extra-rounded">Extra Rounded</option>
+        <option value="classy">Classy</option>
+      </select>
 
-    logo.onload = () => {
-      const s = qrCanvas.width * 0.25
-      const x = (qrCanvas.width - s) / 2
-      const y = (qrCanvas.height - s) / 2
-      const pad = 4
+      <hr>
 
-      ctx.fillStyle = "#ffffff"
-      ctx.fillRect(x - pad, y - pad, s + pad * 2, s + pad * 2)
-      ctx.drawImage(logo, x, y, s, s)
+      <label class="inline-check">
+        <input type="checkbox" id="useLogo"> Add Logo
+      </label>
 
-      document.getElementById("download").style.display = "block"
-    }
-  }
+      <div id="logoOptions" style="display:none">
+        <label>Choose Logo</label>
+        <div style="display:flex;gap:10px">
+          <img class="logoPick" src="/resrc/images/icons/malang-black.jpg">
+          <img class="logoPick" src="/resrc/images/icons/malang.png">
+          <img class="logoPick" src="/resrc/images/icons/malang.webp">
+          <img class="logoPick" src="/resrc/images/icons/malang.ico">
+        </div>
 
-  document.getElementById("download").onclick = () => {
-    if (!qrCanvas) return showAlert("Error", "Create QR first")
+        <input type="file" id="logoUpload" accept="image/*">
 
-    const a = document.createElement("a")
-    a.href = qrCanvas.toDataURL("image/png")
-    a.download = "malang-qr.png"
-    a.click()
-  }
-})()
-</script>
+        <label>Logo Size</label>
+        <input type="range" id="logoSize" min="0.1" max="0.4" step="0.05" value="0.25">
+      </div>
+      <button id="create" type="button" class="long-btn">Create QR</button>
 
+      <button id="download" type="button" class="long-btn">Download QR</button>
+
+      <div id="qr" style="display:flex;justify-content:center"></div>
+    </form>
+
+  </section>
+  <script src="https://unpkg.com/qr-code-styling@1.6.0/lib/qr-code-styling.js"></script>
+  <script src="../scripts/common.js"></script>
+  <script src="../scripts/authentication.js"></script>
+  <script>
+    (() => {
+      const qrDiv = document.getElementById("qr")
+
+      const urlInput = document.getElementById("URL")
+      const colorInput = document.getElementById("color")
+      const bgInput = document.getElementById("bgColor")
+      const styleInput = document.getElementById("qrStyle")
+      const transparentBg = document.getElementById("transparentBg")
+      const useLogo = document.getElementById("useLogo")
+      const logoSize = document.getElementById("logoSize")
+      const useGradient = document.getElementById("useGradient")
+      const gColor1 = document.getElementById("gColor1")
+      const gColor2 = document.getElementById("gColor2")
+      const gType = document.getElementById("gType")
+      const gradientOptions = document.getElementById("gradientOptions")
+
+      const createBtn = document.getElementById("create")
+      const downloadBtn = document.getElementById("download")
+
+      let qr = null
+      let logoSrc = ""
+
+      const buildQR = () => {
+        const url = urlInput.value.trim()
+        if (!url) return
+
+        const bg = transparentBg.checked ? "transparent" : bgInput.value
+        const dotsOptions = useGradient.checked
+          ? {
+            type: styleInput.value,
+            gradient: {
+              type: gType.value,
+              rotation: 0,
+              colorStops: [
+                { offset: 0, color: gColor1.value },
+                { offset: 1, color: gColor2.value }
+              ]
+            }
+          }
+          : {
+            color: colorInput.value,
+            type: styleInput.value
+          }
+
+        qrDiv.innerHTML = ""
+
+        qr = new QRCodeStyling({
+          width: 260,
+          height: 260,
+          data: url,
+          image: useLogo.checked ? logoSrc : "",
+          dotsOptions: dotsOptions,
+          backgroundOptions: {
+            color: bg
+          },
+          imageOptions: {
+            crossOrigin: "anonymous",
+            imageSize: Number(logoSize.value),
+            margin: 5
+          }
+        })
+
+        qr.append(qrDiv)
+      }
+
+      createBtn.onclick = buildQR
+
+        ;[
+          urlInput,
+          colorInput,
+          bgInput,
+          styleInput,
+          transparentBg,
+          useLogo,
+          logoSize,
+          gColor1,
+          gColor2,
+          gType
+        ].forEach(el => el.addEventListener("input", () => qr && buildQR()))
+
+      useLogo.onchange = () => {
+        logoOptions.style.display = useLogo.checked ? "block" : "none"
+        qr && buildQR()
+      }
+      useGradient.onchange = () => {
+        gradientOptions.style.display = useGradient.checked ? "block" : "none"
+        qr && buildQR()
+      }
+
+
+      document.querySelectorAll(".logoPick").forEach(img => {
+        img.onclick = () => {
+          document.querySelectorAll(".logoPick").forEach(i => i.classList.remove("active"))
+          img.classList.add("active")
+          logoSrc = img.src
+          qr && buildQR()
+        }
+      })
+
+      logoUpload.onchange = e => {
+        const file = e.target.files[0]
+        if (!file) return
+        const r = new FileReader()
+        r.onload = () => {
+          logoSrc = r.result
+          qr && buildQR()
+        }
+        r.readAsDataURL(file)
+      }
+
+      downloadBtn.onclick = () => {
+        if (!qr) return
+        qr.download({ name: "malang-qr", extension: "png" })
+      }
+    })()
+  </script>
 
 </body>
 
