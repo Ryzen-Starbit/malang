@@ -31,10 +31,13 @@ Promise.all([
         const btn = document.createElement("button")
         btn.textContent = "Copy"
         btn.style.position = "absolute"
-        btn.style.top = "6px"
-        btn.style.right = "6px"
-        btn.style.padding = "2px 5px"
-        btn.style.backdropFilter = "blur(5px)"
+        btn.style.top = "0px"
+        btn.style.right = "0px"
+        btn.style.width = "100%"
+        btn.style.padding = "4px 7px"
+        btn.style.borderRadius = "5px 5px 0 0"
+        btn.style.textAlign = "right"
+        btn.style.backgroundColor = "#19212c"
 
         pre.style.position = "relative"
         pre.appendChild(btn)

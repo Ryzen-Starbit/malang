@@ -14,7 +14,7 @@
     const page = params.get("page");
 
     if (!authMap[page]) {
-        showAlert("Error","Invalid or missing page parameter.", [{ text: "OK", onClick: () => {} }]);
+        showAlert("Error", "Invalid or missing page parameter.", [{ text: "OK", onClick: () => { } }]);
         return;
     }
 
@@ -43,6 +43,9 @@
 })();
 
 
+document.addEventListener('DOMContentLoaded', () => {
+    document.getElementById("loader").style.display = "none";
+});
 
 const canvas = document.getElementById('gradientCanvas');
 if (canvas) {

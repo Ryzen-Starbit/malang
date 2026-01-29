@@ -176,6 +176,12 @@ pre code.hljs * {
     white-space: pre !important;
 }
 
+pre code.hljs {
+    margin-top: 26px;
+    border: 1px solid var(--border-color);
+    border-radius: 0 0 5px 5px;
+}
+
 .element-wrapper {
     max-width: 100%;
     overflow-x: auto;

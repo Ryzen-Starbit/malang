@@ -65,7 +65,10 @@ html {
 }
 
 #loader {
-    transition: opacity 0.5s ease;
+  visibility: visible;
+  opacity: 1;
+  filter: blur(0px);
+  transition: opacity 0.5s ease, visibility 0.5s ease, filter 0.5s ease;
 }
 
 canvas {
@@ -348,14 +351,18 @@ canvas {
 .sponsor-track img {
     height: 60px;
     object-fit: contain;
-    filter: brightness(0) invert(1);
+    filter: saturate(0) brightness(2);
     opacity: 0.8;
     transition: filter 0.3s ease;
 }
 
+.dark-image{
+    filter: brightness(0) invert(1) !important;
+}
+
 .sponsor-track img:hover {
     opacity: 1;
-    filter: none;
+    filter: none !important;
 }
 
 

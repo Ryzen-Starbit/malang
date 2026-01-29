@@ -87,10 +87,20 @@ function scrollToBottom() {
 }
 
 const loader = document.getElementById("loader");
+const start = Date.now();
+
 document.fonts.load("1em " + getComputedStyle(kalakaar).fontFamily).then(() => {
-  loader.style.opacity = "0";
-  setTimeout(() => loader.style.display = "none", 500);
+  const elapsed = Date.now() - start;
+  const delay = Math.max(1000 - elapsed, 0);
+
+  setTimeout(() => {
+    loader.style.visibility = "hidden";
+    loader.style.opacity = "0";
+    loader.style.filter = "blur(50px)";
+    setTimeout(() => loader.style.display = "none", 500);
+  }, delay);
 });
+
 
 
 const logo = document.getElementById("logo");

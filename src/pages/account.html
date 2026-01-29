@@ -3,6 +3,7 @@
     <link rel="stylesheet" href="../styles/common.css">
     <link rel="stylesheet" href="../styles/authentication.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <script type="module" src="https://cdn.jsdelivr.net/npm/ldrs/dist/auto/ring2.js"></script>
     <script type="module">import { initializeApp } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
         import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-analytics.js";
         import {
@@ -174,6 +175,9 @@
 
 <body>
     <section>
+        <div id="loader">
+            <l-ring-2 size="18" stroke="2" stroke-length="0.25" bg-opacity="0.1" speed="0.8" color="white"></l-ring-2>&nbsp;&nbsp;Authenticating...
+        </div>
         <canvas id="gradientCanvas"></canvas>
         <div id="loginForm">
             <h3 id="status" style="margin-bottom: 10px;">Authentication Required.</h3>
@@ -181,7 +185,6 @@
                 <p>You can now access the following pages:</p>
                 <a class="long-btn" href="/src/pages/tshirt.html">T-Shirt Form <span id="info" class="r">Closed</span></a>
                 <a class="long-btn" href="/src/pages/claims.html">Claims</a>
-                <a class="long-btn" href='/index.html?page=media'>Media Kit</a>
                 <a class="long-btn" href="/src/pages/authentication.html?page=redirector">Redirector<span id="info"
                         class="y">Auth</span></a>
                 <a class="long-btn" href='/src/pages/documentation.html'>Site Docs</a>
