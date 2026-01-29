@@ -1,36 +1,19 @@
 [
   {
-    "name": "Rangotsav",
-    "date": "26th - 27th Feb'26",
-    "location": "TBA",
-    "description": "An inter-college fine arts and photography competition conducted as part of Bharatiyam, the annual cultural festival of BVUCOEP.",
-    "buttons": [
-      {
-        "text": "View Details",
-        "link": "r.html",
-        "focus": false
-      },
-      {
-        "text": "Register Now",
-        "alertMessage": "Registrations opening soon!",
-        "focus": true
-      }
-    ]
-  },
-  {
     "name": "Fashion Euphoria",
     "date": "27th Feb'26",
     "location": "Physical Education Ground, BVUCOEP",
-    "description": "The flagship inter-college fashion show and competition of Bharatiyam, the annual cultural festival of BVUCOEP, featuring high-energy runway performances and creative showcases.",
+    "description": "The flagship inter-college fashion show and cosplay of Bharatiyam, the annual cultural festival of BVUCOEP, featuring high-energy runway performances and creative showcases.",
+    "image": "/resrc/images/misc/fe2026.png",
     "buttons": [
       {
         "text": "View Details",
-        "link": "fe.html",
+        "link": "/?page=fe.html",
         "focus": false
       },
       {
         "text": "Register Now",
-        "alertMessage": "Registrations opening soon!",
+        "link": "/?page=fe-register.html",
         "focus": true
       }
     ]
