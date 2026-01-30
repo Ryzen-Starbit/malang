@@ -293,26 +293,23 @@ function showAlert(heading, message, buttons = [{ text: 'OK' }], link) {
 // Intercept all external links opening in a new tab
 document.addEventListener('click', (e) => {
     const link = e.target.closest('a[target="_blank"]');
-    if (!link) return; // not a new-tab link
+    if (!link) return;
 
-    e.preventDefault(); // prevent default navigation
+    e.preventDefault();
+
+    const decodedUrl = decodeURI(link.href);
 
     showAlert(
         "Leaving Malang's Environment",
         "This content opens outside Malang.",
         [
-            {
-                text: "Cancel",
-                onClick: () => { }
-            },
+            { text: "Cancel", onClick: () => {} },
             {
                 text: "Open",
-                onClick: () => {
-                    window.open(link.href, "_blank");
-                }
+                onClick: () => window.open(link.href, "_blank")
             }
         ],
-        link.href
+        decodedUrl
     );
 });
 
