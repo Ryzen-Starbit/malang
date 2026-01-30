@@ -14,7 +14,7 @@
     padding: 0 10px;
 }
 
-form, #loginForm, #templateForm {
+form, #loginForm, #templateForm, #feForm {
     position: relative;
     top: calc(0px);
     left: 50%;

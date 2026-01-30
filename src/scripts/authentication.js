@@ -44,7 +44,10 @@
 
 
 document.addEventListener('DOMContentLoaded', () => {
-    document.getElementById("loader").style.display = "none";
+    loader=document.getElementById("loader");
+    if(loader){
+        loader.style.display="none";
+    }
 });
 
 const canvas = document.getElementById('gradientCanvas');

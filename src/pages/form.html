@@ -3,14 +3,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="../../resrc/images/icons/favicon.png" type="image/x-icon">
     <link rel="stylesheet" href="../styles/common.css">
-    <link rel="stylesheet" href="../styles/authentication.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="../styles/authentication.css">
     <title>Malang | Form</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <style>
         #formSection {
             overflow-y: hidden;
@@ -148,7 +144,7 @@
                     <input type="text" id="name" name="name" placeholder="Full Name *" required />
                     <input type="email" id="email" name="email" placeholder="Email ID *" required />
                     <div id="phoneContainer">
-                        <input id="phone" name="phone" placeholder="Phone Number *" required />
+                        <input type="tel" id="phone" name="phone" placeholder="Phone Number *" required />
                     </div>
                     <select id="position" name="position" required>
                         <option value="" disabled selected>Position *</option>

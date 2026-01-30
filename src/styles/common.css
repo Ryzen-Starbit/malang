@@ -452,8 +452,13 @@ input[type="text"],
 input[type="email"],
 input[type="number"],
 input[type="password"],
-input[type="url"] {
+input[type="url"],
+input[type="tel"],
+input[type="date"],
+input[type="file"],
+textarea,select {
   margin-bottom: 10px;
+  width: 100%;
 }
 
 textarea {
