@@ -827,7 +827,7 @@ footer #malang p{
   }
 
   #headerButtons button#searchToggle {
-    width: calc(100vw - 1202px);
+    width: calc(100vw - 1432px);
     display: flex;
     justify-content: space-between;
     padding: 4px 10px;

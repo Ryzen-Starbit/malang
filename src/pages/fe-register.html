@@ -179,7 +179,8 @@
     <section id="formSection">
         <canvas id="gradientCanvas"></canvas>
 
-        <form id="feForm" onsubmit="handleButtonAction('submit','Submitting','Submitted',()=>handleFormSubmit(event))">
+        <form id="feForm"
+            onsubmit="handleButtonAction('submit','Registering','Registered',()=>handleFormSubmit(event))">
 
             <h3>Fashion Euphoria 2026</h3>
             <!--<div id="progressWrap">
@@ -196,13 +197,14 @@
                     </p>
                     <div class="checks">
                         <div class="checkbox-group">
-                            <p>I agree to the <a href="terms.html">Terms</a> & <a href="privacy-policy.html">Privacy Policy</a> *</p>
+                            <p>I agree to the <a href="terms.html">Terms</a> & <a href="privacy-policy.html">Privacy
+                                    Policy</a> *</p>
                             <input type="checkbox" id="agree_tc" />
                             <label for="agree_tc">Yes
                             </label>
                         </div>
                     </div>
-                    <select id="competition" required>
+                    <select id="competition" name="competition" required>
                         <option value="" disabled selected>Competition *</option>
                         <option value="fashion">Fashion</option>
                         <option value="cosplay">Cosplay</option>
@@ -239,7 +241,7 @@
                     </tbody>
                 </table>
                 <div class="inputs">
-                    <select id="category" required>
+                    <select id="category" name="category" required>
                         <option value="" disabled selected>Category *</option>
                         <option value="solo">Solo</option>
                         <option value="duet">Duet</option>
@@ -264,7 +266,7 @@
                     </select>
 
                     <div class="checks">
-                        <p>DOB</p><input type="date" id="poc_dob" name="poc_dob" required />
+                        <p>DOB *</p><input type="date" id="poc_dob" name="poc_dob" required />
                     </div>
                     <input type="tel" id="poc_phone" name="poc_phone" placeholder="Phone Number *" required />
                     <input type="tel" id="poc_alt_phone" name="poc_alt_phone" placeholder="Alternate Phone Number" />
@@ -328,12 +330,15 @@
                     <p>🎉 You're almost done!</p>
                     <p>Join our official WhatsApp community for updates & coordination:</p>
 
-                    <a href="https://malangbvp.info/🔔" target="_blank" class="long-btn">
+                    <a href="https://malangbvp.info/🔔" target="_blank" class="long-btn"
+                        style="position: relative; display: flex; flex-direction: row;">
+                        <img src="https://raw.githubusercontent.com/MalangBvp/media/refs/heads/main/images/whatsapp.png"
+                            style="height:20px; display: inline-flex; margin-right: 10px;">
                         Join WhatsApp Community
                     </a><br>
                     <div class="checks">
                         <div class="checkbox-group">
-                            <input type="checkbox" id="joined_wa" />
+                            <input type="checkbox" id="joined_wa" name="joined_wa" />
                             I have joined the WhatsApp community *
                             <label for="joined_wa">Yes
                             </label>
@@ -424,7 +429,8 @@
                     "m2_name", "m2_gender", "m2_dob", "m2_phone",
                     "m2_email", "m2_college"
                 ],
-                5: ["group_members"]
+                5: ["group_members"],
+                6: ["joined_wa"]
             }
 
             if (required[step]) {
@@ -569,8 +575,16 @@
         // ----------------------------
         async function handleFormSubmit(e) {
             e.preventDefault();
+            if (!validateStep("Final")) {
+                showAlert(
+                    "⚠️",
+                    "Please join our WhatsApp group before continuing.",
+                    [{ text: "OK" }]
+                )
+                return Promise.reject("Validation failed");
+            }
 
-            const url = "https://script.google.com/macros/s/AKfycbwwV2bEveHw6ZCotdAACQhHeXVm6ADrc2yOmuAfri58lrIrkaXzQn85VGG5Go4Uj6HE/exec";
+            const url = "https://script.google.com/macros/s/AKfycbx-u61rQiNrnv7utq5-h8laBrFZQ4fnjZcw_sPbOAdvGssvjJlEYt8Ofw279uTf8eHu/exec";
 
             const form = document.getElementById("feForm");
 
@@ -606,8 +620,8 @@
                 localStorage.removeItem(STORAGE_KEY);
 
                 showAlert(
-                    "Submitted!",
-                    "Form submitted successfully! 🎉",
+                    "Registered!",
+                    "Thank you for registering! 🎉\n\nYou will receive your Participation ID and a confirmation email shortly.",
                     [{ text: "Awesome!" }]
                 );
 
@@ -620,7 +634,7 @@
 
                 showAlert(
                     "❌ Error",
-                    "Submission failed. Please try again.",
+                    "Registration failed. Please try again.",
                     [{ text: "OK" }]
                 );
             }
