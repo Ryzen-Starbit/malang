@@ -264,6 +264,7 @@
 │   │   │   ├── editingUnlocked3.webp
 │   │   │   ├── editingUnlocked4.webp
 │   │   │   ├── fe2026.png
+│   │   │   ├── fe2026.webp
 │   │   │   ├── gallery.webp
 │   │   │   ├── gstudios.webp
 │   │   │   ├── gstudios1.webp
