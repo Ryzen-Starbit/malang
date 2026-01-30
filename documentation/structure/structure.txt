@@ -470,6 +470,7 @@
 │   │   ├── redirector.html
 │   │   ├── redirects.html
 │   │   ├── sitemap.html
+│   │   ├── terms.html
 │   │   ├── test.html
 │   │   ├── timeline.html
 │   │   ├── treasury.html
