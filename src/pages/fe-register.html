@@ -57,6 +57,9 @@
 
         .checkbox-group {
             display: flex;
+            flex-direction: column;
+            text-align: left;
+            align-items: flex-start;
             flex-wrap: wrap;
             gap: 5px;
             margin-top: 10px 0;
@@ -189,7 +192,8 @@
                     <p>Step into the spotlight and showcase your style and creativity at <b>Fashion Euphoria 2026</b>!
                         <br>Register below to participate in the <U><b>Fashion</b></U> or <U><b>Cosplay</b></U>
                         competition. <br><br><b>⚠️NOTE:</b> Please ensure all details provided are accurate, as they
-                        will be used for event coordination and participant communication.</p>
+                        will be used for event coordination and participant communication.
+                    </p>
                     <div class="checks">
                         <div class="checkbox-group">
                             <a href="privacy-policy.html">Terms & Conditions</a>
@@ -252,8 +256,8 @@
             <!-- STEP 3 : MEMBER 1 / SOLO / POC -->
             <div class="form-step" id="step3">
                 <div class="inputs">
-                    <input type="text" id="m1_name" name="m1_name" placeholder="Name *" required />
-                    <select id="m1_gender" name="m1_gender" required>
+                    <input type="text" id="poc_name" name="poc_name" placeholder="Full Name *" required />
+                    <select id="poc_gender" name="poc_gender" required>
                         <option value="" disabled selected>Gender *</option>
                         <option>Male</option>
                         <option>Female</option>
@@ -261,12 +265,12 @@
                     </select>
 
                     <div class="checks">
-                        <p>DOB</p><input type="date" id="m1_dob" name="m1_dob" required />
+                        <p>DOB</p><input type="date" id="poc_dob" name="poc_dob" required />
                     </div>
-                    <input type="tel" id="m1_phone" name="m1_phone" placeholder="Phone Number *" required />
-                    <input type="tel" id="m1_alt_phone" name="m1_alt_phone" placeholder="Alternate Phone Number" />
-                    <input type="email" id="m1_email" name="m1_email" placeholder="Email *" required />
-                    <input type="text" id="m1_college" name="m1_college" placeholder="College Name *" required />
+                    <input type="tel" id="poc_phone" name="poc_phone" placeholder="Phone Number *" required />
+                    <input type="tel" id="poc_alt_phone" name="poc_alt_phone" placeholder="Alternate Phone Number" />
+                    <input type="email" id="poc_email" name="poc_email" placeholder="Email *" required />
+                    <input type="text" id="poc_college" name="poc_college" placeholder="College Name *" required />
                 </div>
                 <div class="btn-group">
                     <button type="button" class="long-btn" onclick="prevDynamic()">Previous</button>
@@ -277,7 +281,7 @@
             <!-- STEP 4 : MEMBER 2 (DUET) -->
             <div class="form-step" id="step4">
                 <div class="inputs">
-                    <input type="text" id="m2_name" name="m2_name" placeholder="Member 2 Name *" required />
+                    <input type="text" id="m2_name" name="m2_name" placeholder="Full Name (2nd Member) *" required />
                     <select id="m2_gender" name="m2_gender" required>
                         <option value="" disabled selected>Gender *</option>
                         <option>Male</option>
@@ -339,13 +343,13 @@
 
 
                     <p style="margin-top:10px">
-                        Make sure all details are correct before submitting.
+                        Make sure all details are correct before registering.
                     </p>
                 </div>
 
                 <div class="btn-group">
                     <button type="button" class="long-btn" onclick="prevDynamic()">Previous</button>
-                    <button type="submit" class="long-btn" id="submit">Submit</button>
+                    <button type="submit" class="long-btn" id="submit">Register</button>
                 </div>
             </div>
 
@@ -384,15 +388,24 @@
         // SHOW STEP
         // ----------------------------
         function showStep(step) {
-            document.querySelectorAll(".form-step")
-                .forEach(s => s.classList.remove("active"))
+            document.querySelectorAll(".form-step").forEach(s => {
+                s.classList.remove("active");
 
-            const el = document.getElementById(`step${step}`)
-            if (!el) return
+                // disable inputs in hidden steps
+                s.querySelectorAll("input, select, textarea")
+                    .forEach(el => el.disabled = true);
+            });
 
-            el.classList.add("active")
-            updateProgress()
-            window.scrollTo({ top: 0, behavior: "smooth" })
+            const el = document.getElementById(`step${step}`);
+            if (!el) return;
+
+            el.classList.add("active");
+
+            // enable inputs in active step
+            el.querySelectorAll("input, select, textarea")
+                .forEach(elm => elm.disabled = false);
+
+            updateProgress();
         }
 
         // ----------------------------
@@ -405,8 +418,8 @@
                 1: ["competition"],
                 2: ["category"],
                 3: [
-                    "m1_name", "m1_gender", "m1_dob", "m1_phone",
-                    "m1_email", "m1_college"
+                    "poc_name", "poc_gender", "poc_dob", "poc_phone",
+                    "poc_email", "poc_college"
                 ],
                 4: [
                     "m2_name", "m2_gender", "m2_dob", "m2_phone",
@@ -451,7 +464,6 @@
 
             return valid
         }
-
 
         // ----------------------------
         // BUILD FLOW
@@ -557,50 +569,191 @@
         // FORM SUBMIT (UNCHANGED + CLEAR STORAGE)
         // ----------------------------
         async function handleFormSubmit(e) {
-            e.preventDefault()
+            e.preventDefault();
 
-            const url =
-                "https://script.google.com/macros/s/AKfycbwf8Oxhfg-Pwj0R--A7zoffnEvRr8K0LA_npx_C9ivq0f9J4RH4AaJRY3VFH3wgoK3Pxg/exec"
+            const url = "https://script.google.com/macros/s/AKfycbwwV2bEveHw6ZCotdAACQhHeXVm6ADrc2yOmuAfri58lrIrkaXzQn85VGG5Go4Uj6HE/exec";
 
-            const formData = new FormData(form)
+            const form = document.getElementById("feForm");
 
-            let base64File = ""
-            let fileName = ""
-            const fileInput = document.getElementById("screenshot")
+            const disabled = form.querySelectorAll(":disabled");
+            disabled.forEach(el => el.disabled = false);
 
-            if (fileInput && fileInput.files.length) {
-                const file = fileInput.files[0]
-                fileName = file.name
-                base64File = await toBase64(file)
-            }
+            const formData = new FormData(form);
+            const data = Object.fromEntries(formData.entries());
 
-            const data = Object.fromEntries(formData.entries())
-            data.fileData = base64File
-            data.fileName = fileName
+            disabled.forEach(el => el.disabled = true);
 
             try {
-                await fetch(url, {
+                const res = await fetch(url, {
                     method: "POST",
-                    headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify(data),
-                    mode: "no-cors"
-                })
+                    headers: {
+                        "Content-Type": "application/x-www-form-urlencoded"
+                    },
+                    body: "data=" + encodeURIComponent(JSON.stringify(data))
+                });
 
-                localStorage.removeItem(STORAGE_KEY)
+                const result = await res.json();
+                console.log(result); // debug
+
+                if (!result || result.status !== "success") {
+                    showAlert(
+                        "❌ Error",
+                        "Submission failed. Please try again.",
+                        [{ text: "OK" }]
+                    );
+                    return;
+                }
+
+                localStorage.removeItem(STORAGE_KEY);
 
                 showAlert(
                     "Submitted!",
-                    "Your registration is complete 🎉",
+                    "Form submitted successfully! 🎉",
                     [{ text: "Awesome!" }]
-                )
+                );
 
-                confetti()
-                form.reset()
-                showStep(1)
+                confetti();
+                form.reset();
+                showStep(1);
+
             } catch (err) {
-                showAlert("❌ Error", "Please try again later.", [{ text: "OK" }])
+                console.error(err);
+
+                showAlert(
+                    "❌ Error",
+                    "Submission failed. Please try again.",
+                    [{ text: "OK" }]
+                );
             }
         }
+
+        (function () {
+            function rand(min, max) { return Math.random() * (max - min) + min; }
+
+            const COLORS = [
+                "#ff004f", "#ff7a00", "#ffd400", "#00e676", "#00b0ff", "#7c4dff",
+                "#ff1744", "#ffea00", "#00e5ff", "#69f0ae", "#b388ff", "#ff80ab"
+            ];
+
+            // Public API
+            window.confetti = function confetti(opts = {}) {
+                const {
+                    particleCount = 220,
+                    scalar = 1,
+                    gravity = 0.33,
+                    drift = 0.03,
+                    decay = 0.007,     // higher = faster fade
+                    spread = 70,       // degrees
+                    angle = -90,       // -90 = straight up
+                    origin = { x: 0.5, y: 0.7 }, // normalized viewport
+                    shapes = ["square", "circle", "triangle"]
+                } = opts;
+
+                // Canvas setup
+                const dpr = Math.min(window.devicePixelRatio || 1, 2);
+                const canvas = document.createElement("canvas");
+                const ctx = canvas.getContext("2d");
+                canvas.style.cssText = "position:fixed;inset:0;pointer-events:none;z-index:999999";
+                document.body.appendChild(canvas);
+
+                function resize() {
+                    canvas.width = innerWidth * dpr;
+                    canvas.height = innerHeight * dpr;
+                    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+                }
+                resize();
+                addEventListener("resize", resize);
+
+                // Particle factory
+                const angleRad = (angle * Math.PI) / 180;
+                const spreadRad = (spread * Math.PI) / 180;
+                const ox = innerWidth * origin.x;
+                const oy = innerHeight * origin.y;
+
+                const particles = [];
+                for (let i = 0; i < particleCount; i++) {
+                    const t = angleRad + rand(-spreadRad / 2, spreadRad / 2);
+                    const speed = rand(6, 12) * scalar;
+                    particles.push({
+                        x: ox, y: oy,
+                        vx: Math.cos(t) * speed + rand(-1, 1),
+                        vy: Math.sin(t) * speed + rand(-1, 1),
+                        w: rand(6, 12) * scalar,
+                        h: rand(6, 12) * scalar,
+                        r: rand(0, Math.PI * 2),
+                        rv: rand(-0.2, 0.2),
+                        color: COLORS[(Math.random() * COLORS.length) | 0],
+                        shape: shapes[(Math.random() * shapes.length) | 0],
+                        alpha: 1,
+                        life: rand(220, 340)
+                    });
+                }
+
+                let raf;
+                function drawShape(p) {
+                    ctx.fillStyle = p.color;
+                    switch (p.shape) {
+                        case "circle":
+                            ctx.beginPath();
+                            ctx.arc(p.x, p.y, p.w * 0.6, 0, Math.PI * 2);
+                            ctx.fill();
+                            break;
+                        case "triangle":
+                            ctx.beginPath();
+                            ctx.moveTo(p.x + Math.cos(p.r) * p.w, p.y + Math.sin(p.r) * p.h);
+                            ctx.lineTo(p.x + Math.cos(p.r + 2.09) * p.w, p.y + Math.sin(p.r + 2.09) * p.h);
+                            ctx.lineTo(p.x + Math.cos(p.r + 4.18) * p.w, p.y + Math.sin(p.r + 4.18) * p.h);
+                            ctx.closePath();
+                            ctx.fill();
+                            break;
+                        default: // square/rect
+                            ctx.save();
+                            ctx.translate(p.x, p.y);
+                            ctx.rotate(p.r);
+                            ctx.fillRect(-p.w / 2, -p.h / 2, p.w, p.h);
+                            ctx.restore();
+                    }
+                }
+
+                function frame() {
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    let alive = 0;
+
+                    for (const p of particles) {
+                        p.x += p.vx + drift * (Math.random() - 0.5) * 20;
+                        p.y += p.vy += gravity; // gravity accelerates downward
+                        p.r += p.rv;
+                        p.life--;
+                        p.alpha = Math.max(0, p.alpha - decay);
+
+                        if (p.alpha > 0 && p.life > 0 && p.y < innerHeight + 40) {
+                            ctx.globalAlpha = p.alpha;
+                            drawShape(p);
+                            ctx.globalAlpha = 1;
+                            alive++;
+                        }
+                    }
+
+                    if (alive > 0) {
+                        raf = requestAnimationFrame(frame);
+                    } else {
+                        cleanup();
+                    }
+                }
+
+                function cleanup() {
+                    cancelAnimationFrame(raf);
+                    removeEventListener("resize", resize);
+                    canvas.remove();
+                }
+
+                raf = requestAnimationFrame(frame);
+
+                // Return a tiny controller in case you want to kill early
+                return { stop: cleanup, canvas };
+            };
+        })();
+
 
         function toBase64(file) {
             return new Promise((res, rej) => {
