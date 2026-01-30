@@ -44,10 +44,12 @@
 
 
 document.addEventListener('DOMContentLoaded', () => {
-    loader=document.getElementById("loader");
-    if(loader){
-        loader.style.display="none";
-    }
+    loader = document.getElementById("loader");
+    if (loader) {
+        setTimeout(() => {
+            loader.style.display = "none";
+        }, 1000);
+    };
 });
 
 const canvas = document.getElementById('gradientCanvas');

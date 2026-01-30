@@ -1,11 +1,15 @@
-
 <head>
     <title>Malang | Claims</title>
     <link rel="stylesheet" href="../styles/common.css">
     <link rel="stylesheet" href="../styles/authentication.css">
+    <script type="module" src="https://cdn.jsdelivr.net/npm/ldrs/dist/auto/ring2.js"></script>
 </head>
 
 <body>
+    <div id="loader">
+        <l-ring-2 size="18" stroke="2" stroke-length="0.25" bg-opacity="0.1" speed="0.8"
+            color="white"></l-ring-2>&nbsp;&nbsp;Authorizing...
+    </div>
     <h3 class="protected">You must be signed in to view this page.</h3>
     <section class="restricted">
         <canvas id="gradientCanvas"></canvas>
