@@ -1,78 +1,18 @@
 [
   {
-    "title": "Malang | Privacy Policy",
-    "url": "/src/pages/privacy-policy.html",
-    "content": "Malang | Privacy Policy Privacy Policy Effective Date: July 1, 2023 Malang \u2013 Fine Arts & Photography Club (\u201cMalang,\u201d \u201cwe,\u201d \u201cus,\u201d or \u201cour\u201d) is committed to protecting your privacy. This Privacy Policy outlines how we handle any personal information you choose to share with us through our website and services. 1. Data Collection We do not collect any personal information unless you explicitly provide it\u2014such as through forms or by sharing your email address voluntarily. 2. Use of Information If you provide your email address, we may use it to: Send club updates or newsletters. Share information about events, activities, or announcements. We will only use your email for the purpose it was provided. 3. Data Sharing We do not sell, share, or disclose your personal information to third parties. "
-  },
-  {
-    "title": "Malang | \ud83d\udc55 Form",
-    "url": "/src/pages/tshirt.html",
-    "content": "Malang | \ud83d\udc55 Form Malang T-Shirts 2025-26 Next Year? * 1st 2nd 3rd 4th Branch? * CSE CSBS CE IT E&TC ECE R&A ElCE Mechanical Civil Chemical Previous Next T-Shirt Preview Previous Next NOTE: Please enter your real name (preferably your first name). No nicknames or aliases. Size Chest (inches) S 41 M 43 L 45 XL 47 XXL 49 Size? * S M L XL XXL Previous Next Please make a payment of Rs. 550/- on the QR given below: Attach a screenshot of the payment * Previous Submit \u00d7"
-  },
-  {
-    "title": "Malang | Redirector",
-    "url": "/src/pages/redirector.html",
-    "content": "Malang | Redirector You must be signed in to view this page. Customise URL Custom URL will be:slug Create View Redirects"
+    "title": "Malang | 404 Not Found",
+    "url": "/src/pages/404.html",
+    "content": "Malang | 404 Not Found 404 Page Not Found This content doesn't exist, or you don't have permission to view it. Go Back"
   },
   {
     "title": "Malang | Account",
     "url": "/src/pages/account.html",
-    "content": "Malang | Account Authentication Required. You can now access the following pages: T-Shirt Form Open Claims Media Kit RedirectorAuth Site Docs TreasuryAuth QR Code Generator Log in with Google Log in with GitHub Log out"
-  },
-  {
-    "title": "Malang | Events",
-    "url": "/src/pages/events.html",
-    "content": "Malang | Events Calendar | Malang Events Happening Soon!"
-  },
-  {
-    "title": "Malang | Site Documentation",
-    "url": "/src/pages/documentation.html",
-    "content": "Malang | Site Documentation Last updated: Loading... Last update: Loading... Loading... Site Structure You must be signed in to view this content. \u26cf\ufe0e W/\u2665 for"
-  },
-  {
-    "title": "Rangotsav",
-    "url": "/src/pages/r.html",
-    "content": "Rangotsav Rangotsav An inter-college art & photography festival curated by Malang. The stage is being set. The colors arrive soon. 00 Days 00 Hours 00 Minutes 00 Seconds Go to Home | Contact Us"
-  },
-  {
-    "title": "test",
-    "url": "/src/pages/test.html",
-    "content": "test Section 1 Discover Your Creative Oasis at Malang Our mission is to provide a platform for individuals to express themselves, explore their artistic passions, and collaborate with like-minded individuals. Whether you're a painter, photographer, sculptor, or any form of creative soul, Malang Fine Arts Arts & Photography Club is the place to be. Card 1 Card 2 Card 3 Card 4 Our Partners Subscribe to our newsletter Stay connected with us and never miss an event! Subscribe We don't spam. Organisation Core Members Malang Alumni Collaborate With Us Events Upcoming Events Past Events Galleries Projects Art Gallery Photo Gallery \u00a9 2025 - YEAR Malang. All rights reserved. Sitemap Privacy Policy Media Kit Feature Request"
+    "content": "Malang | Account Authenticating... Authentication Required. You can now access the following pages: T-Shirt Form Closed Claims RedirectorAuth Site Docs TreasuryAuth QR Code Generator Log in with Google Log in with GitHub Log out"
   },
   {
     "title": "Malang | Alumni",
     "url": "/src/pages/alumni.html",
     "content": "Malang | Alumni Malang Alumni Celebrating the legacy, talent, and stories of those who once walked the halls of Malang. \u00d7 Name: NA Position: NA Batch: NA Branch: NA"
-  },
-  {
-    "title": "PDF Viewer",
-    "url": "/src/pages/brochure.html",
-    "content": "PDF Viewer"
-  },
-  {
-    "title": "Malang Redirects",
-    "url": "/src/pages/redirects.html",
-    "content": "Malang Redirects Malang Redirects Loading..."
-  },
-  {
-    "title": "Fashion Euphoria",
-    "url": "/src/pages/fe.html",
-    "content": "Fashion Euphoria Fashion Euphoria An inter-college fashion showcase curated by Malang. Fashion fades, style is eternal. 00 Days 00 Hours 00 Minutes 00 Seconds Register Now Numbers from Fashion Euphoria 2025 0 Participants 0 Colleges 0 Prize Pool (\u20b9) 0 Footfall Previous Partners"
-  },
-  {
-    "title": "Malang | Unsubscribe",
-    "url": "/src/pages/unsubscribe.html",
-    "content": "Malang | Unsubscribe Unsubscribe from Newsletter Unsubscribe We'll miss you! Read our Privacy Policy for more information."
-  },
-  {
-    "title": "Malang | Treasury",
-    "url": "/src/pages/treasury.html",
-    "content": "Malang | Treasury You must be signed in to view this page. Malang's Treasury Total Amount: Loading... Select Header Bharatiyam Claims Development Funds Party / Trip Other + \u2212 \u26a0\ufe0f Heads Up! Double-check values. Transactions instantly affect the treasury balance. Log Transaction"
-  },
-  {
-    "title": "Malang | Timeline",
-    "url": "/src/pages/timeline.html",
-    "content": "Malang | Timeline Featured Events Fashion Euphoria Rangotsav Timeline Explore the history of Malang through our timeline, showcasing significant events and milestones that have shaped our journey. Upcoming Events View Older \u00d7"
   },
   {
     "title": "Malang | ArUCo",
@@ -85,19 +25,9 @@
     "content": "Malang | Authenticator You must be signed in to view this page. Authentication Required. Incorrect password. Try again. Enter"
   },
   {
-    "title": "Malang | Gallery",
-    "url": "/src/pages/gallery.html",
-    "content": "Malang | Gallery Category Artworks Photographs Filter Nothing to see here... View More \u00d7"
-  },
-  {
-    "title": "Malang | Home",
-    "url": "/src/pages/home.html",
-    "content": "Malang | Home Fine Arts & Photography Club For the Kalakaar in you! Sponsor Us Contact Us Discover Your Creative Oasis at Malang Our mission is to provide a platform for individuals to express themselves, explore their artistic passions, and collaborate with like-minded individuals. Whether you're a painter, photographer, sculptor, or any form of creative soul, Malang Fine Arts Arts & Photography Club is the place to be. Upcoming EventsCheckout Events Fashion EuphoriaLearn More RangotsavLearn More Art GalleryView Gallery Our Partners \u00d7"
-  },
-  {
-    "title": "Fashion Euphoria 2026",
-    "url": "/src/pages/fe-register.html",
-    "content": "Fashion Euphoria 2026 Fashion Euphoria 2026 \u2728 Get ready to ignite the runway and unleash your fashion flair! \ud83d\udcf7\ud83c\udfa8 Date & Venue \u2022 27th Feb 2026 \u2022 Main Ground Guidelines: Read I have read and agree to the terms and conditions * Select Category * Solo Duet Group Next Previous Next Member 1 (POC) Previous Next Member 2 Previous Next Previous Next Select Theme * Traditional Western Fusion Experimental Previous Next Upload payment proof Previous Submit"
+    "title": "PDF Viewer",
+    "url": "/src/pages/brochure.html",
+    "content": "PDF Viewer"
   },
   {
     "title": "Malang | Claims",
@@ -105,19 +35,29 @@
     "content": "Malang | Claims You must be signed in to view this page. Claim your bills Bill Attachment * . Claim"
   },
   {
-    "title": "Malang | Associates",
-    "url": "/src/pages/members.html",
-    "content": "Malang | Associates Malang Associates"
-  },
-  {
     "title": "Malang | Core Members: Tejas Gupta, Prasun Ratan, Goutam Sahu, Mohini Walia, Priya Ranjan, Satyam Singh",
     "url": "/src/pages/core.html",
     "content": "Malang | Core Members: Tejas Gupta, Prasun Ratan, Goutam Sahu, Mohini Walia, Priya Ranjan, Satyam Singh Core Members Malang Alumni \u00d7 Name: Tejas Gupta, Prasun Ratan, Goutam Sahu, Mohini Walia, Priya Ranjan, Satyam Singh Position: NA Batch: NA Branch: NA"
   },
   {
-    "title": "Malang | Sitemap",
-    "url": "/src/pages/sitemap.html",
-    "content": "Malang | Sitemap"
+    "title": "Malang | Site Documentation",
+    "url": "/src/pages/documentation.html",
+    "content": "Malang | Site Documentation Authenticating... Last updated: Loading... Last update: Loading... Loading... Site Structure You must be signed in to view this content. \u26cf\ufe0e W/\u2665 for"
+  },
+  {
+    "title": "Malang | Events",
+    "url": "/src/pages/events.html",
+    "content": "Malang | Events Calendar | Malang Events Happening Soon!"
+  },
+  {
+    "title": "Fashion Euphoria | Registeration Form",
+    "url": "/src/pages/fe-register.html",
+    "content": "Fashion Euphoria | Registeration Form Fashion Euphoria 2026 Step into the spotlight and showcase your style and creativity at Fashion Euphoria 2026! Register below to participate in the Fashion or Cosplay competition. \u26a0\ufe0fNOTE: Please ensure all details provided are accurate, as they will be used for event coordination and participant communication. I agree to the Terms & Privacy Policy * Yes Competition * Fashion Cosplay Next Category No. of Members Solo 1 Duet 2 Group 3-12 Category * Solo Duet Group (Fashion only) Previous Next Gender * Male Female Other DOB Previous Next Gender * Male Female Other Previous Next Number of Members (3-12) * Previous Next \ud83c\udf89 You're almost done! Join our official WhatsApp community for updates & coordination: Join WhatsApp Community I have joined the WhatsApp c"
+  },
+  {
+    "title": "Fashion Euphoria",
+    "url": "/src/pages/fe.html",
+    "content": "Fashion Euphoria Fashion Euphoria An inter-college fashion and cosplay showdown, curated by Malang. Fashion fades, style is eternal. 00 Days 00 Hours 00 Minutes 00 Seconds Register Now! Watch Fullscreen Numbers from Fashion Euphoria 2025 0 Participants 0 Colleges 0 Prize Pool (\u20b9) 0 Footfall Previous Partners"
   },
   {
     "title": "Malang | Form",
@@ -125,18 +65,83 @@
     "content": "Malang | Form Feature Request Position * Malang Alumni Core Member Member Outside Malang Next Request Type? * Report a Bug Update My Information Add My Artworks Other Previous Next Attach a link (if any): Attach a file (if any): Previous Request"
   },
   {
-    "title": "Malang | 404 Not Found",
-    "url": "/src/pages/404.html",
-    "content": "Malang | 404 Not Found 404 Page Not Found This content doesn't exist, or you don't have permission to view it. Go Back"
-  },
-  {
-    "title": "Malang QR Generator",
-    "url": "/src/pages/qr.html",
-    "content": "Malang QR Generator Malang QR Generator Create QR Download QR QR Code appears here."
+    "title": "Malang | Gallery",
+    "url": "/src/pages/gallery.html",
+    "content": "Malang | Gallery Category Artworks Photographs Filter Nothing to see here... View More \u00d7"
   },
   {
     "title": "Malang | Google Form Embed",
     "url": "/src/pages/googleForm.html",
     "content": "Malang | Google Form Embed"
+  },
+  {
+    "title": "Malang | Home",
+    "url": "/src/pages/home.html",
+    "content": "Malang | Home Fine Arts & Photography Club For the Kalakaar in you! Sponsor Us Contact Us Discover Your Creative Oasis at Malang Our mission is to provide a platform for individuals to express themselves, explore their artistic passions, and collaborate with like-minded individuals. Whether you're a painter, photographer, sculptor, or any form of creative soul, Malang Fine Arts Arts & Photography Club is the place to be. Upcoming EventsCheckout Events Fashion EuphoriaLearn More RangotsavLearn More Art GalleryView Gallery Our Partners \u00d7"
+  },
+  {
+    "title": "Malang | Associates",
+    "url": "/src/pages/members.html",
+    "content": "Malang | Associates Malang Associates"
+  },
+  {
+    "title": "Malang | Privacy Policy",
+    "url": "/src/pages/privacy-policy.html",
+    "content": "Malang | Privacy Policy Privacy Policy Effective Date: July 1, 2023 Malang \u2013 Fine Arts & Photography Club (\u201cMalang,\u201d \u201cwe,\u201d \u201cus,\u201d or \u201cour\u201d) is committed to protecting your privacy. This Privacy Policy outlines how we handle any personal information you choose to share with us through our website and services. 1. Data Collection We do not collect any personal information unless you explicitly provide it\u2014such as through forms or by sharing your email address voluntarily. 2. Use of Information If you provide your email address, we may use it to: Send club updates or newsletters. Share information about events, activities, or announcements. We will only use your email for the purpose it was provided. 3. Data Sharing We do not sell, share, or disclose your personal information to third parties. "
+  },
+  {
+    "title": "Malang QR Generator",
+    "url": "/src/pages/qr.html",
+    "content": "Malang QR Generator QR Generator Foreground Gradient Foreground Color 1 Color 2 Linear Radial Background Transparent Background QR Style Square Dots Rounded Extra Rounded Classy Add Logo Choose Logo: Logo Size: Create QR Download QR QR Code appears here."
+  },
+  {
+    "title": "Rangotsav",
+    "url": "/src/pages/r.html",
+    "content": "Rangotsav Rangotsav An inter-college art & photography festival curated by Malang. The stage is being set. The colors arrive soon. 00 Days 00 Hours 00 Minutes 00 Seconds Go to Home | Contact Us"
+  },
+  {
+    "title": "Malang | Redirector",
+    "url": "/src/pages/redirector.html",
+    "content": "Malang | Redirector You must be signed in to view this page. Customise URL Custom URL will be:slug Create View Redirects"
+  },
+  {
+    "title": "Malang Redirects",
+    "url": "/src/pages/redirects.html",
+    "content": "Malang Redirects Malang Redirects Loading..."
+  },
+  {
+    "title": "Malang | Sitemap",
+    "url": "/src/pages/sitemap.html",
+    "content": "Malang | Sitemap"
+  },
+  {
+    "title": "Malang | Terms & Conditions",
+    "url": "/src/pages/terms.html",
+    "content": "Malang | Terms & Conditions Terms & Conditions Effective Date: January 31, 2026 These Terms & Conditions apply to all participants registering for or attending events organized by Malang. By registering for or participating in any Malang event, participants agree to the following terms. 1. Registration & Participation Participants must provide accurate registration details. Registration may be cancelled if incorrect information is provided. Participation may be limited based on event capacity or eligibility. 2. Use of Contact Information By registering, participants agree that contact details may be used to: Send event updates and notifications. Share information about future Malang events. Send certificates or participation-related communication. Contact information will not be sold or sh"
+  },
+  {
+    "title": "test",
+    "url": "/src/pages/test.html",
+    "content": "test Section 1 Discover Your Creative Oasis at Malang Our mission is to provide a platform for individuals to express themselves, explore their artistic passions, and collaborate with like-minded individuals. Whether you're a painter, photographer, sculptor, or any form of creative soul, Malang Fine Arts Arts & Photography Club is the place to be. Card 1 Card 2 Card 3 Card 4 Our Partners Subscribe to our newsletter Stay connected with us and never miss an event! Subscribe We don't spam. Organisation Core Members Malang Alumni Collaborate With Us Events Upcoming Events Past Events Galleries Projects Art Gallery Photo Gallery \u00a9 2025 - YEAR Malang. All rights reserved. Sitemap Privacy Policy Media Kit Feature Request"
+  },
+  {
+    "title": "Malang | Timeline",
+    "url": "/src/pages/timeline.html",
+    "content": "Malang | Timeline Featured Events Fashion Euphoria Rangotsav Timeline Explore the history of Malang through our timeline, showcasing significant events and milestones that have shaped our journey. Upcoming Events View Older \u00d7"
+  },
+  {
+    "title": "Malang | Treasury",
+    "url": "/src/pages/treasury.html",
+    "content": "Malang | Treasury You must be signed in to view this page. Malang's Treasury Total Amount: Loading... Select Header Bharatiyam Claims Development Funds Party / Trip Other + \u2212 \u26a0\ufe0f Heads Up! Double-check values. Transactions instantly affect the treasury balance. Log Transaction"
+  },
+  {
+    "title": "Malang | \ud83d\udc55 Form",
+    "url": "/src/pages/tshirt.html",
+    "content": "Malang | \ud83d\udc55 Form Malang T-Shirts 2025-26 This form is no longer accepting responses. \u00d7"
+  },
+  {
+    "title": "Malang | Unsubscribe",
+    "url": "/src/pages/unsubscribe.html",
+    "content": "Malang | Unsubscribe Unsubscribe from Newsletter Unsubscribe We'll miss you! Read our Privacy Policy for more information."
   }
 ]
