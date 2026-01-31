@@ -288,8 +288,9 @@
                         <option>Male</option>
                         <option>Female</option>
                         <option>Other</option>
-                    </select>
-                    <input type="date" id="m2_dob" name="m2_dob" required />
+                    </select><div class="checks">
+                        <p>DOB *</p><input type="date" id="m2_dob" name="m2_dob" required />
+                    </div>
                     <input type="tel" id="m2_phone" name="m2_phone" placeholder="Phone Number *" required />
                     <input type="email" id="m2_email" name="m2_email" placeholder="Email *" required />
                     <input type="text" id="m2_college" name="m2_college" placeholder="College Name *" required />
@@ -584,7 +585,7 @@
                 return Promise.reject("Validation failed");
             }
 
-            const url = "https://script.google.com/macros/s/AKfycbx-u61rQiNrnv7utq5-h8laBrFZQ4fnjZcw_sPbOAdvGssvjJlEYt8Ofw279uTf8eHu/exec";
+            const url = "https://script.google.com/macros/s/AKfycbz1wxjL0QHfsmL7qbuqPby6mTYrWYpJmcbgFiDUpZq-LkgNpM_uf1M8HgcLajB6LYL6/exec";
 
             const form = document.getElementById("feForm");
 
