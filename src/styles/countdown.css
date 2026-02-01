@@ -241,3 +241,43 @@ hr {
 .partner-logos img:hover {
     filter: none;
 }
+
+
+.sponsor-container {
+    position: relative;
+    width: calc(100% + 200px);
+    overflow: hidden;
+    padding-bottom: 50px;
+    transform: rotate(-7deg) translateX(-50px);
+    margin-top: 70px;
+}
+
+.sponsor-track {
+    display: flex;
+    gap: 10px;
+    padding: 5px;
+    width: max-content;
+    animation: scroll-left 40s linear infinite;
+}
+
+.track2 {
+    animation-direction: reverse;
+}
+
+.sponsor-track img {
+    height: 150px;
+    object-fit: contain;
+    border-radius: 7px;
+}
+
+
+
+@keyframes scroll-left {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-50%);
+    }
+}
