@@ -254,6 +254,7 @@
 │   │   │   ├── bh2k19-7.webp
 │   │   │   ├── bh2k19-8.webp
 │   │   │   ├── bh2k19-9.webp
+│   │   │   ├── cosplay.jpeg
 │   │   │   ├── designworkshop-1.webp
 │   │   │   ├── designworkshop-2.webp
 │   │   │   ├── designworkshop-3.webp
