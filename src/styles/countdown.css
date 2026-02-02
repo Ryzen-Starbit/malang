@@ -373,3 +373,9 @@ footer {
         border-right: 1px solid var(--border-color);
     }
 }
+
+@media (min-height: 600px) {
+    .cta {
+        margin-top: calc(100vh - 600px);
+    }
+}
