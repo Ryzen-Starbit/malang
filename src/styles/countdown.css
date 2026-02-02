@@ -1,18 +1,13 @@
-@font-face {
-    font-family: 'Samarkan';
-    src: url('FontsFree-Net-SAMAN___.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
+html {
+    scroll-behavior: smooth;
+    scroll-padding: 70px;
 }
 
-#headerImg {
-    width: 100%;
-    height: auto;
-    object-fit: cover;
-    object-position: 0 80%;
-    max-width: 500px;
-    border-radius: 10px;
-    margin-bottom: 20px;
+#fashionEuphoria {
+    max-width: 700px;
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 #headerLogo {
@@ -20,12 +15,14 @@
     height: auto;
 }
 
-#fe{
-    padding: 0;
+#fe {
+    font-style: italic;
 }
 
 #topDiv {
-    height: calc(100vh - 70px);
+    height: calc(100vh - 110px);
+    width: 100%;
+    max-width: 700px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -33,24 +30,13 @@
     position: fixed;
     top: 70px;
     text-align: center;
-    width: calc(100vw - 20px);
-    margin: 0px 10px 20px 10px;
-}
-
-#rangotsav {
-    font-family: 'Samarkan Normal V1';
-    font-size: 2.7rem;
-    font-weight: normal;
-    background: linear-gradient(to right, rgb(255, 204, 0), rgb(255, 0, 128));
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    padding-bottom: 40px;
 }
 
 #fashionEuphoria {
-    background: radial-gradient(circle at 80% 50%, rgba(239, 178, 38, 0.25), transparent 60%),
+    background: radial-gradient(circle at 50% 115%, rgba(255, 255, 255, 0.623), rgba(221, 147, 255, 0.651), rgba(129, 164, 247, 0.404), transparent 50%),
         linear-gradient(180deg, #0a0a0a, #000000);
-        background-attachment: fixed;
+    background-attachment: fixed;
 }
 
 .glass {
@@ -59,11 +45,8 @@
     align-items: center;
     text-align: center;
     justify-content: center;
-    width: calc(100vw - 20px);
-    padding: 0px 10px 20px 10px;
-    background: linear-gradient(to top,
-            #000000 0%,
-            rgba(17, 17, 17, 0) 30%) bottom / 100% 40% no-repeat, radial-gradient(circle at 20% 80%, rgb(37, 0, 69), black 40%);
+    width: 100%;
+    background-color: #000000;
     margin-top: 100vh;
     position: relative;
     z-index: 100;
@@ -71,7 +54,7 @@
     border-radius: 20px 20px 0 0;
 }
 
-.handle{
+.handle {
     height: 3px;
     width: 30px;
     background-color: rgb(86, 86, 86);
@@ -80,38 +63,42 @@
 }
 
 #bgVideo {
-    width: 100%;
-    max-width: 500px;
+    margin-top: 30px;
+    width: calc(100% - 20px);
+    max-width: 700px;
     height: auto;
     border-radius: 15px;
     border: 1px solid var(--border-color);
     object-fit: cover;
     display: block;
+    z-index: 10;
 }
 
-
-.glass h1 {
-    font-weight: 500;
-}
 
 .glass h3 {
     margin-top: 40px;
 }
 
+.glass p, .glass h1 {
+    margin: 10px;
+}
 .timer {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 4px;
-    width: 100%;
-    max-width: 500px;
+    width: calc(100% - 20px);
+    padding: 0 10px;
+    margin: 20px 0;
+    max-width: 700px;
+    backdrop-filter: blur(2px);
+    border-top: 1px solid rgba(255, 255, 255, 0.3);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
 }
 
 .timer div {
-    border-radius: 7px;
+    border-left: 1px solid rgba(255, 255, 255, 0.3);
+    border-right: 1px solid rgba(255, 255, 255, 0.3);
+    margin-left: -1px;
     padding: 10px 0px;
-    background: rgba(255, 255, 255, 0.092);
-    backdrop-filter: blur(2px);
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
 
 .timer span {
@@ -122,14 +109,7 @@
 .timer p {
     margin-top: 6px;
     font-size: 0.8rem;
-    opacity: 0.7;
     letter-spacing: 1px;
-}
-
-.malang {
-    margin: 15px;
-    width: 70px;
-    opacity: 0.8;
 }
 
 hr {
@@ -141,7 +121,8 @@ hr {
 }
 
 #dots {
-    width: 100vw;
+    width: 100%;
+    max-width: 700px;
     height: calc(100vh - 5px);
     position: fixed;
     top: 0;
@@ -174,13 +155,23 @@ hr {
     }
 }
 
-#register {
+.cta {
+    display: flex;
+    flex-direction: column;
+    width: calc(100% - 20px);
+    height: 200px;
+}
+
+.cta a {
+    width: calc(100% - 2.2rem);
+    margin: 7px auto;
+    padding: 0.5rem 1rem;
     display: inline-flex;
     align-items: center;
-    gap: 10px;
+    justify-content: space-between;
+    font-weight: 500 !important;
     transition: all .3s;
-    margin: 10px 0 20px 0;
-    width: fit-content;
+    border: 1px solid rgb(210, 210, 210);
 }
 
 #register img {
@@ -189,11 +180,64 @@ hr {
 }
 
 #register:hover {
-    gap: 20px;
+    scale: 1.02;
 }
 
 #register:hover img {
     rotate: 45deg;
+}
+
+#details {
+    backdrop-filter: blur(2px);
+    background-color: rgba(255, 255, 255, 0.152) !important;
+    color: white;
+    border: 1px solid rgb(177, 177, 177);
+}
+
+#details img {
+    height: 13px;
+    transform: rotate(135deg);
+    filter: invert(1);
+}
+
+.section {
+    padding: 20px 0px;
+    width: 100%;
+    border-bottom: 1px solid var(--border-color);
+    border-top: 1px solid var(--border-color);
+    background:
+        radial-gradient(ellipse at top,
+            rgb(0, 0, 0) 0%,
+            rgba(38, 32, 22, 0.35) 25%,
+            rgba(33, 31, 24, 0.9) 55%,
+            rgb(31, 23, 2) 70%);
+    margin: 30px 0;
+}
+
+.section img {
+    width: 80%;
+    padding: 7px;
+    background-color: rgba(255, 217, 0, 0.134);
+    border: 1px solid rgba(255, 183, 0, 0.134);
+    border-radius: 7px;
+}
+
+#cosplay img{
+    background-color: rgba(170, 0, 255, 0.134);
+    border: 1px solid rgba(242, 179, 255, 0.203);
+}
+#cosplay{
+    background:
+        radial-gradient(ellipse at top,
+            rgba(109, 18, 255, 0.29) 0%,
+            rgba(158, 38, 192, 0.35) 55%,
+            rgba(27, 18, 2, 0.9) 75%,
+            rgb(20, 2, 31) 90%);
+}
+
+#statsSection {
+    background: linear-gradient(to top, rgba(0, 146, 225, 0.396), black 40%),
+    radial-gradient(circle at 50% 100%, rgba(255, 255, 255, 0.537), transparent 70%);
 }
 
 #stats {
@@ -216,7 +260,7 @@ hr {
 }
 
 .partners {
-    margin-top: 40px;
+    margin: 0 20px;
 }
 
 .partners h3 {
@@ -242,42 +286,90 @@ hr {
     filter: none;
 }
 
-
-.sponsor-container {
-    position: relative;
-    width: calc(100% + 200px);
-    overflow: hidden;
-    padding-bottom: 50px;
-    transform: rotate(-7deg) translateX(-50px);
-    margin-top: 70px;
-}
-
-.sponsor-track {
+.gallery {
+    width: 100%;
     display: flex;
-    gap: 10px;
+    flex-direction: column;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.row {
+    width: calc(100% - 30px);
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    overflow: hidden;
+    padding: 0 25px;
+    margin-left: -10px;
+    border-top: 1px solid var(--border-color);
+}
+
+.row img {
+    width: calc(33.33% - 1px);
+    max-width: 166px;
+    object-fit: cover;
+    transition: filter 0.3s;
+    filter: saturate(0.8);
+}
+
+.row img:hover {
+    filter: brightness(0.8);
+}
+
+footer {
+    border-top: 1px dashed var(--border-color);
+}
+
+
+#scrollTopBtn {
+    position: fixed;
+    right: 10px;
+    bottom: 10px;
+    width: 34px;
+    height: 34px;
     padding: 5px;
-    width: max-content;
-    animation: scroll-left 40s linear infinite;
-}
-
-.track2 {
-    animation-direction: reverse;
-}
-
-.sponsor-track img {
-    height: 150px;
-    object-fit: contain;
+    display: inline-grid;
+    place-items: center;
+    border: 1px solid var(--border-color);
     border-radius: 7px;
+    backdrop-filter: blur(8px) saturate(120%);
+    -webkit-backdrop-filter: blur(8px) saturate(120%);
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.02));
+    box-shadow: 0 6px 18px rgba(11, 14, 22, 0.35);
+    color: rgb(221, 221, 221);
+    z-index: 9999;
+    opacity: 0;
+    transform: translateY(8px) scale(0.98);
+    transition: opacity 220ms ease, transform 220ms cubic-bezier(.2, .9, .2, 1);
 }
 
+#scrollTopBtn.show {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    pointer-events: auto;
+}
 
+#scrollTopBtn:hover,
+#scrollTopBtn:focus {
+    outline: none;
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: 0 10px 30px rgba(11, 14, 22, 0.45);
+}
 
-@keyframes scroll-left {
-    0% {
-        transform: translateX(0);
-    }
+#scrollTopBtn:focus-visible {
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.18), 0 10px 30px rgba(11, 14, 22, 0.45);
+}
 
-    100% {
-        transform: translateX(-50%);
+#scrollTopBtn svg {
+    display: block;
+    width: 20px;
+    height: 20px;
+    will-change: transform;
+}
+
+@media only screen and (min-width: 700px) {
+    #fashionEuphoria {
+        border-left: 1px solid var(--border-color);
+        border-right: 1px solid var(--border-color);
     }
 }
