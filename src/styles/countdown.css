@@ -1,8 +1,3 @@
-html {
-    scroll-behavior: smooth;
-    scroll-padding: 70px;
-}
-
 #fashionEuphoria {
     max-width: 700px;
     position: relative;
@@ -28,13 +23,13 @@ html {
     justify-content: center;
     align-items: center;
     position: sticky;
-    top: 90px;
+    top: 80px;
     text-align: center;
     padding-bottom: 40px;
 }
 
 #fashionEuphoria {
-    background: radial-gradient(circle at 50% 115%, rgba(255, 255, 255, 0.623), rgba(221, 147, 255, 0.651), rgba(129, 164, 247, 0.404), transparent 50%),
+    background: radial-gradient(circle at 50% 115%, rgba(255, 255, 255, 0.767), rgba(225, 164, 33, 0.651), rgba(154, 43, 229, 0.404),black, black,rgba(233, 56, 203, 0.323), transparent 100%),
         linear-gradient(180deg, #0a0a0a, #000000);
     background-attachment: fixed;
 }
@@ -51,6 +46,7 @@ html {
     z-index: 100;
     border-top: 1px solid var(--border-color);
     border-radius: 20px 20px 0 0;
+    padding-bottom: 50px;
 }
 
 .handle {
@@ -163,40 +159,42 @@ hr {
 }
 
 .cta a {
-    width: calc(100% - 2.2rem);
+    width: 70%;
     margin: 7px auto;
     padding: 0.5rem 1rem;
     display: inline-flex;
     align-items: center;
     justify-content: space-between;
-    font-weight: 500 !important;
     transition: all .3s;
-    border: 1px solid rgb(210, 210, 210);
+    font-weight: 500;
 }
 
-#register img {
+#register{
+    font-weight: 1000 !important;
+}
+
+.cta a img {
     height: 13px;
     transition: rotate .3s;
 }
 
-#register:hover {
+.cta a:hover {
     scale: 1.02;
 }
 
-#register:hover img {
+.cta a:hover img {
     rotate: 45deg;
 }
 
-#details {
+#rulebook {
     backdrop-filter: blur(2px);
-    background-color: rgba(255, 255, 255, 0.152) !important;
+    background-color: rgba(0, 0, 0, 0) !important;
     color: white;
-    border: 1px solid rgb(177, 177, 177);
+    border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
-#details img {
+#rulebook img {
     height: 13px;
-    transform: rotate(135deg);
     filter: invert(1);
 }
 
@@ -211,7 +209,7 @@ hr {
             rgba(38, 32, 22, 0.35) 25%,
             rgba(33, 31, 24, 0.9) 55%,
             rgb(31, 23, 2) 70%);
-    margin: 30px 0;
+    margin: 10px 0;
 }
 
 .section img {
@@ -331,12 +329,12 @@ footer {
     padding: 5px;
     display: inline-grid;
     place-items: center;
-    border: 1px solid var(--border-color);
+    border: none;
     border-radius: 7px;
     backdrop-filter: blur(8px) saturate(120%);
     -webkit-backdrop-filter: blur(8px) saturate(120%);
     background: linear-gradient(135deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.02));
-    box-shadow: 0 6px 18px rgba(11, 14, 22, 0.35);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.851);
     color: rgb(221, 221, 221);
     z-index: 9999;
     opacity: 0;
@@ -354,11 +352,11 @@ footer {
 #scrollTopBtn:focus {
     outline: none;
     transform: translateY(-2px) scale(1.02);
-    box-shadow: 0 10px 30px rgba(11, 14, 22, 0.45);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
 }
 
 #scrollTopBtn:focus-visible {
-    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.18), 0 10px 30px rgba(11, 14, 22, 0.45);
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.18), 0 10px 30px rgba(0, 0, 0, 0.45);
 }
 
 #scrollTopBtn svg {
@@ -380,5 +378,8 @@ footer {
         position: relative;
         height: auto;
         top: 0;
+    }
+    #scroll{
+        display:none;
     }
 }

@@ -277,6 +277,12 @@ function showAlert(heading, message, buttons = [{ text: 'OK' }], link) {
             cursor: 'pointer'
         });
 
+        if (btnObj.focus){
+            btn.style.backgroundColor = 'rgb(237, 237, 237)';
+            btn.style.color = 'black';
+            btn.focus();
+        };
+
         btn.onclick = () => {
             overlay.remove();
             if (btnObj.onClick) btnObj.onClick();
@@ -300,12 +306,13 @@ document.addEventListener('click', (e) => {
     const decodedUrl = decodeURI(link.href);
 
     showAlert(
-        "Leaving Malang's Environment",
-        "This content opens outside Malang.",
+        "Open Link?",
+        "This link will open in a new tab:",
         [
             { text: "Cancel", onClick: () => {} },
             {
                 text: "Open",
+                focus: true,
                 onClick: () => window.open(link.href, "_blank")
             }
         ],
