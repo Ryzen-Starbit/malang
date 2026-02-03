@@ -278,6 +278,7 @@
 │   │   │   ├── lrb.png
 │   │   │   ├── mandala1.webp
 │   │   │   ├── mandala2.webp
+│   │   │   ├── monster.webp
 │   │   │   ├── orientation24-1.webp
 │   │   │   ├── orientation24-2.webp
 │   │   │   ├── orientation24-3.webp
