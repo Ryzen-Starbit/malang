@@ -276,13 +276,19 @@ hr {
 
 .partner-logos img {
     height: 60px;
-    opacity: .8;
-    filter: brightness(0) invert(1);
-    transition: .3s;
+    object-fit: contain;
+    filter: saturate(0) brightness(2);
+    opacity: 0.8;
+    transition: filter 0.3s ease;
+}
+
+.dark-image{
+    filter: brightness(0) invert(1) !important;
 }
 
 .partner-logos img:hover {
-    filter: none;
+    opacity: 1;
+    filter: none !important;
 }
 
 .gallery {
